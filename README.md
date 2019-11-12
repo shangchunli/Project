@@ -14,9 +14,10 @@ https://github.com/shangchunli/Project
 
 项目成员
 ----------------------
->· 尚春丽（项目经理，开发工程师，数据库管理员）<br>
-    >>。Email:1503651223@qq.com <br>
-    >>。GitHub:https://github.com/shangchunli <br>
+· 尚春丽（项目经理，开发工程师，数据库管理员）<br>  
+
+    。Email:1503651223@qq.com <br>
+    。GitHub:https://github.com/shangchunli <br>
 · 常延欣（开发工程师，数据库管理员，UI设计师）<br>
     。Email:2873005857@qq.com <br>
     。GitHub:https://github.com/changyanxin <br>
