@@ -14,16 +14,19 @@ https://github.com/shangchunli/Project
 
 项目成员
 ----------------------
-· 尚春丽（项目经理，开发工程师，数据库管理员）<br>  
+· 尚春丽（项目经理，开发工程师，数据库管理员）
 
     。Email:1503651223@qq.com <br>
     。GitHub:https://github.com/shangchunli <br>
-· 常延欣（开发工程师，数据库管理员，UI设计师）<br>
+· 常延欣（开发工程师，数据库管理员，UI设计师）  
+
     。Email:2873005857@qq.com <br>
     。GitHub:https://github.com/changyanxin <br>
-· 张洁（UI设计师，开发工程师，测试）<br>
+· 张洁（UI设计师，开发工程师，测试）  
+
     。Email:896180036@qq.com <br>
     。GitHub:https://github.com/zhangjie8961 <br>
-· 银美丽（UI设计师，开发工程师，测试）<br>
+· 银美丽（UI设计师，开发工程师，测试）  
+
     。Email:2697111697@qq.com <br>
     。GitHub:https://github.com/yinmeili <br>
