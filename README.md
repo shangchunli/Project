@@ -16,17 +16,17 @@ https://github.com/shangchunli/Project
 ----------------------
 · 尚春丽（项目经理，开发工程师，数据库管理员，质量专家）
 
-    。Email:1503651223@qq.com <br>
-    。GitHub:https://github.com/shangchunli <br>
+    。Email:1503651223@qq.com 
+    。GitHub:https://github.com/shangchunli 
 · 常延欣（开发工程师，数据库管理员，UI设计师）  
 
     。Email:2873005857@qq.com <br>
-    。GitHub:https://github.com/changyanxin <br>
+    。GitHub:https://github.com/changyanxin 
 · 张洁（UI设计师，开发工程师，测试）  
 
     。Email:896180036@qq.com <br>
-    。GitHub:https://github.com/zhangjie8961 <br>
+    。GitHub:https://github.com/zhangjie8961 
 · 银美丽（UI设计师，开发工程师，测试）  
 
     。Email:2697111697@qq.com <br>
-    。GitHub:https://github.com/yinmeili <br>
+    。GitHub:https://github.com/yinmeili
