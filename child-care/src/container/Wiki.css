@@ -1,0 +1,10 @@
+.placeholder {
+    
+    color: rgb(27, 24, 18);
+    text-align: center;
+    height: 50px;
+    line-height: 30px;
+    width: 100%;
+    border-radius: 20px;
+    padding-top:10px;
+  }
