@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import sui from './sui.css';
 import ReactDOM from 'react-dom';
-import {HashRouter as Router,Route,Link,Switch} from 'react-router-dom';
+import {BrowserRouter as Router,Route,Link,Switch} from 'react-router-dom';
 import Sui from './Sui';
 import Tie from './Tie';
 import {Provider} from 'react-redux';
