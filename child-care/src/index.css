@@ -40,5 +40,45 @@ body{
   position:"fixed";
   width:"100%";
  }
+.shouye3{
+    margin-top:150px;
+    float:'left';
+  }
+  .placeholder {
+    background-color:#fff;
+    color: rgb(19, 18, 18);
+    /* text-align: center; */
+    height: 46px;
+    line-height: 30px;
+    width: 100%;
+  }
+  .focus1{
+    /* text-align:center; */
+    width:'100%';
+    height:50px;
+    background-color:'white';
+    font-size:20px;
+    padding-top:10px;
+  }
+  .song1{
+      width:90px;
+      height:90px;
+      background-color: blue;
+  }
+  .song2{
+    width:90px;
+    height:90px;
+    margin-left:10px;
+    background-color: blue;
+}
+.placeholder1 {
+  background-color:#fff;
+  color: rgb(19, 18, 18);
+  /* text-align: center; */
+  height: 70px;
+  line-height: 30px;
+  width: 100%;
+}
+
 
  
