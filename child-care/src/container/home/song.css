@@ -1,0 +1,19 @@
+.song1{
+    width:90px;
+    height:90px;
+    background-color: blue;
+}
+.song2{
+  width:90px;
+  height:90px;
+  margin-left:10px;
+  background-color: blue;
+}
+.focus1{
+    /* text-align:center; */
+    width:'100%';
+    height:50px;
+    background-color:'white';
+    font-size:20px;
+    padding-top:10px;
+  }

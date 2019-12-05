@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 // import Health from './Health.css'
-import { Carousel, WingBlank ,Flex,WhiteSpace,List} from 'antd-mobile';
+import { Carousel, WingBlank ,Flex,WhiteSpace,List,NavBar,Icon} from 'antd-mobile';
 
 const Item = List.Item;
 const Brief = Item.Brief;
@@ -20,11 +20,24 @@ export default class Dynamics extends Component {
             data: ['mom_health1', 'mom_health2', 'mom_health3'],
           });
         }, 100);
-     }
+    }
+    handle=(pathname)=>{
+        window.location.href="/health/"+pathname;
+    }
     render() {
         return (
             <div>
-                <h4 className='header'>心理健康</h4>
+                <NavBar
+                        style={{backgroundColor:'#fff',color:'#000',
+                        fontWeight:"bolder",
+                        position:"fixed",zIndex:100,width:"100%",top:0
+                    }}
+                        rightContent={[
+                            <Icon key="0" type="search" style={{ marginRight: '16px' }} />,
+                        ]}
+                    >
+                        宝妈健康
+                </NavBar>
                 <Carousel
                 autoplay={true}
                 infinite
@@ -38,37 +51,88 @@ export default class Dynamics extends Component {
                     ))}
                 </Carousel>
                 <List>
-                    <Item extra={'更多》》》'} onClick={() => {}}>抑郁症</Item>
+                    <Item extra={'更多>>'} onClick={()=>{this.handle('yiyu')}}>抑郁症</Item>
                 </List>
                 <Flex style={{backgroundColor:"#fff",borderTop:'1px rgb(255,235,235) solid',borderBottom:'1px rgb(255,235,235) solid'}}>
                     <img src="/images/depression.jpg" alt="抑郁症" style={{width:'25%',marginLeft:'2%',marginRight:'3%',float:'left'}}/>
                     <p style={{width:'65%',marginRight:'5%',float:'left'}}>
-                        产后抑郁形成的原因是多方面的，和产妇生产后的生理变化及心理因素相关,
-                        建议在身体允许的情况下，尽快恢复之前的生活状况...
+                        产后抑郁形成的原因是多方面的，和产妇生产后的生...<br/>
+                        <span style={{fontSize:'10px',float:'left',marginLeft:'2%',marginTop:'2%'}}>丫丫妈妈</span>
+                            <span>
+                                <img 
+                                style={{float:'right',marginRight:'2%',height:20,width:20}}
+                                src='https://s2.ax1x.com/2019/12/04/Q1fu7T.png' alt='收藏'/>
+                            </span>
                     </p>
                 </Flex>
 
                 <List>
-                    <Item extra={'更多》》》'} onClick={() => {}}>产前护理</Item>
+                    <Item extra={'更多>>'} onClick={()=>{this.handle('food')}}>产前护理</Item>
                 </List>
                 <Flex style={{backgroundColor:"#fff",border:'1px rgb(255,235,235) solid',borderLeft:'none',borderRight:'none'}}>
                     <img src="/images/care.jpg" alt="产前护理" style={{width:'25%',marginLeft:'2%',marginRight:'3%',float:'left'}}/>
+                    <div>
                         <p className='detail'>
-                            注意休息，保证足够睡眠，左侧卧位，适当活动，保持轻松愉快的心情。产前健康教育，
-                            消除孕妇对于分娩产生的紧张、恐惧心理。。。
+                            注意休息，保证足够睡眠，左侧卧位，适当活动，保持轻松愉快...<br/>
+                        <span style={{fontSize:'10px',float:'left',marginLeft:'2%',marginTop:'2%'}}>丫丫妈妈</span>
+                            <span>
+                                <img 
+                                style={{float:'right',marginRight:'8%',height:20,width:20}}
+                                src='https://s2.ax1x.com/2019/12/04/Q1fu7T.png' alt='收藏'/>
+                            </span>
                         </p>
+                        
+                    </div>    
                 </Flex>
                 <List>
-                    <Item extra={'更多》》》'} onClick={() => {}}>身材恢复</Item>
+                    <Item extra={'更多>>'} onClick={()=>{this.handle('reply')}}>身材恢复</Item>
                 </List>
                 <Flex style={{backgroundColor:"#fff",border:'1px rgb(255,235,235) solid',borderLeft:'none',borderRight:'none'}}>
                     <img src="/images/body_recovery.jpg" alt="身材恢复" style={{width:'25%',marginLeft:'2%',marginRight:'3%',float:'left'}}/>
                     <p style={{width:'65%',marginRight:'5%',float:'left'}}>
-                        研究表明，产后6个月是宝妈身材恢复的黄金时期，如果宝妈在产后6个月内恢复到孕前体重，
-                        那么未来数年，产后体重增加幅度均会较小。。。
+                        研究表明，产后6个月是宝妈身材恢复的黄金时...<br/>
+                        <span style={{fontSize:'10px',float:'left',marginLeft:'2%',marginTop:'2%'}}>丫丫妈妈</span>
+                            <span>
+                                <img 
+                               style={{float:'right',marginRight:'2%',height:20,width:20}}
+                               src='https://s2.ax1x.com/2019/12/04/Q1fu7T.png' alt='收藏'/>
+                            </span>
+                    </p>
+                    
+                </Flex>
+                        
+                <List>
+                    <Item extra={'更多>>'} onClick={()=>{this.handle('food')}}>饮食</Item>
+                </List>
+                <Flex style={{backgroundColor:"#fff",border:'1px rgb(255,235,235) solid',borderLeft:'none',borderRight:'none'}}>
+                    <img src="/images/body_recovery.jpg" alt="身材恢复" style={{width:'25%',marginLeft:'2%',marginRight:'3%',float:'left'}}/>
+                    <p style={{width:'65%',marginRight:'5%',float:'left'}}>
+                        研究表明，产后6个月是宝妈身材恢复的黄金时期...<br/>
+                        <span style={{fontSize:'10px',float:'left',marginLeft:'2%',marginTop:'2%'}}>丫丫妈妈</span>
+                            <span>
+                                <img 
+                                 style={{float:'right',marginRight:'2%',height:20,width:20}}
+                                 src='https://s2.ax1x.com/2019/12/04/Q1fu7T.png' alt='收藏'/>
+                            </span>
+                    </p>
+                    
+                </Flex>
+
+                <List>
+                    <Item extra={'更多>>'} onClick={()=>{this.handle('anxiety')}}>焦虑</Item>
+                </List>
+                <Flex style={{backgroundColor:"#fff",border:'1px rgb(255,235,235) solid',borderLeft:'none',borderRight:'none'}}>
+                    <img src="/images/body_recovery.jpg" alt="身材恢复" style={{width:'25%',marginLeft:'2%',marginRight:'3%',float:'left'}}/>
+                    <p style={{width:'65%',marginRight:'5%',float:'left'}}>
+                        研究表明，产后6个月是宝妈身材恢复的黄金时期...<br/>
+                        <span style={{fontSize:'10px',float:'left',marginLeft:'2%',marginTop:'2%'}}>丫丫妈妈</span>
+                            <span>
+                                <img 
+                                 style={{float:'right',marginRight:'2%',height:20,width:20}}
+                                 src='https://s2.ax1x.com/2019/12/04/Q1fu7T.png' alt='收藏'/>
+                            </span>
                     </p>
                 </Flex>
-    
             </div>
         )
     }

@@ -5,16 +5,21 @@ import Wiki from './Wiki';
 import My from './My';
 import Health from './Health'
 import Add from './Add'
+import Jia from './Jia'
+import {Route,Link} from "react-router-dom"
+
 
 export default class AppTab extends React.Component {
   constructor(props) {
     super(props);
+    // console.log(props);
     this.state = {
       selectedTab: 'home',
     };
   }
   render() {
     return (
+      <div>
       <div style={{ position: 'fixed', height: '100%', width: '100%', top: 0 }}>
         <TabBar
           unselectedTintColor="#949494"
@@ -43,6 +48,8 @@ export default class AppTab extends React.Component {
               this.setState({
                 selectedTab: 'home',
               });
+              // console.log(window.location.pathname);
+              // this.props.history.push('/home');
             }}
           >
             <AppHome/>
@@ -69,6 +76,8 @@ export default class AppTab extends React.Component {
               this.setState({
                 selectedTab: 'redTab',
               });
+              // console.log(window.location.pathname);
+              // this.props.history.push('/wiki');
             }}
           >
             <Wiki/>
@@ -95,9 +104,10 @@ export default class AppTab extends React.Component {
               this.setState({
                 selectedTab: 'pinkTab',
               });
+              // this.props.history.push('/add');
             }}
           >
-            <Add/>
+            <Jia/>
           </TabBar.Item>
           <TabBar.Item
             icon={
@@ -122,6 +132,7 @@ export default class AppTab extends React.Component {
               this.setState({
                 selectedTab: 'greenTab',
               });
+              // this.props.history.push('/health');
             }}
           >
             <Health/>
@@ -149,11 +160,19 @@ export default class AppTab extends React.Component {
               this.setState({
                 selectedTab: 'yellowTab',
               });
+              // this.props.history.push('/my');
             }}
           >
             <My/>
           </TabBar.Item>
         </TabBar>
+      </div>
+      <div>
+        {/* <Route path="/home/apphome" component={AppHome}/> */}
+        {/* <Route path="/home/wiki" component={Wiki}/>
+        <Route path="/home/health" component={Health}/>
+        <Route path="/home/my" component={My}/> */}
+      </div>
       </div>
     );
   }

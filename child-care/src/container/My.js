@@ -5,21 +5,25 @@ import Collect from './my/Collect';
 import Picture from './home/Picture';
 
 export default class My extends Component {
+    handle=(pathname)=>{
+        window.location.href="/my/"+pathname;
+    }
     render() {
         return (
             <div>
                 <NavBar
                     style={{backgroundColor:'#fff',color:'#000',
-                    height:60,fontWeight:"bolder"}}
+                    position:"fixed",top:0,zIndex:100,width:"100%",
+                   fontWeight:"bolder"}}
                 >
                     我的
                 </NavBar>
                 <WhiteSpace/>
-                <List style={{marginTop:"20px"}}>
+                <List style={{marginTop:"40px"}}>
                     <List.Item
                         arrow="horizontal"
                         multipleLine
-                        onClick={() => {}}
+                        onClick={()=>{this.handle('unique')}}
                     >
                         <img src="./images/touxiang.jpg" 
                             style={{height:100,width:100,marginRight:25,borderRadius:50}}/>
@@ -31,7 +35,7 @@ export default class My extends Component {
                         arrow="horizontal"
                         thumb="./images/guanzhu.svg"
                         multipleLine
-                        onClick={() => {console.log("11")}}
+                        onClick={()=>{this.handle('focus')}}
                         style={{padding:"10px 0 10px 20px"}}
                     >
                     我的关注
@@ -42,7 +46,8 @@ export default class My extends Component {
                         arrow="horizontal"
                         thumb="./images/collect-active.svg"
                         multipleLine
-                        onClick={()=>{}}
+                        onClick={()=>{this.handle('collect')}}
+                        // onClick={()=>{}}
                         style={{padding:"10px 0 10px 20px"}}
                     >
                     我的收藏
@@ -64,7 +69,7 @@ export default class My extends Component {
                         arrow="horizontal"
                         thumb="./images/ruanjianshezhi.svg"
                         multipleLine
-                        onClick={() => {}}
+                        onClick={()=>{this.handle('tongyong')}}
                         style={{padding:"10px 0 10px 20px"}}
                     >
                     软件设置

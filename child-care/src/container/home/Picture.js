@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { NavBar, Icon, Tabs,Carousel,WingBlank, WhiteSpace,SearchBar,
     Grid,Flex,Button} from 'antd-mobile';
 
+
 const tabs = [
     { title: '水果' },
     { title: '蔬菜' },
@@ -9,6 +10,8 @@ const tabs = [
     { title: '植物' }
   ];
 
+  
+  
 export default class Picture extends Component {
     state = {
         data: ['1', '2', '3'],
@@ -22,10 +25,15 @@ export default class Picture extends Component {
           });
         }, 100);
     }
+   
+    goBack=()=>{
+        window.history.go(-1);
+    }
     render() {
         return (
             <div >
                 <NavBar
+                    icon={<Icon type="left" onClick={this.goBack}/>}
                     style={{backgroundColor:'#fff',color:'#000',
                     height:60,fontWeight:"bolder",
                     position:"fixed",
@@ -39,25 +47,34 @@ export default class Picture extends Component {
                 {/* <WhiteSpace /> */}
                <div style={{marginTop:60,top:50}} >
                     <WhiteSpace />
-                    <Tabs tabs={tabs} initialPage={2} 
+                 
+                        <Tabs tabs={tabs} initialPage={2} 
                     animated={false} useOnPan={false}
                      swipeable={false} 
                     >
+                        
                     <div style={{  
                         alignItems: 'center', justifyContent: 'center', height: '700px' }}>
-                    <WingBlank>
-                        <img src="images/fruit/apple.jpg"/>
+                    <WingBlank>                        
+
+                         
+
                     <Carousel
                             autoplay={false}
                             infinite
                             style={{height:"500px"}}
                             >
-                            {["mihoutao","boluo","ningmeng"].map(val => (
+                                <img/ >
+                    {/* <img = */}
+                            {/* {["mihoutao","boluo","ningmeng"].map(val => (
                                 <div
                                 style={{ display: 'inline-block', width: '100%',height:"500px" }}
                                 >
                                 <img
-                                    src={`images/fruit/${val}.jpg`}
+                                    // src={`images/fruit/${val}.jpg`}
+                                   src={}
+                                    // src={`https://s2.ax1x.com/2019/12/04/Q1rFf0.jpg`}
+
                                     alt=""
                                     style={{ width: '100%', height:"500px" }}
                                     onLoad={() => {
@@ -67,18 +84,9 @@ export default class Picture extends Component {
                                     // this.setState({ imgHeight: 'auto' });
                                     }}
                                 />
-                              <WhiteSpace />
-                                <Button type="primary" inline 
-                                    style={{marginTop:'70px', marginLeft:'2%' }}>
-                                    inline primary
-                                </Button>
-                                <Button type="ghost" inline 
-                                style={{marginTop:'70px', marginRight:'2%', float:'right'}} 
-                                className="am-button-borderfix">inline ghost</Button>
-                                <WhiteSpace />
                                 </div>
 
-                            ))}
+                            ))} */}]
                         </Carousel>
                             
                         </WingBlank>
@@ -104,13 +112,6 @@ export default class Picture extends Component {
                                     window.dispatchEvent(new Event('resize'));
                                     }}
                                 />
-                                <Button type="primary" inline 
-                                    style={{marginTop:'70px', marginLeft:'2%' }}>
-                                    inline primary
-                                </Button>
-                                <Button type="ghost" inline 
-                                style={{marginTop:'70px', marginRight:'2%', float:'right'}} 
-                                className="am-button-borderfix">inline ghost</Button>
                                 </div>
                             ))}
                         </Carousel>
@@ -139,13 +140,7 @@ export default class Picture extends Component {
                                     // this.setState({ imgHeight: 'auto' });
                                     }}
                                 />
-                                <Button type="primary" inline 
-                                    style={{marginTop:'70px', marginLeft:'2%' }}>
-                                    inline primary
-                                </Button>
-                                <Button type="ghost" inline 
-                                style={{marginTop:'70px', marginRight:'2%', float:'right'}} 
-                                className="am-button-borderfix">inline ghost</Button>
+                              
                                 </div>
                             ))}
                         </Carousel>
@@ -165,6 +160,7 @@ export default class Picture extends Component {
                                 >
                                 <img
                                     src={`images/zhiwu/${val}.jpg`}
+                                   
                                     alt=""
                                     style={{ width: '100%', height:"500px" }}
                                     onLoad={() => {
@@ -174,13 +170,7 @@ export default class Picture extends Component {
                                     // this.setState({ imgHeight: 'auto' });
                                     }}
                                 />
-                                <Button type="primary" inline 
-                                    style={{marginTop:'70px', marginLeft:'2%' }}>
-                                    inline primary
-                                </Button>
-                                <Button type="ghost" inline 
-                                style={{marginTop:'70px', marginRight:'2%', float:'right'}} 
-                                className="am-button-borderfix">inline ghost</Button>
+                               
                                 </div>
                             ))}
                         </Carousel>
