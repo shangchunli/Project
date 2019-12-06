@@ -4,7 +4,6 @@ import AppHome from './AppHome';
 import Wiki from './Wiki';
 import My from './My';
 import Health from './Health'
-import Add from './Add'
 import Jia from './Jia'
 import {Route,Link} from "react-router-dom"
 
@@ -36,8 +35,8 @@ export default class AppTab extends React.Component {
       <div>
       <div style={{ position: 'fixed', height: '100%', width: '100%', top: 0 }}>
         <TabBar
-          unselectedTintColor="#949494"
-          tintColor="black"
+          unselectedTintColor="black"
+          tintColor="#d81e06"
           barTintColor="white"
         >
           <TabBar.Item
@@ -54,7 +53,7 @@ export default class AppTab extends React.Component {
             selectedIcon={<div style={{
               width: '22px',
               height: '22px',
-              background: 'url(./images/home1.svg) center center /  21px 21px no-repeat' }}
+              background: 'url(./images/home.png) center center /  21px 21px no-repeat' }}
             />
             }
             selected={this.state.selectedTab === 'home'}
@@ -63,8 +62,7 @@ export default class AppTab extends React.Component {
                 selectedTab: 'home',
               });
               window.location.href='/home'
-              // console.log(window.location.pathname);
-              // this.props.history.push('/home');
+              
             }}
           >
             <AppHome/>
@@ -81,7 +79,7 @@ export default class AppTab extends React.Component {
               <div style={{
                 width: '22px',
                 height: '22px',
-                background: 'url(./images/baike1.svg) center center /  21px 21px no-repeat' }}
+                background: 'url(./images/baike.png) center center /  21px 21px no-repeat' }}
               />
             }
             title="百科"
@@ -110,7 +108,7 @@ export default class AppTab extends React.Component {
               <div style={{
                 width: '50px',
                 height: '50px',
-                background: 'url(./images/xinzeng1.svg) center center /  40px 40px no-repeat' }}
+                background: 'url(./images/add.png) center center /  40px 40px no-repeat' }}
               />
             }
             key="Friend"
@@ -137,7 +135,7 @@ export default class AppTab extends React.Component {
               <div style={{
                 width: '22px',
                 height: '22px',
-                background: 'url(./images/jiankang1.svg) center center /  21px 21px no-repeat' }}
+                background: 'url(./images/jiankang.png) center center /  21px 21px no-repeat' }}
               />
             }
             title="宝妈健康"
@@ -165,7 +163,7 @@ export default class AppTab extends React.Component {
               <div style={{
                 width: '22px',
                 height: '22px',
-                background: 'url(./images/my1.svg) center center /  21px 21px no-repeat' }}
+                background: 'url(./images/wode.png) center center /  21px 21px no-repeat' }}
               />
             }
             title="我的"

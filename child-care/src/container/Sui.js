@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { ImagePicker, WingBlank, SegmentedControl} from 'antd-mobile';
-import sui from './sui.css';
+import  './sui.css';
 const data = [];
 export default class Sui extends Component {
     state = {
