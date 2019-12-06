@@ -8,15 +8,29 @@ import Add from './Add'
 import Jia from './Jia'
 import {Route,Link} from "react-router-dom"
 
+let str;
+if(window.location.pathname=="/wiki"){
+      str='redTab'
+}else if(window.location.pathname=="/home"){
+  str="home"
+}else if(window.location.pathname=="/my"){
+  str="yellowTab"
+}else if(window.location.pathname=="/add"){
+  str="pinkTab"
+}else if(window.location.pathname=="/health"){
+  str="greenTab"
+}
 
 export default class AppTab extends React.Component {
   constructor(props) {
     super(props);
     // console.log(props);
     this.state = {
-      selectedTab: 'home',
+      selectedTab: str,
     };
+    console.log(window.location.pathname)
   }
+
   render() {
     return (
       <div>
@@ -48,6 +62,7 @@ export default class AppTab extends React.Component {
               this.setState({
                 selectedTab: 'home',
               });
+              window.location.href='/home'
               // console.log(window.location.pathname);
               // this.props.history.push('/home');
             }}
@@ -76,6 +91,7 @@ export default class AppTab extends React.Component {
               this.setState({
                 selectedTab: 'redTab',
               });
+              window.location.href='/wiki'
               // console.log(window.location.pathname);
               // this.props.history.push('/wiki');
             }}
@@ -104,7 +120,7 @@ export default class AppTab extends React.Component {
               this.setState({
                 selectedTab: 'pinkTab',
               });
-              // this.props.history.push('/add');
+              window.location.href='/add'
             }}
           >
             <Jia/>
@@ -132,7 +148,7 @@ export default class AppTab extends React.Component {
               this.setState({
                 selectedTab: 'greenTab',
               });
-              // this.props.history.push('/health');
+              window.location.href='/health'
             }}
           >
             <Health/>
@@ -160,7 +176,7 @@ export default class AppTab extends React.Component {
               this.setState({
                 selectedTab: 'yellowTab',
               });
-              // this.props.history.push('/my');
+              window.location.href='/my'
             }}
           >
             <My/>

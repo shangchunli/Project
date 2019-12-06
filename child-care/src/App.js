@@ -59,6 +59,7 @@ import Detail from './container/Detail'
 
 
 export default class App extends Component {
+    
     render() {
         return (
 
@@ -77,7 +78,10 @@ export default class App extends Component {
                         <Route exact path='/reg' component={Register}/>
 
                         <Route exact path='/home' component={AppTab}/>
-                        
+                        <Route exact path='/wiki' component={AppTab}/>
+                        <Route exact path='/add' component={AppTab}/>
+                        <Route exact path='/health' component={AppTab}/>
+                        <Route exact path='/my' component={AppTab}/>
 
             
                         <Route  path='/home/picture' component={Picture}/>

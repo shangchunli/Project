@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
-import {List,WingBlank,Button} from "antd-mobile"
+import {ImagePicker, SegmentedControl,List,WingBlank,Button} from "antd-mobile"
 import "./Health.css"
+
+const data = [];
 export default class Register extends Component {
     constructor(){
         super();
@@ -9,8 +11,22 @@ export default class Register extends Component {
             tel:"",
             email:"",
             pwd1:"",
-            pwd2:""
+            pwd2:"",
+            files: data,
+            multiple: false,
         }
+    }
+    onChange = (files, type, index) => {
+        console.log(files, type, index);
+        this.setState({
+          files,
+        });
+      }
+    onSegChange = (e) => {
+        const index = e.nativeEvent.selectedSegmentIndex;
+        this.setState({
+          multiple: index === 1,
+        });
     }
     inputChange=()=>{
         let val1=this.refs.username.value;
@@ -59,6 +75,22 @@ export default class Register extends Component {
        
     }
     render() {
+        const { files } = this.state;
+        let str;
+        let str2;
+        if(JSON.stringify(files)=="[]"){
+             str=<ImagePicker
+            style={{marginLeft:"30%"}}
+            files={files}
+            onChange={this.onChange}
+            onImageClick={(index, fs) => console.log(index, fs)}
+            selectable={files.length < 100}
+            multiple={this.state.multiple}
+            />
+            console.log(files);
+        }else{
+            str=<img src="{files.url}"/>
+        }
         return (   
             <div  
             action="http://192.168.43.217:5001/register" method="POST">
@@ -67,10 +99,15 @@ export default class Register extends Component {
                     background:"url('./images/beijing/login.jpg')"
             }}>
                 </div >
-                <div style={{top:0,marginTop:50,position:"fixed",zIndex:100,
-            width:"100%"}}>
-                <img src="./images/touxiang.jpg" style={{width:100,height:100,
-                borderRadius:50,marginLeft:"30%",marginBottom:50}}/>
+                <div style={{top:0,marginTop:10,position:"fixed",zIndex:100,
+            width:"100%",height:400}}>
+                <List.Item style={{width:"80%",margin:"0 auto",backgroundColor:"transparent"}} >
+                        {
+                            str
+                        }
+                    </List.Item>
+                {/* <img src="./images/touxiang.jpg" style={{width:100,height:100,
+                borderRadius:50,marginLeft:"30%",marginBottom:50}}/> */}
 
                  <List style={{width:"80%",margin:"0 auto"}} className="register">
                     <List.Item
