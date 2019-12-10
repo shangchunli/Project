@@ -23,9 +23,10 @@ export default class Login extends Component {
     }
     loginn=()=>{
         let i=0;
-        fetch("http://192.168.43.217:5001/yhlogin")
-        .then(res=>res.json())
+        fetch("http://192.168.43.217:5001/yhlogin"
+        ).then(res=>res.json())
         .then((res)=>{
+            console.log(res)
             res.map((item)=>{
                 if(this.state.tel===item.telphone&&this.state.pwd===item.pwd){
                     i++;
@@ -38,9 +39,7 @@ export default class Login extends Component {
         }else{
             alert("登录失败")
         }
-        
     }
-   
     render() {
          return (
           <div>
@@ -62,11 +61,9 @@ export default class Login extends Component {
                 placeholder="密码" class="el-input__inner"  ref="pwd" />
                 <button type="button" class="el-button login-btn-submit el-button--primary" id="login"
                 onClick={()=>this.loginn()}
-                // onClick={()=>this.handle1('')}
                 ><span>登录</span></button>
                 <h4 onClick={()=>this.handle('')}>新用户点击注册</h4>
             </form>
-            
             </div>    
             </Flex>
           </div>

@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
-import { Flex } from 'antd-mobile';
+import { Flex, Drawer, List, NavBar, Icon } from 'antd-mobile';
+// import "./ill.css"
 
-export default class Disease extends Component {
+
+export default class Disease extends Component {  
     render() {
         return (
             <div>

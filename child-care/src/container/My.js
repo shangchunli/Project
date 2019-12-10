@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
 import { NavBar, Icon, Tabs,WingBlank, WhiteSpace,
     Flex,List} from 'antd-mobile';
-import Collect from './my/Collect';
-import Picture from './home/Picture';
 
 export default class My extends Component {
     handle=(pathname)=>{

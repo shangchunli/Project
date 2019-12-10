@@ -5,6 +5,28 @@ import { NavBar,List,Icon } from 'antd-mobile';
 const Item = List.Item;
 
 export default class Yiyu extends Component {
+    constructor(){
+        super();
+        this.state={
+            data:[]
+        }
+    }
+    componentDidMount(){
+        fetch("http://192.168.43.217:5001/chapters")
+        .then(res=>res.json())
+        .then((res)=>{
+            this.setState({
+                data:res
+            })
+        })
+    }
+    componentDidUpdate(){
+        fetch("http://192.168.43.217:5001/chapters")
+        .then(res=>res.json())
+        .then((res)=>{
+            console.log(res)
+        })
+    }
     goBack=()=>{
         window.history.go(-1);
     }
@@ -26,7 +48,30 @@ export default class Yiyu extends Component {
                 <div style={{marginTop:50,height:600
                 ,width:"100%",
                     }}>
-                    <List>
+                        {
+                            this.state.data.map(item=>
+                                <List style={{marginTop:30}}>
+                                <List.Item style={{paddingTop:10,
+                                    color:"#000"}}>
+                                    <img src="https://s2.ax1x.com/2019/12/04/Q1N84U.jpg"
+                                             style={{float:"right",
+                                        width:50,height:70,paddingBottom:10}}/>
+                                        {item.title}
+                                        <List.Item.Brief style={{color:"#000"}}>
+                                       {item.content}</List.Item.Brief>
+                                    <List.Item.Brief style={{paddingTop:10}}>丫丫妈妈
+                                        <span style={{marginLeft:10}}>11月12日</span>
+                                        <span  style={{marginLeft:20}} onClick={()=>{}}>
+                                            <img src="https://s2.ax1x.com/2019/12/04/Q1fu7T.png"/>
+                                        </span>
+                                    </List.Item.Brief>
+                                </List.Item>
+                            </List>
+
+                            )
+                                            
+                        }
+                    {/* <List>
                         <List.Item style={{paddingTop:10,
                             color:"#000"}}>
                             <img src="https://s2.ax1x.com/2019/12/04/Q1N84U.jpg"
@@ -124,7 +169,7 @@ export default class Yiyu extends Component {
                                 </span>
                             </List.Item.Brief>
                         </List.Item>
-                    </List>
+                    </List> */}
                     
                 </div>
             </div>

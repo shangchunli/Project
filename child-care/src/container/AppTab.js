@@ -5,7 +5,6 @@ import Wiki from './Wiki';
 import My from './My';
 import Health from './Health'
 import Jia from './Jia'
-import {Route,Link} from "react-router-dom"
 
 let str;
 if(window.location.pathname=="/wiki"){
@@ -19,174 +18,163 @@ if(window.location.pathname=="/wiki"){
 }else if(window.location.pathname=="/health"){
   str="greenTab"
 }
-
 export default class AppTab extends React.Component {
   constructor(props) {
     super(props);
-    // console.log(props);
     this.state = {
       selectedTab: str,
     };
-    console.log(window.location.pathname)
   }
 
   render() {
     return (
       <div>
-      <div style={{ position: 'fixed', height: '100%', width: '100%', top: 0 }}>
-        <TabBar
-          unselectedTintColor="black"
-          tintColor="#d81e06"
-          barTintColor="white"
-        >
-          <TabBar.Item
-            title="首页"
-            key="Life"
-            icon={
-              <div style={{
+        <div style={{ position: 'fixed', height: '100%', width: '100%', top: 0 }}>
+          <TabBar
+            unselectedTintColor="black"
+            tintColor="#d81e06"
+            barTintColor="white"
+          >
+            <TabBar.Item
+              title="首页"
+              key="Life"
+              icon={
+                <div style={{
+                  width: '22px',
+                  height: '22px',
+                  background: 'url(./images/home.svg) center center /  21px 21px no-repeat' }}
+                  
+                />
+              }
+              selectedIcon={<div style={{
                 width: '22px',
                 height: '22px',
-                background: 'url(./images/home.svg) center center /  21px 21px no-repeat' }}
+                background: 'url(./images/home.png) center center /  21px 21px no-repeat' }}
+              />
+              }
+              selected={this.state.selectedTab === 'home'}
+              onPress={() => {
+                this.setState({
+                  selectedTab: 'home',
+                });
+                window.location.href='/home'
                 
-              />
-            }
-            selectedIcon={<div style={{
-              width: '22px',
-              height: '22px',
-              background: 'url(./images/home.png) center center /  21px 21px no-repeat' }}
-            />
-            }
-            selected={this.state.selectedTab === 'home'}
-            onPress={() => {
-              this.setState({
-                selectedTab: 'home',
-              });
-              window.location.href='/home'
-              
-            }}
-          >
-            <AppHome/>
-          </TabBar.Item>
-          <TabBar.Item
-            icon={
-              <div style={{
-                width: '22px',
-                height: '22px',
-                background: 'url(./images/baike.svg) center center /  21px 21px no-repeat' }}
-              />
-            }
-            selectedIcon={
-              <div style={{
-                width: '22px',
-                height: '22px',
-                background: 'url(./images/baike.png) center center /  21px 21px no-repeat' }}
-              />
-            }
-            title="百科"
-            key="Koubei"
-            selected={this.state.selectedTab === 'redTab'}
-            onPress={() => {
-              this.setState({
-                selectedTab: 'redTab',
-              });
-              window.location.href='/wiki'
-              // console.log(window.location.pathname);
-              // this.props.history.push('/wiki');
-            }}
-          >
-            <Wiki/>
-          </TabBar.Item>
-          <TabBar.Item
-            icon={
-              <div style={{
-                width: '50px',
-                height: '50px',
-                background: 'url(./images/xinzeng.svg) center center /  40px 40px no-repeat' }}
-              />
-            }
-            selectedIcon={
-              <div style={{
-                width: '50px',
-                height: '50px',
-                background: 'url(./images/add.png) center center /  40px 40px no-repeat' }}
-              />
-            }
-            key="Friend"
-            // dot
-            selected={this.state.selectedTab === 'pinkTab'}
-            onPress={() => {
-              this.setState({
-                selectedTab: 'pinkTab',
-              });
-              window.location.href='/add'
-            }}
-          >
-            <Jia/>
-          </TabBar.Item>
-          <TabBar.Item
-            icon={
-              <div style={{
-                width: '22px',
-                height: '22px',
-                background: 'url(./images/jiankang.svg) center center /  21px 21px no-repeat' }}
-              />
-            }
-            selectedIcon={
-              <div style={{
-                width: '22px',
-                height: '22px',
-                background: 'url(./images/jiankang.png) center center /  21px 21px no-repeat' }}
-              />
-            }
-            title="宝妈健康"
-            key="Friend"
-            // dot
-            selected={this.state.selectedTab === 'greenTab'}
-            onPress={() => {
-              this.setState({
-                selectedTab: 'greenTab',
-              });
-              window.location.href='/health'
-            }}
-          >
-            <Health/>
-          </TabBar.Item>
-          <TabBar.Item
-            icon={
-              <div style={{
-                width: '22px',
-                height: '22px',
-                background: 'url(./images/my.svg) center center /  21px 21px no-repeat' }}
-              />
-            }
-            selectedIcon={
-              <div style={{
-                width: '22px',
-                height: '22px',
-                background: 'url(./images/wode.png) center center /  21px 21px no-repeat' }}
-              />
-            }
-            title="我的"
-            key="Friend"
-            // dot
-            selected={this.state.selectedTab === 'yellowTab'}
-            onPress={() => {
-              this.setState({
-                selectedTab: 'yellowTab',
-              });
-              window.location.href='/my'
-            }}
-          >
-            <My/>
-          </TabBar.Item>
-        </TabBar>
-      </div>
-      <div>
-        {/* <Route path="/home/apphome" component={AppHome}/> */}
-        {/* <Route path="/home/wiki" component={Wiki}/>
-        <Route path="/home/health" component={Health}/>
-        <Route path="/home/my" component={My}/> */}
-      </div>
+              }}
+            >
+              <AppHome/>
+            </TabBar.Item>
+            <TabBar.Item
+              icon={
+                <div style={{
+                  width: '22px',
+                  height: '22px',
+                  background: 'url(./images/baike.svg) center center /  21px 21px no-repeat' }}
+                />
+              }
+              selectedIcon={
+                <div style={{
+                  width: '22px',
+                  height: '22px',
+                  background: 'url(./images/baike.png) center center /  21px 21px no-repeat' }}
+                />
+              }
+              title="百科"
+              key="Koubei"
+              selected={this.state.selectedTab === 'redTab'}
+              onPress={() => {
+                this.setState({
+                  selectedTab: 'redTab',
+                });
+                window.location.href='/wiki'
+              }}
+            >
+              <Wiki/>
+            </TabBar.Item>
+            <TabBar.Item
+              icon={
+                <div style={{
+                  width: '50px',
+                  height: '50px',
+                  background: 'url(./images/xinzeng.svg) center center /  40px 40px no-repeat' }}
+                />
+              }
+              selectedIcon={
+                <div style={{
+                  width: '50px',
+                  height: '50px',
+                  background: 'url(./images/add.png) center center /  40px 40px no-repeat' }}
+                />
+              }
+              key="Friend"
+              // dot
+              selected={this.state.selectedTab === 'pinkTab'}
+              onPress={() => {
+                this.setState({
+                  selectedTab: 'pinkTab',
+                });
+                window.location.href='/add'
+              }}
+            >
+              <Jia/>
+            </TabBar.Item>
+            <TabBar.Item
+              icon={
+                <div style={{
+                  width: '22px',
+                  height: '22px',
+                  background: 'url(./images/jiankang.svg) center center /  21px 21px no-repeat' }}
+                />
+              }
+              selectedIcon={
+                <div style={{
+                  width: '22px',
+                  height: '22px',
+                  background: 'url(./images/jiankang.png) center center /  21px 21px no-repeat' }}
+                />
+              }
+              title="宝妈健康"
+              key="Friend"
+              // dot
+              selected={this.state.selectedTab === 'greenTab'}
+              onPress={() => {
+                this.setState({
+                  selectedTab: 'greenTab',
+                });
+                window.location.href='/health'
+              }}
+            >
+              <Health/>
+            </TabBar.Item>
+            <TabBar.Item
+              icon={
+                <div style={{
+                  width: '22px',
+                  height: '22px',
+                  background: 'url(./images/my.svg) center center /  21px 21px no-repeat' }}
+                />
+              }
+              selectedIcon={
+                <div style={{
+                  width: '22px',
+                  height: '22px',
+                  background: 'url(./images/wode.png) center center /  21px 21px no-repeat' }}
+                />
+              }
+              title="我的"
+              key="Friend"
+              // dot
+              selected={this.state.selectedTab === 'yellowTab'}
+              onPress={() => {
+                this.setState({
+                  selectedTab: 'yellowTab',
+                });
+                window.location.href='/my'
+              }}
+            >
+              <My/>
+            </TabBar.Item>
+          </TabBar>
+        </div>
       </div>
     );
   }

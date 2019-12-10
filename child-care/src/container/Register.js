@@ -44,9 +44,6 @@ export default class Register extends Component {
         })
         
     }
-    // handle=(pathname)=>{
-    //     window.location.href="/login/"+pathname;
-    // }
     register=()=>{
         if(this.state.pwd1!==this.state.pwd2){
             alert("密码不一致");
@@ -72,7 +69,6 @@ export default class Register extends Component {
             })
 
         }
-       
     }
     render() {
         const { files } = this.state;
@@ -80,16 +76,20 @@ export default class Register extends Component {
         let str2;
         if(JSON.stringify(files)=="[]"){
              str=<ImagePicker
-            style={{marginLeft:"30%"}}
+            style={{marginLeft:"30%",width:"200%"}}
             files={files}
             onChange={this.onChange}
             onImageClick={(index, fs) => console.log(index, fs)}
             selectable={files.length < 100}
-            multiple={this.state.multiple}
+            mutiple={this.state.multiple}
             />
             console.log(files);
         }else{
-            str=<img src="{files.url}"/>
+            str=<img src={files[0].url} alt="Base64 encoded image"
+            height="200" width="200" style={{borderRadius:"80%",
+                width:"100%",height:"100%"
+            }}
+            />
         }
         return (   
             <div  
@@ -101,11 +101,15 @@ export default class Register extends Component {
                 </div >
                 <div style={{top:0,marginTop:10,position:"fixed",zIndex:100,
             width:"100%",height:400}}>
-                <List.Item style={{width:"80%",margin:"0 auto",backgroundColor:"transparent"}} >
+                
+                {/* <List style={{width:"80%",backgroundColor:"transparent"}} > */}
+                        <List.Item  style={{margin:"0 auto",backgroundColor:"transparent",width:"50%",}}>
                         {
                             str
                         }
-                    </List.Item>
+                        </List.Item>
+                        
+                    {/* </List> */}
                 {/* <img src="./images/touxiang.jpg" style={{width:100,height:100,
                 borderRadius:50,marginLeft:"30%",marginBottom:50}}/> */}
 
@@ -155,7 +159,6 @@ export default class Register extends Component {
                 </List>
              <Button type="primary"  style={{width:"30%",height:30,marginLeft:"30%",marginTop:30}}
       onClick={this.register}
-    //   onClick={()=>{this.handle('')}}
       size="small" inline>提交</Button>
       
      

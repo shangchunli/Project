@@ -7,6 +7,23 @@ export default class Sui extends Component {
         files: data,
         multiple: false,
     }
+    componentWillMount(){
+      fetch('http://192.168.43.217:5001/add',{
+              method: 'POST',//post请求 
+          headers: { 
+          'Content-Type': 'application/json;charset=UTF-8' 
+          }, 
+          body: JSON.stringify({
+              title:"hello",
+              content:"world"
+          }
+          )
+      })
+      .then(res=>res.text())
+      .then((res)=>{
+          console.log(res);
+      })
+  }
     onChange = (files, type, index) => {
         console.log(files, type, index);
         this.setState({
@@ -24,7 +41,7 @@ export default class Sui extends Component {
         const { files } = this.state;
         return (
             <div>
-                
+                 <div contentEditable="true" style={{marginLeft:100}}>
                 <p style={{paddingTop:'15%'}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;记录美好瞬间...</p>
                 <WingBlank>
                         <ImagePicker
@@ -36,6 +53,7 @@ export default class Sui extends Component {
                         multiple={this.state.multiple}
                         />
                  </WingBlank>
+                 </div>
                  <p style={{paddingTop:'5%'}}>......................................................................................................................</p>
                  <button className='sui1' style={{marginLeft:'23%'}}>发表</button>
             </div>

@@ -20,6 +20,18 @@ export default class Dynamics extends Component {
             data: ['mom_health1', 'mom_health2', 'mom_health3'],
           });
         }, 100);
+        fetch("http://192.168.43.217:5001/chapters")
+        .then(res=>res.json())
+        .then((res)=>{
+           console.log(res)
+        })
+    }
+    componentDidUpdate(){
+        fetch("http://192.168.43.217:5001/chapters")
+        .then(res=>res.json())
+        .then((res)=>{
+            console.log(res)
+        })
     }
     handle=(pathname)=>{
         window.location.href="/health/"+pathname;
