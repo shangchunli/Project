@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div style="background:#8ecfec;height:500px;width:80%;margin-left:10%;margin-top:50px">
+        <div style="float:left;width:18%;height:500px;background:rgb(218, 218, 218)">
+            <ul style="margin-top:80px;font-size:20px;">
+                <li onclick="tohome()"  style="margin-left:-10px;list-style:none;margin-top:10px;color:grey">首页</li>
+                <li style="margin-left:-10px;list-style:none;margin-top:10px">用户管理</li>
+                <li onclick="tochapter()" style="margin-left:-10px;list-style:none;margin-top:10px;color:grey">帖子管理</li>
+                <li onclick="tosystem()"  style="margin-left:-10px;list-style:none;margin-top:10px;color:grey">系统管理</li>
+            </ul>
+            <ul style="margin-top:210px;font-size:20px;">
+                <li onclick="tologin()" style="margin-left:-10px;list-style:none;margin-top:10px;color:grey">退出登录</li>
+            </ul>
+        </div>
+        <div style='float:left;width:82%;height:500px;'>
+            <table style="text-align:center;padding:60px; margin-top:10px">
+                <tr style="margin-bottom:10px">
+                    <td>用户id</td>
+                    <td>电话号码</td>
+                    <td>昵称</td>
+                    <td>邮箱</td>
+                    <td>头像</td>
+                    <td>操作</td>
+                </tr>
+                <% for(var i = 0; i < usersList.length;i++){%>
+                    <tr style="margin-top:10px">
+                        <td><%=usersList[i]["id"] %></td>
+                        <td><%=usersList[i]["telphone"] %></td>
+                        <td><%= usersList[i]["name"] %></td>
+                        <td> <%= usersList[i]["email"] %></td>
+                        <td><%= usersList[i]["head"] %></td>
+                        <td><a href="/del?id=<%= usersList[i]['id'] %>">删除</a></td>
+                    </tr>
+                <% } %>
+            </table>
+        </div>
+    </div>
+  
+</body>
+<script>
+    function tohome(){
+        window.location.href="/home";
+    }
+    function tochapter(){
+        window.location.href="/chapter";
+    }
+    function tosystem(){
+        window.location.href="/system";
+    }
+    function tologin(){
+        window.location.href="/login"
+    }
+    
+</script>
+</html>
