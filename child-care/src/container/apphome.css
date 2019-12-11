@@ -146,7 +146,7 @@ ul{
   font-size:10px;
 } */
 /* 在CSS文件中引入antd的css文件 */
-@import '~antd/dist/antd.css';
+/* @import '~antd/dist/antd.css'; */
 *{
 padding: 0;
 margin: 0;
@@ -244,4 +244,7 @@ background-color: red;
 }
 .body{
   background-color: white;
+}
+.shouye9{
+  font-size:25px;
 }
