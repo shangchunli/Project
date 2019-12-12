@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+﻿import React, { Component } from 'react'
 import "./apphome.css"
 import {NavBar,Icon} from "antd-mobile"
 import Picture from './home/Picture'
@@ -8,7 +8,23 @@ import {Route,Link} from "react-router-dom"
 // import Story from './home/Story'
 // import Youxi from './home/Youxi'
 // import Song from './home/Song'
-
+function Show(){
+    var date = new Date(); //日期对象
+    var ms1=date.getTime();
+    date.setDate('1');
+    date.setMonth('1');
+    date.setFullYear('2011');
+    var ms=ms1-date.getTime();
+    date.setTime(ms);
+    var time = "";
+    time = date.getFullYear()-1970+"岁";
+    time = time + (date.getMonth()+1)+"个月";
+    time = time + date.getDate()+"天 ";
+    
+    return time; 
+   
+    }
+  
 
 
 export default class AppHome extends Component {
@@ -47,9 +63,14 @@ export default class AppHome extends Component {
                     >
                         呦呦育儿
                 </NavBar>
-                <div className='shouye2'style={{marginTop:50,
-                    background:'url("images/home/9.jpg")',backgroundSize:'cover',opacity:'0.9'}}>
-                    宝宝今天：3岁5个月
+              <div className='shouye2'style={{marginTop:50,
+                    background:'url("https://s2.ax1x.com/2019/12/10/QBR4bT.jpg")',backgroundSize:'cover',opacity:'0.9'}}>
+                    <p className='shouye9'style={{color:'white',paddingLeft:'10%',paddingTop:'15%',float:'left'}}>宝宝今		天:<Show/></p>
+                    <img 
+                        style={{paddingTop:'18%'}}
+                        src='https://s2.ax1x.com/2019/12/10/QB4ryn.png'
+                        onClick={()=>{this.handle('Message')}}
+                    />
                 </div>
                     <div onClick={()=>{this.handle('picture')}}
                     style={{float:'left',paddingLeft:'8%',backgroundColor:'white'}}>
