@@ -58,6 +58,7 @@ router.post('/register',function(req,res,next){
     })
   
 })
+//页面渲染==========================================================
 //疾病页面渲染
 router.get('/jibing',function(req,res,next){
   var con = mysql.createConnection(dbconfig);
@@ -70,19 +71,30 @@ router.get('/jibing',function(req,res,next){
     }
   })
 })
-  // 往数据库里面加帖子
+  //用户发帖
 router.post('/addchapters',function(req,res,next){
-  // var title = req.body.title;
-  // var content = 
+  console.log(req.body);
+  res.send('hehe');
 })
-//将帖子内容标签传给前段
+
+//将帖子内容标签传给前端---详情页渲染
 router.get('/ppp',function(req,res,next){
   res.send('<p>hahaha</p>')
 })
-// 获取当前登录用户
+// 已获取当前登录用户user,等待获得帖子id
 router.post('/cookie', function(req,res,next){
-  var user = req.body.user;
-  console.log(user);
+  var user = req.body.userId;
+  var chapterId = req.body.chapterId;
+  console.log("user:"+user,"chapterId:"+chapterId);
+  var con  = mysql.createConnection(dbconfig);
+  con.connect();
+  con.query("insert into mycollect(telphone,chapterid) values(?,?)",[user,chapterId],function(err,result){
+    if(err){
+      console.log(err);
+    }else{
+      res.send(' collect success')
+    }
+  })
 })
 //所有帖子
 router.get('/chapters',function(req,res,next){
