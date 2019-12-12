@@ -1,6 +1,6 @@
 .sui1{
     width:200px;
-    height:50px;
+    /* height:50px; */
     border:1px;
     background-color: rgb(196, 163, 121);
     color:white;
@@ -42,4 +42,9 @@
 .detail3{
     width:300px;
     height:200px;
+}
+
+.sui div{
+    background-color: red;
+    color:green;
 }

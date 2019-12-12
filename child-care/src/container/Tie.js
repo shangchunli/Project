@@ -10,23 +10,23 @@ export default class Sui extends Component {
         files: data,
         multiple: false,
     }
-    componentWillMount(){
-      fetch('http://192.168.43.217:5001/add',{
-              method: 'POST',//post请求 
-          headers: { 
-          'Content-Type': 'application/json;charset=UTF-8' 
-          }, 
-          body: JSON.stringify({
-              title:"hello",
-              content:"world"
-          }
-          )
-      })
-      .then(res=>res.text())
-      .then((res)=>{
-          console.log(res);
-      })
-  }
+//     componentWillMount(){
+//       fetch('http://192.168.43.217:5001/add',{
+//               method: 'POST',//post请求 
+//           headers: { 
+//           'Content-Type': 'application/json;charset=UTF-8' 
+//           }, 
+//           body: JSON.stringify({
+//               title:"hello",
+//               content:"world"
+//           }
+//           )
+//       })
+//       .then(res=>res.text())
+//       .then((res)=>{
+//           console.log(res);
+//       })
+//   }
     onChange = (files, type, index) => {
         this.setState({
           files,

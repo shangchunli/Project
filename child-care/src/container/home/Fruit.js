@@ -1,47 +1,26 @@
 import React, { Component } from 'react'
-import { NavBar, Icon, Tabs,Carousel,WingBlank, WhiteSpace,SearchBar,
-    Grid,Flex,Button} from 'antd-mobile';
-
-
-export default class Picture extends Component {
+import { Carousel,WingBlank, WhiteSpace,Flex,Button} from 'antd-mobile';
+export default class Fruit extends Component {
     constructor(){
         super();
         this.state = {
-            data: ['chi', 'er', 'he','mu','she','yan','bi'],
+            data: ['apple', 'boluo', 'lizhi','mihoutao','ningmeng','taozi','yingtao'],
             // imgHeight: 200,
         }
     }
-    
-    goBack=()=>{
-        window.history.go(-1);
-    }
     render() {
         return (
-            <div >
-                <NavBar
-                    icon={<Icon type="left" onClick={this.goBack}/>}
-                    style={{backgroundColor:'#fff',color:'#000',
-                    height:60,fontWeight:"bolder",
-                    position:"fixed",
-                    top:"0px",
-                    zIndex:100,
-                    width:"100%"
-                }}
-                >
-                    识字
-                </NavBar>
-                
+            <div>
                 <WhiteSpace/>
                 <Carousel
                     autoplay={false}
                     infinite
                     dots={false}
-                    style={{marginTop:60}}
                 >
                 {this.state.data.map(val => (
                     <div>
                         <img
-                            src={"/images/chinese/"+val+".png"}
+                            src={"/images/fruit/"+val+".jpg"}
                             alt={val}
                             style={{ width: '100%', verticalAlign: 'top',height:'400px'}}
                             onLoad={() => {
@@ -58,7 +37,9 @@ export default class Picture extends Component {
                 ))}
                 </Carousel>
                 
-                </div> 
+
+                
+            </div>
         )
     }
 }

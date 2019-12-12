@@ -1,4 +1,4 @@
-﻿import React, { Component } from 'react'
+import React, { Component } from 'react'
 import "./apphome.css"
 import {NavBar,Icon} from "antd-mobile"
 import Picture from './home/Picture'

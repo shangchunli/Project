@@ -12,6 +12,7 @@ const tabs = [
 // console.log(tabs.reverse());
 
 export default class Jia extends Component {
+    
     render() {
         return (
             <div>

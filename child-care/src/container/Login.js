@@ -32,13 +32,14 @@ export default class Login extends Component {
                     i++;
                 }
             })
+            if(i){
+                alert("登录成功")
+                window.location.href="/home";
+            }else{
+                alert("登录失败")
+            }
         })
-        if(i){
-            alert("登录成功")
-            window.location.href="/home";
-        }else{
-            alert("登录失败")
-        }
+        
     }
     render() {
          return (

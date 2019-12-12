@@ -1,4 +1,4 @@
-﻿import React, { Component } from 'react'
+import React, { Component } from 'react'
 import AppTab from './container/AppTab'
 import {BrowserRouter as Router,Route,Link} from "react-router-dom"
 // import Login from './container/Login'
@@ -44,8 +44,6 @@ import Login from './container/Login'
 import Register from './container/Register'
 // wiki宝宝饮食详情页
 import Detail from './container/Detail'
-//宝宝信息
-import Message from './container/home/Message'
 export default class App extends Component {
     render() {
         return (
@@ -81,7 +79,6 @@ export default class App extends Component {
                         <Route  exact path='/my/unique' component={Unique}/>
                         <Route  exact path='/my' component={My}/>
                         <Route path='/wiki/babyfood/detail' component={Detail}/>
-	        <Route exact path='/home/message'component={Message}/>
                     </div>
                  </Router>
             </div>

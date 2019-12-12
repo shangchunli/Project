@@ -2,8 +2,32 @@ import React, { Component } from 'react'
 import { Flex, WhiteSpace,NavBar,Icon } from 'antd-mobile';
 import './song.css'
 export default class Story extends Component {
+    constructor(){
+        super();
+        this.state={
+          isPlay:false,
+          str2:<audio autoPlay  src=''></audio>,
+        //   str1:<audio autoPlay  src={require('./story/1.mp3')}></audio>,
+          str2:<audio autoPlay  src=''></audio>,
+        }
+
+    }
     goBack=()=>{
         window.history.go(-1);
+    }
+    change=(e)=>{
+        let b=this.state.isPlay;
+        this.setState({
+            isPlay:!b
+        })
+        if(this.state.isPlay==true){
+            e.target.src='https://s2.ax1x.com/2019/12/04/Q16U74.png';
+        }else{
+            e.target.src='https://s2.ax1x.com/2019/12/10/QBwlxe.png';
+        }
+        console.log(this.state.isPlay);
+        console.log(e.target.src);
+        
     }
     render() {
         return (
@@ -24,13 +48,20 @@ export default class Story extends Component {
                     <WhiteSpace size="lg" />
                     <Flex style={{marginTop:'18%'}}>
                     <Flex.Item>
-                        {/* <div className='song2'
-                        style={{background:"url('./images/song/26.jpg')"
-                        }}> */}
+                        
                         <div className='song2'style={{
                             background:"url('https://s2.ax1x.com/2019/12/04/Q1KRRP.jpg')",
                             backgroundSize:'cover'}}>
-                            
+                            <img 
+                                src='https://s2.ax1x.com/2019/12/04/Q16U74.png'
+                                alt='播放'
+                                style={{paddingLeft:'60%',paddingTop:'60%',width:'35%',height:'35%'}}
+                                onClick={this.change}
+                            />
+                            <div >
+                                {this.state.isPlay?this.state.str1:this.state.str2}
+
+                            </div>
                         </div>
                         
                     </Flex.Item>
@@ -38,7 +69,12 @@ export default class Story extends Component {
                     <div className='song2'style={{
                             background:"url('https://s2.ax1x.com/2019/12/04/Q1KRRP.jpg')",
                             backgroundSize:'cover'}}>       
-                           
+                            <img 
+                                src='https://s2.ax1x.com/2019/12/04/Q16U74.png'
+                                alt='播放'
+                                style={{paddingLeft:'60%',paddingTop:'60%',width:'35%',height:'35%'}}
+                                onClick={this.change}
+                            />
                         </div>
                         
                     </Flex.Item>
@@ -46,7 +82,12 @@ export default class Story extends Component {
                     <div className='song2'style={{
                             background:"url('https://s2.ax1x.com/2019/12/04/Q1KRRP.jpg')",
                             backgroundSize:'cover'}}>        
-                           
+                           <img 
+                                src='https://s2.ax1x.com/2019/12/04/Q16U74.png'
+                                alt='播放'
+                                style={{paddingLeft:'60%',paddingTop:'60%',width:'35%',height:'35%'}}
+                                onClick={this.change}
+                            />
                         </div>
                         
                     </Flex.Item>
@@ -60,7 +101,12 @@ export default class Story extends Component {
                     <div className='song2'style={{
                             background:"url('https://s2.ax1x.com/2019/12/04/Q1KRRP.jpg')",
                             backgroundSize:'cover'}}>       
-                          
+                            <img 
+                                src='https://s2.ax1x.com/2019/12/04/Q16U74.png'
+                                alt='播放'
+                                style={{paddingLeft:'60%',paddingTop:'60%',width:'35%',height:'35%'}}
+                                onClick={this.change}
+                            />
                         </div>
                         
                     </Flex.Item>
@@ -68,7 +114,12 @@ export default class Story extends Component {
                     <div className='song2'style={{
                             background:"url('https://s2.ax1x.com/2019/12/04/Q1KRRP.jpg')",
                             backgroundSize:'cover'}}>        
-                          
+                            <img 
+                                src='https://s2.ax1x.com/2019/12/04/Q16U74.png'
+                                alt='播放'
+                                style={{paddingLeft:'60%',paddingTop:'60%',width:'35%',height:'35%'}}
+                                onClick={this.change}
+                            />
                         </div>
                         
                     </Flex.Item>
@@ -76,7 +127,12 @@ export default class Story extends Component {
                     <div className='song2'style={{
                             background:"url('https://s2.ax1x.com/2019/12/04/Q1KRRP.jpg')",
                             backgroundSize:'cover'}}>        
-                            
+                            <img 
+                                src='https://s2.ax1x.com/2019/12/04/Q16U74.png'
+                                alt='播放'
+                                style={{paddingLeft:'60%',paddingTop:'60%',width:'35%',height:'35%'}}
+                                onClick={this.change}
+                            />
                         </div>
                         
                     </Flex.Item>
@@ -90,7 +146,12 @@ export default class Story extends Component {
                     <div className='song2'style={{
                             background:"url('https://s2.ax1x.com/2019/12/04/Q1KRRP.jpg')",
                             backgroundSize:'cover'}}>       
-                            
+                            <img 
+                                src='https://s2.ax1x.com/2019/12/04/Q16U74.png'
+                                alt='播放'
+                                style={{paddingLeft:'60%',paddingTop:'60%',width:'35%',height:'35%'}}
+                                onClick={this.change}
+                            />
                         </div>
                         
                     </Flex.Item>
@@ -98,7 +159,12 @@ export default class Story extends Component {
                     <div className='song2'style={{
                             background:"url('https://s2.ax1x.com/2019/12/04/Q1KRRP.jpg')",
                             backgroundSize:'cover'}}>       
-                            
+                            <img 
+                                src='https://s2.ax1x.com/2019/12/04/Q16U74.png'
+                                alt='播放'
+                                style={{paddingLeft:'60%',paddingTop:'60%',width:'35%',height:'35%'}}
+                                onClick={this.change}
+                            />
                         </div>
                         
                     </Flex.Item>
@@ -106,7 +172,12 @@ export default class Story extends Component {
                     <div className='song2'style={{
                             background:"url('https://s2.ax1x.com/2019/12/04/Q1KRRP.jpg')",
                             backgroundSize:'cover'}}>       
-                           
+                           <img 
+                                src='https://s2.ax1x.com/2019/12/04/Q16U74.png'
+                                alt='播放'
+                                style={{paddingLeft:'60%',paddingTop:'60%',width:'35%',height:'35%'}}
+                                onClick={this.change}
+                            />
                         </div>
                         
                     </Flex.Item>

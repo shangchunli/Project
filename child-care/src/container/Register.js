@@ -48,14 +48,21 @@ export default class Register extends Component {
         if(this.state.pwd1!==this.state.pwd2){
             alert("密码不一致");
         }else if(this.state.pwd1==''){
-            alert("请注册")
-        }  else{
+            alert("请填写密码")
+        }else{
+            console.log(111111111111)
             fetch('http://192.168.43.217:5001/register',{
                 method: 'POST',//post请求 
             headers: { 
             'Content-Type': 'application/json;charset=UTF-8' 
             }, 
-            body: JSON.stringify(this.state)
+            body: JSON.stringify({
+                names:this.state.names,
+                tel:this.state.tel,
+                email:this.state.email,
+                pwd1:this.state.pwd1,
+                files:this.state.files
+            })
             })
             .then(res=>res.text())
             .then((res)=>{
@@ -64,7 +71,7 @@ export default class Register extends Component {
                     alert("您已经注册成功，请登录");
                     this.props.history.push("/login");
                 }else{
-                    alert("请登录")
+                    alert("请注册")
                 }
             })
 
