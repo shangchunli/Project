@@ -28,12 +28,7 @@ export default class Nurse extends Component {
                     宝宝护理
                 </NavBar>
                 <div style={{marginTop:50}}>
-                    <Tabs tabs={tabs} initialPage={1} animated={false} useOnPan={false}
-                        // style={{position:"fixed",
-                        //     top:"5%",
-                        //     zIndex:100,
-                        //     width:"100%"
-                        // }}
+                    <Tabs tabs={tabs} initialPage={0} animated={false} useOnPan={false}
                     >
                         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', backgroundColor: '#fff' }}>
                             <Disease/>

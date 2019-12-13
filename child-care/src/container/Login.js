@@ -22,22 +22,38 @@ export default class Login extends Component {
         })
     }
     loginn=()=>{
+        alert(11111)
         let i=0;
-        fetch("http://192.168.43.217:5001/yhlogin"
-        ).then(res=>res.json())
+        fetch("http://192.168.43.217:5001/yhlogin",{
+            method:'POST',
+            headers: { 
+                'Content-Type': 'application/json;charset=UTF-8' 
+                }, 
+                body: JSON.stringify({
+                    telphone:this.state.tel,  
+                    pwd:this.state.pwd                  
+                })  
+        }
+        ).then(res=>res.text())
         .then((res)=>{
             console.log(res)
-            res.map((item)=>{
-                if(this.state.tel===item.telphone&&this.state.pwd===item.pwd){
-                    i++;
-                }
-            })
-            if(i){
+            if(res=='success'){
                 alert("登录成功")
                 window.location.href="/home";
             }else{
-                alert("登录失败")
+                alert("登陆失败")
             }
+            // res.map((item)=>{
+            //     if(this.state.tel===item.telphone&&this.state.pwd===item.pwd){
+            //         i++;
+            //     }
+            // })
+            // if(i){
+            //     alert("登录成功")
+            //     window.location.href="/home";
+            // }else{
+            //     alert("登录失败")
+            // }
         })
         
     }

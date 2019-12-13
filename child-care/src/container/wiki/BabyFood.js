@@ -2,9 +2,6 @@ import React, { Component } from 'react'
 import { Flex, WhiteSpace ,NavBar,Icon,List} from 'antd-mobile';
 import cookie from 'react-cookies'
 export default class BabyFood extends Component {
-    handle=(i)=>{
-        window.location.href='/wiki/babyfood/detail/'+i;
-    }
     goBack=()=>{
         window.history.go(-1);
     }
@@ -19,10 +16,11 @@ export default class BabyFood extends Component {
     }
     
     change1=(idx,e)=>{
+        e.stopPropagation();
         let b=this.state.isKeep;
         this.setState({
             isKeep:!b,
-            chapterId:idx+1
+            chapterId:idx
 
         })
         console.log(cookie.load('chapterId'));
@@ -45,10 +43,7 @@ export default class BabyFood extends Component {
                 .then(res=>res.json())
                 .then((res)=>{
                     console.log(res);
-                   
                 })
-               
-           
         }else{
             e.target.src='https://s2.ax1x.com/2019/12/04/Q1fu7T.png'
         }
@@ -67,20 +62,12 @@ export default class BabyFood extends Component {
             console.log(res);
             this.setState({
                 data:res
-                // console.log()
             });
-            // console.log(this.state.data)
         })
        
     }
     too=(id)=>{
-        console.log(id);
         window.location.href='/wiki/babyfood/detail/'+id;
-
-    }
-    gett=()=>{
-        
-        alert("111")
     }
     render() {
         return (
@@ -117,8 +104,7 @@ export default class BabyFood extends Component {
                                                         <img src={(cookie.load('chapterId')==idx+1)
                                                                 ?'https://s2.ax1x.com/2019/12/11/QrKe4s.png'
                                                                 :"https://s2.ax1x.com/2019/12/04/Q1fu7T.png"}
-                                                            onClick={(e)=>this.change1(idx,e)} alt='收藏'/>
-                                                        {/* {cookie.load('chapterId')} */}
+                                                            onClick={(e)=>this.change1(item.chapterid,e)} alt='收藏'/>
                                                     </span>
                                                 </List.Item.Brief>
                                             </List.Item>
@@ -128,144 +114,6 @@ export default class BabyFood extends Component {
                             }
                      </List>
 
-                {/* <Flex>
-                    <Flex.Item>
-                        <div style={{width:'100%'}}>
-                            <img src="https://s2.ax1x.com/2019/12/04/Q1T2bn.jpg" 
-                            style={{width:'100%',height:'160px'}}
-                            onClick={()=>{this.handle('1')}}
-                            />
-                            <p style={{width:'100%'}}>
-                                新生婴儿添加辅食的原则?果—动物”的...
-                                <br/>
-                                <span style={{fontSize:'10px',float:'left',marginLeft:'2%',marginTop:'2%'}}>丫丫妈妈</span>
-                                <span>
-                                   
-                                    <img 
-                                    style={{float:'right',marginRight:'2%',height:20,width:20}}
-                                    src='https://s2.ax1x.com/2019/12/04/Q1fu7T.png' alt='收藏'/>
-                                </span>
-                            </p>
-                        </div>
-                    </Flex.Item>
-                    <Flex.Item>
-                        <div style={{width:'100%'}}>
-                            <img src="https://s2.ax1x.com/2019/12/04/Q1T2bn.jpg" style={{width:'100%',height:'160px'}}/>
-                            <p style={{width:'100%'}}>
-                                新生婴儿添加辅食时间?果—动物”的...
-                                <br/>
-                                <span style={{fontSize:'10px',float:'left',marginLeft:'2%',marginTop:'2%'}}>丫丫妈妈</span>
-                                <span>
-                                <img 
-                                    style={{float:'right',marginRight:'2%',height:20,width:20}}
-                                    src='https://s2.ax1x.com/2019/12/04/Q1fu7T.png' alt='收藏'/>
-                                </span>
-                            </p>
-                        </div>
-                    </Flex.Item>
-                </Flex>
-
-                <Flex>
-                    <Flex.Item>
-                        <div style={{width:'100%'}}>
-                            <img src="https://s2.ax1x.com/2019/12/04/Q1T2bn.jpg" style={{width:'100%',height:'160px'}}/>
-                            <p style={{width:'100%'}}>
-                                新生婴儿添加辅食的原则？果—动物”的...
-                                <br/>
-                                <span style={{fontSize:'10px',float:'left',marginLeft:'2%',marginTop:'2%'}}>丫丫妈妈</span>
-                                <span>
-                                <img 
-                                    style={{float:'right',marginRight:'2%',height:20,width:20}}
-                                    src='https://s2.ax1x.com/2019/12/04/Q1fu7T.png' alt='收藏'/>
-                                </span>
-                            </p>
-                        </div>
-                    </Flex.Item>
-                    <Flex.Item>
-                        <div style={{width:'100%'}}>
-                            <img src="https://s2.ax1x.com/2019/12/04/Q1T2bn.jpg" 
-                            style={{width:'100%',height:'160px'}}
-                            // onClick={this.handle}
-                            />
-                            <p style={{width:'100%'}}>
-                                新生婴儿添加辅食时间?果—动物”的...
-                                <br/>
-                                <span style={{fontSize:'10px',float:'left',marginLeft:'2%',marginTop:'2%'}}>丫丫妈妈</span>
-                                <span>
-                                <img 
-                                    style={{float:'right',marginRight:'2%',height:20,width:20}}
-                                    src='https://s2.ax1x.com/2019/12/04/Q1fu7T.png' alt='收藏'/>
-                                </span>
-                            </p>
-                        </div>
-                    </Flex.Item>
-                </Flex>
-
-                <Flex>
-                    <Flex.Item>
-                        <div style={{width:'100%'}}>
-                            <img src="https://s2.ax1x.com/2019/12/04/Q1T2bn.jpg" style={{width:'100%',height:'160px'}}/>
-                            <p style={{width:'100%'}}>
-                                新生婴儿添加辅食的原则？果—动物”的...
-                                <br/>
-                                <span style={{fontSize:'10px',float:'left',marginLeft:'2%',marginTop:'2%'}}>丫丫妈妈</span>
-                                <span>
-                                <img 
-                                    style={{float:'right',marginRight:'2%',height:20,width:20}}
-                                    src='https://s2.ax1x.com/2019/12/04/Q1fu7T.png' alt='收藏'/>
-                                </span>
-                            </p>
-                        </div>
-                    </Flex.Item>
-                    <Flex.Item >
-                        <div style={{width:'100%'}}>
-                            <img src="https://s2.ax1x.com/2019/12/04/Q1T2bn.jpg" style={{width:'100%',height:'160px'}}/>
-                            <p style={{width:'100%'}}>
-                                宝宝添加辅食时间？果—动物”的...
-                                <br/>
-                                <span style={{fontSize:'10px',float:'left',marginLeft:'2%',marginTop:'2%'}}>丫丫妈妈</span>
-                                <span>
-                                <img 
-                                    style={{float:'right',marginRight:'2%',height:20,width:20}}
-                                    src='https://s2.ax1x.com/2019/12/04/Q1fu7T.png' alt='收藏'/>
-                                </span>
-                            </p>
-                        </div>
-                    </Flex.Item>
-                </Flex>
-
-                <Flex>
-                    <Flex.Item>
-                        <div style={{width:'100%'}}>
-                            <img src="https://s2.ax1x.com/2019/12/04/Q1T2bn.jpg" style={{width:'100%',height:'160px'}}/>
-                            <p style={{width:'100%'}}>
-                                宝宝添加辅食原则？果—动物”的...
-                                <br/>
-                                <span style={{fontSize:'10px',float:'left',marginLeft:'2%',marginTop:'2%'}}>丫丫妈妈</span>
-                                <span>
-                                    <img 
-                                    style={{float:'right',marginRight:'2%',height:20,width:20}}
-                                    src='https://s2.ax1x.com/2019/12/04/Q1fu7T.png' alt='收藏'/>
-                                </span>
-                            </p>
-                        </div>
-                    </Flex.Item>
-                    <Flex.Item>
-                        <div style={{width:'100%'}}>
-                            <img src="https://s2.ax1x.com/2019/12/04/Q1T2bn.jpg" style={{width:'100%',height:'160px'}}/>
-                            <p style={{width:'100%'}}>
-                                宝宝添加辅食时间？
-                                <br/>
-                                <span style={{fontSize:'10px',float:'left',marginLeft:'2%',marginTop:'2%'}}>丫丫妈妈</span>
-                                <span>
-                                <img 
-                                    style={{float:'right',marginRight:'2%',height:20,width:20}}
-                                    src='https://s2.ax1x.com/2019/12/04/Q1fu7T.png' alt='收藏'/>
-                                </span>
-                            </p>
-                        </div>
-                    </Flex.Item>
-                </Flex> */}
             </div>
         )
     }

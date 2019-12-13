@@ -78,6 +78,8 @@ export default class App extends Component {
                         <Route  exact path='/my/tongyong' component={Tongyong}/>
                         <Route  exact path='/my/unique' component={Unique}/>
                         <Route  exact path='/my' component={My}/>
+                        <Route path='/wiki/nurse/detail/:id' component={Detail}/>
+
                         <Route path='/wiki/babyfood/detail/:id' component={Detail}/>
                     </div>
                  </Router>
