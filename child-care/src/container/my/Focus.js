@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { WhiteSpace ,NavBar,Icon} from 'antd-mobile';
 import "./collect.css"
-// import { List } from 'antd-mobile';
 export default class Focus extends Component {
     goBack=()=>{
         window.history.go(-1);
