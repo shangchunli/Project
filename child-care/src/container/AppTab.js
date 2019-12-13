@@ -49,7 +49,7 @@ export default class AppTab extends React.Component {
               selectedIcon={<div style={{
                 width: '22px',
                 height: '22px',
-                background: 'url(./images/home.png) center center /  21px 21px no-repeat' }}
+                background: 'url(https://s2.ax1x.com/2019/12/13/Qcfw38.png) center center /  21px 21px no-repeat' }}
               />
               }
               selected={this.state.selectedTab === 'home'}
@@ -75,7 +75,7 @@ export default class AppTab extends React.Component {
                 <div style={{
                   width: '22px',
                   height: '22px',
-                  background: 'url(./images/baike.png) center center /  21px 21px no-repeat' }}
+                  background: 'url(https://s2.ax1x.com/2019/12/13/Qcfd9f.png) center center /  21px 21px no-repeat' }}
                 />
               }
               title="百科"
@@ -102,7 +102,7 @@ export default class AppTab extends React.Component {
                 <div style={{
                   width: '50px',
                   height: '50px',
-                  background: 'url(./images/add.png) center center /  40px 40px no-repeat' }}
+                  background: 'url(https://s2.ax1x.com/2019/12/13/Qcf0gS.png) center center /  40px 40px no-repeat' }}
                 />
               }
               key="Friend"
@@ -129,7 +129,7 @@ export default class AppTab extends React.Component {
                 <div style={{
                   width: '22px',
                   height: '22px',
-                  background: 'url(./images/jiankang.png) center center /  21px 21px no-repeat' }}
+                  background: 'url(https://s2.ax1x.com/2019/12/13/QcfU4P.png) center center /  21px 21px no-repeat' }}
                 />
               }
               title="宝妈健康"
@@ -157,7 +157,7 @@ export default class AppTab extends React.Component {
                 <div style={{
                   width: '22px',
                   height: '22px',
-                  background: 'url(./images/wode.png) center center /  21px 21px no-repeat' }}
+                  background: 'url(https://s2.ax1x.com/2019/12/13/QcfNNt.png) center center /  21px 21px no-repeat' }}
                 />
               }
               title="我的"

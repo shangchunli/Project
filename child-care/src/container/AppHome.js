@@ -1,13 +1,6 @@
 import React, { Component } from 'react'
 import "./apphome.css"
 import {NavBar,Icon} from "antd-mobile"
-import Picture from './home/Picture'
-// import Chinese from './home/Chinese'
-import {Route,Link} from "react-router-dom"
-
-// import Story from './home/Story'
-// import Youxi from './home/Youxi'
-// import Song from './home/Song'
 function Show(){
     var date = new Date(); //日期对象
     var ms1=date.getTime();
@@ -20,13 +13,8 @@ function Show(){
     time = date.getFullYear()-1970+"岁";
     time = time + (date.getMonth()+1)+"个月";
     time = time + date.getDate()+"天 ";
-    
     return time; 
-   
     }
-  
-
-
 export default class AppHome extends Component {
     constructor(props){
         super(props);
@@ -35,23 +23,10 @@ export default class AppHome extends Component {
     handle=(pathname)=>{
         window.location.href="/home/"+pathname;
     }
-    // toOther=()=>{
-    //     // this.props.history.push("/home/pic")
-    //     console.log(this.props);
-    // }
     render() {
         return (
             
             <div>
-                {/* <Route path="/home/pic" component={Picture}/>  */}
-
-                {/* <div> */}
-                    {/* <Route path="/home/shitu" component={Picture}/> */}
-                    {/* <Route path="/home/shizi" component={Chinese}/>
-                    <Route path="/home/gushi" component={Story}/>
-                    <Route path="/home/youxi" component={Youxi}/>
-                    <Route path="/home/cuimianqu" component={Song}/> */}
-                {/* </div> */}
                 <NavBar
                         style={{backgroundColor:'#fff',color:'#000',
                         fontWeight:"bolder",
@@ -118,11 +93,6 @@ export default class AppHome extends Component {
                             />
                         <p>亲子游戏</p>
                     </div>
-                   
-                   
-                {/* </div> */}
-                {/* <div className='shouye1'>
-                </div> */}
                 <button className="shouye1">
                     <img
                         style={{marginLeft:'50'}} 
