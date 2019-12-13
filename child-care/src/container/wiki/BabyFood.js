@@ -67,7 +67,7 @@ export default class BabyFood extends Component {
        
     }
     too=(id)=>{
-        window.location.href='/wiki/babyfood/detail/'+id;
+        window.location.href='/wiki/detail/'+id;
     }
     render() {
         return (

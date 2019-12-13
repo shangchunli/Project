@@ -67,12 +67,11 @@ export default class Inoculation extends Component {
             this.setState({
                 data:res
             });
-            // console.log(this.state.data)
         })
        
     }
     too=(id)=>{
-        window.location.href='/wiki/nurse1/detail/'+id;
+        window.location.href='/wiki/detail/'+id;
     }
     render() {
         return (

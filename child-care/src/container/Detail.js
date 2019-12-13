@@ -28,10 +28,6 @@ export default class Detail extends Component {
             console.log(res);
             this.setState({
                 data:res
-            },()=>{
-                console.log(this.state.data[0])
-                console.log(this.state.data[0].title)
-                console.log(this.state.data[0].content);
             });
             
         })

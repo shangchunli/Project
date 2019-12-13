@@ -65,7 +65,7 @@ export default class Disease extends Component {
     }
     too=(id)=>{
         console.log(id)
-        window.location.href='/wiki/nurse/detail/'+id;
+        window.location.href='/wiki/detail/'+id;
     }
     render() {
         return (
