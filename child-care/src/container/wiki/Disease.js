@@ -43,12 +43,9 @@ export default class Disease extends Component {
                     console.log(res);
                    
                 })
-               
-           
         }else{
             e.target.src='https://s2.ax1x.com/2019/12/04/Q1fu7T.png'
         }
-     
     }
     componentDidMount(){
         fetch('http://192.168.43.217:5001/jibing',{
@@ -82,8 +79,6 @@ export default class Disease extends Component {
                                                
                                         <List.Item.Brief style={{color:"#000",width:'75%',float:'left'}}>
                                             {item.title}
-                                            {/* 什么是产后抑郁症
-                                            产后抑郁症是女性精神障碍中... */}
                                         </List.Item.Brief>
                                         <img src="https://s2.ax1x.com/2019/12/04/Q1N84U.jpg"
                                                 style={{
@@ -100,7 +95,6 @@ export default class Disease extends Component {
                                                         ?'https://s2.ax1x.com/2019/12/11/QrKe4s.png'
                                                         :"https://s2.ax1x.com/2019/12/04/Q1fu7T.png"}
                                                     onClick={(e)=>this.change1(item.chapterid,e)} alt='收藏'/>
-                                                {/* {cookie.load('chapterId')} */}
                                             </span>
                                             {item.chapterid}
                                         </List.Item.Brief>

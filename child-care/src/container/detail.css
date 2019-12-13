@@ -1,7 +1,3 @@
-/* div p{
-    background: red;
-    text-indent: 2em;
-} */
 .detail{
     background-color: lightgoldenrodyellow;
     width: 95%;
@@ -12,6 +8,3 @@
 .detail img{
     width:85%
 }
-/* .detail img{
-    text-indent: -2em;
-} */

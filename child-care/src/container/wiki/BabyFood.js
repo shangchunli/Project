@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Flex, WhiteSpace ,NavBar,Icon,List} from 'antd-mobile';
+import {NavBar,Icon,List} from 'antd-mobile';
 import cookie from 'react-cookies'
 export default class BabyFood extends Component {
     goBack=()=>{
@@ -82,37 +82,37 @@ export default class BabyFood extends Component {
                         宝宝饮食
                 </NavBar>
                 <List>
-                            {
-                                (this.state.data||[]).map((item,idx)=>{
-                                  
-                                    return(
-                                        <List ref='tab' id={item.chapterid} onClick={()=>this.too(item.chapterid)} >
-                                            <List.Item  style={{paddingTop:10,color:"#000"}}>
-                                               
-                                                <List.Item.Brief onClick={()=>this.gett()}
-                                                  style={{color:"#000",width:'75%',float:'left'}}>
-                                                    {item.title}
-                                                </List.Item.Brief>
-                                                <img src="https://s2.ax1x.com/2019/12/04/Q1N84U.jpg"
-                                                        style={{
-                                                        width:'20%',height:'10%'}}
-                                                />
-                                                <List.Item.Brief >
-                                                    丫丫妈妈
-                                                    <span style={{marginLeft:10}}>11月12日</span>
-                                                    <span  style={{marginLeft:20}} >
-                                                        <img src={(cookie.load('chapterId')==idx+1)
-                                                                ?'https://s2.ax1x.com/2019/12/11/QrKe4s.png'
-                                                                :"https://s2.ax1x.com/2019/12/04/Q1fu7T.png"}
-                                                            onClick={(e)=>this.change1(item.chapterid,e)} alt='收藏'/>
-                                                    </span>
-                                                </List.Item.Brief>
-                                            </List.Item>
-                                        </List>
-                                    )
-                                })
-                            }
-                     </List>
+                {
+                    (this.state.data||[]).map((item,idx)=>{
+                        
+                        return(
+                            <List ref='tab' id={item.chapterid} onClick={()=>this.too(item.chapterid)} >
+                                <List.Item  style={{paddingTop:10,color:"#000"}}>
+                                    
+                                    <List.Item.Brief onClick={()=>this.gett()}
+                                        style={{color:"#000",width:'75%',float:'left'}}>
+                                        {item.title}
+                                    </List.Item.Brief>
+                                    <img src="https://s2.ax1x.com/2019/12/04/Q1N84U.jpg"
+                                            style={{
+                                            width:'20%',height:'10%'}}
+                                    />
+                                    <List.Item.Brief >
+                                        丫丫妈妈
+                                        <span style={{marginLeft:10}}>11月12日</span>
+                                        <span  style={{marginLeft:20}} >
+                                            <img src={(cookie.load('chapterId')==idx+1)
+                                                    ?'https://s2.ax1x.com/2019/12/11/QrKe4s.png'
+                                                    :"https://s2.ax1x.com/2019/12/04/Q1fu7T.png"}
+                                                onClick={(e)=>this.change1(item.chapterid,e)} alt='收藏'/>
+                                        </span>
+                                    </List.Item.Brief>
+                                </List.Item>
+                            </List>
+                        )
+                    })
+                }
+                </List>
 
             </div>
         )
