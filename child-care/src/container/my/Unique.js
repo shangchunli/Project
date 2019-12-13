@@ -15,23 +15,40 @@ export default class Unique extends Component {
     }
   }
   componentDidMount(){
-    fetch('')
+    fetch('http://192.168.43.217:5001/')
     .then(res=>res.text())
     .then((res)=>{
-      this.setState({
-        username:'111',
-        data:res
-      })
+      console.log(res);
+      // this.setState({
+      //   username:'111',
+      //   data:res
+      // })
     })
   }
   goBack=()=>{
     console.log(this.refs.butt)
     window.history.go(-1);
+    fetch('http://192.168.43.217:5001/',{
+      method: 'POST',//post请求 
+  headers: { 
+  'Content-Type': 'application/json;charset=UTF-8' 
+  }, 
+  body: JSON.stringify({
+    username:'丫丫妈妈',
+    phone:'15054326879',
+    email:'1503651@qq.com',
+    mood:'陌上人如玉'
+  })
+  })
+  .then(res=>res.text())
+  .then((res)=>{
+    console.log(res);
+  })
+  
 }
   handle=(pathname)=>{
-    console.log(this.refs.butt)
-
-    window.location.href="/my/"+pathname;
+    // console.log(this.refs.butt)
+    // window.location.href="/my/"+pathname;
 }
     render() {
         return (

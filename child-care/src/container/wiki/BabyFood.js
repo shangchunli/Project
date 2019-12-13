@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { Flex, WhiteSpace ,NavBar,Icon,List} from 'antd-mobile';
 import cookie from 'react-cookies'
-
 export default class BabyFood extends Component {
     handle=(i)=>{
         window.location.href='/wiki/babyfood/detail/'+i;
@@ -74,9 +73,10 @@ export default class BabyFood extends Component {
         })
        
     }
-    too=()=>{
-        console.log(this.refs.tab);
-        console.log(document.getElementById('12'));
+    too=(id)=>{
+        console.log(id);
+        window.location.href='/wiki/babyfood/detail/'+id;
+
     }
     gett=()=>{
         
@@ -99,14 +99,12 @@ export default class BabyFood extends Component {
                                 (this.state.data||[]).map((item,idx)=>{
                                   
                                     return(
-                                        <List ref='tab' onClick={()=>this.too()} >
+                                        <List ref='tab' id={item.chapterid} onClick={()=>this.too(item.chapterid)} >
                                             <List.Item  style={{paddingTop:10,color:"#000"}}>
                                                
                                                 <List.Item.Brief onClick={()=>this.gett()}
-                                                 id={item.chapterid} style={{color:"#000",width:'75%',float:'left'}}>
+                                                  style={{color:"#000",width:'75%',float:'left'}}>
                                                     {item.title}
-                                                    {/* 什么是产后抑郁症
-                                                    产后抑郁症是女性精神障碍中... */}
                                                 </List.Item.Brief>
                                                 <img src="https://s2.ax1x.com/2019/12/04/Q1N84U.jpg"
                                                         style={{
