@@ -47,7 +47,7 @@ export default class Detail extends Component {
                 >
                     详情页
                 </NavBar>
-                <div className='detail'>
+                <div className='detaill'>
                 
                     {
                         (this.state.data||[]).map(item=>

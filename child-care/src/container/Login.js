@@ -1,13 +1,15 @@
 import React, { Component } from 'react'
 import "./Health.css"
 import {Flex} from "antd-mobile"
-
+import cookie from 'react-cookies'
+// console.log()
 export default class Login extends Component {
     constructor(props){
         super(props);
         this.state={
             tel:"",
-            pwd:""
+            pwd:"",
+            // userId:''
         }
     }
     handle=(pathname)=>{
@@ -40,53 +42,41 @@ export default class Login extends Component {
             if(res=='success'){
                 alert("登录成功")
                 window.location.href="/home";
+                cookie.save('userId',this.state.tel);
             }else{
                 alert("登陆失败")
             }
-            // res.map((item)=>{
-            //     if(this.state.tel===item.telphone&&this.state.pwd===item.pwd){
-            //         i++;
-            //     }
-            // })
-            // if(i){
-            //     alert("登录成功")
-            //     window.location.href="/home";
-            // }else{
-            //     alert("登录失败")
-            // }
         })
         
     }
     render() {
          return (
-          <div>
-              <div>
-              <div style={{backgroundColor:"transparent",width:"100%"
-                  ,height:630,opacity:0.4,
-              background:"url('./images/beijing/four.jpg')"}}>
-                  </div>
-              </div>
-              <Flex>
-            <div style={{zIndex:1,position:"fixed",top:130,left:"10%",right:"10%"}}>
-                
-            <form class="myform">
-                <img src="./images/touxiang.jpg" style={{borderRadius:50,
-                width:100,height:100}}/>
-                <input type="text"  onChange={()=>this.inputChange()}
-                placeholder="帐号" class="el-input__inner"  ref="username" />
-                <input type="password"  onChange={()=>this.inputChange()}
-                placeholder="密码" class="el-input__inner"  ref="pwd" />
-                <button type="button" class="el-button login-btn-submit el-button--primary" id="login"
-                onClick={()=>this.loginn()}
-                ><span>登录</span></button>
-                <h4 onClick={()=>this.handle('')}>新用户点击注册</h4>
-            </form>
-            </div>    
-            </Flex>
-          </div>
-                
+            <div>
+            <div>
+            <div style={{backgroundColor:"transparent",width:"100%"
+                ,height:630,opacity:0.4,
+            background:"url('./images/beijing/four.jpg')"}}>
+                </div>
+            </div>
+            <Flex>
+          <div style={{zIndex:1,position:"fixed",top:130,left:"10%",right:"10%"}}>
+              
+          <form class="myform">
+              <img src="./images/touxiang.jpg" style={{borderRadius:50,
+              width:100,height:100}}/>
+              <input type="text"  onChange={()=>this.inputChange()}
+              placeholder="帐号" class="el-input__inner"  ref="username" />
+              <input type="password"  onChange={()=>this.inputChange()}
+              placeholder="密码" class="el-input__inner"  ref="pwd" />
+              <button type="button" class="el-button login-btn-submit el-button--primary" id="login"
+              onClick={()=>this.loginn()}
+              ><span>登录</span></button>
+              <h4 onClick={()=>this.handle('')}>新用户点击注册</h4>
+          </form>
+          </div>    
+          </Flex>
+        </div>
+              
         )
     }
 }
-
-

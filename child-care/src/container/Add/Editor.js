@@ -2,15 +2,19 @@ import React, { Component } from 'react';
 import './editor.css';
 import E from 'wangeditor'
 import {Button,Accordion,List, WhiteSpace} from 'antd-mobile'
+import cookie from 'react-cookies'
+
+console.log(cookie.load('userId'));
 class Editor extends Component {
   constructor(props, context) {
       super(props, context);
       this.state = {
         editorContent: '',
         title:'',
-        owner:'manager',
+        owner:"manager",
         temp:1,
         tabs:'',
+        userId:cookie.load('userId')
       }
   }
   inputChange=()=>{
@@ -136,7 +140,8 @@ class Editor extends Component {
   body: JSON.stringify({
     title:this.state.title,
     content:this.state.editorContent,
-    tabs:this.state.tabs
+    tabs:this.state.tabs,
+    owner:this.state.userId
   })
   })
   .then(res=>res.text())
