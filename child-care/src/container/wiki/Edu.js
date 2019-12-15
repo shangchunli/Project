@@ -52,7 +52,7 @@ export default class Edu extends Component {
     }
    
     componentDidMount(){
-        fetch('http://192.168.43.217:5001/jibing',{
+        fetch('http://192.168.43.217:5001/jiaoyu',{
             method: 'GET', 
             headers: { 
                 'Content-Type': 'application/json;charset=UTF-8' 
@@ -87,7 +87,7 @@ export default class Edu extends Component {
                     亲子教育
                 </NavBar>
 
-                <List>
+                <List style={{marginTop:50}}>
                             {
                                 (this.state.data||[]).map((item,idx)=>{
                                   

@@ -21,14 +21,14 @@ export default class Dynamics extends Component {
           });
         }, 100);
         fetch("http://192.168.43.217:5001/chapters")
-        .then(res=>res.json())
+        .then(res=>res.text())
         .then((res)=>{
            console.log(res)
         })
     }
     componentDidUpdate(){
         fetch("http://192.168.43.217:5001/chapters")
-        .then(res=>res.json())
+        .then(res=>res.text())
         .then((res)=>{
             console.log(res)
         })

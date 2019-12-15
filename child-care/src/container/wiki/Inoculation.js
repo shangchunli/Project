@@ -55,7 +55,7 @@ export default class Inoculation extends Component {
     }
    
     componentDidMount(){
-        fetch('http://192.168.43.217:5001/jibing',{
+        fetch('http://192.168.43.217:5001/yimiao',{
             method: 'GET', 
             headers: { 
                 'Content-Type': 'application/json;charset=UTF-8' 

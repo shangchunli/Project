@@ -25,7 +25,7 @@ export default class Sui extends Component {
         });
     }
    dairty=()=>{
-     
+     alert(111)
     fetch('http://192.168.43.217:5001/addcaprice',{
       method: 'POST',//post请求 
       headers: { 

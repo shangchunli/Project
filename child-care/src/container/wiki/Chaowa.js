@@ -57,7 +57,7 @@ export default class Chaowa extends Component {
     }
    
     componentDidMount(){
-        fetch('http://192.168.43.217:5001/jibing',{
+        fetch('http://192.168.43.217:5001/chuanda',{
             method: 'GET', 
             headers: { 
                 'Content-Type': 'application/json;charset=UTF-8' 
