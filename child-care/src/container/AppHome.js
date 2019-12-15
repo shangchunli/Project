@@ -18,10 +18,28 @@ function Show(){
 export default class AppHome extends Component {
     constructor(props){
         super(props);
-
+        this.state={
+            data:''
+        }
+    }
+    componentDidMount(){
+        // console.log(this.props.match.params.id);
+        // fetch('http://192.168.43.217:5001/xiangqing')
+        // .then(res=>res.json())
+        // .then((res)=>{
+        //     console.log(res);
+        //     // this.setState({
+        //     //     data:res
+        //     // });
+            
+        // })
     }
     handle=(pathname)=>{
         window.location.href="/home/"+pathname;
+    }
+    toDetail=()=>{
+        window.location.href='/home/detail/'+'1';
+
     }
     render() {
         return (
@@ -93,7 +111,12 @@ export default class AppHome extends Component {
                             />
                         <p>亲子游戏</p>
                     </div>
-                <button className="shouye1">
+                {/* <div>
+                    {
+                        
+                    }
+                </div> */}
+                <button className="shouye1" onClick={()=>this.toDetail()}>
                     <img
                         style={{marginLeft:'50'}} 
                         src='images/home/7.png'

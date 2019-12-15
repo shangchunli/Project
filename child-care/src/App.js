@@ -44,6 +44,7 @@ import Login from './container/Login'
 import Register from './container/Register'
 // wiki宝宝饮食详情页
 import Detail from './container/Detail'
+import Dairty from './container/home/Dairty'
 export default class App extends Component {
     render() {
         return (
@@ -79,6 +80,7 @@ export default class App extends Component {
                         <Route  exact path='/my/unique' component={Unique}/>
                         <Route  exact path='/my' component={My}/>
                         <Route path='/wiki/detail/:id' component={Detail}/>
+                        <Route path='/home/detail/:id' component={Dairty}/>
                         {/* <Route path='/wiki/nurse1/detail/:id' component={Detail}/>
                         <Route path='/wiki/babyfood/detail/:id' component={Detail}/>
                         <Route path='/wiki/chaowa/detail/:id' component={Detail}/>

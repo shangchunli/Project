@@ -6,7 +6,7 @@ export default class Detail extends Component {
         super();
         this.state={
             data:''
-        }
+        } 
     }
     goBack=()=>{
         window.history.go(-1);
