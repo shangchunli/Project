@@ -63,37 +63,38 @@ export default class Dynamics extends Component {
                     ))}
                 </Carousel>
                 <List>
-                    <Item extra={'更多>>'} onClick={()=>{this.handle('yiyu')}}>抑郁症</Item>
+                    <Item extra={'更多>>'} onClick={()=>{this.handle('yiyu')}}>产后抑郁</Item>
                 </List>
                 <Flex style={{backgroundColor:"#fff",borderTop:'1px rgb(255,235,235) solid',borderBottom:'1px rgb(255,235,235) solid'}}>
                     <img src="/images/depression.jpg" alt="抑郁症" style={{width:'25%',marginLeft:'2%',marginRight:'3%',float:'left'}}/>
-                    <p style={{width:'65%',marginRight:'5%',float:'left'}}>
-                        产后抑郁形成的原因是多方面的，和产妇生产后的生...<br/>
-                        <span style={{fontSize:'10px',float:'left',marginLeft:'2%',marginTop:'2%'}}>丫丫妈妈</span>
+                    <div>
+                    <h3 style={{lineHeight:'1.3em'}}>
+                        产后抑郁是女性在生产之后很容易出现的一种精神疾病，
+                        发病率在 15%～30%。典型的产后抑郁症于产后6周内发生。
+                        常见症状：表情阴郁，无精打采，困倦，易流泪、哭泣
+                        </h3>
+                    </div>
+                    {/* <p style={{width:'65%',marginRight:'5%',float:'left'}}>
+                        产后抑郁形成的原因是多方面的，和产妇生产后的生...<br/> */}
+                        {/* <span style={{fontSize:'10px',float:'left',marginLeft:'2%',marginTop:'2%'}}>丫丫妈妈</span>
                             <span>
                                 <img 
                                 style={{float:'right',marginRight:'2%',height:20,width:20}}
                                 src='https://s2.ax1x.com/2019/12/04/Q1fu7T.png' alt='收藏'/>
-                            </span>
-                    </p>
+                            </span> */}
+                    {/* </p> */}
                 </Flex>
 
                 <List>
-                    <Item extra={'更多>>'} onClick={()=>{this.handle('food')}}>产前护理</Item>
+                    <Item extra={'更多>>'} onClick={()=>{this.handle('food')}}>孕期护理</Item>
                 </List>
                 <Flex style={{backgroundColor:"#fff",border:'1px rgb(255,235,235) solid',borderLeft:'none',borderRight:'none'}}>
                     <img src="/images/care.jpg" alt="产前护理" style={{width:'25%',marginLeft:'2%',marginRight:'3%',float:'left'}}/>
                     <div>
-                        <p className='detail'>
-                            注意休息，保证足够睡眠，左侧卧位，适当活动，保持轻松愉快...<br/>
-                        <span style={{fontSize:'10px',float:'left',marginLeft:'2%',marginTop:'2%'}}>丫丫妈妈</span>
-                            <span>
-                                <img 
-                                style={{float:'right',marginRight:'8%',height:20,width:20}}
-                                src='https://s2.ax1x.com/2019/12/04/Q1fu7T.png' alt='收藏'/>
-                            </span>
-                        </p>
-                        
+                        <h3 style={{lineHeight:'1.3em'}}>
+                            孕妇容易出现恶心呕吐，头晕等早孕反应，在怀孕后期，
+                            随着子宫的逐渐增大，孕妇容易出现腰疼，下肢水肿等症状。            
+                        </h3>
                     </div>    
                 </Flex>
                 <List>
@@ -101,7 +102,11 @@ export default class Dynamics extends Component {
                 </List>
                 <Flex style={{backgroundColor:"#fff",border:'1px rgb(255,235,235) solid',borderLeft:'none',borderRight:'none'}}>
                     <img src="/images/body_recovery.jpg" alt="身材恢复" style={{width:'25%',marginLeft:'2%',marginRight:'3%',float:'left'}}/>
-                    <p style={{width:'65%',marginRight:'5%',float:'left'}}>
+                    <div>
+                    <h3>女性在生产完毕之后，常常会因为身体过于虚弱而需要一定的恢复和保养                        </h3>
+
+                    </div>
+                    {/* <p style={{width:'65%',marginRight:'5%',float:'left'}}>
                         研究表明，产后6个月是宝妈身材恢复的黄金时...<br/>
                         <span style={{fontSize:'10px',float:'left',marginLeft:'2%',marginTop:'2%'}}>丫丫妈妈</span>
                             <span>
@@ -109,7 +114,7 @@ export default class Dynamics extends Component {
                                style={{float:'right',marginRight:'2%',height:20,width:20}}
                                src='https://s2.ax1x.com/2019/12/04/Q1fu7T.png' alt='收藏'/>
                             </span>
-                    </p>
+                    </p> */}
                     
                 </Flex>
                         
@@ -118,7 +123,10 @@ export default class Dynamics extends Component {
                 </List>
                 <Flex style={{backgroundColor:"#fff",border:'1px rgb(255,235,235) solid',borderLeft:'none',borderRight:'none'}}>
                     <img src="/images/body_recovery.jpg" alt="身材恢复" style={{width:'25%',marginLeft:'2%',marginRight:'3%',float:'left'}}/>
-                    <p style={{width:'65%',marginRight:'5%',float:'left'}}>
+                    <div>
+                        <h3 style={{lineHeight:'1.3em'}}>合理搭配饮食，帮助宝妈度过健康、相对舒服的孕期生活</h3>
+                    </div>
+                    {/* <p style={{width:'65%',marginRight:'5%',float:'left'}}>
                         研究表明，产后6个月是宝妈身材恢复的黄金时期...<br/>
                         <span style={{fontSize:'10px',float:'left',marginLeft:'2%',marginTop:'2%'}}>丫丫妈妈</span>
                             <span>
@@ -126,7 +134,7 @@ export default class Dynamics extends Component {
                                  style={{float:'right',marginRight:'2%',height:20,width:20}}
                                  src='https://s2.ax1x.com/2019/12/04/Q1fu7T.png' alt='收藏'/>
                             </span>
-                    </p>
+                    </p> */}
                     
                 </Flex>
 
@@ -135,7 +143,11 @@ export default class Dynamics extends Component {
                 </List>
                 <Flex style={{backgroundColor:"#fff",border:'1px rgb(255,235,235) solid',borderLeft:'none',borderRight:'none'}}>
                     <img src="/images/body_recovery.jpg" alt="身材恢复" style={{width:'25%',marginLeft:'2%',marginRight:'3%',float:'left'}}/>
-                    <p style={{width:'65%',marginRight:'5%',float:'left'}}>
+                    <div>
+                        <h3 style={{lineHeight:'1.3em'}}>有98%的孕妇在妊娠晚期会产生焦虑心理。焦虑还可引起植物神经紊乱，导致产时宫缩无力造成难产。
+                            由于焦虑，得不到充分的休息和营养，生产时会造成滞产。</h3>
+                    </div>
+                    {/* <p style={{width:'65%',marginRight:'5%',float:'left'}}>
                         研究表明，产后6个月是宝妈身材恢复的黄金时期...<br/>
                         <span style={{fontSize:'10px',float:'left',marginLeft:'2%',marginTop:'2%'}}>丫丫妈妈</span>
                             <span>
@@ -143,7 +155,7 @@ export default class Dynamics extends Component {
                                  style={{float:'right',marginRight:'2%',height:20,width:20}}
                                  src='https://s2.ax1x.com/2019/12/04/Q1fu7T.png' alt='收藏'/>
                             </span>
-                    </p>
+                    </p> */}
                 </Flex>
             </div>
         )
