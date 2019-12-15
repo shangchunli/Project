@@ -11,16 +11,23 @@ export default class Dairty extends Component {
         window.history.go(-1);
     }
     componentDidMount(){
-        console.log(this.props.match.params.id);
-        // fetch('http://192.168.43.217:5001/')
-        // .then(res=>res.json())
-        // .then((res)=>{
-        //     console.log(res);
-        //     this.setState({
-        //         data:res
-        //     });
-            
-        // })
+        fetch('http://192.168.43.217:5001/cdetail',{
+            method: 'POST',//post请求 
+            headers: { 
+            'Content-Type': 'application/json;charset=UTF-8' 
+            }, 
+            body: JSON.stringify({
+                cid:this.props.match.params.id  
+            })                    
+    })
+    .then(res=>res.json())
+    .then((res)=>{
+        console.log(res)
+       this.setState({
+           data:res
+       })
+    })
+   
     }
     render() {
         return (
@@ -40,16 +47,20 @@ export default class Dairty extends Component {
                 <div>
                     111111111111111111
                 </div>
-                {/* <div>
+                <div>
                 
                     {
                         (this.state.data||[]).map(item=>
-                            <div style={{marginTop:50}}>
-                               <p>11111111111</p>
+                            <div style={{marginTop:50,paddingLeft:'10%',
+                            backgroundColor:'#fff'}}>
+                                
+                               <h4 style={{paddingTop:30}}>{item.ccontent}</h4>
+                               <p style={{marginTop:20,paddingBottom:20}}>
+                                    {item.ctime}</p>
                             </div>
                         )
                     }
-                </div> */}
+                </div>
             </div>
         )
     }

@@ -92,17 +92,17 @@ class Editor extends Component {
               <List.Item ref='tab2'>
                 <div onClick={()=>this.getTab1(1)} id='11'
                 style={{ textAlign:"center", float:"left",
-                  backgroundColor:"#fff",width:"30%",height:25}}>产前护理</div>
+                  backgroundColor:"#fff",width:"30%",height:25}}>孕期护理</div>
                   <div onClick={()=>this.getTab1(2)} id='12'
                   style={{ textAlign:"center",float:"left",
                   backgroundColor:"#fff",width:"30%",height:25}}>身材恢复</div>
                   <div onClick={()=>this.getTab1(3)} id='13'
                   style={{ textAlign:"center",float:"left",
-                  backgroundColor:"#fff",width:"30%",height:25}}>抑郁症</div>
-                  <div onClick={()=>this.getTab1(4)}
+                  backgroundColor:"#fff",width:"30%",height:25}}>产后抑郁</div>
+                  <div onClick={()=>this.getTab1(4)} id='14'
                   style={{ textAlign:"center",float:"left",
                   backgroundColor:"#fff",width:"30%",height:25}}>妈妈饮食</div>
-                  <div onClick={()=>this.getTab1(5)}
+                  <div onClick={()=>this.getTab1(5)} id='15'
                   style={{ textAlign:"center",float:"left",
                   backgroundColor:"#fff",width:"30%",height:25}}>焦虑</div>
               </List.Item>

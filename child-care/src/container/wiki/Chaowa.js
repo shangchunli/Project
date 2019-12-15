@@ -24,7 +24,6 @@ export default class Chaowa extends Component {
         this.setState({
             isKeep:!b,
             chapterId:idx+1
-
         })
         console.log(cookie.load('chapterId'));
         cookie.save("chapterId",this.state.chapterId);

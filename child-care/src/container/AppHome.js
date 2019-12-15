@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import "./apphome.css"
+import cookie from 'react-cookies'
+
 import {NavBar,Icon} from "antd-mobile"
 function Show(){
     var date = new Date(); //日期对象
@@ -24,21 +26,29 @@ export default class AppHome extends Component {
     }
     componentDidMount(){
         // console.log(this.props.match.params.id);
-        // fetch('http://192.168.43.217:5001/xiangqing')
-        // .then(res=>res.json())
-        // .then((res)=>{
-        //     console.log(res);
-        //     // this.setState({
-        //     //     data:res
-        //     // });
-            
-        // })
+        fetch('http://192.168.43.217:5001/caprice',{
+            method: 'POST',//post请求 
+            headers: { 
+            'Content-Type': 'application/json;charset=UTF-8' 
+            }, 
+            body: JSON.stringify({
+                userId:cookie.load('userId'),  
+            })                    
+    })
+    .then(res=>res.json())
+    .then((res)=>{
+        let str=res.reverse();
+       this.setState({
+           data:str
+       })
+    })
+   
     }
     handle=(pathname)=>{
         window.location.href="/home/"+pathname;
     }
-    toDetail=()=>{
-        window.location.href='/home/detail/'+'1';
+    toDetail=(id)=>{
+        window.location.href='/home/detail/'+id;
 
     }
     render() {
@@ -116,34 +126,23 @@ export default class AppHome extends Component {
                         
                     }
                 </div> */}
-                <button className="shouye1" onClick={()=>this.toDetail()}>
-                    <img
-                        style={{marginLeft:'50'}} 
-                        src='images/home/7.png'
-                        width='30' height='30'
-                        />
-                     <span style={{fontSize:'150%'}}>今日随想</span>
-                    <span style={{fontSize:'10',paddingLeft:'25%'}}>2019年11月27日</span>
-                </button>
-                <button className="shouye1" >
-                    <img
-                        style={{marginLeft:'50'}} 
-                        src='images/home/7.png'
-                        width='30' height='30'
-                        />
-                    <span style={{fontSize:'150%'}}>宝宝健康</span>
-                    <span style={{fontSize:'10',paddingLeft:'25%'}}>2019年11月27日</span>
-                </button>
-                <button className="shouye1" >
-                    <img
-                        style={{marginLeft:'50'}} 
-                        src='images/home/7.png'
-                        width='30' height='30'
-                        />
-                    <span style={{fontSize:'150%'}}>今日随想</span>
-                    <span style={{fontSize:'10',paddingLeft:'25%'}}>2019年11月27日</span>
-                </button>
-                
+                <div>
+                {
+                    ((this.state.data||[]).map(item=>
+                        <button className="shouye1" id={item.cid}
+                        onClick={()=>this.toDetail(item.cid)}>
+                            <img style={{marginLeft:'-60%'}}
+                                src='images/home/7.png'
+                                width='30' height='30'
+                                />
+                            <span style={{fontSize:'150%',paddingLeft:'10%'}}>{item.ccontent}</span>
+                            <p style={{fontSize:'10',paddingTop:20}}>{item.ctime}</p>
+                        </button>
+                    )
+
+                    )
+                }   
+                </div>
             </div>
         )
     }
