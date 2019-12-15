@@ -1,13 +1,16 @@
 import React, { Component } from 'react'
 import { ImagePicker, WingBlank, SegmentedControl} from 'antd-mobile';
 import  './sui.css';
+import cookie from 'react-cookies'
 const data = [];
 export default class Sui extends Component {
-    state = {
-        files: data,
-        multiple: false,
 
+   state={
+      files: data,
+      multiple: false,
     }
+  
+   
     
     onChange = (files, type, index) => {
         console.log(files, type, index);
@@ -22,17 +25,19 @@ export default class Sui extends Component {
         });
     }
    dairty=()=>{
-    fetch('http://192.168.43.217:5001/addcapirce',{
+     
+    fetch('http://192.168.43.217:5001/addcaprice',{
       method: 'POST',//post请求 
       headers: { 
       'Content-Type': 'application/json;charset=UTF-8' 
       }, 
       body: JSON.stringify({
-          userId:'1',  
-          chapterId:'2'                    
+        userId:cookie.load('userId'),
+        content:this.refs.cont.innerHTML,
+        files:this.state        
       })                    
 })
-.then(res=>res.json())
+.then(res=>res.text())
 .then((res)=>{
   console.log(res);
 })
@@ -43,7 +48,7 @@ export default class Sui extends Component {
         return (
             <div style={{marginTop:20,backgroundColor:'#fff',width:"100%",height:500
             }}>
-                 <div contentEditable="true" style={{
+                 <div contentEditable="true" ref='cont' style={{
                 width:'95%',margin:'0 auto',padding:'50px',
                 textAlign:'center'}}>
                 记录美好瞬间
@@ -61,7 +66,6 @@ export default class Sui extends Component {
                  <button onClick={()=>this.dairty()}
                  style={{marginTop:30,marginLeft:'20%',height:'30px',borderRadius:'30px',
                  width:"50%",backgroundColor:'red'}}>发表</button>
-                
             </div>
         )
     }
