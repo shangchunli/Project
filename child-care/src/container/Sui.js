@@ -8,13 +8,7 @@ export default class Sui extends Component {
         multiple: false,
 
     }
-    componentWillMount(){
-      fetch('http://192.168.43.217:5001/add')
-      .then(res=>res.text())
-      .then((res)=>{
-          console.log(res);
-      })
-  }
+    
     onChange = (files, type, index) => {
         console.log(files, type, index);
         this.setState({
@@ -27,7 +21,23 @@ export default class Sui extends Component {
           multiple: index === 1,
         });
     }
-   
+   dairty=()=>{
+    fetch('http://192.168.43.217:5001/addcapirce',{
+      method: 'POST',//post请求 
+      headers: { 
+      'Content-Type': 'application/json;charset=UTF-8' 
+      }, 
+      body: JSON.stringify({
+          userId:'1',  
+          chapterId:'2'                    
+      })                    
+})
+.then(res=>res.json())
+.then((res)=>{
+  console.log(res);
+})
+
+   }
     render() {
         const { files } = this.state;
         return (
@@ -48,7 +58,8 @@ export default class Sui extends Component {
                         multiple={this.state.multiple}
                         />
                  </WingBlank>
-                 <button style={{marginTop:30,marginLeft:'20%',height:'30px',borderRadius:'30px',
+                 <button onClick={()=>this.dairty()}
+                 style={{marginTop:30,marginLeft:'20%',height:'30px',borderRadius:'30px',
                  width:"50%",backgroundColor:'red'}}>发表</button>
                 
             </div>
