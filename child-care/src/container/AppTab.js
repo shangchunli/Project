@@ -5,7 +5,7 @@ import Wiki from './Wiki';
 import My from './My';
 import Health from './Health'
 import Jia from './Jia'
-
+//////
 let str;
 if(window.location.pathname=="/wiki"){
       str='redTab'
