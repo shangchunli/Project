@@ -6,6 +6,16 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
+<style>
+    td{
+        width:200px;
+        white-space: nowrap;/*控制单行显示*/
+
+        overflow: hidden;/*超出隐藏*/
+
+        text-overflow: ellipsis;/*隐藏的字符用省略号表示*/
+    }
+</style>
 <body  style='background: url(./images/timg.jpg) no-repeat; background-size: cover;'>
         <div contenteditable="true">ssss</div>
     <div style="background:#8ecfec;height:500px;width:80%;margin-left:10%;margin-top:50px">
@@ -21,7 +31,7 @@
             </ul>
         </div>
         <div style='float:left;width:82%;height:500px;'>
-            <table style="text-align:center;padding:60px; margin-top:10px">
+            <table style="text-align:center;table-layout: fixed;padding:60px; margin-top:10px">
                 <tr style="margin-bottom:10px">
                     <td>帖子id</td>
                     <td>标题</td>
@@ -32,7 +42,7 @@
                     <tr style="margin-top:10px">
                         <td><%=usersList[i]["chapterid"] %></td>
                         <td> <%= usersList[i]["title"] %></td>
-                        <td><%= usersList[i]["content"] %></td>
+                        <td style="-webkit-line-clamp: 2;"><%= usersList[i]["content"] %></td>
                         <td><a href="/del?id=<%= usersList[i]['id'] %>">删除</a></td>
                     </tr>
                 <% } %>
