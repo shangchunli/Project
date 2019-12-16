@@ -12,6 +12,7 @@ export default class Yiyu extends Component {
         }
     }
     componentDidMount(){
+        //初始加载
         fetch("http://192.168.43.217:5001/yiyu")
         .then(res=>res.json())
         .then((res)=>{

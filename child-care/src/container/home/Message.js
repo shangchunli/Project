@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 import {NavBar,Icon,List, DatePicker,Picker} from 'antd-mobile'
 import './message.css'
 import cookie from 'react-cookies';
-//性别
+
 const sex = [
     {
       label:
