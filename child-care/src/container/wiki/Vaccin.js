@@ -5,7 +5,9 @@ export default class Vaccin extends Component {
         return (
             <div>
                 Vaccin
-                
+                <div>
+                    <h1></h1>
+                </div>
             </div>
         )
     }
