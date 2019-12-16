@@ -149,7 +149,67 @@ router.get('/babyfood',function(req,res,next){
     }
   })
 })
-//将帖子内容标签传给前端---详情页渲染
+//产后抑郁页面渲染
+router.get('/yiyu',function(req,res,next){
+  var con = mysql.createConnection(dbconfig);
+  con.connect();
+  con.query('select chapterid,title,content,owner,time  from chapters where tab="产后抑郁"',function(err,result){
+    if(err){
+      console.log(err)
+    }else{
+      res.send(result);
+    }
+  })
+})
+//孕期护理页面渲染
+router.get('/huli',function(req,res,next){
+  var con = mysql.createConnection(dbconfig);
+  con.connect();
+  con.query('select chapterid,title,content,owner,time  from chapters where tab="孕期护理"',function(err,result){
+    if(err){
+      console.log(err)
+    }else{
+      res.send(result);
+    }
+  })
+})
+//身材恢复页面渲染
+router.get('/shencai',function(req,res,next){
+  var con = mysql.createConnection(dbconfig);
+  con.connect();
+  con.query('select chapterid,title,content,owner,time  from chapters where tab="身材恢复"',function(err,result){
+    if(err){
+      console.log(err)
+    }else{
+      res.send(result);
+    }
+  })
+})
+//焦虑页面渲染
+router.get('/jiaolv',function(req,res,next){
+  var con = mysql.createConnection(dbconfig);
+  con.connect();
+  con.query('select chapterid,title,content,owner,time  from chapters where tab="焦虑"',function(err,result){
+    if(err){
+      console.log(err)
+    }else{
+      res.send(result);
+    }
+  })
+})
+//妈妈饮食页面渲染
+router.get('/momfood',function(req,res,next){
+  var con = mysql.createConnection(dbconfig);
+  con.connect();
+  con.query('select chapterid,title,content,owner,time  from chapters where tab="妈妈饮食"',function(err,result){
+    if(err){
+      console.log(err)
+    }else{
+      res.send(result);
+    }
+  })
+})
+//帖子详情页渲染
 router.post('/xiangqing',function(req,res,next){
   var chapterid = req.body.chapterId;
   var con = mysql.createConnection(dbconfig);
@@ -255,7 +315,6 @@ router.post('/cdetail',function(req,res,next){
 })
 
 //加收藏 写mycollect表
-// 已获取当前登录用户user,等待获得帖子id
 router.post('/cookie', function(req,res,next){
   var user = req.body.userId;
   var chapterId = req.body.chapterId;
@@ -283,6 +342,28 @@ router.post('/mycollect',function(req,res,next){
       res.send(result);
     }
   })
+})
+//我的宝宝表添加
+router.post('/addbaby',function(req,res,next){
+  var tel = req.body.userId;
+  var name = req.body.name;
+  var year = req.body.year;
+  var month = req.body.month;
+  var day = req.body.day;
+  var sex = req.body.sex;
+  var height = req.body.height;
+  var weight = req.body.weight;
+  var con = mysql.createConnection(dbconfig);
+  con.connect();
+  con.query('insert into mybaby(telphone,babyname,birthyear,birthmonth,birthday,sex,height,weight) values(?,?,?,?,?,?,?,?)',
+    [tel,name,year,month,day,sex,height,weight],function(err,result){
+      if(err){
+        console.log(err);
+      }else{
+        console.log(result);
+        res.send('ok');
+      }
+    })
 })
 
 
