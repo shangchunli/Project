@@ -3,7 +3,7 @@ import "./apphome.css"
 import cookie from 'react-cookies'
 import {NavBar,Icon} from "antd-mobile"
 let str='快来设置宝贝信息吧';
-//////
+///
 // 宝宝今		天:<Show/>
 function Show(){
     var date = new Date(); 
