@@ -1,4 +1,4 @@
-﻿var express = require('express');
+var express = require('express');
 var router = express.Router();
 //引入数据库模块
 var mysql = require('mysql');
@@ -101,55 +101,7 @@ router.get('/gushi',function(req,res,next){
     }
   })
 })
-//亲子游戏页面渲染
-router.get('/youxi',function(req,res,next){
-  var con = mysql.createConnection(dbconfig);
-  con.connect();
-  con.query('select chapterid,title,content,owner,time  from chapters where tab="亲子游戏"',function(err,result){
-    if(err){
-      console.log(err)
-    }else{
-      res.send(result);
-    }
-  })
-})
-//亲子教育页面渲染
-router.get('/jiaoyu',function(req,res,next){
-  var con = mysql.createConnection(dbconfig);
-  con.connect();
-  con.query('select chapterid,title,content,owner,time  from chapters where tab="宝宝教育"',function(err,result){
-    if(err){
-      console.log(err)
-    }else{
-      res.send(result);
-    }
-  })
-})
-//潮娃穿搭页面渲染
-router.get('/chuanda',function(req,res,next){
-  var con = mysql.createConnection(dbconfig);
-  con.connect();
-  con.query('select chapterid,title,content,owner,time  from chapters where tab="潮娃穿搭"',function(err,result){
-    if(err){
-      console.log(err)
-    }else{
-      res.send(result);
-    }
-  })
-})
-//宝宝饮食页面渲染
-router.get('/babyfood',function(req,res,next){
-  var con = mysql.createConnection(dbconfig);
-  con.connect();
-  con.query('select chapterid,title,content,owner,time  from chapters where tab="宝宝饮食"',function(err,result){
-    if(err){
-      console.log(err)
-    }else{
-      res.send(result);
-    }
-  })
-})
-//将帖子传给前端---详情页渲染
+//将帖子内容标签传给前端---详情页渲染
 router.post('/xiangqing',function(req,res,next){
   var chapterid = req.body.chapterId;
   var con = mysql.createConnection(dbconfig);
