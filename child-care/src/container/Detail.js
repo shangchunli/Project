@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { NavBar,Icon } from 'antd-mobile';
 import './detail.css'
-////
+
 export default class Detail extends Component {
    constructor(){
         super();
