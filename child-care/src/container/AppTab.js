@@ -134,7 +134,6 @@ export default class AppTab extends React.Component {
               }
               title="宝妈健康"
               key="Friend"
-              // dot
               selected={this.state.selectedTab === 'greenTab'}
               onPress={() => {
                 this.setState({
