@@ -1,4 +1,4 @@
-var express = require('express');
+﻿var express = require('express');
 var router = express.Router();
 //引入数据库模块
 var mysql = require('mysql');
@@ -149,7 +149,7 @@ router.get('/babyfood',function(req,res,next){
     }
   })
 })
-//将帖子内容标签传给前端---详情页渲染
+//将帖子传给前端---详情页渲染
 router.post('/xiangqing',function(req,res,next){
   var chapterid = req.body.chapterId;
   var con = mysql.createConnection(dbconfig);
