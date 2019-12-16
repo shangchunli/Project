@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import "./apphome.css"
 import cookie from 'react-cookies'
-
 import {NavBar,Icon} from "antd-mobile"
+let str='快来设置宝贝信息吧';
+// 宝宝今		天:<Show/>
 function Show(){
     var date = new Date(); //日期对象
     var ms1=date.getTime();
@@ -67,8 +68,10 @@ export default class AppHome extends Component {
                         呦呦育儿
                 </NavBar>
               <div className='shouye2'style={{marginTop:50,
-                    background:'url("https://s2.ax1x.com/2019/12/10/QBR4bT.jpg")',backgroundSize:'cover',opacity:'0.9'}}>
-                    <p className='shouye9'style={{color:'white',paddingLeft:'10%',paddingTop:'15%',float:'left'}}>宝宝今		天:<Show/></p>
+                    background:'url("https://s2.ax1x.com/2019/12/10/QBR4bT.jpg")',
+                    backgroundSize:'cover',opacity:'0.9'}}>
+                    <p className='shouye9'style={{color:'white',paddingLeft:'10%',
+                    paddingTop:'15%',float:'left'}}>{str}</p>
                     <img 
                         style={{paddingTop:'18%'}}
                         src='https://s2.ax1x.com/2019/12/10/QB4ryn.png'

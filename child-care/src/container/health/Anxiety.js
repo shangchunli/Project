@@ -2,6 +2,13 @@ import React, { Component } from 'react'
 import { NavBar,List ,Icon} from 'antd-mobile';
 
 export default class Anxiety extends Component {
+    componentDidMount() {
+        fetch("http://192.168.43.217:5001/jiaolv")
+        .then(res=>res.json())
+        .then((res)=>{
+            console.log(res)
+        })
+    }
     goBack=()=>{
         window.history.go(-1);
     }

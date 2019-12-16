@@ -12,7 +12,7 @@ export default class Yiyu extends Component {
         }
     }
     componentDidMount(){
-        fetch("http://192.168.43.217:5001/chapters")
+        fetch("http://192.168.43.217:5001/yiyu")
         .then(res=>res.json())
         .then((res)=>{
             this.setState({
@@ -21,7 +21,7 @@ export default class Yiyu extends Component {
         })
     }
     componentDidUpdate(){
-        fetch("http://192.168.43.217:5001/chapters")
+        fetch("http://192.168.43.217:5001/yiyu")
         .then(res=>res.json())
         .then((res)=>{
             console.log(res)
@@ -49,18 +49,17 @@ export default class Yiyu extends Component {
                 ,width:"100%",
                     }}>
                         {
-                            this.state.data.map(item=>
-                                <List style={{marginTop:30}}>
+                            (this.state.data||[]).map(item=>
+                                <List style={{marginTop:30}} id={item.chapterid} 
+                                onClick={()=>this.too(item.chapterid)}>
                                 <List.Item style={{paddingTop:10,
                                     color:"#000"}}>
                                     <img src="https://s2.ax1x.com/2019/12/04/Q1N84U.jpg"
                                              style={{float:"right",
                                         width:50,height:70,paddingBottom:10}}/>
                                         {item.title}
-                                        <List.Item.Brief style={{color:"#000"}}>
-                                       {item.content}</List.Item.Brief>
-                                    <List.Item.Brief style={{paddingTop:10}}>丫丫妈妈
-                                        <span style={{marginLeft:10}}>11月12日</span>
+                                    <List.Item.Brief style={{paddingTop:10}}>{item.owner}
+                                        <span style={{marginLeft:10}}>{item.time}</span>
                                         <span  style={{marginLeft:20}} onClick={()=>{}}>
                                             <img src="https://s2.ax1x.com/2019/12/04/Q1fu7T.png"/>
                                         </span>
