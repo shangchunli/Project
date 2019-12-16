@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+﻿import React, { Component } from 'react'
 import {NavBar,Icon,List} from 'antd-mobile';
 import cookie from 'react-cookies'
 export default class BabyFood extends Component {
@@ -28,7 +28,7 @@ export default class BabyFood extends Component {
         if(this.state.isKeep==true){
             
             e.target.src='https://s2.ax1x.com/2019/12/11/QrKe4s.png'
-            // alert(this.state.userId);
+            // alert(this.state.userId a);
            
                 fetch('http://192.168.43.217:5001/cookie',{
                         method: 'POST',//post请求 
