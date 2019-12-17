@@ -96,7 +96,7 @@ export default class Disease extends Component {
                                                         :"https://s2.ax1x.com/2019/12/04/Q1fu7T.png"}
                                                     onClick={(e)=>this.change1(item.chapterid,e)} alt='收藏'/>
                                             </span>
-                                            {/* {item.chapterid} */}
+                                            {item.chapterid}
                                         </List.Item.Brief>
                                     </List.Item>
                                 </List>

@@ -24,6 +24,7 @@ export default class Login extends Component {
         })
     }
     loginn=()=>{
+        alert(11111)
         let i=0;
         fetch("http://192.168.43.217:5001/yhlogin",{
             method:'POST',

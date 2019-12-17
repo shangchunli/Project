@@ -1,8 +1,14 @@
 import React, { Component } from 'react'
 import "./apphome.css"
 import cookie from 'react-cookies'
-import {NavBar,Icon} from "antd-mobile"
-let str='快来设置宝贝信息吧';
+import {NavBar,Icon, List} from "antd-mobile"
+let str=<h3>快来设置宝贝信息吧</h3>;
+str=<div>
+<List.Item style={{backgroundColor:"transparent"}}>丫丫                        
+今天9个月28天了</List.Item>
+<List.Item style={{backgroundColor:"transparent"}}>身高：66cm</List.Item>
+<List.Item style={{backgroundColor:"transparent"}}>体重：6.7kg</List.Item>
+</div>
 ///
 // 宝宝今		天:<Show/>
 function Show(){
@@ -44,7 +50,19 @@ export default class AppHome extends Component {
            data:str
        })
     })
-   
+    fetch('http://192.168.43.217:5001/mybaby',{
+            method: 'POST',//post请求 
+            headers: { 
+            'Content-Type': 'application/json;charset=UTF-8' 
+            }, 
+            body: JSON.stringify({
+                userId:cookie.load('userId'),  
+            })                    
+    })
+    .then(res=>res.json())
+    .then((res)=>{
+        console.log(res)
+    })
     }
     handle=(pathname)=>{
         window.location.href="/home/"+pathname;
@@ -68,16 +86,22 @@ export default class AppHome extends Component {
                     >
                         呦呦育儿
                 </NavBar>
-              <div className='shouye2'style={{marginTop:50,
+              <div className='shouye2'style={{marginTop:50, 
                     background:'url("https://s2.ax1x.com/2019/12/10/QBR4bT.jpg")',
                     backgroundSize:'cover',opacity:'0.9'}}>
-                    <p className='shouye9'style={{color:'white',paddingLeft:'10%',
-                    paddingTop:'15%',float:'left'}}>{str}</p>
+                           
+                            <List.Item style={{
+                                backgroundColor:'transparent'}}>
+                    <div  style={{paddingLeft:'20%',color:'white',
+                    paddingTop:'5%',float:'left'}}>
+                       {str}
+                    </div>
                     <img 
-                        style={{paddingTop:'18%'}}
+                        style={{float:'left',marginLeft:'5%',marginTop:'5%'}}
                         src='https://s2.ax1x.com/2019/12/10/QB4ryn.png'
                         onClick={()=>{this.handle('Message')}}
                     />
+                    </List.Item>
                 </div>
                     <div onClick={()=>{this.handle('picture')}}
                     style={{float:'left',paddingLeft:'8%',backgroundColor:'white'}}>
