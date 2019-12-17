@@ -59,7 +59,7 @@ export default class Baike1 extends Component {
                 <br/>
                 <br/>
                 <br/>
-                {/* <br/> */}
+                <br/>
                 <img 
                         style={{width:'92%',height:'100',paddingLeft:'5%',paddingTop:'3%'}}
                         src='https://s2.ax1x.com/2019/12/17/QI8f29.png
