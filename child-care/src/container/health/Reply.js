@@ -1,31 +1,33 @@
 import React, { Component } from 'react'
 
-import { NavBar,List } from 'antd-mobile';
+import { NavBar,List,Icon } from 'antd-mobile';
 
 const Item = List.Item;
 
 
 export default class Reply extends Component {
+    goBack=()=>{
+        window.history.go(-1);
+    }
     render() {
         return (
             <div>
-                 <NavBar
-                    style={{backgroundColor:'#fff',
-                    color:'#000',position:"fixed",
-                    top:"0px",
-                    zIndex:100,
-                    width:"100%"
-                }}
-                >
-                    身材恢复
+                <NavBar
+                    mode="light"
+                    icon={<Icon type="left" onClick={this.goBack}/>}
+                    onLeftClick={() => console.log('onLeftClick')}
+                        style={{backgroundColor:'#fff',color:'#000'}}
+                        
+                    >
+                        身材恢复
                 </NavBar>
-                <div style={{marginTop:50,height:600
+                <div style={{marginTop:10,height:600
                 ,width:"100%",
                     }}>
                     <List>
                         <List.Item style={{paddingTop:10,
                             color:"#000"}}>
-                            <img src="./images/touxiang.jpg" style={{float:"right",
+                            <img src="https://s2.ax1x.com/2019/12/04/Q1N84U.jpg" style={{float:"right",
                                 width:50,height:70,paddingBottom:10}}/>
                                 产后瘦身关键期
                                 <List.Item.Brief style={{color:"#000"}}>
@@ -33,14 +35,14 @@ export default class Reply extends Component {
                             <List.Item.Brief style={{paddingTop:10}}>丫丫妈妈
                                 <span style={{marginLeft:10}}>11月12日</span>
                                 <span  style={{marginLeft:20}} onClick={()=>{}}>
-                                    <img src="./images/shoucang.svg"/>
+                                    <img src="https://s2.ax1x.com/2019/12/04/Q1fu7T.png"/>
                                 </span>
                             </List.Item.Brief>
                         </List.Item>
                     </List>
                     <List style={{marginTop:10}}>
                         <List.Item style={{paddingTop:10}}>
-                            <img src="./images/touxiang.jpg" style={{float:"right",
+                            <img src="https://s2.ax1x.com/2019/12/04/Q1N84U.jpg" style={{float:"right",
                                 width:50,height:70,paddingBottom:10}}/>
                                 产后身体出现这4种情况,说明<br/>你的月子没坐好!
                                 <List.Item.Brief style={{color:"#000"}}>
@@ -49,14 +51,14 @@ export default class Reply extends Component {
                             <List.Item.Brief style={{paddingTop:10}}>丫丫妈妈
                                 <span style={{marginLeft:10}}>11月12日</span>
                                 <span  style={{marginLeft:20}} onClick={()=>{}}>
-                                    <img src="./images/shoucang.svg"/>
+                                    <img src="https://s2.ax1x.com/2019/12/04/Q1fu7T.png"/>
                                 </span>
                             </List.Item.Brief>
                         </List.Item>
                     </List>
                     <List style={{marginTop:10}}>
                         <List.Item style={{paddingTop:10}}>
-                            <img src="./images/touxiang.jpg" style={{float:"right",
+                            <img src="https://s2.ax1x.com/2019/12/04/Q1N84U.jpg" style={{float:"right",
                                 width:50,height:70,paddingBottom:10}}/>
                                 妊娠纹怎么办
                                <List.Item.Brief style={{color:"#000"}}
@@ -65,14 +67,14 @@ export default class Reply extends Component {
                             <List.Item.Brief style={{paddingTop:10}}>丫丫妈妈
                                 <span style={{marginLeft:10}}>11月12日</span>
                                 <span  style={{marginLeft:20}} onClick={()=>{}}>
-                                    <img src="./images/shoucang.svg"/>
+                                    <img src="https://s2.ax1x.com/2019/12/04/Q1fu7T.png"/>
                                 </span>
                             </List.Item.Brief>
                         </List.Item>
                     </List>
                     <List style={{marginTop:10}}>
                         <List.Item style={{paddingTop:10}}>
-                            <img src="./images/touxiang.jpg" style={{float:"right",
+                            <img src="https://s2.ax1x.com/2019/12/04/Q1N84U.jpg" style={{float:"right",
                                 width:50,height:70,paddingBottom:10}}/>
                                妊娠纹要长躲不过,三个方法,帮助预防妊娠纹
                                 <List.Item.Brief style={{color:"#000"}}>
@@ -80,14 +82,14 @@ export default class Reply extends Component {
                             <List.Item.Brief style={{paddingTop:10}}>丫丫妈妈
                                 <span style={{marginLeft:10}}>11月12日</span>
                                 <span  style={{marginLeft:20}} onClick={()=>{}}>
-                                    <img src="./images/shoucang.svg"/>
+                                    <img src="https://s2.ax1x.com/2019/12/04/Q1fu7T.png"/>
                                 </span>
                             </List.Item.Brief>
                         </List.Item>
                     </List>
                     <List style={{marginTop:10}}>
                         <List.Item style={{paddingTop:10}}>
-                            <img src="./images/touxiang.jpg" style={{float:"right",
+                            <img src="https://s2.ax1x.com/2019/12/04/Q1N84U.jpg" style={{float:"right",
                                 width:50,height:70,paddingBottom:10}}/>
                                 产后身材恢复瑜伽怎么做
                                 <List.Item.Brief style={{color:"#000"}}>
@@ -95,14 +97,14 @@ export default class Reply extends Component {
                             <List.Item.Brief style={{paddingTop:10}}>丫丫妈妈
                                 <span style={{marginLeft:10}}>11月12日</span>
                                 <span  style={{marginLeft:20}} onClick={()=>{}}>
-                                    <img src="./images/shoucang.svg"/>
+                                    <img src="https://s2.ax1x.com/2019/12/04/Q1fu7T.png"/>
                                 </span>
                             </List.Item.Brief>
                         </List.Item>
                     </List>
                     <List style={{marginTop:10}}>
                         <List.Item style={{paddingTop:10}}>
-                            <img src="./images/touxiang.jpg" style={{float:"right",
+                            <img src="https://s2.ax1x.com/2019/12/04/Q1N84U.jpg" style={{float:"right",
                                 width:50,height:70,paddingBottom:10}}/>
                                 产后如何保健
                                 <List.Item.Brief style={{color:"#000"}}>
@@ -110,14 +112,14 @@ export default class Reply extends Component {
                             <List.Item.Brief style={{paddingTop:10}}>丫丫妈妈
                                 <span style={{marginLeft:10}}>11月12日</span>
                                 <span  style={{marginLeft:20}} onClick={()=>{}}>
-                                    <img src="./images/shoucang.svg"/>
+                                    <img src="https://s2.ax1x.com/2019/12/04/Q1fu7T.png"/>
                                 </span>
                             </List.Item.Brief>
                         </List.Item>
                     </List>
                     <List style={{marginTop:10}} onClick={()=>{console.log("11")}}>
                         <List.Item style={{paddingTop:10}}>
-                            <img src="./images/touxiang.jpg" style={{float:"right",
+                            <img src="https://s2.ax1x.com/2019/12/04/Q1N84U.jpg" style={{float:"right",
                                 width:50,height:70,paddingBottom:10}}/>
                                 产后修复体操的做法
                                 <List.Item.Brief style={{color:"#000"}}>
@@ -126,7 +128,7 @@ export default class Reply extends Component {
                             <List.Item.Brief style={{paddingTop:10}}>丫丫妈妈
                                 <span style={{marginLeft:10}}>11月12日</span>
                                 <span  style={{marginLeft:20}} onClick={()=>{}}>
-                                    <img src="./images/shoucang.svg"/>
+                                    <img src="https://s2.ax1x.com/2019/12/04/Q1fu7T.png"/>
                                 </span>
                             </List.Item.Brief>
                         </List.Item>

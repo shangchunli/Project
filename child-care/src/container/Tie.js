@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+<<<<<<< HEAD
 import { ImagePicker, WingBlank, SegmentedControl} from 'antd-mobile';
 import sui from './sui.css';
 const data = [];
@@ -43,8 +44,23 @@ export default class Sui extends Component {
                  ....
                  <p style={{paddingTop:'5%'}}>......................................................................................................................</p>
                  <button className='sui1' style={{marginLeft:'23%'}}>发表</button>
+=======
+import './sui.css';
+import Editor from './Add/Editor'
+import registerServiceWorker from './Add/registerServiceWorker'
+
+export default class Tie extends Component {
+    render() {
+        return (
+            <div >
+                <Editor/>
+>>>>>>> 76c6b92979baa468cbe2c7366b888da0149dffa6
             </div>
         )
     }
 }
+<<<<<<< HEAD
+=======
+registerServiceWorker();
+>>>>>>> 76c6b92979baa468cbe2c7366b888da0149dffa6
 
