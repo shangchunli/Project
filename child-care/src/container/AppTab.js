@@ -58,9 +58,10 @@ class AppTab extends React.Component {
                 this.setState({
                   selectedTab: 'home',
                 });
-                this.props.history.push('/home')
+                // this.props.history.push('/home')
                 
               }}
+              onClick={()=>{this.props.history.push('/home')}}
             >
               <AppHome/>
             </TabBar.Item>
@@ -86,8 +87,9 @@ class AppTab extends React.Component {
                 this.setState({
                   selectedTab: 'redTab',
                 });
-                this.props.history.push('/wiki')
+                // this.props.history.push('/wiki')
               }}
+              onClick={()=>{this.props.history.push('/wiki')}}
             >
               <Wiki/>
             </TabBar.Item>
@@ -113,8 +115,9 @@ class AppTab extends React.Component {
                 this.setState({
                   selectedTab: 'pinkTab',
                 });
-                this.props.history.push('/add')
+                // this.props.history.push('/add')
               }}
+              onClick={()=>{this.props.history.push('/add')}}
             >
               <Jia/>
             </TabBar.Item>
@@ -140,8 +143,9 @@ class AppTab extends React.Component {
                 this.setState({
                   selectedTab: 'greenTab',
                 });
-                this.props.history.push('/health')
+                // this.props.history.push('/health')
               }}
+              onClick={()=>{this.props.history.push('/health')}}
             >
               <Health/>
             </TabBar.Item>
@@ -168,8 +172,9 @@ class AppTab extends React.Component {
                 this.setState({
                   selectedTab: 'yellowTab',
                 });
-                this.props.history.push('/my')
+                // this.props.history.push('/my')
               }}
+              onClick={()=>{this.props.history.push('/my')}}
             >
               <My/>
             </TabBar.Item>
