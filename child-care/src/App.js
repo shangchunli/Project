@@ -82,8 +82,9 @@ export default class App extends Component {
                         <Route  exact path='/my/unique' component={Unique}/>
                         <Route  exact path='/my' component={My}/>
                         <Route path='/wiki/detail/:id' component={Detail}/>
+                        <Route path='/health/detail/:id' component={Detail}/>
                         <Route path='/home/detail/:id' component={Dairty}/>
-                        <Route path='/home/Message' component={Message}/>
+                        <Route path='/home/message' component={Message}/>
                         {/* <Route path='/wiki/nurse1/detail/:id' component={Detail}/>
                         <Route path='/wiki/babyfood/detail/:id' component={Detail}/>
                         <Route path='/wiki/chaowa/detail/:id' component={Detail}/>
