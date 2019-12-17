@@ -1,35 +1,32 @@
 import React, { Component } from 'react'
-// import { Flex } from 'antd-mobile';
+import {withRouter} from 'react-router-dom'
 import cookie from 'react-cookies'
 
 import { NavBar,List,Icon } from 'antd-mobile';
 
-// const Item = List.Item;
 
-export default class Inoculation extends Component {
+class Disease extends Component {
     constructor(){
         super();
         this.state={
             data:[],
             isKeep:false,
-            chapterId:[],
+            chapterid:[],
             userId:cookie.load('userId')
         }
     }
     
     change1=(idx,e)=>{
+        e.stopPropagation();
         let b=this.state.isKeep;
         this.setState({
             isKeep:!b,
-            chapterId:idx+1
-
+            chapterid:idx
         })
-        console.log(cookie.load('chapterId'));
-        cookie.save("chapterId",this.state.chapterId);
+        console.log(this.state.chapterid);
         if(this.state.isKeep==true){
             
-            e.target.src='https://s2.ax1x.com/2019/12/11/QrKe4s.png'
-            // alert(this.state.userId);
+            e.target.src='https://s2.ax1x.com/2019/12/11/QrKe4s.png '
            
                 fetch('http://192.168.43.217:5001/cookie',{
                         method: 'POST',//post请求 
@@ -38,7 +35,7 @@ export default class Inoculation extends Component {
                         }, 
                         body: JSON.stringify({
                             userId:this.state.userId,  
-                            chapterId:this.state.chapterId                    
+                            chapterId:this.state.chapterid                    
                         })                    
                 })
                 .then(res=>res.json())
@@ -46,14 +43,10 @@ export default class Inoculation extends Component {
                     console.log(res);
                    
                 })
-               
-           
         }else{
             e.target.src='https://s2.ax1x.com/2019/12/04/Q1fu7T.png'
         }
-        console.log(this.state.chapterId);
     }
-   
     componentDidMount(){
         fetch('http://192.168.43.217:5001/yimiao',{
             method: 'GET', 
@@ -71,43 +64,49 @@ export default class Inoculation extends Component {
        
     }
     too=(id)=>{
-        window.location.href='/wiki/detail/'+id;
+        console.log(id)
+        this.props.history.push('/wiki/detail/'+id);
     }
     render() {
         return (
             <div>
                 <List>
-                {
-                    (this.state.data||[]).map((item,idx)=>{
-                        return(
-                            <List id={item.chapterid} onClick={()=>this.too(item.chapterid)}>
-                                <List.Item style={{paddingTop:10,color:"#000"}}>
-                                    <List.Item.Brief style={{color:"#000",width:'75%',float:'left'}}>
-                                        {item.title}
-                                    </List.Item.Brief>
-                                    <img src="https://s2.ax1x.com/2019/12/04/Q1N84U.jpg"
-                                            style={{
-                                            width:'20%',height:'10%'}}
-                                    />
-                                    <List.Item.Brief >
-                                        丫丫妈妈
-                                        <span style={{marginLeft:10}}>11月12日</span>
-                                        <span  style={{marginLeft:20}} >
-                                            <img src={(cookie.load('chapterId')==idx+1)
-                                                    ?'https://s2.ax1x.com/2019/12/11/QrKe4s.png'
-                                                    :"https://s2.ax1x.com/2019/12/04/Q1fu7T.png"}
-                                                onClick={(e)=>this.change1(item.chapterid,e)} alt='收藏'/>
-                                        </span>
-                                    </List.Item.Brief>
-                                </List.Item>
-                            </List>
-                        )
-                    })
-                }
+                    {
+                        (this.state.data||[]).map((item,idx)=>{
+                            return(
+                                <List id={item.chapterid} onClick={()=>this.too(item.chapterid)}>
+                                    <List.Item style={{paddingTop:10,color:"#000"}}>
+                                               
+                                        <List.Item.Brief style={{color:"#000",width:'75%',float:'left'}}>
+                                            {item.title}
+                                        </List.Item.Brief>
+                                        <img src="https://s2.ax1x.com/2019/12/04/Q1N84U.jpg"
+                                                style={{
+                                                width:'20%',height:'10%'}}
+                                        />
+                                        <List.Item.Brief >
+                                            丫丫妈妈
+                                            <span style={{marginLeft:10}}>11月12日</span>
+                                            <span  style={{marginLeft:20}} >
+                                                <img 
+                                                    ref='tab'
+                                                    id={item.chapterid}
+                                                    src={(cookie.load('chapterId'))
+                                                        ?'https://s2.ax1x.com/2019/12/11/QrKe4s.png'
+                                                        :"https://s2.ax1x.com/2019/12/04/Q1fu7T.png"}
+                                                    onClick={(e)=>this.change1(item.chapterid,e)} alt='收藏'/>
+                                            </span>
+                                            {/* {item.chapterid} */}
+                                        </List.Item.Brief>
+                                    </List.Item>
+                                </List>
+                            )
+                        })
+                    }
                 </List>
-        </div>
-          
-           
+            </div>
         )
     }
 }
+export default withRouter(Disease);
+
