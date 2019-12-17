@@ -3,7 +3,7 @@ import './editor.css';
 import E from 'wangeditor'
 import {Button,Accordion,List, WhiteSpace} from 'antd-mobile'
 import cookie from 'react-cookies'
- 
+
 console.log(cookie.load('userId'));
 class Editor extends Component {
   constructor(props, context) {
@@ -146,7 +146,10 @@ class Editor extends Component {
   })
   .then(res=>res.text())
   .then((res)=>{
-    console.log(res);
+    // console.log(res);
+    if(res='发表成功'){
+      window.location.href=/home/;
+    }
   })
   }
 }

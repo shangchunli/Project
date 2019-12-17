@@ -2,15 +2,16 @@ import React, { Component } from 'react'
 import { NavBar,Tabs,Card,Icon} from 'antd-mobile';
 import Disease from './Disease'
 import Inoculation from './Inoculation'
+import {withRouter} from 'react-router-dom'
 
 const tabs = [
     { title: '常见疾病' },
     { title: '疫苗接种' }
   ];
 
-export default class Nurse extends Component {
+class Nurse extends Component {
     goBack=()=>{
-        window.history.go(-1);
+        this.props.history.go(-1);
     }
     render() {
         return (
@@ -42,3 +43,5 @@ export default class Nurse extends Component {
         )
     }
 }
+
+export default withRouter(Nurse);

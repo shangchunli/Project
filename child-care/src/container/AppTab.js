@@ -5,6 +5,7 @@ import Wiki from './Wiki';
 import My from './My';
 import Health from './Health'
 import Jia from './Jia'
+import {withRouter} from 'react-router-dom'
 
 let str;
 if(window.location.pathname=="/wiki"){
@@ -18,7 +19,7 @@ if(window.location.pathname=="/wiki"){
 }else if(window.location.pathname=="/health"){
   str="greenTab"
 }
-export default class AppTab extends React.Component {
+class AppTab extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -57,9 +58,12 @@ export default class AppTab extends React.Component {
                 this.setState({
                   selectedTab: 'home',
                 });
-                window.location.href='/home'
+                //this.props.history.push('/home')
                 
               }}
+              onClick={()=>{
+                  this.props.history.push('/home')
+               }}
             >
               <AppHome/>
             </TabBar.Item>
@@ -85,8 +89,11 @@ export default class AppTab extends React.Component {
                 this.setState({
                   selectedTab: 'redTab',
                 });
-                window.location.href='/wiki'
+//                 this.props.history.push('/wiki')
               }}
+              onClick={()=>{
+                  this.props.history.push('/wiki')
+               }}
             >
               <Wiki/>
             </TabBar.Item>
@@ -112,8 +119,11 @@ export default class AppTab extends React.Component {
                 this.setState({
                   selectedTab: 'pinkTab',
                 });
-                window.location.href='/add'
+//                 this.props.history.push('/add')
               }}
+              onClick={()=>{
+                  this.props.history.push('/add')
+               }}
             >
               <Jia/>
             </TabBar.Item>
@@ -139,8 +149,11 @@ export default class AppTab extends React.Component {
                 this.setState({
                   selectedTab: 'greenTab',
                 });
-                window.location.href='/health'
+//                 this.props.history.push('/health')
               }}
+              onClick={()=>{
+                  this.props.history.push('/health')
+               }}
             >
               <Health/>
             </TabBar.Item>
@@ -167,8 +180,11 @@ export default class AppTab extends React.Component {
                 this.setState({
                   selectedTab: 'yellowTab',
                 });
-                window.location.href='/my'
+//                 this.props.history.push('/my')
               }}
+              onClick={()=>{
+                  this.props.history.push('/my')
+               }}
             >
               <My/>
             </TabBar.Item>
@@ -178,3 +194,4 @@ export default class AppTab extends React.Component {
     );
   }
 }
+export default withRouter(AppTab);

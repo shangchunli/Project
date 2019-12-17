@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
-
+import {withRouter} from 'react-router-dom'
 import cookie from 'react-cookies'
 
 import { NavBar,List,Icon } from 'antd-mobile';
 
 
-export default class Disease extends Component {
+class Disease extends Component {
     constructor(){
         super();
         this.state={
@@ -65,7 +65,7 @@ export default class Disease extends Component {
     }
     too=(id)=>{
         console.log(id)
-        window.location.href='/wiki/detail/'+id;
+        this.props.history.push('/wiki/detail/'+id);
     }
     render() {
         return (
@@ -96,7 +96,7 @@ export default class Disease extends Component {
                                                         :"https://s2.ax1x.com/2019/12/04/Q1fu7T.png"}
                                                     onClick={(e)=>this.change1(item.chapterid,e)} alt='收藏'/>
                                             </span>
-                                            {item.chapterid}
+                                            {/* {item.chapterid} */}
                                         </List.Item.Brief>
                                     </List.Item>
                                 </List>
@@ -108,3 +108,4 @@ export default class Disease extends Component {
         )
     }
 }
+export default withRouter(Disease);
