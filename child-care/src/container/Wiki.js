@@ -80,19 +80,19 @@ class Parental extends Component {
                 </div>
                 <WhiteSpace />
                 <div style={{ height: 85, border: 'solid 0.1px ', borderRadius: 10, background: 'white', padding: 10 }}>
-                    <h3>制作辅食别少了这一步，真的会<br />长不高！！</h3>
+                    <h3 onClick={() => { this.handle('Baike1') }}>制作辅食别少了这一步，真的会<br />长不高！！</h3>
                     <img style={{ width: 50, height: 55, float: 'right', marginTop: -35 }} src="./images/baike/tiezi.png" />
                     <p style={{ marginTop: 7, color: '#bbb' }}>小美 发表于 11月12日</p>
                 </div>
                 <WhiteSpace />
                 <div style={{ height: 85, border: 'solid 0.1px ', borderRadius: 10, background: 'white', padding: 10 }}>
-                    <h3>喝骨头汤补钙不如喝白开水，食<br />补补钙第一名竟是它！</h3>
+                    <h3 onClick={() => { this.handle('Baike2') }}>喝骨头汤补钙不如喝白开水，食<br />补补钙第一名竟是它！</h3>
                     <img style={{ width: 50, height: 55, float: 'right', marginTop: -35 }} src="./images/baike/tiezi.png" />
                     <p style={{ marginTop: 7, color: '#bbb' }}>小美 发表于 11月12日</p>
                 </div>
                 <WhiteSpace />
                 <div style={{ height: 85, border: 'solid 0.1px ', borderRadius: 10, background: 'white', padding: 10 }}>
-                    <h3>宝宝辅食不求人,两个蛋黄就做一<br />大盘蛋黄溶豆，再也不用花钱...</h3>
+                    <h3 onClick={() => { this.handle('Baike3') }}>宝宝辅食不求人,两个蛋黄就做一<br />大盘蛋黄溶豆，再也不用花钱...</h3>
                     <img style={{ width: 50, height: 55, float: 'right', marginTop: -35 }} src="./images/baike/tiezi.png" />
                     <p style={{ marginTop: 7, color: '#bbb' }}>小美 发表于 11月12日</p>
                 </div>

@@ -47,6 +47,10 @@ import Register from './container/Register'
 import Detail from './container/Detail'
 import Dairty from './container/home/Dairty'
 import Message from './container/home/Message'
+//wiki百科详情页
+import Baike1 from './container/wiki/Baike1'
+import Baike2 from './container/wiki/Baike2'
+import Baike3 from './container/wiki/Baike3'
 export default class App extends Component {
     render() {
         return (
@@ -85,6 +89,9 @@ export default class App extends Component {
                         <Route path='/health/detail/:id' component={Detail}/>
                         <Route path='/home/detail/:id' component={Dairty}/>
                         <Route path='/home/message' component={Message}/>
+                        <Route exact path='/wiki/baike1'component={Baike1}/>
+                        <Route exact path='/wiki/baike2'component={Baike2}/>
+                        <Route exact path='/wiki/baike3'component={Baike3}/>
                         {/* <Route path='/wiki/nurse1/detail/:id' component={Detail}/>
                         <Route path='/wiki/babyfood/detail/:id' component={Detail}/>
                         <Route path='/wiki/chaowa/detail/:id' component={Detail}/>
