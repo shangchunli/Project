@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
 // import Health from './Health.css'
 import { Carousel, WingBlank ,Flex,WhiteSpace,List,NavBar,Icon} from 'antd-mobile';
+import {withRouter} from 'react-router-dom'
 
 const Item = List.Item;
 const Brief = Item.Brief;
 
-export default class Dynamics extends Component {
+class Dynamics extends Component {
     constructor(){    
         super();
         this.state = {
@@ -34,7 +35,7 @@ export default class Dynamics extends Component {
         })
     }
     handle=(pathname)=>{
-        window.location.href="/health/"+pathname;
+        this.props.history.push("/health/"+pathname);
     }
     render() {
         return (
@@ -161,3 +162,4 @@ export default class Dynamics extends Component {
         )
     }
 }
+export default withRouter(Dynamics);

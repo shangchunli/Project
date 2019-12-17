@@ -2,12 +2,12 @@ import React, { Component } from 'react'
 import { NavBar, Icon,List} from 'antd-mobile';
 import '../Wiki.css'
 import cookie from 'react-cookies'
+import {withRouter} from 'react-router-dom'
 
 
-
-export default class Chaowa extends Component {
+class Chaowa extends Component {
     goBack=()=>{
-        window.history.go(-1);
+        this.props.history.go(-1);
     }
     constructor(){
         super();
@@ -20,13 +20,14 @@ export default class Chaowa extends Component {
     }
     
     change1=(idx,e)=>{
+        e.stopPropagation();
         let b=this.state.isKeep;
         this.setState({
             isKeep:!b,
-            chapterId:idx+1
+            chapterId:idx
         })
-        console.log(cookie.load('chapterId'));
-        cookie.save("chapterId",this.state.chapterId);
+        console.log(this.state.chapterId);
+        // cookie.save("chapterId",this.state.chapterId);
         if(this.state.isKeep==true){
             
             e.target.src='https://s2.ax1x.com/2019/12/11/QrKe4s.png'
@@ -52,7 +53,7 @@ export default class Chaowa extends Component {
         }else{
             e.target.src='https://s2.ax1x.com/2019/12/04/Q1fu7T.png'
         }
-        console.log(this.state.chapterId);
+        // console.log(this.state.chapterId);
     }
    
     componentDidMount(){
@@ -72,6 +73,9 @@ export default class Chaowa extends Component {
         })
        
     }
+    too=(id)=>{
+        this.props.history.push('/wiki/detail/'+id);
+    }
     render() {
         return (
             <div>
@@ -89,7 +93,7 @@ export default class Chaowa extends Component {
                                 (this.state.data||[]).map((item,idx)=>{
                                   
                                     return(
-                                        <List>
+                                        <List onClick={()=>this.too(item.chapterid)}>
                                             <List.Item style={{paddingTop:10,color:"#000"}}>
                                                
                                                 <List.Item.Brief style={{color:"#000",width:'75%',float:'left'}}>
@@ -105,10 +109,10 @@ export default class Chaowa extends Component {
                                                     丫丫妈妈
                                                     <span style={{marginLeft:10}}>11月12日</span>
                                                     <span  style={{marginLeft:20}} >
-                                                        <img src={(cookie.load('chapterId')==idx+1)
+                                                        <img src={(cookie.load('chapterId'))
                                                                 ?'https://s2.ax1x.com/2019/12/11/QrKe4s.png'
                                                                 :"https://s2.ax1x.com/2019/12/04/Q1fu7T.png"}
-                                                            onClick={(e)=>this.change1(idx,e)} alt='收藏'/>
+                                                            onClick={(e)=>this.change1(item.chapterid,e)} alt='收藏'/>
                                                         {/* {cookie.load('chapterId')} */}
                                                     </span>
                                                 </List.Item.Brief>
@@ -118,43 +122,9 @@ export default class Chaowa extends Component {
                                 })
                             }
                         </List>
-                {/* <li style={{marginTop:'5%',marginLeft:'9%'}}>    
-                    <div className='tiezi'style={{ }}>
-                        <img  src='https://s2.ax1x.com/2019/12/04/Q1tlfe.jpg'/>
-                    <p>潮娃穿搭指南，10岁裴佳欣甜美型</p>
-                    <img style={{height:20,width:20,float:'right',marginTop:-30,marginRight:10}}  
-                    src='https://s2.ax1x.com/2019/12/04/Q1fu7T.png' />
-                    </div>
-                    <div className='tiezi'style={{ }}>
-                    <img  src='https://s2.ax1x.com/2019/12/04/Q1tlfe.jpg'/>
-                        <p>跟着潮娃学穿搭，新春挑款攻略一网打尽</p>
-                        <img style={{height:20,width:20,float:'right',marginTop:-50,marginRight:10}}  
-                    src='https://s2.ax1x.com/2019/12/04/Q1fu7T.png' />
-                    </div>
-                    <div className='tiezi'style={{}}>
-                    <img  src='https://s2.ax1x.com/2019/12/04/Q1tlfe.jpg'/>
-                        <p>London Scout 的时尚穿搭</p>
-                        <img style={{height:20,width:20,float:'right',marginTop:-30,marginRight:10}}  
-                    src='https://s2.ax1x.com/2019/12/04/Q1fu7T.png' />                    </div>
-                    <div className='tiezi'style={{}}>
-                    <img  src='https://s2.ax1x.com/2019/12/04/Q1tlfe.jpg'/>
-                        <p>潮娃穿搭风格</p>
-                        <img style={{height:20,width:20,float:'right',marginTop:-20,marginRight:10}}  
-                    src='https://s2.ax1x.com/2019/12/04/Q1fu7T.png' />                    </div>
-                    <div className='tiezi'style={{ }}>
-                    <img  src='https://s2.ax1x.com/2019/12/04/Q1tlfe.jpg'/>
-                        <p>潮娃穿搭风格</p>
-                        <img style={{height:20,width:20,float:'right',marginTop:-20,marginRight:10}}  
-                    src='https://s2.ax1x.com/2019/12/04/Q1fu7T.png' />                    </div>
-                    <div className='tiezi'style={{ }}>
-                    <img  src='https://s2.ax1x.com/2019/12/04/Q1tlfe.jpg'/>
-                        <p>潮娃穿搭风格</p>
-                        <img style={{height:20,width:20,float:'right',marginTop:-20,marginRight:10}}  
-                    src='https://s2.ax1x.com/2019/12/04/Q1fu7T.png' />                    </div>
-
-                </li> */}
             </div>
                
         )
     }
 }
+export default withRouter(Chaowa);

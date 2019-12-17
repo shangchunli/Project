@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
 import {ImagePicker, SegmentedControl,List,WingBlank,Button} from "antd-mobile"
 import "./Health.css"
+import {withRouter} from 'react-router-dom'
 
 const data = [];
-export default class Register extends Component {
+class Register extends Component {
     constructor(){
         super();
         this.state={
@@ -174,6 +175,8 @@ export default class Register extends Component {
         )
     }
 }
+
+export default withRouter(Register);
 
 
 

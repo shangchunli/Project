@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { NavBar, Icon, Flex, Tabs, WhiteSpace, Badge } from 'antd-mobile';
 import './Wiki.css'
+import {withRouter} from 'react-router-dom'
 
 const tabs = [
     { title: <Badge >宝宝护理</Badge> },
@@ -9,10 +10,10 @@ const tabs = [
     { title: <Badge >宝宝饮食</Badge> },
 ];
 
-export default class Parental extends Component {
+class Parental extends Component {
 
     handle = (pathname) => {
-        window.location.href = "/wiki/" + pathname;
+        this.props.history.push( "/wiki/" + pathname);
     }
     render() {
         return (
@@ -102,5 +103,6 @@ export default class Parental extends Component {
     }
 }
 
+export default withRouter(Parental);
 
 

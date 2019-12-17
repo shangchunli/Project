@@ -7,6 +7,9 @@
     <title>Document</title>
 </head>
 <style>
+    *{
+        margin:0;
+    }
     td{
         width:200px;
         white-space: nowrap;/*控制单行显示*/
@@ -16,10 +19,16 @@
         text-overflow: ellipsis;/*隐藏的字符用省略号表示*/
     }
 </style>
-<body  style='background: url(./images/timg.jpg) no-repeat; background-size: cover;'>
-        <div contenteditable="true">ssss</div>
-    <div style="background:#8ecfec;height:500px;width:80%;margin-left:10%;margin-top:50px">
-        <div style="float:left;width:18%;height:500px;background:rgb(218, 218, 218)">
+<!-- style='background: url(./images/timg.jpg) no-repeat; background-size: cover;' -->
+<body  >
+        <!-- <div contenteditable="true">ssss
+            <img src='./images/timg.jpg' />
+        </div> -->
+        <div style="background:#8ecfec;height:50px;width:100%;padding:25px;padding-left:50px;">
+            <h1>呦呦育儿后台管理系统</h1>
+        </div>
+    <div style="background:#8ecfec;width:80%;margin-left:10%;margin-top:50px">
+        <div style="float:left;width:18%;background:rgb(218, 218, 218)">
             <ul style="margin-top:80px;font-size:20px;">
                 <li onclick="tohome()" style="margin-left:-10px;list-style:none;margin-top:10px;color:grey">首页</li>
                 <li onclick="touserslist()" style="margin-left:-10px;list-style:none;margin-top:10px;color:grey">用户管理</li>
@@ -30,7 +39,7 @@
                 <li onclick="tologin()" style="margin-left:-10px;list-style:none;margin-top:10px;color:grey">退出登录</li>
             </ul>
         </div>
-        <div style='float:left;width:82%;height:500px;'>
+        <div style='float:left;width:82%;'>
             <table style="text-align:center;table-layout: fixed;padding:60px; margin-top:10px">
                 <tr style="margin-bottom:10px">
                     <td>帖子id</td>
@@ -43,7 +52,7 @@
                         <td><%=usersList[i]["chapterid"] %></td>
                         <td> <%= usersList[i]["title"] %></td>
                         <td style="-webkit-line-clamp: 2;"><%= usersList[i]["content"] %></td>
-                        <td><a href="/del?id=<%= usersList[i]['id'] %>">删除</a></td>
+                        <td><a href="/delchap?<%= usersList[i]['chapterid'] %>">删除</a></td>
                     </tr>
                 <% } %>
             </table>

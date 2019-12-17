@@ -1,9 +1,11 @@
 import React, { Component } from 'react'
 import {NavBar,Icon,List} from 'antd-mobile';
 import cookie from 'react-cookies'
-export default class BabyFood extends Component {
+import {withRouter} from 'react-router-dom'
+
+class BabyFood extends Component {
     goBack=()=>{
-        window.history.go(-1);
+        this.props.history.go(-1);
     }
     constructor(){
         super();
@@ -23,8 +25,8 @@ export default class BabyFood extends Component {
             chapterId:idx
 
         })
-        console.log(cookie.load('chapterId'));
-        cookie.save("chapterId",this.state.chapterId);
+        console.log(this.state.chapterId);
+        // cookie.save("chapterId",this.state.chapterId);
         if(this.state.isKeep==true){
             
             e.target.src='https://s2.ax1x.com/2019/12/11/QrKe4s.png'
@@ -47,7 +49,7 @@ export default class BabyFood extends Component {
         }else{
             e.target.src='https://s2.ax1x.com/2019/12/04/Q1fu7T.png'
         }
-        console.log(this.state.chapterId);
+        // console.log(this.state.chapterId);
     }
    
     componentDidMount(){
@@ -67,7 +69,7 @@ export default class BabyFood extends Component {
        
     }
     too=(id)=>{
-        window.location.href='/wiki/detail/'+id;
+        this.props.history.push('/wiki/detail/'+id);
     }
     render() {
         return (
@@ -118,3 +120,4 @@ export default class BabyFood extends Component {
         )
     }
 }
+export default withRouter(BabyFood);

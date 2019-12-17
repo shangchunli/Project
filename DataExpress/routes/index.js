@@ -165,7 +165,7 @@ router.get('/yiyu',function(req,res,next){
 router.get('/huli',function(req,res,next){
   var con = mysql.createConnection(dbconfig);
   con.connect();
-  con.query('select chapterid,title,content,owner,time  from chapters where tab="孕期护理"',function(err,result){
+  con.query('select chapterid,title,content,owner,time  from chapters where tab="妈妈护理"',function(err,result){
     if(err){
       console.log(err)
     }else{
@@ -229,8 +229,8 @@ router.post('/addchapters',function(req,res,next){
   var title = req.body.title;
   var content = req.body.content;
   var tab = req.body.tabs;
-  var time = new Date().getFullYear()+'/'+'12/'+new Date().getDate()+'/'
-  +new Date().getHours()+":"+new Date().getMinutes()+":"+new Date().getSeconds();
+  var time = new Date().getFullYear()+'/'+'12/'+new Date().getDate()+"  "
+  +new Date().getHours()+":"+new Date().getMinutes();
   var con = mysql.createConnection(dbconfig);
   con.connect();
   con.query("insert into chapters(title,content,tab,time) value(?,?,?,?)",[title,content,tab,time],function(err,result){
@@ -238,34 +238,26 @@ router.post('/addchapters',function(req,res,next){
       console.log(err);
     }else{
       console.log(result);
+      res.send('发表成功')
     }
   })
-  console.log(req.body);
-  res.send('hehe');
 })
-//用户发随想
-router.post('/addcaprice',function(req,res,next){
-  var cowner = req.body.userId;
-  var ccontent = req.body.content;
-  var cimage=req.body.files.files[0].url;
-  var ctime =new Date().getFullYear()+'年'+'12月'+new Date().getDate()+'日'
-  +new Date().getHours()+":"+new Date().getMinutes()+":"+new Date().getSeconds();
-  var img=cowner;
-  var con = mysql.createConnection(dbconfig);
-  con.connect();
-  con.query("insert into caprice(cowner,ccontent,ctime,cimage) value(?,?,?,?)",
-      [cowner,ccontent,ctime,img],
-      function(err,result){
-        if(err){
-          console.log(err)
-        }else{
-          res.send('hehe');
-        }
-      })
-  
-  var base64Data = cimage.replace(/^data:image\/\w+;base64,/, "");
-  var dataBuffer = Buffer.from(base64Data, 'base64');
-  var he = fs.statSync(path.join(__dirname,'./server/caprice/'+cowner));
+// 用户发帖的图片上传到服务器
+router.post('/chapterimg',function(req,res,next){
+  console.log(2);
+  console.log(req.body);
+
+  res.send(
+    {
+      'errno':0,
+      'data':[
+        "/server/chapters/1/1.jpg"
+      ]
+    }
+  )
+  // var base64Data = cimage.replace(/^data:image\/\w+;base64,/, "");
+  // var dataBuffer = Buffer.from(base64Data, 'base64');
+  // var he = fs.statSync(path.join(__dirname,'./server/caprice/'+cowner));
     console.log(he);
     // fs.mkdir('./server/caprice/'+cowner+'',function(error){
     //   if(error){
@@ -275,7 +267,37 @@ router.post('/addcaprice',function(req,res,next){
     //   console.log('创建目录成功');
     // })
 
-    fs.writeFile('./server/caprice/'+cowner+'/'+ctime+'.png', dataBuffer, function(err) {
+    // fs.writeFile('./server/caprice/'+cowner+'/'+ctime+'.png', dataBuffer, function(err) {
+    //     if(err){
+    //       console.log(err);
+    //     }else{
+    //       console.log("保存成功！");
+    //       console.log(__dirname)
+    //     }
+})
+//用户发随想
+var he = fs.existsSync('./server/caprice/12'
+);
+console.log(he)
+ 
+router.post('/addcaprice',function(req,res,next){
+  var cowner = req.body.userId;
+  var ccontent = req.body.content;
+  var cimage=req.body.files.files[0].url;
+  var ctime =new Date().getFullYear()+'年'+'12月'+new Date().getDate()+'日'
+  +new Date().getHours()+":"+new Date().getMinutes()+":"+new Date().getSeconds();
+  var base64Data = cimage.replace(/^data:image\/\w+;base64,/, "");
+  var dataBuffer = Buffer.from(base64Data, 'base64');
+  
+    fs.mkdir('./server/caprice/'+cowner+'',function(error){
+      if(error){
+          console.log(error);
+          return false;
+      }
+      console.log('创建目录成功');
+    })
+
+    fs.writeFile('./server/caprice/'+cowner+'/'+cowner+'.png', dataBuffer, function(err) {
         if(err){
           console.log(err);
         }else{
@@ -283,8 +305,23 @@ router.post('/addcaprice',function(req,res,next){
           console.log(__dirname)
         }
     });
-  res.send("ee");
+  
+  // var con = mysql.createConnection(dbconfig);
+  // con.connect();
+  // con.query("insert into caprice(cowner,ccontent,ctime,cimage) value(?,?,?,?)",
+  //     [cowner,ccontent,ctime,img],
+  //     function(err,result){
+  //       if(err){
+  //         console.log(err)
+  //       }else{
+          res.send('hehe');
+  //       }
+  //     })
+  
+ 
 })
+              // var userAddSql_Params = ['path', "/upload/" + fName];
+             
 //随想渲染
 router.post('/caprice',function(req,res,next){
   var user = req.body.userId;
@@ -365,6 +402,20 @@ router.post('/addbaby',function(req,res,next){
       }
     })
 })
+//我的宝宝渲染
+router.post('/mybaby',function(req,res,next){
+  var tel = req.body.userId;
+  var con = mysql.createConnection(dbconfig);
+  con.connect();
+  con.query('select babyid,babyname,birthyear,birthmonth,birthday,sex,height,weight from  mybaby where telphone =?',tel,function(err,result){
+    if(err){
+      console.log(err);
+    }else{
+      console.log(result);
+      res.send(result);
+    }
+  })
+})
 
 
 
@@ -419,7 +470,7 @@ router.get('/usersList',function(req,res,next){
 })
 //删除已注册用户信息，同时删除数据库内信息
 router.get('/del',function(req,res,next){
-  var id = req.query.id;
+  var id = req.query.chapterid;
   var con = mysql.createConnection(dbconfig);
   con.connect();
   con.query("delete from register where id =?",[id],function(err,result){
@@ -443,6 +494,20 @@ router.get('/chapter',function(req,res,next){
       res.render('chapter',{usersList:result})
     }
   })
+})
+//删除已发表帖子信息，同时删除数据库内信息
+router.get('/delchap',function(req,res,next){
+  var id = req.query.id;console.log(id);
+  // var con = mysql.createConnection(dbconfig);
+  // con.connect();
+  // con.query("delete from register where id =?",[id],function(err,result){
+  //   if(err){
+  //     console.log(err)
+  //   }else{
+  //     res.end('shanle')
+
+  //   }
+  // })
 })
 //系统管理
 router.get('/system',function(req,res,next){

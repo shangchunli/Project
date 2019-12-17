@@ -48,9 +48,6 @@ export default class Message extends Component {
         height:'22',
         weight:'22'
       }
-      goBack=()=>{
-        window.history.go(-1);
-      }
       onChangeSex = (sexs) => {
         this.setState({
           sexValue: sexs,
@@ -100,7 +97,7 @@ export default class Message extends Component {
                     width:"100%"
                 }}
                 >
-                    设置宝宝信息
+                    宝宝信息
                 </NavBar>
                 <div style={{marginTop:70}}>
                     

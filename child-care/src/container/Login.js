@@ -2,8 +2,9 @@ import React, { Component } from 'react'
 import "./Health.css"
 import {Flex} from "antd-mobile"
 import cookie from 'react-cookies'
+import {withRouter} from 'react-router-dom'
 // console.log()
-export default class Login extends Component {
+class Login extends Component {
     constructor(props){
         super(props);
         this.state={
@@ -13,7 +14,7 @@ export default class Login extends Component {
         }
     }
     handle=(pathname)=>{
-        window.location.href="/reg";
+        this.props.history.push("/reg");
     }
     inputChange=()=>{
         let val1=this.refs.username.value;
@@ -24,7 +25,6 @@ export default class Login extends Component {
         })
     }
     loginn=()=>{
-        alert(11111)
         let i=0;
         fetch("http://192.168.43.217:5001/yhlogin",{
             method:'POST',
@@ -41,7 +41,7 @@ export default class Login extends Component {
             console.log(res)
             if(res=='success'){
                 alert("登录成功")
-                window.location.href="/home";
+                this.props.history.push("/home");
                 cookie.save('userId',this.state.tel);
             }else{
                 alert("登陆失败")
@@ -80,3 +80,4 @@ export default class Login extends Component {
         )
     }
 }
+export default withRouter(Login);

@@ -8,6 +8,7 @@ function Show(){
     var date = new Date(); //日期对象
 =======
 import cookie from 'react-cookies'
+<<<<<<< HEAD
 import {NavBar,Icon, List} from "antd-mobile"
 let str=<h3>快来设置宝贝信息吧</h3>;
 str=<div>
@@ -46,6 +47,14 @@ export default class AppHome extends Component {
     return time; 
     }
 export default class AppHome extends Component {
+=======
+import {NavBar,Icon} from "antd-mobile"
+import {withRouter} from 'react-router-dom'
+let str='快来设置宝贝信息吧';
+
+
+class AppHome extends Component {
+>>>>>>> 520e1981d781fa7dc8cb91d1f35c1cb826613f1e
     constructor(props){
         super(props);
         this.state={
@@ -70,6 +79,7 @@ export default class AppHome extends Component {
            data:str
        })
     })
+<<<<<<< HEAD
     fetch('http://192.168.43.217:5001/mybaby',{
             method: 'POST',//post请求 
             headers: { 
@@ -84,9 +94,14 @@ export default class AppHome extends Component {
         console.log(res)
     })
 >>>>>>> 76c6b92979baa468cbe2c7366b888da0149dffa6
+=======
+   
+>>>>>>> 520e1981d781fa7dc8cb91d1f35c1cb826613f1e
     }
     handle=(pathname)=>{
-        window.location.href="/home/"+pathname;
+        // window.location.href="/home/"+pathname;
+        console.log(this.props);
+        this.props.history.push('/home/'+pathname);
     }
 <<<<<<< HEAD
         
@@ -95,7 +110,7 @@ export default class AppHome extends Component {
    
 =======
     toDetail=(id)=>{
-        window.location.href='/home/detail/'+id;
+        this.props.history.push('/home/detail/'+id);
 
     }
 >>>>>>> 76c6b92979baa468cbe2c7366b888da0149dffa6
@@ -116,6 +131,7 @@ export default class AppHome extends Component {
                         呦呦育儿
                 </NavBar>
 <<<<<<< HEAD
+<<<<<<< HEAD
                 <div className='shouye2'style={{marginTop:50,
                     background:'url("https://s2.ax1x.com/2019/12/10/QBR4bT.jpg")',backgroundSize:'cover',opacity:'0.9'}}>
                     <p className='shouye9'style={{color:'white',paddingLeft:'10%',paddingTop:'15%',float:'left'}}>宝宝今天:<Show/></p>
@@ -126,22 +142,23 @@ export default class AppHome extends Component {
                     />
 =======
               <div className='shouye2'style={{marginTop:50, 
+=======
+              <div className='shouye2'style={{marginTop:50,
+>>>>>>> 520e1981d781fa7dc8cb91d1f35c1cb826613f1e
                     background:'url("https://s2.ax1x.com/2019/12/10/QBR4bT.jpg")',
                     backgroundSize:'cover',opacity:'0.9'}}>
-                           
-                            <List.Item style={{
-                                backgroundColor:'transparent'}}>
-                    <div  style={{paddingLeft:'20%',color:'white',
-                    paddingTop:'5%',float:'left'}}>
-                       {str}
-                    </div>
+                    <p className='shouye9'style={{color:'white',paddingLeft:'10%',
+                    paddingTop:'15%',float:'left'}}>{str}</p>
                     <img 
-                        style={{float:'left',marginLeft:'5%',marginTop:'5%'}}
+                        style={{paddingTop:'18%'}}
                         src='https://s2.ax1x.com/2019/12/10/QB4ryn.png'
-                        onClick={()=>{this.handle('Message')}}
+                        onClick={()=>{this.handle('message')}}
                     />
+<<<<<<< HEAD
                     </List.Item>
 >>>>>>> 76c6b92979baa468cbe2c7366b888da0149dffa6
+=======
+>>>>>>> 520e1981d781fa7dc8cb91d1f35c1cb826613f1e
                 </div>
                     <div onClick={()=>{this.handle('picture')}}
                     style={{float:'left',paddingLeft:'8%',backgroundColor:'white'}}>
@@ -246,3 +263,4 @@ export default class AppHome extends Component {
         )
     }
 }
+export default withRouter(AppHome);
