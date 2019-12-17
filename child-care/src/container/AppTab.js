@@ -5,6 +5,7 @@ import Wiki from './Wiki';
 import My from './My';
 import Health from './Health'
 import Jia from './Jia'
+import {withRouter} from 'react-router-dom'
 
 let str;
 if(window.location.pathname=="/wiki"){
@@ -18,7 +19,7 @@ if(window.location.pathname=="/wiki"){
 }else if(window.location.pathname=="/health"){
   str="greenTab"
 }
-export default class AppTab extends React.Component {
+class AppTab extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -57,7 +58,7 @@ export default class AppTab extends React.Component {
                 this.setState({
                   selectedTab: 'home',
                 });
-                window.location.href='/home'
+                this.props.history.push('/home')
                 
               }}
             >
@@ -85,7 +86,7 @@ export default class AppTab extends React.Component {
                 this.setState({
                   selectedTab: 'redTab',
                 });
-                window.location.href='/wiki'
+                this.props.history.push('/wiki')
               }}
             >
               <Wiki/>
@@ -112,7 +113,7 @@ export default class AppTab extends React.Component {
                 this.setState({
                   selectedTab: 'pinkTab',
                 });
-                window.location.href='/add'
+                this.props.history.push('/add')
               }}
             >
               <Jia/>
@@ -139,7 +140,7 @@ export default class AppTab extends React.Component {
                 this.setState({
                   selectedTab: 'greenTab',
                 });
-                window.location.href='/health'
+                this.props.history.push('/health')
               }}
             >
               <Health/>
@@ -167,7 +168,7 @@ export default class AppTab extends React.Component {
                 this.setState({
                   selectedTab: 'yellowTab',
                 });
-                window.location.href='/my'
+                this.props.history.push('/my')
               }}
             >
               <My/>
@@ -178,3 +179,4 @@ export default class AppTab extends React.Component {
     );
   }
 }
+export default withRouter(AppTab);
