@@ -23,8 +23,8 @@ export default class BabyFood extends Component {
             chapterId:idx
 
         })
-        console.log(cookie.load('chapterId'));
-        cookie.save("chapterId",this.state.chapterId);
+        console.log(this.state.chapterId);
+        // cookie.save("chapterId",this.state.chapterId);
         if(this.state.isKeep==true){
             
             e.target.src='https://s2.ax1x.com/2019/12/11/QrKe4s.png'
@@ -47,7 +47,7 @@ export default class BabyFood extends Component {
         }else{
             e.target.src='https://s2.ax1x.com/2019/12/04/Q1fu7T.png'
         }
-        console.log(this.state.chapterId);
+        // console.log(this.state.chapterId);
     }
    
     componentDidMount(){

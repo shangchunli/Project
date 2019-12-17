@@ -20,13 +20,14 @@ export default class Chaowa extends Component {
     }
     
     change1=(idx,e)=>{
+        e.stopPropagation();
         let b=this.state.isKeep;
         this.setState({
             isKeep:!b,
-            chapterId:idx+1
+            chapterId:idx
         })
-        console.log(cookie.load('chapterId'));
-        cookie.save("chapterId",this.state.chapterId);
+        console.log(this.state.chapterId);
+        // cookie.save("chapterId",this.state.chapterId);
         if(this.state.isKeep==true){
             
             e.target.src='https://s2.ax1x.com/2019/12/11/QrKe4s.png'
@@ -52,7 +53,7 @@ export default class Chaowa extends Component {
         }else{
             e.target.src='https://s2.ax1x.com/2019/12/04/Q1fu7T.png'
         }
-        console.log(this.state.chapterId);
+        // console.log(this.state.chapterId);
     }
    
     componentDidMount(){
@@ -72,6 +73,9 @@ export default class Chaowa extends Component {
         })
        
     }
+    too=(id)=>{
+        window.location.href='/wiki/detail/'+id;
+    }
     render() {
         return (
             <div>
@@ -89,7 +93,7 @@ export default class Chaowa extends Component {
                                 (this.state.data||[]).map((item,idx)=>{
                                   
                                     return(
-                                        <List>
+                                        <List onClick={()=>this.too(item.chapterid)}>
                                             <List.Item style={{paddingTop:10,color:"#000"}}>
                                                
                                                 <List.Item.Brief style={{color:"#000",width:'75%',float:'left'}}>
@@ -105,10 +109,10 @@ export default class Chaowa extends Component {
                                                     丫丫妈妈
                                                     <span style={{marginLeft:10}}>11月12日</span>
                                                     <span  style={{marginLeft:20}} >
-                                                        <img src={(cookie.load('chapterId')==idx+1)
+                                                        <img src={(cookie.load('chapterId'))
                                                                 ?'https://s2.ax1x.com/2019/12/11/QrKe4s.png'
                                                                 :"https://s2.ax1x.com/2019/12/04/Q1fu7T.png"}
-                                                            onClick={(e)=>this.change1(idx,e)} alt='收藏'/>
+                                                            onClick={(e)=>this.change1(item.chapterid,e)} alt='收藏'/>
                                                         {/* {cookie.load('chapterId')} */}
                                                     </span>
                                                 </List.Item.Brief>

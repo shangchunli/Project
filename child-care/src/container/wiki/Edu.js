@@ -72,6 +72,9 @@ export default class Edu extends Component {
     goBack=()=>{
         window.history.go(-1);
     }
+    too=(id)=>{
+        window.location.href='/wiki/detail/'+id;
+    }
     render() {
         return (
             <div>
@@ -93,7 +96,7 @@ export default class Edu extends Component {
                                 (this.state.data||[]).map((item,idx)=>{
                                   
                                     return(
-                                        <List>
+                                        <List onClick={()=>this.too(item.chapterid)}>
                                             <List.Item style={{paddingTop:10,color:"#000"}}>
                                                
                                                 <List.Item.Brief style={{color:"#000",width:'75%',float:'left'}}>
