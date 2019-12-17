@@ -5,7 +5,7 @@ export default class Fruit extends Component {
         super();
         this.state = {
             data: ['apple', 'boluo', 'lizhi','mihoutao','ningmeng','taozi','yingtao'],
-            // imgHeight: 20,
+            // imgHeight: 200,
         }
     }
     render() {
