@@ -242,85 +242,40 @@ router.post('/addchapters',function(req,res,next){
     }
   })
 })
-// 用户发帖的图片上传到服务器
-router.post('/chapterimg',function(req,res,next){
-  console.log(2);
-  console.log(req.body);
-
-  res.send(
-    {
-      'errno':0,
-      'data':[
-        "/server/chapters/1/1.jpg"
-      ]
-    }
-  )
-  // var base64Data = cimage.replace(/^data:image\/\w+;base64,/, "");
-  // var dataBuffer = Buffer.from(base64Data, 'base64');
-  // var he = fs.statSync(path.join(__dirname,'./server/caprice/'+cowner));
-    console.log(he);
-    // fs.mkdir('./server/caprice/'+cowner+'',function(error){
-    //   if(error){
-    //       console.log(error);
-    //       return false;
-    //   }
-    //   console.log('创建目录成功');
-    // })
-
-    // fs.writeFile('./server/caprice/'+cowner+'/'+ctime+'.png', dataBuffer, function(err) {
-    //     if(err){
-    //       console.log(err);
-    //     }else{
-    //       console.log("保存成功！");
-    //       console.log(__dirname)
-    //     }
-})
 //用户发随想
-var he = fs.existsSync('./server/caprice/12'
-);
-console.log(he)
  
 router.post('/addcaprice',function(req,res,next){
   var cowner = req.body.userId;
   var ccontent = req.body.content;
   var cimage=req.body.files.files[0].url;
-  var ctime =new Date().getFullYear()+'年'+'12月'+new Date().getDate()+'日'
-  +new Date().getHours()+":"+new Date().getMinutes()+":"+new Date().getSeconds();
-  var base64Data = cimage.replace(/^data:image\/\w+;base64,/, "");
-  var dataBuffer = Buffer.from(base64Data, 'base64');
-  
+  var ctime =new Date().getHours()+":"+new Date().getMinutes()+":"+new Date().getSeconds();
+  var path = './server/caprice/'+cowner+'/'+ Date.now() +'.png'; 
+  var base64 = cimage.replace(/^data:image\/\w+;base64,/, "");//去掉图片base64码前面部分data:image/png;base64
+  var dataBuffer = new Buffer(base64, 'base64'); //把base64码转成buffer对象，
+  console.log('dataBuffer是否是Buffer对象：'+Buffer.isBuffer(dataBuffer));
+  if(!fs.existsSync('./server/caprice/'+cowner+'')){
     fs.mkdir('./server/caprice/'+cowner+'',function(error){
       if(error){
           console.log(error);
-          return false;
       }
       console.log('创建目录成功');
     })
-
-    fs.writeFile('./server/caprice/'+cowner+'/'+cowner+'.png', dataBuffer, function(err) {
+    fs.writeFileSync(path, dataBuffer, {'encoding':'binary'});
+  }else{
+    fs.writeFileSync(path, dataBuffer, {'encoding':'binary'});
+  }
+  var con = mysql.createConnection(dbconfig);
+  con.connect();
+  con.query("insert into caprice(cowner,ccontent,ctime,cimage) value(?,?,?,?)",
+      [cowner,ccontent,ctime,path],
+      function(err,result){
         if(err){
-          console.log(err);
+          console.log(err)
         }else{
-          console.log("保存成功！");
-          console.log(__dirname)
-        }
-    });
-  
-  // var con = mysql.createConnection(dbconfig);
-  // con.connect();
-  // con.query("insert into caprice(cowner,ccontent,ctime,cimage) value(?,?,?,?)",
-  //     [cowner,ccontent,ctime,img],
-  //     function(err,result){
-  //       if(err){
-  //         console.log(err)
-  //       }else{
           res.send('hehe');
-  //       }
-  //     })
-  
- 
+        }
+      })
 })
-              // var userAddSql_Params = ['path', "/upload/" + fName];
              
 //随想渲染
 router.post('/caprice',function(req,res,next){
@@ -380,6 +335,27 @@ router.post('/mycollect',function(req,res,next){
     }
   })
 })
+//取消收藏
+router.post('/uncollect',function(req,res,next){
+  var tel = req.body.userId;
+  var chapterid = req.body.chapterId;
+  console.log(tel,chapterid);
+  var con = mysql.createConnection(dbconfig);
+  con.connect();
+  con.query("delete from mycollect where telphone=? AND chapterid=?",[tel,chapterid],function(err,result){
+    if(err){
+      console.log(err)
+    }else{
+      res.send('delete success')
+      console.log('ok');
+
+    }
+  })
+})
+
+
+
+
 //我的宝宝表添加
 router.post('/addbaby',function(req,res,next){
   var tel = req.body.userId;
@@ -416,7 +392,20 @@ router.post('/mybaby',function(req,res,next){
     }
   })
 })
-
+// 个人信息渲染
+router.post('/me',function(req,res,next){
+  var tel = req.body.userId;
+  var con = mysql.createConnection(dbconfig);
+  con.connect();
+  con.query('select telphone,name,email from  register where telphone =?',tel,function(err,result){
+    if(err){
+      console.log(err);
+    }else{
+      console.log(result);
+      res.send(result);
+    }
+  })
+})
 
 
 //后台接口------------------------------------------------------------------
