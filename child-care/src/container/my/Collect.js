@@ -170,8 +170,8 @@ class Collect extends Component {
                                                             width:'20%',height:'10%'}}
                                                     />
                                                     <List.Item.Brief >
-                                                        丫丫妈妈
-                                                        <span style={{marginLeft:10}}>11月12日</span>
+                                                            {item.owner}
+                                                            <span style={{marginLeft:10}}>{item.time}</span>
                                                         <span  style={{marginLeft:20}} >
                                                             <img 
                                                                 ref='tab'
@@ -206,8 +206,8 @@ class Collect extends Component {
                                                             width:'20%',height:'10%'}}
                                                     />
                                                     <List.Item.Brief >
-                                                        丫丫妈妈
-                                                        <span style={{marginLeft:10}}>11月12日</span>
+                                                            {item.owner}
+                                                            <span style={{marginLeft:10}}>{item.time}</span>
                                                         <span  style={{marginLeft:20}} >
                                                             <img 
                                                                 ref='tab'
@@ -241,8 +241,8 @@ class Collect extends Component {
                                                             width:'20%',height:'10%'}}
                                                     />
                                                     <List.Item.Brief >
-                                                        丫丫妈妈
-                                                        <span style={{marginLeft:10}}>11月12日</span>
+                                                            {item.owner}
+                                                            <span style={{marginLeft:10}}>{item.time}</span>
                                                         <span  style={{marginLeft:20}} >
                                                             <img 
                                                                 ref='tab'
@@ -277,8 +277,8 @@ class Collect extends Component {
                                                             width:'20%',height:'10%'}}
                                                     />
                                                     <List.Item.Brief >
-                                                        丫丫妈妈
-                                                        <span style={{marginLeft:10}}>11月12日</span>
+                                                            {item.owner}
+                                                            <span style={{marginLeft:10}}>{item.time}</span>
                                                         <span  style={{marginLeft:20}} >
                                                             <img 
                                                                 ref='tab'
@@ -313,8 +313,8 @@ class Collect extends Component {
                                                             width:'20%',height:'10%'}}
                                                     />
                                                     <List.Item.Brief >
-                                                        丫丫妈妈
-                                                        <span style={{marginLeft:10}}>11月12日</span>
+                                                            {item.owner}
+                                                            <span style={{marginLeft:10}}>{item.time}</span>
                                                         <span  style={{marginLeft:20}} >
                                                             <img 
                                                                 ref='tab'
@@ -348,8 +348,8 @@ class Collect extends Component {
                                                             width:'20%',height:'10%'}}
                                                     />
                                                     <List.Item.Brief >
-                                                        丫丫妈妈
-                                                        <span style={{marginLeft:10}}>11月12日</span>
+                                                            {item.owner}
+                                                            <span style={{marginLeft:10}}>{item.time}</span>
                                                         <span  style={{marginLeft:20}} >
                                                             <img 
                                                                 ref='tab'
@@ -384,8 +384,8 @@ class Collect extends Component {
                                                             width:'20%',height:'10%'}}
                                                     />
                                                     <List.Item.Brief >
-                                                        丫丫妈妈
-                                                        <span style={{marginLeft:10}}>11月12日</span>
+                                                    {item.owner}
+                                                        <span style={{marginLeft:10}}>{item.time}</span>
                                                         <span  style={{marginLeft:20}} >
                                                             <img 
                                                                 ref='tab'
@@ -420,8 +420,8 @@ class Collect extends Component {
                                                             width:'20%',height:'10%'}}
                                                     />
                                                     <List.Item.Brief >
-                                                        丫丫妈妈
-                                                        <span style={{marginLeft:10}}>11月12日</span>
+                                                    {item.owner}
+                                                        <span style={{marginLeft:10}}>{item.time}</span>
                                                         <span  style={{marginLeft:20}} >
                                                             <img 
                                                                 ref='tab'
@@ -456,8 +456,8 @@ class Collect extends Component {
                                                             width:'20%',height:'10%'}}
                                                     />
                                                     <List.Item.Brief >
-                                                        丫丫妈妈
-                                                        <span style={{marginLeft:10}}>11月12日</span>
+                                                    {item.owner}
+                                                        <span style={{marginLeft:10}}>{item.time}</span>
                                                         <span  style={{marginLeft:20}} >
                                                             <img 
                                                                 ref='tab'
@@ -492,8 +492,8 @@ class Collect extends Component {
                                                             width:'20%',height:'10%'}}
                                                     />
                                                     <List.Item.Brief >
-                                                        丫丫妈妈
-                                                        <span style={{marginLeft:10}}>11月12日</span>
+                                                    {item.owner}
+                                                        <span style={{marginLeft:10}}>{item.time}</span>
                                                         <span  style={{marginLeft:20}} >
                                                             <img 
                                                                 ref='tab'

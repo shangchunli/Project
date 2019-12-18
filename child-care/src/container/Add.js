@@ -12,7 +12,7 @@ import Unique from './my/Unique'
 import BabyFood from './wiki/BabyFood'
 import Edu from './wiki/Edu'
 import Food from './health/Food'
-import Focus from './my/Focus'
+// import Focus from './my/Focus'
 import Story from './home/Story'
 import Song from './home/Song'
 

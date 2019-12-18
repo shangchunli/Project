@@ -106,8 +106,8 @@ class Chaowa extends Component {
                                                         width:'20%',height:'10%'}}
                                                 />
                                                 <List.Item.Brief >
-                                                    丫丫妈妈
-                                                    <span style={{marginLeft:10}}>11月12日</span>
+                                                        {item.owner}
+                                                        <span style={{marginLeft:10}}>{item.time}</span>
                                                     <span  style={{marginLeft:20}} >
                                                         <img src={(cookie.load('chapterId'))
                                                                 ?'https://s2.ax1x.com/2019/12/11/QrKe4s.png'

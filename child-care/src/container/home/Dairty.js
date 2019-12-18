@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { NavBar,Icon } from 'antd-mobile';
-export default class Dairty extends Component {
+import {withRouter} from 'react-router-dom'
+class Dairty extends Component {
    constructor(){
         super();
         this.state={
@@ -8,7 +9,7 @@ export default class Dairty extends Component {
         } 
     }
     goBack=()=>{
-        window.history.go(-1);
+        this.props.history.go(-1);
     }
     componentDidMount(){
         fetch('http://192.168.43.217:5001/cdetail',{
@@ -44,17 +45,18 @@ export default class Dairty extends Component {
                 >
                     详情页
                 </NavBar>
-                <div>
-                    111111111111111111
-                </div>
-                <div>
+                <div style={{backgroundColor:'#fff',height:'630px'}}>
                 
                     {
                         (this.state.data||[]).map(item=>
                             <div style={{marginTop:50,paddingLeft:'10%',
-                            backgroundColor:'#fff'}}>
+                            backgroundColor:'#fff',paddingRight:'10%'}}>
                                 
-                               <h4 style={{paddingTop:30}}>{item.ccontent}</h4>
+                               <h4 style={{fontSize:'1.3em',
+                                   paddingTop:30,lineHeight:'2em'
+                            }}>{item.ccontent}</h4>
+                               <img src={item.cimage} style={{marginTop:"20%",
+                            width:'90%'}}/>
                                <p style={{marginTop:20,paddingBottom:20}}>
                                     {item.ctime}</p>
                             </div>
@@ -65,3 +67,4 @@ export default class Dairty extends Component {
         )
     }
 }
+export default withRouter(Dairty)

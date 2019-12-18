@@ -59,6 +59,16 @@ import Youxi4 from './container/wiki/Youxi4'
 import Youxi5 from './container/wiki/Youxi5'
 import Youxi6 from './container/wiki/Youxi6'
 
+// // tab底部导航AppHome
+// import AppHome from './container/AppHome.js'
+// // tab底部导航Wiki
+// import Wiki from './container/Wiki.js'
+// // tab底部导航Add
+// import Add from './container/Add.js'
+// // tab底部导航Health
+// import Health from './container/Health.js'
+
+
 
 export default class App extends Component {
     render() {
@@ -71,11 +81,19 @@ export default class App extends Component {
                         <Route exact path='/' component={Login}/>
                         <Route exact path='/login' component={Login}/>
                         <Route exact path='/reg' component={Register}/>
+
                         <Route exact path='/home' component={AppTab}/>
                         <Route exact path='/wiki' component={AppTab}/>
                         <Route exact path='/add' component={AppTab}/>
                         <Route exact path='/health' component={AppTab}/>
                         <Route exact path='/my' component={AppTab}/>
+
+                        {/* <Route exact path='/home' component={AppHome}/>
+                        <Route exact path='/wiki' component={Wiki}/>
+                        <Route exact path='/add' component={Add}/>
+                        <Route exact path='/health' component={Health}/>
+                        <Route exact path='/my' component={My}/> */}
+
                         <Route  path='/home/picture' component={Picture}/>
                         <Route  path='/home/chinese' component={Chinese}/>
                         <Route  path='/home/song' component={Song}/>
@@ -93,7 +111,7 @@ export default class App extends Component {
                         <Route  exact path='/my/collect' component={Collect}/>
                         <Route  exact path='/my/tongyong' component={Tongyong}/>
                         <Route  exact path='/my/unique' component={Unique}/>
-                        <Route  exact path='/my' component={My}/>
+                        {/* <Route  exact path='/my' component={My}/> */}
                         <Route path='/wiki/detail/:id' component={Detail}/>
                         <Route path='/health/detail/:id' component={Detail}/>
                         <Route path='/home/detail/:id' component={Dairty}/>

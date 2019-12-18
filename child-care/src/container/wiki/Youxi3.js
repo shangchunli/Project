@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import { List, InputItem,Button,NavBar,Icon } from 'antd-mobile';
-
 import sui from '../sui.css';
-export default class Baike1 extends Component {
+import {withRouter} from 'react-router-dom'
+class Baike1 extends Component {
     goBack=()=>{
-        window.history.go(-1);
+        this.props.history.go(-1);
     }
     render() {
         return (
@@ -44,3 +44,4 @@ export default class Baike1 extends Component {
         )
     }
 }
+export default withRouter(Baike1);

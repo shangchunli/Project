@@ -1,58 +1,75 @@
 import React, { Component } from 'react'
 import { List, InputItem,Button,NavBar,Icon } from 'antd-mobile';
+import cookie from 'react-cookies'
+import {withRouter} from 'react-router-dom'
 
 //个人页面
-export default class Unique extends Component {
+class Unique extends Component {
   constructor(){
     super();
     this.state={
-      // username:'',
-      // sex:'',
-      // phone:'',
-      // email:'',
-      // mood:''
-      data:''
+      data:[{name:'昵称', sex:'性别',mood:'心情',telphone:'手机号',email:'邮箱'}]
     }
   }
   componentDidMount(){
-    fetch('http://192.168.43.217:5001/')
-    .then(res=>res.text())
-    .then((res)=>{
-      console.log(res);
-      // this.setState({
-      //   username:'111',
-      //   data:res
-      // })
-    })
+    setTimeout(()=>{ fetch("http://192.168.43.217:5001/me",{
+            method:'POST',
+            headers: { 
+                'Content-Type': 'application/json;charset=UTF-8' 
+                }, 
+                body: JSON.stringify({
+                    userId:cookie.load('userId'),
+                })  
+        }
+        ).then(res=>res.json())
+        .then((res)=>{
+          console.log(res);
+            this.setState({
+              data:res,
+            })
+        })
+        
+      },0)
   }
   goBack=()=>{
-    console.log(this.refs.butt)
-    window.history.go(-1);
-    fetch('http://192.168.43.217:5001/',{
-      method: 'POST',//post请求 
-  headers: { 
-  'Content-Type': 'application/json;charset=UTF-8' 
-  }, 
-  body: JSON.stringify({
-    username:'丫丫妈妈',
-    phone:'15054326879',
-    email:'1503651@qq.com',
-    mood:'陌上人如玉'
-  })
-  })
-  .then(res=>res.text())
-  .then((res)=>{
-    console.log(res);
-  })
+    this.props.history.go(-1);
+
+  }
+  submmitMessage=()=>{
+    console.log(this.state.data)
+    fetch("http://192.168.43.217:5001/meupdate",{
+            method:'POST',
+            headers: { 
+                'Content-Type': 'application/json;charset=UTF-8' 
+                }, 
+                body: JSON.stringify({
+                    userId:cookie.load('userId'),
+                    usename:this.refs.usename.state.value,
+                    mood:this.refs.mood.state.value,
+                    sex:this.refs.sex.state.value               
+                })  
+        }
+        ).then(res=>res.text())
+        .then((res)=>{
+          console.log(res);
+          if(res=='SUCCESS'){
+                this.props.history.go(-1);
+          }
+        })
   
 }
-  handle=(pathname)=>{
-    // console.log(this.refs.butt)
-    // window.location.href="/my/"+pathname;
+content=()=>{
+  console.log(this.refs.usename.state.value)
+  this.setState({
+    usename:this.refs.usename.state.value,
+    mood:this.refs.mood.state.value,
+    sex:this.refs.sex.state.value
+  })
 }
     render() {
+      // console.log(this.state.data)
         return (
-            <div>
+            <div style={{backgroundColor:'#fff',width:'100%',height:'700px'}}>
                 <NavBar
                  icon={<Icon type="left" onClick={this.goBack}/>}
                     style={{backgroundColor:'#fff',
@@ -68,30 +85,53 @@ export default class Unique extends Component {
 
                 <form>
       <List>
-        <img src='https://s2.ax1x.com/2019/12/05/Q3FUq1.jpg' alt='头像'style={{
-            width:'40%',height:'20',textAlign:'center',borderRadius:'50%',
+        
+        {
+          this.state.data.map((item)=>{
+            // console.log(item)
+            return(
+              <div>
+              <img src={item.head} alt='头像'style={{
+            width:'40%',height:'40%',textAlign:'center',borderRadius:'100%',
             marginLeft:'30%',marginTop:'15%',marginBottom:'5%'
         }}/>
-        <InputItem value={this.state.username}
-        clear placeholder="请输入你的昵称" type='text' name='username'>
+            <div style={{marginTop:'10%'}} ref='all'>
+        <InputItem  onChange={this.content} placeholder={item.name}
+        clear  type='text' ref='usename'>
             昵称
         </InputItem>
-        <InputItem placeholder="请输入你的性别" type="text" name='sex'>
+
+        <InputItem  placeholder={item.sex} contentEditable='true'
+        type="text" onChange={this.content} clear
+         ref='sex'>
           性别
         </InputItem>
-        <InputItem placeholder="请输入你的手机号" type="text" name='phone'>
-          手机号
-        </InputItem>
-        <InputItem placeholder="请输入你的邮箱" type="text" name='email'>
-          邮箱
-        </InputItem>
-        <InputItem placeholder="请输入你的心情" type="text" name='mood'>
+        <InputItem placeholder={item.mood}
+         type="text" onChange={this.content}
+        ref='mood'>
           心情
         </InputItem>
+
+        <InputItem placeholder={item.telphone} 
+        type="text" 
+        ref='phone'>
+          手机号
+        </InputItem>
+        <InputItem placeholder={item.email} type="text" 
+        >
+          邮箱
+        </InputItem>
+        </div>
+        </div>
+        ) 
+           } 
+            )
+        }
+        
         <List.Item ref='butt'>
-          <Button  onClick={()=>{this.goBack()}}
-          style={{backgroundColor:'#fff',marginTop:'5%'}}  >Submit</Button>
-          <Button  style={{ marginLeft: '2.5px' ,marginTop:'3%'}} onClick={()=>{this.handle('unique')}}>Reset</Button>
+          <Button  onClick={()=>{this.submmitMessage()}}
+          style={{backgroundColor:'#fff',marginTop:'5%'}}>提交</Button>
+          {/* <Button  style={{ marginLeft: '2.5px' ,marginTop:'3%'}} onClick={()=>{this.handle('unique')}}>提交</Button> */}
         </List.Item>
       </List>
     </form>
@@ -99,3 +139,4 @@ export default class Unique extends Component {
         )
     }
 }
+export default withRouter(Unique);

@@ -4,7 +4,7 @@ import cookie from 'react-cookies'
 
 import { NavBar,List,Icon } from 'antd-mobile';
 
-
+var isKeep2 = '';
 class Disease extends Component {
     constructor(){
         super();
@@ -13,7 +13,8 @@ class Disease extends Component {
             isKeep:false,
             chapterid:[],
             userId:cookie.load('userId'),
-            tab:'常见疾病'
+            tab:'常见疾病',
+            keepId:[]
         }
     }
     
@@ -94,7 +95,11 @@ class Disease extends Component {
             .then(res=>res.json())
             .then((res)=>{
                 console.log(res);
+                this.setState({
+                    keepId:res
+                })
             })
+            console.log(this.state.keepid);
     }
     too=(id)=>{
         console.log(id)
@@ -106,6 +111,14 @@ class Disease extends Component {
                 <List>
                     {
                         (this.state.data||[]).map((item,idx)=>{
+                            for(var i=0; i < this.state.keepId.length; i++){
+                                if(this.state.keepId[i]==item.id){
+                                    isKeep2=true;
+                                    break;
+                                }else{
+                                    isKeep2 = false;
+                                }
+                            }
                             return(
                                 <List id={item.chapterid} onClick={()=>this.too(item.chapterid)}>
                                     <List.Item style={{paddingTop:10,color:"#000"}}>
@@ -124,10 +137,10 @@ class Disease extends Component {
                                                 <img 
                                                     ref='tab'
                                                     id={item.chapterid}
-                                                    // src={(keepArr.join().indexOf(item.chapterid))
-                                                    //     ?'https://s2.ax1x.com/2019/12/11/QrKe4s.png'
-                                                    //     :"https://s2.ax1x.com/2019/12/04/Q1fu7T.png"}
-                                                    src='https://s2.ax1x.com/2019/12/04/Q1fu7T.png'
+                                                    src={isKeep2
+                                                        ?'https://s2.ax1x.com/2019/12/11/QrKe4s.png'
+                                                        :"https://s2.ax1x.com/2019/12/04/Q1fu7T.png"}
+                                                    // src='https://s2.ax1x.com/2019/12/04/Q1fu7T.png'
                                                     onClick={(e)=>this.change1(item.chapterid,e)} alt='收藏'/>
                                             </span>
                                             {/* {item.chapterid} */}

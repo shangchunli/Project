@@ -28,6 +28,7 @@ class AppTab extends React.Component {
   }
 
   render() {
+    console.log(this.props);
     return (
       <div>
         <div style={{ position: 'fixed', height: '100%', width: '100%', top: 0 }}>
@@ -35,6 +36,7 @@ class AppTab extends React.Component {
             unselectedTintColor="black"
             tintColor="#d81e06"
             barTintColor="white"
+            prerenderingSiblingsNumber='0'
           >
             <TabBar.Item
               title="首页"
@@ -58,13 +60,14 @@ class AppTab extends React.Component {
                 this.setState({
                   selectedTab: 'home',
                 });
-                // this.props.history.push('/home')
+                this.props.history.push('/home')
                 
               }}
-              onClick={()=>{this.props.history.push('/home')}}
+              // onClick={()=>{this.props.history.push('/home')}}
             >
-              <AppHome/>
+              {this.props.location.pathname=='/home'?<AppHome/>:null}
             </TabBar.Item>
+
             <TabBar.Item
               icon={
                 <div style={{
@@ -87,11 +90,11 @@ class AppTab extends React.Component {
                 this.setState({
                   selectedTab: 'redTab',
                 });
-                // this.props.history.push('/wiki')
+                this.props.history.push('/wiki')
               }}
-              onClick={()=>{this.props.history.push('/wiki')}}
+              // onClick={()=>{this.props.history.push('/wiki')}}
             >
-              <Wiki/>
+              {this.props.location.pathname=='/wiki'?<Wiki/>:null}
             </TabBar.Item>
             <TabBar.Item
               icon={
@@ -115,11 +118,11 @@ class AppTab extends React.Component {
                 this.setState({
                   selectedTab: 'pinkTab',
                 });
-                // this.props.history.push('/add')
+                this.props.history.push('/add')
               }}
-              onClick={()=>{this.props.history.push('/add')}}
+              // onClick={()=>{this.props.history.push('/add')}}
             >
-              <Jia/>
+              {this.props.location.pathname=='/add'?<Jia/>:null}
             </TabBar.Item>
             <TabBar.Item
               icon={
@@ -143,11 +146,11 @@ class AppTab extends React.Component {
                 this.setState({
                   selectedTab: 'greenTab',
                 });
-                // this.props.history.push('/health')
+                this.props.history.push('/health')
               }}
-              onClick={()=>{this.props.history.push('/health')}}
+              // onClick={()=>{this.props.history.push('/health')}}
             >
-              <Health/>
+              {this.props.location.pathname=='/health'?<Health/>:null}
             </TabBar.Item>
             <TabBar.Item
               icon={
@@ -172,11 +175,11 @@ class AppTab extends React.Component {
                 this.setState({
                   selectedTab: 'yellowTab',
                 });
-                // this.props.history.push('/my')
+                this.props.history.push('/my')
               }}
-              onClick={()=>{this.props.history.push('/my')}}
+              // onClick={()=>{this.props.history.push('/my')}}
             >
-              <My/>
+              {this.props.location.pathname=='/my'?<My/>:null}
             </TabBar.Item>
           </TabBar>
         </div>

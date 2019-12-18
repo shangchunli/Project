@@ -3,7 +3,7 @@ import './editor.css';
 import E from 'wangeditor'
 import {Button,Accordion,List, WhiteSpace} from 'antd-mobile'
 import cookie from 'react-cookies'
-
+ 
 console.log(cookie.load('userId'));
 class Editor extends Component {
   constructor(props, context) {
@@ -121,14 +121,40 @@ class Editor extends Component {
     let tit= this.refs.titl
     console.log(tit);
     const editor = new E(elem)
+    editor.customConfig.uploadImgServer = "http://192.168.43.217:5001/chapimg";
     // 使用 onchange 函数监听内容的变化，并实时更新到 state 中
-    editor.customConfig.onchange = html => {
-      this.setState({
-        // title:tit,
-        editorContent: html
-      })
-    }
+    // editor.customConfig.onchange = html => {
+    //   this.setState({
+    //     // title:tit,
+    //     editorContent: html
+    //   })
+    // }
     editor.create()
+    editor.customConfig.uploadImgHooks = {
+      before: function (xhr, editor, files) {
+
+      },
+      success: function (xhr, editor, result) {
+          //console.log(result);
+      },
+      fail: function (xhr, editor, result) {
+          console.log(1)
+      },
+      error: function (xhr, editor) {
+          console.log(2)
+      },
+      timeout: function (xhr, editor) {
+      },
+      customInsert: function (insertImg, result, editor) {
+          console.log(3);
+          var url = result.url
+          insertImg(url)
+      }
+    
+  }
+
+
+
   }
   clickHandle() {
     console.log(this.state.tabs)
@@ -146,10 +172,7 @@ class Editor extends Component {
   })
   .then(res=>res.text())
   .then((res)=>{
-    // console.log(res);
-    if(res='发表成功'){
-      window.location.href=/home/;
-    }
+    console.log(res);
   })
   }
 }
