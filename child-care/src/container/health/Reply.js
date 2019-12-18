@@ -11,13 +11,15 @@ class Reply extends Component {
         super();
         this.state={
             data:[],
+//            收藏的默认状态为false
             isKeep:false,
             chapterId:[],
+// 使用cookie存储当前登录的userId
             userId:cookie.load('userId')
         }
     }
     componentDidMount(){
-        //初始加载
+        //页面挂载时自动执行当前函数，向后台请求数据进行渲染
         fetch("http://192.168.43.217:5001/huli")
         .then(res=>res.json())
         .then((res)=>{
