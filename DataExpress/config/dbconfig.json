@@ -4,5 +4,7 @@
     "host":"localhost",
     "database":"child-care",
     "user":"root",
-    "password":""
+    "password":"",
+    "max_connections":300,
+    "wait_timeout":36000
 }

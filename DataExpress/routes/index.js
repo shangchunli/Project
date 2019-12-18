@@ -4,6 +4,7 @@ var router = express.Router();
 var mysql = require('mysql');
 var fs = require("fs");
 var path = require('path');
+const formidable = require('formidable');
 //引入数据库配置文件，这个文件是自己建的
 var dbconfig = require('../config/dbconfig.json');
 // var child-care = require('../config/child-care.json');
@@ -33,6 +34,7 @@ router.post('/yhlogin',function(req,res,next){
   })
 })
 //用户注册提交上的信息
+// 头像：图片选择器得到的base64编码，去除头部信息，转存到本地服务器，
 router.post('/register',function(req,res,next){
   // res.send('register');
    var name =req.body.names;
@@ -40,29 +42,43 @@ router.post('/register',function(req,res,next){
    var email = req.body.email;
    var pwd = req.body.pwd1;
    var head = req.body.files[0].url;
-   console.log(head);
-   console.log(req.body);
-  // 头像：图片选择器得到的base64编码，去除头部信息，转存到本地服务器，
-    var base64Data = head.replace(/^data:image\/\w+;base64,/, "");
-    var dataBuffer = Buffer.from(base64Data, 'base64');
-    fs.writeFile(telphone+"image.png", dataBuffer, function(err) {
-        if(err){
-          console.log(err);
-        }else{
-          console.log("保存成功！");
-        }
-    });
-   var con = mysql.createConnection(dbconfig);
-   con.connect();
-   con.query("insert into register(name,telphone,email,pwd,head) values(?,?,?,?,?)",[name,telphone,email,pwd,head],function(err,result){
-      if(err){
-        console.log(err);
-        
-      }else{
-        res.send('success');
-      }
-    })
+  // var timer = Date.now() ;
+  var imgpath = './server/head/'+ telphone+'.png'; 
+  var base64 = head.replace(/^data:image\/\w+;base64,/, "");//去掉图片base64码前面部分data:image/png;base64
+  var dataBuffer = new Buffer(base64, 'base64'); //把base64码转成buffer对象，
+  console.log('dataBuffer是否是Buffer对象：'+Buffer.isBuffer(dataBuffer));
+  // if(!fs.existsSync('./server/head/')){
+  //   fs.mkdir('./server/head/'+cowner+'',function(error){
+  //     if(error){
+  //         console.log(error);
+  //     }
+  //     console.log('创建目录成功');
+  //   })
+  //   fs.writeFileSync(imgpath, dataBuffer, {'encoding':'binary'});
+  // }else{
+    fs.writeFileSync(imgpath, dataBuffer, {'encoding':'binary'});
+  // }
+  var imagepath = 'http://192.168.43.217:5001/getheadImg/?imgId='+telphone;
+  var con = mysql.createConnection(dbconfig);
+  con.connect();
+  con.query("insert into register(name,telphone,email,pwd,head) values(?,?,?,?,?)",
+        [name,telphone,email,pwd,imagepath],function(err,result){
+    if(err){
+      console.log(err);
+    }else{
+      console.log(result);
+      console.log(imagepath);
+      res.send('success');
+    }
+  })
   
+})
+router.get('/getheadImg/',function(req,res,next){
+  var filePath =('./server/head/'+req.query.imgId+'.png');
+  // console.log(filePath);
+  var imgContent = fs.readFileSync(filePath);
+  res.writeHead(200,{'Content-Type':'image/png'});
+  res.end(imgContent);
 })
 //页面渲染==========================================================
 //疾病页面渲染
@@ -242,14 +258,51 @@ router.post('/addchapters',function(req,res,next){
     }
   })
 })
+
+// 用户发帖图片存储和渲染
+router.post('/chapimg',function(req,res,next){
+  req.setEncoding("binary");
+  var str = "";
+  req.on("data", function(chunk) {
+    str += chunk;
+  })
+  req.on("end", function() {
+    var totalArr=str.split('\r\n');
+    // console.log(totalArr);
+    var bufArr=totalArr.slice(4,totalArr.length-2);
+    console.log(bufArr);
+    var imgData="";
+    for(var i=0;i<bufArr.length;i++){
+      imgData+=bufArr[i] + "\r\n";
+    }
+    var buf=Buffer.from(imgData,"binary");
+    var timer=(new Date()).getTime();
+    fs.writeFileSync(__dirname+"\\upload\\"+timer+".png",buf,{"encoding":"binary"});
+    res.send(JSON.stringify({
+      errno: 0,
+      data: [
+        "http://192.168.43.217:5001/getImg?imgId=" + timer
+      ]
+    }))
+  })
+})
+router.get('/getImg/',function(req,res,next){
+  var filePath =path.join(__dirname,'/upload/'+req.query.imgId+'.png');
+  console.log(filePath);
+  var imgContent = fs.readFileSync(filePath);
+  res.writeHead(200,{'Content-Type':'image/png'});
+  res.end(imgContent);
+})
 //用户发随想
- 
+
 router.post('/addcaprice',function(req,res,next){
   var cowner = req.body.userId;
   var ccontent = req.body.content;
   var cimage=req.body.files.files[0].url;
-  var ctime =new Date().getHours()+":"+new Date().getMinutes()+":"+new Date().getSeconds();
-  var path = './server/caprice/'+cowner+'/'+ Date.now() +'.png'; 
+  var ctime =new Date().getFullYear()+'/'+'12/'+new Date().getDate()+"  "
+  +new Date().getHours()+":"+new Date().getMinutes();
+  var timer = Date.now() ;
+  var imgpath = './server/caprice/'+cowner+'/'+ timer+'.png'; 
   var base64 = cimage.replace(/^data:image\/\w+;base64,/, "");//去掉图片base64码前面部分data:image/png;base64
   var dataBuffer = new Buffer(base64, 'base64'); //把base64码转成buffer对象，
   console.log('dataBuffer是否是Buffer对象：'+Buffer.isBuffer(dataBuffer));
@@ -260,24 +313,34 @@ router.post('/addcaprice',function(req,res,next){
       }
       console.log('创建目录成功');
     })
-    fs.writeFileSync(path, dataBuffer, {'encoding':'binary'});
+    fs.writeFileSync(imgpath, dataBuffer, {'encoding':'binary'});
   }else{
-    fs.writeFileSync(path, dataBuffer, {'encoding':'binary'});
+    fs.writeFileSync(imgpath, dataBuffer, {'encoding':'binary'});
   }
+  var imagepath = 'http://192.168.43.217:5001/getcapImg/?cowner='+cowner+'&imgId='+timer;
   var con = mysql.createConnection(dbconfig);
   con.connect();
   con.query("insert into caprice(cowner,ccontent,ctime,cimage) value(?,?,?,?)",
-      [cowner,ccontent,ctime,path],
+      [cowner,ccontent,ctime,imagepath],
       function(err,result){
         if(err){
           console.log(err)
         }else{
+          console.log(result);
+          console.log(imagepath);
           res.send('hehe');
         }
       })
 })
+router.get('/getcapImg/',function(req,res,next){
+  var filePath =('./server/caprice/'+req.query.cowner+'/'+req.query.imgId+'.png');
+  // console.log(filePath);
+  var imgContent = fs.readFileSync(filePath);
+  res.writeHead(200,{'Content-Type':'image/png'});
+  res.end(imgContent);
+})
              
-//随想渲染
+//随想渲染没有图
 router.post('/caprice',function(req,res,next){
   var user = req.body.userId;
   console.log(user);
@@ -352,7 +415,24 @@ router.post('/uncollect',function(req,res,next){
     }
   })
 })
-
+//收藏保持
+router.post('/keepid',function(req,res,next){
+  var tab = req.body.tab;
+  var tel = req.body.userId;
+  var con = mysql.createConnection(dbconfig);
+  con.connect();
+  con.query('select chapterid from chapters where tab=?AND chapterid in '
+    +'(select chapterid from mycollect where telphone=? )',[tab,tel],function(err,result){
+    if(err){
+      console.log(err);
+    }else{
+      console.log(222);
+      console.log(result);
+      res.send(result);
+    }
+  })
+   
+})
 
 
 
@@ -393,11 +473,12 @@ router.post('/mybaby',function(req,res,next){
   })
 })
 // 个人信息渲染
-router.post('/me',function(req,res,next){
+router.post('/my',function(req,res,next){
   var tel = req.body.userId;
+  console.log(tel);
   var con = mysql.createConnection(dbconfig);
   con.connect();
-  con.query('select telphone,name,email from  register where telphone =?',tel,function(err,result){
+  con.query('select telphone,name,mood,head from  register where telphone =? ',tel,function(err,result){
     if(err){
       console.log(err);
     }else{
@@ -405,6 +486,41 @@ router.post('/me',function(req,res,next){
       res.send(result);
     }
   })
+})
+// 个人详情页
+router.post('/me',function(req,res,next){
+  var tel = req.body.userId;
+  var con = mysql.createConnection(dbconfig);
+  con.connect();
+  con.query('select telphone,name,mood,sex,email,head from  register where telphone =?',tel,function(err,result){
+    if(err){
+      console.log(err);
+    }else{
+      console.log(result);
+      res.send(result);
+    }
+  })
+})
+
+// 个人信息更新
+router.post('/meupdate',function(req,res,next){
+  var tel = req.body.userId;
+  var name = req.body.usename;
+  var mood = req.body.mood;
+  var sex = req.body.sex;
+  console.log(tel,name,mood,sex);
+  var con = mysql.createConnection(dbconfig);
+  con.connect();
+  con.query('update register set name=?,mood=?,sex =?  where telphone ='+tel+'',[name,mood,sex],function(err,result){
+    if(err){
+      console.log(err);
+    }else{
+      console.log(result);
+      res.send('SUCCESS');
+    }
+  })
+ 
+ 
 })
 
 
@@ -443,7 +559,7 @@ router.get('/home',function(req,res,next){
     }
   })
 })
-//用户管理
+//用户管理-------------------------------------------------------------------
 //显示所有注册用户信息
 router.get('/usersList',function(req,res,next){
   var con = mysql.createConnection(dbconfig);
@@ -458,21 +574,38 @@ router.get('/usersList',function(req,res,next){
   })
 })
 //删除已注册用户信息，同时删除数据库内信息
-router.get('/del',function(req,res,next){
-  var id = req.query.chapterid;
+router.get('/deluser',function(req,res,next){
+  var id = req.query.id;
   var con = mysql.createConnection(dbconfig);
   con.connect();
   con.query("delete from register where id =?",[id],function(err,result){
     if(err){
       console.log(err)
     }else{
-      res.end('shanle')
+      res.redirect('/usersList');
 
     }
   })
 })
+//查询
+router.post("/usersearch",function(req,res,next){
+  var username = req.body.username;
+  var sql = "select * from register";
+  if(username){
+      sql += " where name = '"+ username +"'";
+  }
+  var con = mysql.createConnection(dbconfig);
+  con.connect();
+  con.query(sql,function(err,result){
+      if(err){
+          res.send("查询失败: "+err);
+      }else{
+          res.render('userslist',{usersList:result});
+      }
+  });
+})
 //帖子管理
-router.get('/chapter',function(req,res,next){
+router.get('/chapterm',function(req,res,next){
   var con = mysql.createConnection(dbconfig);
   con.connect();
   con.query("select * from chapters",function(err,result){
@@ -480,23 +613,43 @@ router.get('/chapter',function(req,res,next){
       console.log(err);
     }
     else{
+      console.log(result.length);
+      res.render('chapter',{usersList:result})
+    }
+  })
+})
+
+router.post('/fenye',function(req,res,next){
+  var id = req.body.num;
+  console.log(id);
+  var con = mysql.createConnection(dbconfig);
+  con.connect();
+  con.query("select * from chapters order by chapterid asc limit 0,11",function(err,result){
+    if(err){
+      console.log(err);
+    }
+    else{
+      console.log(result.length);
       res.render('chapter',{usersList:result})
     }
   })
 })
 //删除已发表帖子信息，同时删除数据库内信息
 router.get('/delchap',function(req,res,next){
-  var id = req.query.id;console.log(id);
-  // var con = mysql.createConnection(dbconfig);
-  // con.connect();
-  // con.query("delete from register where id =?",[id],function(err,result){
-  //   if(err){
-  //     console.log(err)
-  //   }else{
-  //     res.end('shanle')
+  var id = req.query.id;
+  console.log(id);
+  var con = mysql.createConnection(dbconfig);
+  con.connect();
+  con.query("delete from chapters where chapterid =?",[id],function(err,result){
+    if(err){
+      console.log(err)
+    }else{
+      // res.end("delete success");
+      res.redirect('/chapterm');
 
-  //   }
-  // })
+
+    }
+  })
 })
 //系统管理
 router.get('/system',function(req,res,next){
@@ -508,6 +661,91 @@ router.get('/system',function(req,res,next){
     }
     else{
       res.render('system',{usersList:result})
+    }
+  })
+})
+//宝宝管理-----------------------------------------------------
+router.get('/babym',function(req,res,next){
+  var con = mysql.createConnection(dbconfig);
+  con.connect();
+  con.query("select * from mybaby",function(err,result){
+    if(err){
+      console.log(err);
+    }
+    else{
+      res.render('mybaby',{usersList:result})
+    }
+  })
+})
+//删除宝宝信息，同时删除数据库内信息
+router.get('/delbaby',function(req,res,next){
+  var id = req.query.id;
+  console.log(id);
+  var con = mysql.createConnection(dbconfig);
+  con.connect();
+  con.query("delete from mybaby where babyid =?",[id],function(err,result){
+    if(err){
+      console.log(err)
+    }else{
+      // res.end("delete success");
+      res.redirect('/babym');
+    }
+  })
+})
+//随想管理-------------------------------------------------------------------
+router.get('/capricem',function(req,res,next){
+  var con = mysql.createConnection(dbconfig);
+  con.connect();
+  con.query("select * from caprice",function(err,result){
+    if(err){
+      console.log(err);
+    }
+    else{
+      res.render('caprice',{usersList:result})
+    }
+  })
+})
+//删除已发表帖子信息，同时删除数据库内信息
+router.get('/delcap',function(req,res,next){
+  var id = req.query.id;
+  console.log(id);
+  var con = mysql.createConnection(dbconfig);
+  con.connect();
+  con.query("delete from caprice where cid =?",[id],function(err,result){
+    if(err){
+      console.log(err)
+    }else{
+      // res.end("delete success");
+      res.redirect('/capricem');
+    }
+  })
+})
+//收藏管理-----------------------------------------------
+router.get('/collectm',function(req,res,next){
+  var con = mysql.createConnection(dbconfig);
+  con.connect();
+  con.query("select * from mycollect",function(err,result){
+    if(err){
+      console.log(err);
+    }
+    else{
+      res.render('collect',{usersList:result})
+    }
+  })
+})
+
+//删除收藏信息，同时删除数据库内信息
+router.get('/delcol',function(req,res,next){
+  var id = req.query.id;
+  console.log(id);
+  var con = mysql.createConnection(dbconfig);
+  con.connect();
+  con.query("delete from mycollect where id =?",[id],function(err,result){
+    if(err){
+      console.log(err)
+    }else{
+      // res.end("delete success");
+      res.redirect('/collectm');
     }
   })
 })

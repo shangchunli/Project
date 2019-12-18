@@ -75,34 +75,20 @@
                 <button class="a1" onclick="tosystem()" >系统管理</button>
 
             </div>
-            <button onclick="jump(1)">1</button>
-        <button onclick="jump(2)">2</button>
-        <button onclick="jump(3)">3</button>
-        <button onclick="jump(4)">4</button>
-        <button onclick="jump(5)">5</button>
-        <button onclick="jump(6)">6</button>
-        <%- %>
             <div style='width:80%;height:100%;float: left;'>
-                <table style="text-align:center;table-layout: fixed; margin-top:10px">
+                <table style="text-align:center;table-layout: fixed;padding:60px; margin-top:10px">
                     <tr style="margin-bottom:10px">
+                        <td>收藏id</td>
+                        <td>用户</td>
                         <td>帖子id</td>
-                        <td>标题</td>
-                        <td>内容</td>
-                        <td>标签</td>
-                        <td>作者</td>
-                        <td>时间</td>
                         <td>操作</td>
                     </tr>
                     <% for(var i = 0; i < usersList.length;i++){%>
                         <tr style="margin-top:10px">
-                            <td><%=usersList[i]["chapterid"] %></td>
-                            <td> <%= usersList[i]["title"] %></td>
-                            <td style="-webkit-line-clamp: 2;"><%= usersList[i]["content"].substr(0, 15) %></td>
-                            <td> <%= usersList[i]["tab"] %></td>
-                            <td> <%= usersList[i]["owner"] %></td>
-                            <td> <%= usersList[i]["time"] %></td>
-
-                            <td><a href="/delchap/?id=<%= usersList[i]['chapterid'] %>">删除</a></td>
+                            <td><%=usersList[i]["id"] %></td>
+                            <td> <%= usersList[i]["telphone"] %></td>
+                            <td> <%= usersList[i]["chapterid"] %></td>
+                            <td><a href="/delcol/?id=<%= usersList[i]['id'] %>">删除</a></td>
                         </tr>
                     <% } %>
                     
@@ -114,7 +100,6 @@
    
   
 </body>
-<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 <script>
     function tohome(){
         window.location.href="/home";
@@ -139,19 +124,6 @@
     }
     function tologin(){
     window.location.href="/login"
-    }
-    var count = document.getElementById('count');
-
-    function jump(id){
-        // alert(11)
-        console.log(id);
-        $.post('/fenye',
-        {num:id},
-        function(data){
-            
-            document.write(data);
-          
-        })
     }
 </script>
 </html>
