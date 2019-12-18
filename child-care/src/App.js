@@ -51,6 +51,15 @@ import Message from './container/home/Message'
 import Baike1 from './container/wiki/Baike1'
 import Baike2 from './container/wiki/Baike2'
 import Baike3 from './container/wiki/Baike3'
+//亲子游戏详情页
+import Youxi1 from './container/wiki/Youxi1'
+import Youxi2 from './container/wiki/Youxi2'
+import Youxi3 from './container/wiki/Youxi3'
+import Youxi4 from './container/wiki/Youxi4'
+import Youxi5 from './container/wiki/Youxi5'
+import Youxi6 from './container/wiki/Youxi6'
+
+
 export default class App extends Component {
     render() {
         return (
@@ -92,6 +101,12 @@ export default class App extends Component {
                         <Route exact path='/wiki/baike1'component={Baike1}/>
                         <Route exact path='/wiki/baike2'component={Baike2}/>
                         <Route exact path='/wiki/baike3'component={Baike3}/>
+                        <Route exact path='/wiki/youxi1'component={Youxi1}/>
+                        <Route exact path='/wiki/youxi2'component={Youxi2}/>
+                        <Route exact path='/wiki/youxi3'component={Youxi3}/>
+                        <Route exact path='/wiki/youxi4'component={Youxi4}/>
+                        <Route exact path='/wiki/youxi5'component={Youxi5}/>
+                        <Route exact path='/wiki/youxi6'component={Youxi6}/>
                         {/* <Route path='/wiki/nurse1/detail/:id' component={Detail}/>
                         <Route path='/wiki/babyfood/detail/:id' component={Detail}/>
                         <Route path='/wiki/chaowa/detail/:id' component={Detail}/>
