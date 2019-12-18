@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { NavBar,List ,Icon} from 'antd-mobile';
 import cookie from 'react-cookies'
 import {withRouter} from 'react-router-dom'
+// 使用withRouter包裹当前组件可以接收到父组件的this.props，可以使用this.props.history对象进行路由的跳转
 
 class Anxiety extends Component {
     constructor(){
@@ -14,7 +15,7 @@ class Anxiety extends Component {
         }
     }
     componentDidMount(){
-        //初始加载
+        //组件加载时自动执行当前生命周期函数
         fetch("http://192.168.43.217:5001/jiaolv")
         .then(res=>res.json())
         .then((res)=>{
