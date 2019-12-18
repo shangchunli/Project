@@ -60,15 +60,11 @@ export default class My extends Component {
                             {item.mood}</List.Item.Brief>
                     </List.Item>
                 </List>
-<<<<<<< Updated upstream
-                {/* <List style={{marginTop:"30px"}}>
-=======
                         )
                     }
                     
                 </div>
                 <List style={{marginTop:"30px"}}>
->>>>>>> Stashed changes
                     <List.Item
                         arrow="horizontal"
                         thumb="./images/guanzhu.svg"
@@ -78,7 +74,7 @@ export default class My extends Component {
                     >
                     我的关注
                     </List.Item>
-                </List> */}
+                </List>
                 <List style={{marginTop:"30px"}}>
                     <List.Item
                         arrow="horizontal"
