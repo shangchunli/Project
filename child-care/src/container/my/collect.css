@@ -1,0 +1,35 @@
+.wrap img {
+    width: 36%;
+    margin: 9px;
+  }
+  .wrap h2{
+    margin-left: 7%;
+  }
+ .my-list{
+   margin-top:10px;
+   height:100px
+ }
+ .placeholder1 {
+  background-color:#fff;
+  color: rgb(19, 18, 18);
+ 
+  height: 20px;
+  line-height: 20px;
+  width: 100%;
+}
+.placeholder2{
+  background-color:#fff;
+  color: rgb(19, 18, 18);
+  margin-top:20%;
+  height: 46px;
+  line-height: 30px;
+  width: 100%;
+}
+.focus1{
+  /* text-align:center; */
+  width:'100%';
+  height:50px;
+  background-color:'white';
+  font-size:20px;
+  padding-top:10px;
+}
