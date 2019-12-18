@@ -24,7 +24,6 @@ class Food extends Component {
                 data:res
             })
         });
-        // 获取收藏
         fetch('http://192.168.43.217:5001/keepid',{
                 method: 'POST', 
                 headers: { 
