@@ -35,8 +35,11 @@ class Reply extends Component {
             console.log(res)
         })
     }
+//     点击红心时进行收藏的改变
     change1=(idx,e)=>{
+//         点击红心和点击收藏时阻止事件的冒泡
         e.stopPropagation();
+//         点击红心时改变当前组件的收藏的状态
         let b=this.state.isKeep;
         this.setState({
             isKeep:!b,
@@ -46,7 +49,7 @@ class Reply extends Component {
         console.log(this.state.chapterId);
         
         if(this.state.isKeep==true){
-            
+//             当当前组件的收藏状态为true时红心改变，并向后台发送userId和chapterId
             e.target.src='https://s2.ax1x.com/2019/12/11/QrKe4s.png'
             // alert(this.state.userId);
            
@@ -62,6 +65,7 @@ class Reply extends Component {
                 })
                 .then(res=>res.json())
                 .then((res)=>{
+//                     后台返回数据表示收藏成功
                     console.log(res);
                    
                 })
@@ -73,9 +77,11 @@ class Reply extends Component {
         // console.log(this.state.chapterId);
     }
     goBack=()=>{
+//         点击按钮进行返回
        this.props.history.go(-1);
     }
     too=(id)=>{
+//         点击详情
         this.props.history.push('/health/detail/'+id);
     }
     render() {
