@@ -40,7 +40,7 @@ class Login extends Component {
         .then((res)=>{
             console.log(res)
             if(res=='success'){
-                alert("登录成功")
+                console.log("登录成功")
                 this.props.history.push("/home");
                 cookie.save('userId',this.state.tel);
             }else{
