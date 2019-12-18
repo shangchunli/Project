@@ -1,12 +1,40 @@
 import React, { Component } from 'react'
-import { NavBar, Icon, Tabs,WingBlank, WhiteSpace,
-    Flex,List} from 'antd-mobile';
+import { NavBar,  WhiteSpace,List} from 'antd-mobile';
+    import cookie from 'react-cookies'
 
 export default class My extends Component {
+    constructor(){
+        super();
+        this.state={
+            data:[{name:'',mood:''}]
+        }
+    }
+    componentDidMount() {
+        setTimeout(()=>{
+            fetch('http://192.168.43.217:5001/my',{
+                method: 'POST',//post请求 
+            headers: { 
+            'Content-Type': 'application/json;charset=UTF-8' 
+            }, 
+            body: JSON.stringify({
+              userId:cookie.load('userId'),
+            })
+            })
+            .then(res=>res.json())
+            .then((res)=>{
+              console.log(res);
+              this.setState({
+                  data:res
+              })
+            })
+          
+        },0)
+    }
     handle=(pathname)=>{
         window.location.href="/my/"+pathname;
     }
     render() {
+        console.log(this.state.data)
         return (
             <div>
                 <NavBar
@@ -17,18 +45,30 @@ export default class My extends Component {
                     我的
                 </NavBar>
                 <WhiteSpace/>
-                <List style={{marginTop:"40px"}}>
+                <div>
+                    {
+                        this.state.data.map(item=>
+                            <List style={{marginTop:"40px"}}>
                     <List.Item
                         arrow="horizontal"
                         multipleLine
                         onClick={()=>{this.handle('unique')}}
                     >
-                        <img src="./images/touxiang.jpg" 
+                        <img src={item.head} 
                             style={{height:100,width:100,marginRight:25,borderRadius:50}}/>
-                        丫丫 <List.Item.Brief style={{marginLeft:125,marginTop:-30,marginBottom:30}}>陌生人如玉</List.Item.Brief>
+                        {item.name} <List.Item.Brief style={{marginLeft:125,marginTop:-30,marginBottom:30}}>
+                            {item.mood}</List.Item.Brief>
                     </List.Item>
                 </List>
+<<<<<<< Updated upstream
                 {/* <List style={{marginTop:"30px"}}>
+=======
+                        )
+                    }
+                    
+                </div>
+                <List style={{marginTop:"30px"}}>
+>>>>>>> Stashed changes
                     <List.Item
                         arrow="horizontal"
                         thumb="./images/guanzhu.svg"
