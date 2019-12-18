@@ -2,19 +2,23 @@ import React, { Component } from 'react'
 import { NavBar,List ,Icon} from 'antd-mobile';
 import cookie from 'react-cookies'
 import {withRouter} from 'react-router-dom'
+// 使用withRouter包裹当前组件可以接收到父组件的this.props，可以使用this.props.history对象进行路由的跳转
 
 class Anxiety extends Component {
     constructor(){
         super();
         this.state={
             data:[],
+// 判断当前状态是否收藏，收藏与否执行不同的操作
             isKeep:false,
+// 存取帖子的chapterid            
             chapterId:[],
+//  存取当前用户的userId           
             userId:cookie.load('userId')
         }
     }
     componentDidMount(){
-        //初始加载
+        //组件加载时自动执行当前生命周期函数
         fetch("http://192.168.43.217:5001/jiaolv")
         .then(res=>res.json())
         .then((res)=>{
@@ -24,15 +28,20 @@ class Anxiety extends Component {
         })
     }
     componentDidUpdate(){
+//       当页面每次更新时自动加载当前生命周期函数
         fetch("http://192.168.43.217:5001/jiaolv")
         .then(res=>res.json())
         .then((res)=>{
             console.log(res)
         })
     }
+//     点击红心时执行当前函数
     change1=(idx,e)=>{
+//        当点击红心和点击详情时阻止事件冒泡
         e.stopPropagation();
+//         当点击时让当前收藏状态取反
         let b=this.state.isKeep;
+//         存储当前要改变的chapterid和选择收藏或不收藏
         this.setState({
             isKeep:!b,
             chapterId:idx
