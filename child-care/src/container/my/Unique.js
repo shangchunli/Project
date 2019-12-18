@@ -1,10 +1,9 @@
 import React, { Component } from 'react'
 import { List, InputItem,Button,NavBar,Icon } from 'antd-mobile';
 import cookie from 'react-cookies'
-<<<<<<< HEAD
+
 import {withRouter} from 'react-router-dom'
-=======
->>>>>>> cd2f11841ca90ce4abb0e187716826b3281c72d3
+
 
 //个人页面
 class Unique extends Component {
@@ -35,11 +34,11 @@ class Unique extends Component {
       },0)
   }
   goBack=()=>{
-<<<<<<< HEAD
+
     this.props.history.go(-1);
-=======
+
     window.history.go(-1);
->>>>>>> cd2f11841ca90ce4abb0e187716826b3281c72d3
+
 
   }
   submmitMessage=()=>{
@@ -60,11 +59,11 @@ class Unique extends Component {
         .then((res)=>{
           console.log(res);
           if(res=='SUCCESS'){
-<<<<<<< HEAD
+
                 this.props.history.go(-1);
-=======
+
                 window.history.go(-1);
->>>>>>> cd2f11841ca90ce4abb0e187716826b3281c72d3
+>
           }
         })
   
