@@ -2,7 +2,7 @@ import Sui from './Sui';
 import Tie from './Tie';
 import React, { Component } from 'react'
 import './sui.css';
-import {NavBar,Tabs} from "antd-mobile"
+import {NavBar,Tabs,Icon} from "antd-mobile"
 
 const tabs = [
     { title: '帖子' },
