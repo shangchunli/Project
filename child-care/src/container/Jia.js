@@ -9,7 +9,6 @@ const tabs = [
     { title: '随想' },
   ];
 
-// console.log(tabs.reverse());
 
 export default class Jia extends Component {
     
