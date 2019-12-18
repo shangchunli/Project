@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import {withRouter} from 'react-router-dom'
-import {NavBar,Icon,List, DatePicker,Picker,Button} from 'antd-mobile'
+
+import {NavBar,Icon,List, DatePicker,Picker} from 'antd-mobile'
 import './message.css'
 import cookie from 'react-cookies';
 
@@ -8,16 +8,16 @@ const sex = [
     {
       label:
       (<div>
-        男
+          男孩
       </div>),
-      value: '男',
+      value: '男孩',
     },
     {
       label:
       (<div>
-        女
+        女孩
       </div>),
-      value: '女',
+      value: '女孩',
     }
   ];
 const nowTimeStamp = Date.now();
@@ -41,12 +41,15 @@ function formatDate(date) {
   const timeStr = `${pad(date.getHours())}:${pad(date.getMinutes())}`;
   return `${dateStr} ${timeStr}`;
 }
-class Message extends Component {
+export default class Message extends Component {
       state = {
         date: now,
         username:'丫丫',
         height:'22',
-        weight:'22'
+        weight:'5.2'
+      }
+      goBack=()=>{
+        window.history.go(-1);
       }
       onChangeSex = (sexs) => {
         this.setState({
@@ -54,14 +57,6 @@ class Message extends Component {
         });
       };
       baby=()=>{
-          console.log(this.state.date.getFullYear());
-          console.log((this.state.date.getMonth()+1));
-          console.log(this.state.date.getDate());
-          console.log(this.refs.username.value);
-          console.log(this.refs.height.value);
-          console.log(this.refs.weight.value);
-          console.log(this.state.sexValue[0]);
-          console.log(this.state)
           fetch("http://192.168.43.217:5001/addbaby",{
             method:'POST',
             headers: { 
@@ -70,9 +65,8 @@ class Message extends Component {
                 body: JSON.stringify({
                     userId:cookie.load('userId'),
                     name:this.refs.username.value,  
-                    height:this.refs.height.value ,
-                    height:this.refs.height.value  ,             
-                    weight:this.refs.weight.value,
+                    height:this.state.height ,
+                    weight:this.state.weight,
                     year:this.state.date.getFullYear(),
                     month:this.state.date.getMonth()+1,
                     day:this.state.date.getDate(),
@@ -83,11 +77,18 @@ class Message extends Component {
         .then((res)=>{
             console.log(res)
         })
-        this.props.history.push('/home');
       }
-      goBack=()=>{
-        this.props.history.go(-1);
-      }
+      
+      inputChange=()=>{
+        let val1=this.refs.username.value;
+        let weight1=this.refs.weight.value;
+        let height1=this.refs.height.value;
+        this.setState({
+            username:val1,
+            height:height1,
+            weight:weight1
+        })
+    }
     render() {
         return (
             <div>
@@ -101,19 +102,19 @@ class Message extends Component {
                     width:"100%"
                 }}
                 >
-                    宝宝信息
+                    设置宝宝信息
                 </NavBar>
                 <div style={{marginTop:70}}>
                     
                 <List>
                     <div style={{width:'90%',margin:'0 auto'}}>
                 <h4 style={{paddingTop:15}}>第一步：输入宝宝昵称</h4>
-                <List.Item > 
-                  <img src="../images/touxiang.jpg" style={{marginTop:20,width:'20%',height:'50px',borderRadius:'100px'}}/>
-                  <input style={{broder:'1px solid white',width:'60%',height:'30px',marginLeft:20}}
-                          type="text"  onChange={()=>this.inputChange()}
-                          value={this.state.username} class="el-input__inner"  ref="username" 
-                  />
+                <List.Item > <img src="https://s2.ax1x.com/2019/12/18/QTcxUO.png" 
+                style={{width:'15%',height:'15%'}}/>
+                <input style={{borderStyle:'none',width:'60%',borderBottom:'1px solid #000',
+                height:'30px',marginLeft:20,textAlign:'center'}}
+                type="text"  onChange={()=>this.inputChange()}
+                 defaultValue={this.state.username} class="el-input__inner"  ref="username" />
                </List.Item>
                 </div>
                 </List> 
@@ -122,18 +123,16 @@ class Message extends Component {
                     <List>
                         <div style={{width:'90%',margin:'0 auto'}}>
                             <h4 style={{paddingTop:15}}>第二步：选择宝宝性别</h4>
-                            {/* <List.Item ref='sexx'>  */}
-                                {/* <button>男</button> 
-                                <button>女</button> */}
-                                
-                                {/* </List.Item> */}
                                 <Picker
-                                  data={sex}
-                                  value={this.state.sexValue}
-                                  cols={1}
-                                  onChange={this.onChangeSex}
-                                >
-          <List.Item arrow="horizontal">宝宝性别</List.Item></Picker> 
+          data={sex}
+          value={this.state.sexValue}
+          cols={1}
+          onChange={this.onChangeSex}
+        >
+          <List.Item 
+          arrow="horizontal"> <img src="https://s2.ax1x.com/2019/12/18/QTcXb6.png" 
+          alt="QTcXb6.png" border="0" style={{width:'20%',height:'20%',marginRight:'20%'}}/>
+            宝宝性别</List.Item></Picker> 
                         </div>
                     </List>
                 </div>
@@ -149,7 +148,11 @@ class Message extends Component {
                     value={this.state.date}
                     onChange={date => this.setState({ date })}
                     >
-                    <List.Item arrow="horizontal">生日</List.Item>
+                    <List.Item arrow="horizontal">
+                    <img src="https://s2.ax1x.com/2019/12/18/QTgpPe.png" 
+          alt="QTgpPe.png" border="0" style={{width:'20%',height:'20%',marginRight:'20%'}}/>
+
+                      生日</List.Item>
                     </DatePicker>
                     </div>
                     </List>
@@ -159,12 +162,13 @@ class Message extends Component {
                     <List className="date-picker-list" style={{ backgroundColor: 'white' }}>
                     <div  style={{width:'90%',margin:'0 auto'}}>
                     <h4 style={{paddingTop:15}}>第三步：宝宝身高（cm）</h4>
-                    <List.Item > <img src="../images/touxiang.jpg" style={{marginTop:20,
-                        width:'20%',height:'50px',borderRadius:'100px'}}/>
-                <input style={{broder:'1px solid white',width:'60%',
-                height:'30px',marginLeft:20}}
+                    <List.Item > <img src="https://s2.ax1x.com/2019/12/18/QTcz5D.png" 
+                    alt="QTcz5D.png" border="0" 
+                    style={{width:'15%',height:'15%'}}/>
+                <input style={{borderStyle:'none',width:'60%',borderBottom:'1px solid #000',
+                height:'30px',marginLeft:20,textAlign:'center'}}
                 type="text"  onChange={()=>this.inputChange()}
-                value={this.state.height} class="el-input__inner"  ref="height" />
+                defaultValue={this.state.height} class="el-input__inner"  ref="height" />
                </List.Item>
                    
                     </div>
@@ -174,23 +178,26 @@ class Message extends Component {
                     <List className="date-picker-list" style={{ backgroundColor: 'white' }}>
                     <div style={{width:'90%',margin:'0 auto'}}>
                     <h4 style={{paddingTop:15}}>第三步：宝宝体重（kg）</h4>
-                    <List.Item > <img src="../images/touxiang.jpg" style={{marginTop:20,
-                        width:'20%',height:'50px',borderRadius:'100px'}}/>
-                <input style={{broder:'1px solid white',width:'60%',
-                height:'30px',marginLeft:20}}
+                    <List.Item > 
+                    <img src="https://s2.ax1x.com/2019/12/18/QTcvVK.png" 
+                    alt="QTcvVK.png" border="0"
+                    style={{width:'15%',height:'15%'}}/>
+                <input style={{borderStyle:'none',width:'60%', borderBottom:'1px solid #000', 
+                height:'30px',marginLeft:20,textAlign:'center'}}
                 type="text"  onChange={()=>this.inputChange()}
-                value={this.state.weight} class="el-input__inner"  ref="weight" />
+                defaultValue={this.state.weight} class="el-input__inner"  ref="weight" />
                </List.Item>
                     </div>
                     </List>
                 </div>
                 <list>
                     <List.Item>
-                      <Button primary onClick={()=>this.baby()}>提交</Button>
-                    </List.Item>
+                    <button style={{marginLeft:'20%',marginTop:'10%',
+                    width:'50%',height:'40px',backgroundColor:'#d81e06',
+                  borderRadius:'40px'}}
+                    onClick={()=>this.baby()}>提交</button></List.Item>
                 </list>
             </div>
         )
     }
 }
-export default withRouter(Message);
