@@ -91,7 +91,7 @@ class Reply extends Component {
                 <div style={{marginTop:10,height:600,width:"100%"}}>
                 {
                             (this.state.data||[]).map(item=>
-                                <List style={{marginTop:30}} id={item.chapterid} 
+                                <List style={{marginTop:10}} id={item.chapterid} 
                                 onClick={()=>this.too(item.chapterid)}>
                                 <List.Item style={{paddingTop:10,
                                     color:"#000"}}>

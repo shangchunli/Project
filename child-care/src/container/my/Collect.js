@@ -70,8 +70,6 @@ class Collect extends Component {
                 console.log(res);
             })
         }
-    }
-    componentUpdate(){
         fetch('http://192.168.43.217:5001/mycollect',{
             method: 'POST', 
             headers: { 
@@ -83,13 +81,33 @@ class Collect extends Component {
         })
         .then(res=>res.json())
         .then((res)=>{
-            console.log(res);
+            // console.log(res);
             this.setState({
                 data:res
             });
         })
-       
+
     }
+    // componentDidUpdate(){
+    //     console.log('改变')
+    //     fetch('http://192.168.43.217:5001/mycollect',{
+    //         method: 'POST', 
+    //         headers: { 
+    //             'Content-Type': 'application/json;charset=UTF-8' 
+    //         }, 
+    //         body: JSON.stringify({
+    //             userId:cookie.load('userId')
+    //         }) 
+    //     })
+    //     .then(res=>res.json())
+    //     .then((res)=>{
+    //         // console.log(res);
+    //         this.setState({
+    //             data:res
+    //         });
+    //     })
+       
+    // }
     componentDidMount(){
         fetch('http://192.168.43.217:5001/mycollect',{
             method: 'POST',//post请求 
@@ -210,7 +228,7 @@ class Collect extends Component {
                         height: '700px' ,width:"100%"}}>
                               {
                                 (this.state.data||[]).map((item,idx)=>{
-                                    if(item.tab=='穿搭'){
+                                    if(item.tab=='潮娃穿搭'){
                                         return(
                                             <List id={item.chapterid} onClick={()=>this.too(item.chapterid)}>
                                                 <List.Item style={{paddingTop:10,color:"#000"}}>

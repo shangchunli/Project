@@ -11,6 +11,7 @@ class Food extends Component {
             data:[],
             isKeep:false,
             chapterId:[],
+            tab:'妈妈饮食',
             userId:cookie.load('userId')
         }
     }
@@ -22,7 +23,22 @@ class Food extends Component {
             this.setState({
                 data:res
             })
-        })
+        });
+        // 获取收藏
+        fetch('http://192.168.43.217:5001/keepid',{
+                method: 'POST', 
+                headers: { 
+                    'Content-Type': 'application/json;charset=UTF-8' 
+                }, 
+                body: JSON.stringify({
+                    userId:this.state.userId,
+                    tab:this.state.tab
+                })                    
+            })
+            .then(res=>res.json())
+            .then((res)=>{
+                console.log(res);
+            })
     }
     componentDidUpdate(){
         fetch("http://192.168.43.217:5001/momfood")

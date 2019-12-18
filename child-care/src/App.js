@@ -30,7 +30,7 @@ import Food from './container/health/Food'
 // health焦虑
 import Anxiety from './container/health/Anxiety'
 //my关注
-import Focus from './container/my/Focus'
+// import Focus from './container/my/Focus'
 // my收藏
 import Collect from './container/my/Collect'
 // my 通用设置
@@ -80,7 +80,7 @@ export default class App extends Component {
                         <Route  exact path='/health/reply' component={Reply}/>
                         <Route  exact path='/health/food' component={Food}/>
                         <Route  exact path='/health/anxiety' component={Anxiety}/>
-                        <Route  exact path='/my/focus' component={Focus}/>
+                        {/* <Route  exact path='/my/focus' component={Focus}/> */}
                         <Route  exact path='/my/collect' component={Collect}/>
                         <Route  exact path='/my/tongyong' component={Tongyong}/>
                         <Route  exact path='/my/unique' component={Unique}/>

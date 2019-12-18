@@ -1,12 +1,15 @@
 import React, { Component } from 'react'
 import { NavBar, Icon,List,Button, WhiteSpace, WingBlank} from 'antd-mobile';
+import {withRouter} from 'react-router-dom'
+import cookie from 'react-cookies'
 const Item = List.Item;
-export default class Tongyong extends Component {
+class Tongyong extends Component {
     goBack=()=>{
-        window.history.go(-1);
+        this.props.history.go(-1);
     }
     handle=()=>{
-        window.location.href='/'
+        this.props.history.push('/');
+        cookie.remove('userId');
     }
     state = {
         disabled: false,
@@ -57,3 +60,4 @@ export default class Tongyong extends Component {
         )
     }
 }
+export default withRouter(Tongyong)

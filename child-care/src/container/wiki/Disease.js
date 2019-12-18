@@ -12,7 +12,8 @@ class Disease extends Component {
             data:[],
             isKeep:false,
             chapterid:[],
-            userId:cookie.load('userId')
+            userId:cookie.load('userId'),
+            tab:'常见疾病'
         }
     }
     
@@ -25,13 +26,15 @@ class Disease extends Component {
         })
         console.log(this.state.chapterid);
         if(this.state.isKeep==true){
-            
+            console.log('true');
+            // keepArr.push(idx);
+            // console.log(keepArr);
             e.target.src='https://s2.ax1x.com/2019/12/11/QrKe4s.png '
            
                 fetch('http://192.168.43.217:5001/cookie',{
                         method: 'POST',//post请求 
                         headers: { 
-                        'Content-Type': 'application/json;charset=UTF-8' 
+                            'Content-Type': 'application/json;charset=UTF-8' 
                         }, 
                         body: JSON.stringify({
                             userId:this.state.userId,  
@@ -44,10 +47,26 @@ class Disease extends Component {
                    
                 })
         }else{
-            e.target.src='https://s2.ax1x.com/2019/12/04/Q1fu7T.png'
+            console.log('false');
+            e.target.src='https://s2.ax1x.com/2019/12/04/Q1fu7T.png';
+            fetch('http://192.168.43.217:5001/uncollect',{
+                method: 'POST',//post请求 
+                headers: { 
+                    'Content-Type': 'application/json;charset=UTF-8' 
+                }, 
+                body: JSON.stringify({
+                    userId:this.state.userId,  
+                    chapterId:this.state.chapterid
+                })                    
+            })
+            .then(res=>res.text())
+            .then((res)=>{
+                console.log(res);
+            })
         }
     }
     componentDidMount(){
+        // 渲染页面
         fetch('http://192.168.43.217:5001/jibing',{
             method: 'GET', 
             headers: { 
@@ -61,7 +80,21 @@ class Disease extends Component {
                 data:res
             });
         })
-       
+        // 获取收藏
+        fetch('http://192.168.43.217:5001/keepid',{
+                method: 'POST', 
+                headers: { 
+                    'Content-Type': 'application/json;charset=UTF-8' 
+                }, 
+                body: JSON.stringify({
+                    userId:this.state.userId,
+                    tab:this.state.tab
+                })                    
+            })
+            .then(res=>res.json())
+            .then((res)=>{
+                console.log(res);
+            })
     }
     too=(id)=>{
         console.log(id)
@@ -85,15 +118,16 @@ class Disease extends Component {
                                                 width:'20%',height:'10%'}}
                                         />
                                         <List.Item.Brief >
-                                            丫丫妈妈
-                                            <span style={{marginLeft:10}}>11月12日</span>
+                                                {item.owner}
+                                                <span style={{marginLeft:10}}>{item.time}</span>
                                             <span  style={{marginLeft:20}} >
                                                 <img 
                                                     ref='tab'
                                                     id={item.chapterid}
-                                                    src={(cookie.load('chapterId'))
-                                                        ?'https://s2.ax1x.com/2019/12/11/QrKe4s.png'
-                                                        :"https://s2.ax1x.com/2019/12/04/Q1fu7T.png"}
+                                                    // src={(keepArr.join().indexOf(item.chapterid))
+                                                    //     ?'https://s2.ax1x.com/2019/12/11/QrKe4s.png'
+                                                    //     :"https://s2.ax1x.com/2019/12/04/Q1fu7T.png"}
+                                                    src='https://s2.ax1x.com/2019/12/04/Q1fu7T.png'
                                                     onClick={(e)=>this.change1(item.chapterid,e)} alt='收藏'/>
                                             </span>
                                             {/* {item.chapterid} */}

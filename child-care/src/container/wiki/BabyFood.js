@@ -6,6 +6,8 @@ import {withRouter} from 'react-router-dom'
 class BabyFood extends Component {
     goBack=()=>{
         this.props.history.go(-1);
+        // this.props.history.goBack();
+
     }
     constructor(){
         super();

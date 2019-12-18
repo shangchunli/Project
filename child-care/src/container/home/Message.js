@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-
-import {NavBar,Icon,List, DatePicker,Picker} from 'antd-mobile'
+import {withRouter} from 'react-router-dom'
+import {NavBar,Icon,List, DatePicker,Picker,Button} from 'antd-mobile'
 import './message.css'
 import cookie from 'react-cookies';
 
@@ -41,7 +41,7 @@ function formatDate(date) {
   const timeStr = `${pad(date.getHours())}:${pad(date.getMinutes())}`;
   return `${dateStr} ${timeStr}`;
 }
-export default class Message extends Component {
+class Message extends Component {
       state = {
         date: now,
         username:'丫丫',
@@ -58,10 +58,10 @@ export default class Message extends Component {
           console.log((this.state.date.getMonth()+1));
           console.log(this.state.date.getDate());
           console.log(this.refs.username.value);
-          console.log(this.refs.height.value)
-          console.log(this.refs.weight.value)
-          console.log(this.state.sexValue[0])
-            console.log(this.state)
+          console.log(this.refs.height.value);
+          console.log(this.refs.weight.value);
+          console.log(this.state.sexValue[0]);
+          console.log(this.state)
           fetch("http://192.168.43.217:5001/addbaby",{
             method:'POST',
             headers: { 
@@ -83,6 +83,10 @@ export default class Message extends Component {
         .then((res)=>{
             console.log(res)
         })
+        this.props.history.push('/home');
+      }
+      goBack=()=>{
+        this.props.history.go(-1);
       }
     render() {
         return (
@@ -104,12 +108,12 @@ export default class Message extends Component {
                 <List>
                     <div style={{width:'90%',margin:'0 auto'}}>
                 <h4 style={{paddingTop:15}}>第一步：输入宝宝昵称</h4>
-                <List.Item > <img src="../images/touxiang.jpg" style={{marginTop:20,
-                        width:'20%',height:'50px',borderRadius:'100px'}}/>
-                <input style={{broder:'1px solid white',width:'60%',
-                height:'30px',marginLeft:20}}
-                type="text"  onChange={()=>this.inputChange()}
-                 value={this.state.username} class="el-input__inner"  ref="username" />
+                <List.Item > 
+                  <img src="../images/touxiang.jpg" style={{marginTop:20,width:'20%',height:'50px',borderRadius:'100px'}}/>
+                  <input style={{broder:'1px solid white',width:'60%',height:'30px',marginLeft:20}}
+                          type="text"  onChange={()=>this.inputChange()}
+                          value={this.state.username} class="el-input__inner"  ref="username" 
+                  />
                </List.Item>
                 </div>
                 </List> 
@@ -124,11 +128,11 @@ export default class Message extends Component {
                                 
                                 {/* </List.Item> */}
                                 <Picker
-          data={sex}
-          value={this.state.sexValue}
-          cols={1}
-          onChange={this.onChangeSex}
-        >
+                                  data={sex}
+                                  value={this.state.sexValue}
+                                  cols={1}
+                                  onChange={this.onChangeSex}
+                                >
           <List.Item arrow="horizontal">宝宝性别</List.Item></Picker> 
                         </div>
                     </List>
@@ -182,9 +186,11 @@ export default class Message extends Component {
                 </div>
                 <list>
                     <List.Item>
-                    <button onClick={()=>this.baby()}>提交</button></List.Item>
+                      <Button primary onClick={()=>this.baby()}>提交</Button>
+                    </List.Item>
                 </list>
             </div>
         )
     }
 }
+export default withRouter(Message);

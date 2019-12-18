@@ -28,7 +28,7 @@ export default class My extends Component {
                         丫丫 <List.Item.Brief style={{marginLeft:125,marginTop:-30,marginBottom:30}}>陌生人如玉</List.Item.Brief>
                     </List.Item>
                 </List>
-                <List style={{marginTop:"30px"}}>
+                {/* <List style={{marginTop:"30px"}}>
                     <List.Item
                         arrow="horizontal"
                         thumb="./images/guanzhu.svg"
@@ -38,7 +38,7 @@ export default class My extends Component {
                     >
                     我的关注
                     </List.Item>
-                </List>
+                </List> */}
                 <List style={{marginTop:"30px"}}>
                     <List.Item
                         arrow="horizontal"

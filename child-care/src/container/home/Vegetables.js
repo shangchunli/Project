@@ -6,7 +6,7 @@ export default class Fruit extends Component {
         this.state = {
             // data: ['banma', 'gou', 'houzi','huluobo','qiukui','laohu','niu'],
             // imgHeight: 200,
-            data: ['baicai', 'dacong', 'huanggua','huluobo','qiukui','tudou','xohongshi'],
+            data: ['baicai', 'dacong', 'huanggua','huluobo','qiukui','tudou','xihongshi'],
 
         }
     }
@@ -22,7 +22,7 @@ export default class Fruit extends Component {
                 {this.state.data.map(val => (
                     <div>
                         <img
-                            src={"/images/vegetables/"+val+".jpg"}
+                            src={"/images/cai/"+val+".jpg"}
                             alt={val}
                             style={{ width: '100%', verticalAlign: 'top',height:'400px'}}
                             onLoad={() => {

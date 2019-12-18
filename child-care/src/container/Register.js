@@ -77,6 +77,7 @@ class Register extends Component {
             })
 
         }
+        this.props.history.push('/login');
     }
     render() {
         const { files } = this.state;
@@ -166,8 +167,9 @@ class Register extends Component {
                     </List.Item>
                 </List>
              <Button type="primary"  style={{width:"30%",height:30,marginLeft:"30%",marginTop:30}}
-      onClick={this.register}
-      size="small" inline>提交</Button>
+                onClick={this.register} size="small" inline>
+                    提交
+            </Button>
       
      
       </div>

@@ -55,7 +55,7 @@ class Login extends Component {
             <div>
             <div style={{backgroundColor:"transparent",width:"100%"
                 ,height:630,opacity:0.4,
-            background:"url('./images/beijing/four.jpg')"}}>
+                background:"url('./images/beijing/four.jpg')"}}>
                 </div>
             </div>
             <Flex>

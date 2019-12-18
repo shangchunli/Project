@@ -1,19 +1,18 @@
 import React, { Component } from 'react'
 import "./apphome.css"
 import cookie from 'react-cookies'
-import {NavBar,Icon} from "antd-mobile"
+import {NavBar,Icon, List} from "antd-mobile"
 import {withRouter} from 'react-router-dom'
-let str='快来设置宝贝信息吧';
-
-
 class AppHome extends Component {
     constructor(props){
         super(props);
         this.state={
-            data:''
+            data:'',
+            baby:''
         }
     }
     componentDidMount(){
+        alert('11')
         // console.log(this.props.match.params.id);
         fetch('http://192.168.43.217:5001/caprice',{
             method: 'POST',//post请求 
@@ -26,25 +25,46 @@ class AppHome extends Component {
     })
     .then(res=>res.json())
     .then((res)=>{
+        console.log(res)
         let str=res.reverse();
        this.setState({
            data:str
        })
     })
-   
+    // fetch('http://192.168.43.217:5001/mybaby',{
+    //         method: 'POST',//post请求 
+    //         headers: { 
+    //         'Content-Type': 'application/json;charset=UTF-8' 
+    //         }, 
+    //         body: JSON.stringify({
+    //             userId:cookie.load('userId'),  
+    //         })                    
+    // })
+    // .then(res=>res.json())
+    // .then((res)=>{
+    //     console.log(res);
+    //     this.setState({
+    //         baby:res
+    //     })
+    // })
     }
     handle=(pathname)=>{
-        // window.location.href="/home/"+pathname;
-        console.log(this.props);
-        this.props.history.push('/home/'+pathname);
+        this.props.history.push("/home/"+pathname);
     }
     toDetail=(id)=>{
         this.props.history.push('/home/detail/'+id);
 
     }
     render() {
+        let str;
+       if(this.state.baby==[]){
+           str={display:'block',marginTop:'20%'}
+       }else{
+           str={display:'none',marginTop:'20%'}
+       }
+    //    console.log(str);
+       console.log(this.state.baby)
         return (
-            
             <div>
                 <NavBar
                         style={{backgroundColor:'#fff',color:'#000',
@@ -57,23 +77,52 @@ class AppHome extends Component {
                     >
                         呦呦育儿
                 </NavBar>
-              <div className='shouye2'style={{marginTop:50,
+              <div className='shouye2'style={{marginTop:50, 
                     background:'url("https://s2.ax1x.com/2019/12/10/QBR4bT.jpg")',
                     backgroundSize:'cover',opacity:'0.9'}}>
-                    <p className='shouye9'style={{color:'white',paddingLeft:'10%',
-                    paddingTop:'15%',float:'left'}}>{str}</p>
+                           
+                            <List.Item style={{
+                                backgroundColor:'transparent'}}>
+                    <div  style={{paddingLeft:'20%',color:'white',
+                    paddingTop:'20%',float:'left'}}>
+                       {
+                           
+                       (this.state.baby||[]).map((item)=>{
+                           console.log(item)
+                           if(!item){
+                               return(
+                                   <div>快来设置宝宝信息吧</div>
+                               )
+                           }else{
+                                return(
+                                    <div>
+                                        <p>{item.babyname+'今天'}
+                                        {new Date().getFullYear()-item.birthyear==0?'':
+                                        (new Date().getFullYear()-item.birthyear)+'年'}<span>
+                                        {(new Date().getMonth()+1)-item.birthmonth==0?'':
+                                        ((new Date().getMonth()+1)-item.birthmonth)+'月'}</span>
+                                        {new Date().getDate()-item.birthday+'天了'}</p>
+                                    </div>
+                                )
+                           }
+                       
+                        }
+                        )}
+                    </div>
+                    <div style={str}>快来设置宝宝信息吧</div>
                     <img 
-                        style={{paddingTop:'18%'}}
+                        style={{float:'left',marginLeft:'5%',marginTop:'20%'}}
                         src='https://s2.ax1x.com/2019/12/10/QB4ryn.png'
-                        onClick={()=>{this.handle('message')}}
+                        onClick={()=>{this.handle('Message')}}
                     />
+                    </List.Item>
                 </div>
                     <div onClick={()=>{this.handle('picture')}}
                     style={{float:'left',paddingLeft:'8%',backgroundColor:'white'}}>
                         <img 
                             width='40'height='40'
                         
-                            src='./images/home/2.png'/>
+                            src='https://s2.ax1x.com/2019/12/17/Qo9KFU.png'/>
                         <p>识图</p>
                     </div>
 
@@ -82,7 +131,7 @@ class AppHome extends Component {
                     style={{float:'left',paddingLeft:'7%',backgroundColor:'white'}}>
                         <img 
                             width='40'height='40'
-                            src='./images/home/3.png'/>
+                            src='https://s2.ax1x.com/2019/12/17/Qo9Yex.png'/>
                         <p>识字</p>
                     </div>
 
@@ -91,7 +140,7 @@ class AppHome extends Component {
                     style={{float:'left',paddingLeft:'7%',backgroundColor:'white'}}>
                         <img 
                             width='40'height='40'
-                            src='./images/home/4.png'/>
+                            src='https://s2.ax1x.com/2019/12/17/Qo9c0P.png'/>
                         <p>催眠曲</p>
                     </div>
 
@@ -100,7 +149,7 @@ class AppHome extends Component {
                     style={{float:'left',paddingLeft:'7%',backgroundColor:'white'}}>
                         <img 
                             width='40'height='40'
-                            src='images/home/5.png'
+                            src='https://s2.ax1x.com/2019/12/17/Qo9H00.png'
                             />
                         <p>睡前故事</p>
                     </div>
@@ -110,7 +159,7 @@ class AppHome extends Component {
                     style={{float:'left',paddingLeft:'6%',backgroundColor:'white'}}>
                         <img 
                             width='40'height='40'
-                            src='images/home/6.png'
+                            src='https://s2.ax1x.com/2019/12/17/Qo9LkT.png'
                             />
                         <p>亲子游戏</p>
                     </div>
@@ -140,4 +189,4 @@ class AppHome extends Component {
         )
     }
 }
-export default withRouter(AppHome);
+export default withRouter(AppHome)

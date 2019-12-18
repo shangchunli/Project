@@ -20,7 +20,7 @@ export default class Fruit extends Component {
                 {this.state.data.map(val => (
                     <div>
                         <img
-                            src={"/images/plant/"+val+".jpg"}
+                            src={"/images/zhiwu/"+val+".jpg"}
                             alt={val}
                             style={{ width: '100%', verticalAlign: 'top',height:'400px'}}
                             onLoad={() => {
