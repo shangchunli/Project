@@ -25,7 +25,9 @@ class Collect extends Component {
             userId:cookie.load('userId')
         }
     }
+//     点击红心时改变当前组件的收藏状态
     change1=(idx,e)=>{
+//         点击红心和点击详情时阻止事件的冒泡
         e.stopPropagation();
         let b=this.state.isKeep;
         this.setState({
@@ -34,9 +36,9 @@ class Collect extends Component {
         })
         console.log(this.state.chapterid);
         if(this.state.isKeep==true){
-            
+//             当前组件的收藏状态为true时执行当前代码
             e.target.src='https://s2.ax1x.com/2019/12/11/QrKe4s.png '
-           
+//            向后台发起添加收藏的请求
                 fetch('http://192.168.43.217:5001/cookie',{
                         method: 'POST',//post请求 
                         headers: { 
@@ -54,6 +56,7 @@ class Collect extends Component {
                 })
         }else if(this.state.isKeep==false){
             console.log(false);
+//             向后台发起取消收藏的请求
             e.target.src='https://s2.ax1x.com/2019/12/04/Q1fu7T.png';
             fetch('http://192.168.43.217:5001/uncollect',{
                 method: 'POST',//post请求 
@@ -70,6 +73,7 @@ class Collect extends Component {
                 console.log(res);
             })
         }
+//         当取消收藏或者添加收藏后重新发起请求使页面更新
         fetch('http://192.168.43.217:5001/mycollect',{
             method: 'POST', 
             headers: { 
@@ -126,9 +130,11 @@ class Collect extends Component {
             })
         })
     }
+// 点击返回上一页
     goBack=()=>{
         this.props.history.go(-1);
     }
+//     点击出现详情页
     too=(id)=>{
         console.log(id)
         this.props.location.href='/wiki/detail/'+id;
