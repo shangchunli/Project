@@ -75,13 +75,14 @@
                 <button class="a1" onclick="tosystem()" >系统管理</button>
 
             </div>
+            <button onclick="jump(0)"><</button>
             <button onclick="jump(1)">1</button>
-        <button onclick="jump(2)">2</button>
-        <button onclick="jump(3)">3</button>
-        <button onclick="jump(4)">4</button>
-        <button onclick="jump(5)">5</button>
-        <button onclick="jump(6)">6</button>
-        <%- %>
+            <button onclick="jump(2)">2</button>
+            <button onclick="jump(3)">3</button>
+            <button onclick="jump(4)">4</button>
+            <button onclick="jump(5)">5</button>
+            <button onclick="jump(6)">6</button>
+            <button onclick="jump(0)">></button>
             <div style='width:80%;height:100%;float: left;'>
                 <table style="text-align:center;table-layout: fixed; margin-top:10px">
                     <tr style="margin-bottom:10px">
@@ -143,15 +144,33 @@
     var count = document.getElementById('count');
 
     function jump(id){
-        // alert(11)
-        console.log(id);
-        $.post('/fenye',
-        {num:id},
-        function(data){
+        // // alert(11)
+        // console.log(id);
+        // $.post('/fenye',
+        // {num:id},
+        // function(data){
+        //     // $.post('/chapterm',{message:data},function(str){})
+        //     // window.localtion.href='/chapterm';
+        //     console.log(data);
             
-            document.write(data);
-          
-        })
+        //     document.write(data);
+        // })
+        if(id==0){
+            id-1;
+            console.log(id);
+        }else if(id==1){
+            window.location.href="/fenye1"
+        }else if(id==2){
+            window.location.href="/fenye2"
+        }else if(id==3){
+            window.location.href="/fenye3"
+        }else if(id==4){
+            window.location.href="/fenye4"
+        }else if(id==5){
+            window.location.href="/fenye5"
+        }else if(id==6){
+            window.location.href="/fenye6"
+        }
     }
 </script>
 </html>

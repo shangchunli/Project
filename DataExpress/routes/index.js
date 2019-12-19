@@ -617,14 +617,13 @@ router.get('/chapterm',function(req,res,next){
       res.render('chapter',{usersList:result})
     }
   })
+  // res.render(message);
 })
 
-router.post('/fenye',function(req,res,next){
-  var id = req.body.num;
-  console.log(id);
+router.get('/fenye1',function(req,res,next){
   var con = mysql.createConnection(dbconfig);
   con.connect();
-  con.query("select * from chapters order by chapterid asc limit 0,11",function(err,result){
+  con.query("select * from chapters order by chapterid asc limit 0,14",function(err,result){
     if(err){
       console.log(err);
     }
@@ -634,6 +633,76 @@ router.post('/fenye',function(req,res,next){
     }
   })
 })
+router.get('/fenye2',function(req,res,next){
+  var con = mysql.createConnection(dbconfig);
+  con.connect();
+  con.query("select * from chapters order by chapterid asc limit 14,14",function(err,result){
+    if(err){
+      console.log(err);
+    }
+    else{
+      console.log(result.length);
+      res.render('chapter',{usersList:result})
+    }
+  })
+})
+router.get('/fenye3',function(req,res,next){
+  var con = mysql.createConnection(dbconfig);
+  con.connect();
+  con.query("select * from chapters order by chapterid asc limit 28,14",function(err,result){
+    if(err){
+      console.log(err);
+    }
+    else{
+      console.log(result.length);
+      res.render('chapter',{usersList:result})
+    }
+  })
+})
+router.get('/fenye4',function(req,res,next){
+  var con = mysql.createConnection(dbconfig);
+  con.connect();
+  con.query("select * from chapters order by chapterid asc limit 42,14",function(err,result){
+    if(err){
+      console.log(err);
+    }
+    else{
+      console.log(result.length);
+      res.render('chapter',{usersList:result})
+    }
+  })
+})
+router.get('/fenye5',function(req,res,next){
+  var con = mysql.createConnection(dbconfig);
+  con.connect();
+  con.query("select * from chapters order by chapterid asc limit 56,14",function(err,result){
+    if(err){
+      console.log(err);
+    }
+    else{
+      console.log(result.length);
+      res.render('chapter',{usersList:result})
+    }
+  })
+})
+router.get('/fenye6',function(req,res,next){
+  var con = mysql.createConnection(dbconfig);
+  con.connect();
+  con.query("select * from chapters order by chapterid asc limit 70,14",function(err,result){
+    if(err){
+      console.log(err);
+    }
+    else{
+      console.log(result.length);
+      res.render('chapter',{usersList:result})
+    }
+  })
+})
+// router.post('/chapterm',function(req,res,next){
+//   var data = req.body.message;
+  
+//   res.render(sss,{a:data});
+// })
 //删除已发表帖子信息，同时删除数据库内信息
 router.get('/delchap',function(req,res,next){
   var id = req.query.id;
