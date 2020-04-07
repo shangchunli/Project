@@ -714,7 +714,7 @@ router.get('/delchap',function(req,res,next){
       console.log(err)
     }else{
       // res.end("delete success");
-      res.redirect('/chapterm');
+      res.redirect('/fenye5');
 
 
     }
@@ -774,6 +774,23 @@ router.get('/capricem',function(req,res,next){
     }
   })
 })
+//查询
+router.post("/capsearch",function(req,res,next){
+  var username = req.body.username;
+  var sql = "select * from caprice";
+  if(username){
+      sql += " where cowner = '"+ username +"'";
+  }
+  var con = mysql.createConnection(dbconfig);
+  con.connect();
+  con.query(sql,function(err,result){
+      if(err){
+          res.send("查询失败: "+err);
+      }else{
+          res.render('caprice',{usersList:result});
+      }
+  });
+})
 //删除已发表帖子信息，同时删除数据库内信息
 router.get('/delcap',function(req,res,next){
   var id = req.query.id;
@@ -817,6 +834,23 @@ router.get('/delcol',function(req,res,next){
       res.redirect('/collectm');
     }
   })
+})
+//查询
+router.post("/colsearch",function(req,res,next){
+  var username = req.body.username;
+  var sql = "select * from mycollect";
+  if(username){
+      sql += " where telphone = '"+ username +"'";
+  }
+  var con = mysql.createConnection(dbconfig);
+  con.connect();
+  con.query(sql,function(err,result){
+      if(err){
+          res.send("查询失败: "+err);
+      }else{
+          res.render('collect',{usersList:result});
+      }
+  });
 })
 
 

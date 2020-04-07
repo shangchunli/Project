@@ -52,6 +52,10 @@
         margin-top: 20px;
         font-size: 20px;
     }
+    .ee{
+        margin-top:25px;
+        margin-left:400px;
+    }
 </style>
 <body style="background:url('./images/20.png')">
         <!-- <img class="a"
@@ -66,7 +70,7 @@
                 </div>
             </div>
             <div style='width:20%;height:100%;float: left;'>
-                <button class="a1" onclick="tohome()" >首页</button>
+                <!-- <button class="a1" onclick="tohome()" >首页</button> -->
                 <button class="a1" onclick="touserslist()" >用户管理</button>
                 <button class="a1" onclick="tobaby()">宝宝管理</button>
                 <button class="a1" onclick="tocaprice()">随想管理</button>
@@ -75,14 +79,7 @@
                 <button class="a1" onclick="tosystem()" >系统管理</button>
 
             </div>
-            <button onclick="jump(0)"><</button>
-            <button onclick="jump(1)">1</button>
-            <button onclick="jump(2)">2</button>
-            <button onclick="jump(3)">3</button>
-            <button onclick="jump(4)">4</button>
-            <button onclick="jump(5)">5</button>
-            <button onclick="jump(6)">6</button>
-            <button onclick="jump(0)">></button>
+           
             <div style='width:80%;height:100%;float: left;'>
                 <table style="text-align:center;table-layout: fixed; margin-top:10px">
                     <tr style="margin-bottom:10px">
@@ -106,8 +103,17 @@
                             <td><a href="/delchap/?id=<%= usersList[i]['chapterid'] %>">删除</a></td>
                         </tr>
                     <% } %>
-                    
                 </table>
+                <div class='ee'>
+                <button onclick="jump(0)"><</button>
+                <button onclick="jump(1)">1</button>
+                <button onclick="jump(2)">2</button>
+                <button onclick="jump(3)">3</button>
+                <button onclick="jump(4)">4</button>
+                <button onclick="jump(5)">5</button>
+                <button onclick="jump(6)">6</button>
+                <button onclick="jump(0)">></button>
+                </div>
             </div>
                 
         </div>

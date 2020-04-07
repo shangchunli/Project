@@ -121,7 +121,7 @@
             function(data){
                 console.log(data);
                 if(data=='success'){
-                    tohome();
+                    touserslist();
                 }else if(data=='login fail'){
                     alert('your message is wrong');
                 }
@@ -131,5 +131,8 @@
 function tohome(){
             window.location.href="/home";
         }
+        function touserslist(){
+        window.location.href="/usersList";
+    }
 </script>
 </html>
