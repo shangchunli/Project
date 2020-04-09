@@ -10,8 +10,8 @@ export default class Song extends Component {
         super();
         this.state={
           isPlay:false,
-          str1:<audio autoPlay  src=''></audio>,
-        //   str1:<audio autoPlay  src={require('./music/1.mp3')}></audio>,
+        //   str1:<audio autoPlay  src=''></audio>,
+          str1:<audio autoPlay  src={require('./music/1.mp3')}></audio>,
           str2:<audio autoPlay  src=''></audio>,
         }
 

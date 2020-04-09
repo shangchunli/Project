@@ -1,17 +1,10 @@
 import React, { Component } from 'react'
-<<<<<<< HEAD
 import { NavBar, Icon, Tabs,WingBlank, WhiteSpace,
     Flex,List} from 'antd-mobile';
 import cookie from 'react-cookies'
 import {withRouter} from 'react-router-dom'
 
 class My extends Component {
-=======
-import { NavBar,  WhiteSpace,List} from 'antd-mobile';
-    import cookie from 'react-cookies'
-
-export default class My extends Component {
->>>>>>> cd2f11841ca90ce4abb0e187716826b3281c72d3
     constructor(){
         super();
         this.state={
@@ -73,11 +66,7 @@ export default class My extends Component {
                     }
                     
                 </div>
-<<<<<<< HEAD
                 {/* <List style={{marginTop:"30px"}}>
-=======
-                <List style={{marginTop:"30px"}}>
->>>>>>> cd2f11841ca90ce4abb0e187716826b3281c72d3
                     <List.Item
                         arrow="horizontal"
                         thumb="./images/guanzhu.svg"
@@ -87,7 +76,7 @@ export default class My extends Component {
                     >
                     我的关注
                     </List.Item>
-                </List>
+                </List> */}
                 <List style={{marginTop:"30px"}}>
                     <List.Item
                         arrow="horizontal"

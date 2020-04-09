@@ -6,8 +6,8 @@ export default class Story extends Component {
         super();
         this.state={
           isPlay:false,
-          str2:<audio autoPlay  src=''></audio>,
-        //   str1:<audio autoPlay  src={require('./story/1.mp3')}></audio>,
+        //   str2:<audio autoPlay  src=''></audio>,
+          str1:<audio autoPlay  src={require('./story/1.mp3')}></audio>,
           str2:<audio autoPlay  src=''></audio>,
         }
 

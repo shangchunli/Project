@@ -4,11 +4,9 @@ import {withRouter} from 'react-router-dom'
 import cookie from 'react-cookies'
 const Item = List.Item;
 class Tongyong extends Component {
-//     点击返回上一页
     goBack=()=>{
         this.props.history.go(-1);
     }
-//     点击退出登录时跳转到登录页并清除本地存储的userId
     handle=()=>{
         this.props.history.push('/');
         cookie.remove('userId');
@@ -62,5 +60,4 @@ class Tongyong extends Component {
         )
     }
 }
-// 使用withRouter将当前组件包裹使得this.props不为空
 export default withRouter(Tongyong)

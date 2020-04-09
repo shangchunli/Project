@@ -44,6 +44,7 @@ class Disease extends Component {
                 })
                 .then(res=>res.json())
                 .then((res)=>{
+                    // 添加收藏成功
                     console.log(res);
                    
                 })
@@ -62,6 +63,7 @@ class Disease extends Component {
             })
             .then(res=>res.text())
             .then((res)=>{
+                // 删除收藏成功
                 console.log(res);
             })
         }
@@ -77,6 +79,8 @@ class Disease extends Component {
         .then(res=>res.json())
         .then((res)=>{
             console.log(res);
+            let str1=res.reverse();
+            console.log(str1);
             this.setState({
                 data:res
             });
@@ -94,12 +98,13 @@ class Disease extends Component {
             })
             .then(res=>res.json())
             .then((res)=>{
+                // 返回收藏的chapterId
                 console.log(res);
                 this.setState({
-                    keepId:res
+                    keepId:res,
                 })
-            })
-            console.log(this.state.keepid);
+        })
+        console.log(this.state.keepId);
     }
     too=(id)=>{
         console.log(id)
@@ -111,12 +116,15 @@ class Disease extends Component {
                 <List>
                     {
                         (this.state.data||[]).map((item,idx)=>{
+                            // console.log(22);
                             for(var i=0; i < this.state.keepId.length; i++){
+                                console.log(i);
                                 if(this.state.keepId[i]==item.id){
                                     isKeep2=true;
-                                    break;
+                                    console.log(isKeep2);
                                 }else{
-                                    isKeep2 = false;
+                                    isKeep2 = true;
+                                    console.log(isKeep2);
                                 }
                             }
                             return(
@@ -137,7 +145,7 @@ class Disease extends Component {
                                                 <img 
                                                     ref='tab'
                                                     id={item.chapterid}
-                                                    src={isKeep2
+                                                    src={isKeep2=='true'
                                                         ?'https://s2.ax1x.com/2019/12/11/QrKe4s.png'
                                                         :"https://s2.ax1x.com/2019/12/04/Q1fu7T.png"}
                                                     // src='https://s2.ax1x.com/2019/12/04/Q1fu7T.png'

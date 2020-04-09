@@ -11,15 +11,13 @@ class Reply extends Component {
         super();
         this.state={
             data:[],
-//            收藏的默认状态为false
             isKeep:false,
             chapterId:[],
-// 使用cookie存储当前登录的userId
             userId:cookie.load('userId')
         }
     }
     componentDidMount(){
-        //页面挂载时自动执行当前函数，向后台请求数据进行渲染
+        //初始加载
         fetch("http://192.168.43.217:5001/huli")
         .then(res=>res.json())
         .then((res)=>{
@@ -35,11 +33,8 @@ class Reply extends Component {
             console.log(res)
         })
     }
-//     点击红心时进行收藏的改变
     change1=(idx,e)=>{
-//         点击红心和点击收藏时阻止事件的冒泡
         e.stopPropagation();
-//         点击红心时改变当前组件的收藏的状态
         let b=this.state.isKeep;
         this.setState({
             isKeep:!b,
@@ -49,7 +44,7 @@ class Reply extends Component {
         console.log(this.state.chapterId);
         
         if(this.state.isKeep==true){
-//             当当前组件的收藏状态为true时红心改变，并向后台发送userId和chapterId
+            
             e.target.src='https://s2.ax1x.com/2019/12/11/QrKe4s.png'
             // alert(this.state.userId);
            
@@ -63,9 +58,8 @@ class Reply extends Component {
                             chapterId:this.state.chapterId                    
                         })                    
                 })
-                .then(res=>res.json())
+                .then(res=>res.text())
                 .then((res)=>{
-//                     后台返回数据表示收藏成功
                     console.log(res);
                    
                 })
@@ -77,11 +71,9 @@ class Reply extends Component {
         // console.log(this.state.chapterId);
     }
     goBack=()=>{
-//         点击按钮进行返回
        this.props.history.go(-1);
     }
     too=(id)=>{
-//         点击详情
         this.props.history.push('/health/detail/'+id);
     }
     render() {

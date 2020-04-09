@@ -42,7 +42,7 @@ function formatDate(date) {
   const timeStr = `${pad(date.getHours())}:${pad(date.getMinutes())}`;
   return `${dateStr} ${timeStr}`;
 }
-export default class Message extends Component {
+class Message extends Component {
       state = {
         date: now,
         username:'丫丫',
@@ -50,11 +50,7 @@ export default class Message extends Component {
         weight:'5.2'
       }
       goBack=()=>{
-<<<<<<< HEAD
         this.props.history.go(-1);
-=======
-        window.history.go(-1);
->>>>>>> cd2f11841ca90ce4abb0e187716826b3281c72d3
       }
       onChangeSex = (sexs) => {
         this.setState({
@@ -80,7 +76,8 @@ export default class Message extends Component {
         }
         ).then(res=>res.text())
         .then((res)=>{
-            console.log(res)
+            console.log(res);
+            alert("修改成功")
         })
       }
       
@@ -206,7 +203,4 @@ export default class Message extends Component {
         )
     }
 }
-<<<<<<< HEAD
 export default withRouter(Message)
-=======
->>>>>>> cd2f11841ca90ce4abb0e187716826b3281c72d3

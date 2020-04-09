@@ -59,7 +59,7 @@ class Yiyu extends Component {
                             chapterId:this.state.chapterId                    
                         })                    
                 })
-                .then(res=>res.json())
+                .then(res=>res.text())
                 .then((res)=>{
                     console.log(res);
                    

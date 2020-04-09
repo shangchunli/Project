@@ -123,12 +123,12 @@ class Editor extends Component {
     const editor = new E(elem)
     editor.customConfig.uploadImgServer = "http://192.168.43.217:5001/chapimg";
     // 使用 onchange 函数监听内容的变化，并实时更新到 state 中
-    // editor.customConfig.onchange = html => {
-    //   this.setState({
-    //     // title:tit,
-    //     editorContent: html
-    //   })
-    // }
+    editor.customConfig.onchange = html => {
+      this.setState({
+        // title:tit,
+        editorContent: html
+      })
+    }
     editor.create()
     editor.customConfig.uploadImgHooks = {
       before: function (xhr, editor, files) {
@@ -173,6 +173,7 @@ class Editor extends Component {
   .then(res=>res.text())
   .then((res)=>{
     console.log(res);
+    alert("发表成功")
   })
   }
 }

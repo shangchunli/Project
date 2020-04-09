@@ -30,22 +30,22 @@ class AppHome extends Component {
            data:str
        })
     })
-    // fetch('http://192.168.43.217:5001/mybaby',{
-    //         method: 'POST',//post请求 
-    //         headers: { 
-    //         'Content-Type': 'application/json;charset=UTF-8' 
-    //         }, 
-    //         body: JSON.stringify({
-    //             userId:cookie.load('userId'),  
-    //         })                    
-    // })
-    // .then(res=>res.json())
-    // .then((res)=>{
-    //     console.log(res);
-    //     this.setState({
-    //         baby:res
-    //     })
-    // })
+    fetch('http://192.168.43.217:5001/mybaby',{
+            method: 'POST',//post请求 
+            headers: { 
+            'Content-Type': 'application/json;charset=UTF-8' 
+            }, 
+            body: JSON.stringify({
+                userId:cookie.load('userId'),  
+            })                    
+    })
+    .then(res=>res.json())
+    .then((res)=>{
+        console.log(res);
+        this.setState({
+            baby:res
+        })
+    })
     }
     handle=(pathname)=>{
         this.props.history.push("/home/"+pathname);
@@ -56,8 +56,15 @@ class AppHome extends Component {
     }
     render() {
         let str;
-       if(this.state.baby==[]){
-           str={display:'block',marginTop:'20%'}
+        let str2;
+        if(this.state.data==''){
+            str2={display:'block',backgroundColor:'#fff',height:'300px',paddingLeft:'30%',
+            lineHeight:'250px',marginTop:'20%'}
+        }else{
+            str2={display:'none',marginTop:'20%'}
+        }
+       if(this.state.baby==''){
+           str={display:'block',marginTop:'20%',float:'left'}
        }else{
            str={display:'none',marginTop:'20%'}
        }
@@ -95,7 +102,7 @@ class AppHome extends Component {
                            }else{
                                 return(
                                     <div>
-                                        <p>{item.babyname+'今天'}
+                                        <p>{item.babyname+'已经陪伴我们'}
                                         {new Date().getFullYear()-item.birthyear==0?'':
                                         (new Date().getFullYear()-item.birthyear)+'年'}<span>
                                         {(new Date().getMonth()+1)-item.birthmonth==0?'':
@@ -169,20 +176,29 @@ class AppHome extends Component {
                 </div> */}
                 <div>
                 {
-                    ((this.state.data||[]).map(item=>
+                    ((this.state.data||[]).map(item=>{
+                       if(item.ccontent.length>7){
+                           item.ccontent=item.ccontent.slice(0,9)+'……'
+                       }
+                    return(
                         <button className="shouye1" id={item.cid}
                         onClick={()=>this.toDetail(item.cid)}>
-                            <img style={{marginLeft:'-60%'}}
+                            <img style={{marginLeft:'10%',
+                            float:'left'}}
                                 src='images/home/7.png'
                                 width='30' height='30'
                                 />
-                            <span style={{fontSize:'150%',paddingLeft:'10%'}}>{item.ccontent}</span>
-                            <p style={{fontSize:'10',paddingTop:20}}>{item.ctime}</p>
+                            <h3 style={{fontSize:'150%',float:'left',
+                            paddingLeft:'10%'}}>{item.ccontent}</h3>
+                            <p style={{fontSize:'10',paddingTop:"10%"}}>{item.ctime}</p>
                         </button>
-                    )
+                )    
+                })
 
                     )
-                }   
+                }                      
+                <div style={str2}>快来添加成长日志吧</div>
+
                 </div>
             </div>
         )

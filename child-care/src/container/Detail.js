@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import { NavBar,Icon } from 'antd-mobile';
 import './detail.css'
+import {withRouter} from 'react-router-dom'
 
-export default class Detail extends Component {
+class Detail extends Component {
    constructor(){
         super();
         this.state={
@@ -10,7 +11,7 @@ export default class Detail extends Component {
         } 
     }
     goBack=()=>{
-        window.history.go(-1);
+        this.props.history.go(-1);
     }
     componentDidMount(){
         console.log(this.props.match.params.id);
@@ -57,7 +58,6 @@ export default class Detail extends Component {
                             padding:'20px 0'}}>{item.title}</h1>
                                 <div 
                                 dangerouslySetInnerHTML={{ __html: this.state.data[0].content }}></div>
-                                {/* <img src={""+item.cimage+""}/> */}
                             </div>
                         )
                     }
@@ -66,3 +66,4 @@ export default class Detail extends Component {
         )
     }
 }
+export default withRouter(Detail)
