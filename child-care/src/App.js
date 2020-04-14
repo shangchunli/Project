@@ -58,6 +58,7 @@ import Youxi3 from './container/wiki/Youxi3'
 import Youxi4 from './container/wiki/Youxi4'
 import Youxi5 from './container/wiki/Youxi5'
 import Youxi6 from './container/wiki/Youxi6'
+import TuiNa from './container/wiki/TuiNa'
 
 // // tab底部导航AppHome
 // import AppHome from './container/AppHome.js'
@@ -102,6 +103,7 @@ export default class App extends Component {
                         <Route  exact path='/wiki/nurse' component={Nurse}/>
                         <Route  exact path='/wiki/edu' component={Edu}/>
                         <Route  exact path='/wiki/chaowa' component={Chaowa}/>
+                        <Route  exact path='/wiki/tuina' component={TuiNa}/>
                         <Route  exact path='/wiki/babyfood' component={BabyFood}/>
                         <Route  exact path='/health/yiyu' component={Yiyu}/>
                         <Route  exact path='/health/reply' component={Reply}/>

@@ -12,7 +12,7 @@ class Unique extends Component {
     }
   }
   componentDidMount(){
-    setTimeout(()=>{ fetch("http://192.168.43.217:5001/me",{
+    setTimeout(()=>{ fetch("http://localhost:5001/me",{
             method:'POST',
             headers: { 
                 'Content-Type': 'application/json;charset=UTF-8' 
@@ -37,7 +37,7 @@ class Unique extends Component {
   }
   submmitMessage=()=>{
     console.log(this.state.data)
-    fetch("http://192.168.43.217:5001/meupdate",{
+    fetch("http://localhost:5001/meupdate",{
             method:'POST',
             headers: { 
                 'Content-Type': 'application/json;charset=UTF-8' 

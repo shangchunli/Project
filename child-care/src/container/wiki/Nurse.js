@@ -3,9 +3,11 @@ import { NavBar,Tabs,Card,Icon} from 'antd-mobile';
 import Disease from './Disease'
 import Inoculation from './Inoculation'
 import {withRouter} from 'react-router-dom'
+import TuiNa from './TuiNa';
 
 const tabs = [
     { title: '常见疾病' },
+    { title: '小儿推拿' },
     { title: '疫苗接种' }
   ];
 
@@ -33,6 +35,9 @@ class Nurse extends Component {
                     >
                         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', backgroundColor: '#fff' }}>
                             <Disease/>
+                        </div>
+                        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', backgroundColor: '#fff' }}>
+                            <TuiNa/>
                         </div>
                         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', backgroundColor: '#fff' }}>
                             <Inoculation/>

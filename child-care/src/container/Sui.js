@@ -25,7 +25,7 @@ export default class Sui extends Component {
         });
     }
    dairty=()=>{
-    fetch('http://192.168.43.217:5001/addcaprice',{
+    fetch('http://localhost:5001/addcaprice',{
       method: 'POST',//post请求 
       headers: { 
       'Content-Type': 'application/json;charset=UTF-8' 
@@ -81,7 +81,7 @@ export default class Sui extends Component {
 //         }
 //     }
 //     componentDidMount(){
-//         fetch('http://192.168.43.217:5001/ppp')
+//         fetch('http://localhost:5001/ppp')
 //               .then(res=>res.json())
 //               .then((res)=>{
 //                   console.log(res);

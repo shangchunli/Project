@@ -12,7 +12,7 @@ class Dairty extends Component {
         this.props.history.go(-1);
     }
     componentDidMount(){
-        fetch('http://192.168.43.217:5001/cdetail',{
+        fetch('http://localhost:5001/cdetail',{
             method: 'POST',//post请求 
             headers: { 
             'Content-Type': 'application/json;charset=UTF-8' 

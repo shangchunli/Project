@@ -58,7 +58,7 @@ router.post('/register',function(req,res,next){
   // }else{
     fs.writeFileSync(imgpath, dataBuffer, {'encoding':'binary'});
   // }
-  var imagepath = 'http://192.168.43.217:5001/getheadImg/?imgId='+telphone;
+  var imagepath = 'http://localhost:5001/getheadImg/?imgId='+telphone;
   var con = mysql.createConnection(dbconfig);
   con.connect();
   con.query("insert into register(name,telphone,email,pwd,head) values(?,?,?,?,?)",
@@ -86,6 +86,18 @@ router.get('/jibing',function(req,res,next){
   var con = mysql.createConnection(dbconfig);
   con.connect();
   con.query('select chapterid,title,content,owner,time from chapters where tab="常见疾病"',function(err,result){
+    if(err){
+      console.log(err)
+    }else{
+      res.send(result);
+    }
+  })
+})
+//推拿页面渲染
+router.get('/tuina',function(req,res,next){
+  var con = mysql.createConnection(dbconfig);
+  con.connect();
+  con.query('select chapterid,title,content,owner,time from chapters where tab="小儿推拿"',function(err,result){
     if(err){
       console.log(err)
     }else{
@@ -245,7 +257,7 @@ router.post('/addchapters',function(req,res,next){
   var title = req.body.title;
   var content = req.body.content;
   var tab = req.body.tabs;
-  var time = new Date().getFullYear()+'/'+'12/'+new Date().getDate()+"  "
+  var time = new Date().getFullYear()+'/'+(new Date().getMonth()+1)+'/'+new Date().getDate()+"  "
   +new Date().getHours()+":"+new Date().getMinutes();
   var con = mysql.createConnection(dbconfig);
   con.connect();
@@ -281,7 +293,7 @@ router.post('/chapimg',function(req,res,next){
     res.send(JSON.stringify({
       errno: 0,
       data: [
-        "http://192.168.43.217:5001/getImg?imgId=" + timer
+        "http://localhost:5001/getImg?imgId=" + timer
       ]
     }))
   })
@@ -317,7 +329,7 @@ router.post('/addcaprice',function(req,res,next){
   }else{
     fs.writeFileSync(imgpath, dataBuffer, {'encoding':'binary'});
   }
-  var imagepath = 'http://192.168.43.217:5001/getcapImg/?cowner='+cowner+'&imgId='+timer;
+  var imagepath = 'http://localhost:5001/getcapImg/?cowner='+cowner+'&imgId='+timer;
   var con = mysql.createConnection(dbconfig);
   con.connect();
   con.query("insert into caprice(cowner,ccontent,ctime,cimage) value(?,?,?,?)",

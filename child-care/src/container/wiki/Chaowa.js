@@ -33,7 +33,7 @@ class Chaowa extends Component {
             e.target.src='https://s2.ax1x.com/2019/12/11/QrKe4s.png'
             // alert(this.state.userId);
            
-                fetch('http://192.168.43.217:5001/cookie',{
+                fetch('http://localhost:5001/cookie',{
                         method: 'POST',//post请求 
                         headers: { 
                         'Content-Type': 'application/json;charset=UTF-8' 
@@ -57,7 +57,7 @@ class Chaowa extends Component {
     }
    
     componentDidMount(){
-        fetch('http://192.168.43.217:5001/chuanda',{
+        fetch('http://localhost:5001/chuanda',{
             method: 'GET', 
             headers: { 
                 'Content-Type': 'application/json;charset=UTF-8' 

@@ -4,17 +4,15 @@ import cookie from 'react-cookies'
 
 import { NavBar,List,Icon } from 'antd-mobile';
 
-var isKeep2 = '';
-class Disease extends Component {
+
+class TuiNa extends Component {
     constructor(){
         super();
         this.state={
             data:[],
             isKeep:false,
             chapterid:[],
-            userId:cookie.load('userId'),
-            tab:'常见疾病',
-            keepId:[]
+            userId:cookie.load('userId')
         }
     }
     
@@ -27,15 +25,13 @@ class Disease extends Component {
         })
         console.log(this.state.chapterid);
         if(this.state.isKeep==true){
-            console.log('true');
-            // keepArr.push(idx);
-            // console.log(keepArr);
+            
             e.target.src='https://s2.ax1x.com/2019/12/11/QrKe4s.png '
            
                 fetch('http://localhost:5001/cookie',{
                         method: 'POST',//post请求 
                         headers: { 
-                            'Content-Type': 'application/json;charset=UTF-8' 
+                        'Content-Type': 'application/json;charset=UTF-8' 
                         }, 
                         body: JSON.stringify({
                             userId:this.state.userId,  
@@ -44,33 +40,15 @@ class Disease extends Component {
                 })
                 .then(res=>res.json())
                 .then((res)=>{
-                    // 添加收藏成功
                     console.log(res);
                    
                 })
         }else{
-            console.log('false');
-            e.target.src='https://s2.ax1x.com/2019/12/04/Q1fu7T.png';
-            fetch('http://localhost:5001/uncollect',{
-                method: 'POST',//post请求 
-                headers: { 
-                    'Content-Type': 'application/json;charset=UTF-8' 
-                }, 
-                body: JSON.stringify({
-                    userId:this.state.userId,  
-                    chapterId:this.state.chapterid
-                })                    
-            })
-            .then(res=>res.text())
-            .then((res)=>{
-                // 删除收藏成功
-                console.log(res);
-            })
+            e.target.src='https://s2.ax1x.com/2019/12/04/Q1fu7T.png'
         }
     }
     componentDidMount(){
-        // 渲染页面
-        fetch('http://localhost:5001/jibing',{
+        fetch('http://localhost:5001/tuina',{
             method: 'GET', 
             headers: { 
                 'Content-Type': 'application/json;charset=UTF-8' 
@@ -85,26 +63,7 @@ class Disease extends Component {
                 data:res
             });
         })
-        // 获取收藏
-        fetch('http://localhost:5001/keepid',{
-                method: 'POST', 
-                headers: { 
-                    'Content-Type': 'application/json;charset=UTF-8' 
-                }, 
-                body: JSON.stringify({
-                    userId:this.state.userId,
-                    tab:this.state.tab
-                })                    
-            })
-            .then(res=>res.json())
-            .then((res)=>{
-                // 返回收藏的chapterId
-                console.log(res);
-                this.setState({
-                    keepId:res,
-                })
-        })
-        console.log(this.state.keepId);
+       
     }
     too=(id)=>{
         console.log(id)
@@ -116,17 +75,6 @@ class Disease extends Component {
                 <List>
                     {
                         (this.state.data||[]).map((item,idx)=>{
-                            // console.log(22);
-                            for(var i=0; i < this.state.keepId.length; i++){
-                                console.log(i);
-                                if(this.state.keepId[i]==item.id){
-                                    isKeep2=true;
-                                    console.log(isKeep2);
-                                }else{
-                                    isKeep2 = true;
-                                    console.log(isKeep2);
-                                }
-                            }
                             return(
                                 <List id={item.chapterid} onClick={()=>this.too(item.chapterid)}>
                                     <List.Item style={{paddingTop:10,color:"#000"}}>
@@ -145,10 +93,9 @@ class Disease extends Component {
                                                 <img 
                                                     ref='tab'
                                                     id={item.chapterid}
-                                                    src={isKeep2=='true'
+                                                    src={(cookie.load('chapterId'))
                                                         ?'https://s2.ax1x.com/2019/12/11/QrKe4s.png'
                                                         :"https://s2.ax1x.com/2019/12/04/Q1fu7T.png"}
-                                                    // src='https://s2.ax1x.com/2019/12/04/Q1fu7T.png'
                                                     onClick={(e)=>this.change1(item.chapterid,e)} alt='收藏'/>
                                             </span>
                                             {/* {item.chapterid} */}
@@ -163,4 +110,5 @@ class Disease extends Component {
         )
     }
 }
-export default withRouter(Disease);
+export default withRouter(TuiNa);
+

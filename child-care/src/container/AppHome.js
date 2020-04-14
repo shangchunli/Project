@@ -13,7 +13,7 @@ class AppHome extends Component {
     }
     componentDidMount(){
         // console.log(this.props.match.params.id);
-        fetch('http://192.168.43.217:5001/caprice',{
+        fetch('http://localhost:5001/caprice',{
             method: 'POST',//post请求 
             headers: { 
             'Content-Type': 'application/json;charset=UTF-8' 
@@ -30,7 +30,7 @@ class AppHome extends Component {
            data:str
        })
     })
-    fetch('http://192.168.43.217:5001/mybaby',{
+    fetch('http://localhost:5001/mybaby',{
             method: 'POST',//post请求 
             headers: { 
             'Content-Type': 'application/json;charset=UTF-8' 

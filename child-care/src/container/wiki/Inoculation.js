@@ -28,7 +28,7 @@ class Disease extends Component {
             
             e.target.src='https://s2.ax1x.com/2019/12/11/QrKe4s.png '
            
-                fetch('http://192.168.43.217:5001/cookie',{
+                fetch('http://localhost:5001/cookie',{
                         method: 'POST',//post请求 
                         headers: { 
                         'Content-Type': 'application/json;charset=UTF-8' 
@@ -48,7 +48,7 @@ class Disease extends Component {
         }
     }
     componentDidMount(){
-        fetch('http://192.168.43.217:5001/yimiao',{
+        fetch('http://localhost:5001/yimiao',{
             method: 'GET', 
             headers: { 
                 'Content-Type': 'application/json;charset=UTF-8' 
@@ -57,6 +57,8 @@ class Disease extends Component {
         .then(res=>res.json())
         .then((res)=>{
             console.log(res);
+            let str1=res.reverse();
+            console.log(str1);
             this.setState({
                 data:res
             });

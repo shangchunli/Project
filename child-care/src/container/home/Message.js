@@ -58,7 +58,7 @@ class Message extends Component {
         });
       };
       baby=()=>{
-          fetch("http://192.168.43.217:5001/addbaby",{
+          fetch("http://localhost:5001/addbaby",{
             method:'POST',
             headers: { 
                 'Content-Type': 'application/json;charset=UTF-8' 

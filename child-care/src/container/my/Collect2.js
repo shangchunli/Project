@@ -39,7 +39,7 @@ class Collect extends Component {
             console.log(true);
             // e.target.src='https://s2.ax1x.com/2019/12/11/QrKe4s.png '
            
-            //     fetch('http://192.168.43.217:5001/cookie',{
+            //     fetch('http://localhost:5001/cookie',{
             //             method: 'POST',//post请求 
             //             headers: { 
             //             'Content-Type': 'application/json;charset=UTF-8' 
@@ -61,7 +61,7 @@ class Collect extends Component {
             })
             console.log(this.state.isNotKeep);
             e.target.src='https://s2.ax1x.com/2019/12/04/Q1fu7T.png';
-            fetch('http://192.168.43.217:5001/uncollect',{
+            fetch('http://localhost:5001/uncollect',{
                 method: 'POST',//post请求 
                 headers: { 
                     'Content-Type': 'application/json;charset=UTF-8' 
@@ -76,7 +76,7 @@ class Collect extends Component {
                 console.log(res);
             })
         }
-        fetch('http://192.168.43.217:5001/mycollect',{
+        fetch('http://localhost:5001/mycollect',{
             method: 'POST', 
             headers: { 
                 'Content-Type': 'application/json;charset=UTF-8' 
@@ -96,7 +96,7 @@ class Collect extends Component {
     }
     // componentDidUpdate(){
     //     console.log('改变')
-    //     fetch('http://192.168.43.217:5001/mycollect',{
+    //     fetch('http://localhost:5001/mycollect',{
     //         method: 'POST', 
     //         headers: { 
     //             'Content-Type': 'application/json;charset=UTF-8' 
@@ -115,7 +115,7 @@ class Collect extends Component {
        
     // }
     componentDidMount(){
-        fetch('http://192.168.43.217:5001/mycollect',{
+        fetch('http://localhost:5001/mycollect',{
             method: 'POST',//post请求 
             headers: { 
                 'Content-Type': 'application/json;charset=UTF-8' 

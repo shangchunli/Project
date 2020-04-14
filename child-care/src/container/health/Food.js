@@ -17,7 +17,7 @@ class Food extends Component {
     }
     componentDidMount(){
         //初始加载
-        fetch("http://192.168.43.217:5001/momfood")
+        fetch("http://localhost:5001/momfood")
         .then(res=>res.json())
         .then((res)=>{
             this.setState({
@@ -25,7 +25,7 @@ class Food extends Component {
             })
         });
         // 获取收藏
-        fetch('http://192.168.43.217:5001/keepid',{
+        fetch('http://localhost:5001/keepid',{
                 method: 'POST', 
                 headers: { 
                     'Content-Type': 'application/json;charset=UTF-8' 
@@ -41,7 +41,7 @@ class Food extends Component {
             })
     }
     componentDidUpdate(){
-        fetch("http://192.168.43.217:5001/momfood")
+        fetch("http://localhost:5001/momfood")
         .then(res=>res.json())
         .then((res)=>{
             console.log(res)
@@ -59,7 +59,7 @@ class Food extends Component {
         
         if(this.state.isKeep==true){
              e.target.src='https://s2.ax1x.com/2019/12/11/QrKe4s.png'
-                fetch('http://192.168.43.217:5001/cookie',{
+                fetch('http://localhost:5001/cookie',{
                         method: 'POST',//post请求 
                         headers: { 
                         'Content-Type': 'application/json;charset=UTF-8' 

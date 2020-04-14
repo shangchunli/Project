@@ -24,13 +24,14 @@ class Editor extends Component {
   })
   }
   getTab=(index)=>{
-    var tabbb=document.getElementById(index);
+    var str='2'+index
+    var tabbb=document.getElementById(str);
+    console.log(tabbb)
     tabbb.style.background='skyblue'
     this.setState({
       temp:index,
     },()=>{
       console.log(this.state.temp);
-      console.log(this.refs.tabss)
       var ta=this.refs.tabss.props.children[this.state.temp-1].props.children
       this.setState({
         tabs:ta
@@ -71,21 +72,24 @@ class Editor extends Component {
         <Accordion defaultActiveKey="0" className="my-accordion" onChange={this.onChange}>
           <Accordion.Panel header="关于宝宝">
               <List.Item ref='tabss'>
-                  <div onClick={()=>this.getTab(1)} checked='false' id='1'
+                  <div onClick={()=>this.getTab(1)} checked='false' id='21'
                   style={{ textAlign:"center",float:"left",
                   backgroundColor:"#fff",width:"30%",height:25}}>常见疾病</div>
-                  <div onClick={()=>this.getTab(2)} checked='false' id='2'
-                  style={{ textAlign:"center",float:"left", 
+                  <div onClick={()=>this.getTab(2)} checked='false' id='22'
+                  style={{ textAlign:"center",float:"left",
                   backgroundColor:"#fff",width:"30%",height:25}}>疫苗</div>
-                  <div onClick={()=>this.getTab(3)} checked='false' id='3'
+                  <div onClick={()=>this.getTab(3)} checked='false' id='23'
                   style={{ textAlign:"center",float:"left", 
                   backgroundColor:"#fff",width:"30%",height:25}}>宝宝饮食</div>
-                  <div onClick={()=>this.getTab(4)} id='4'
+                  <div onClick={()=>this.getTab(4)} id='24'
                   style={{ textAlign:"center",float:"left",
                   backgroundColor:"#fff",width:"30%",height:25}}>潮娃穿搭</div>
-                  <div onClick={()=>this.getTab(5)} id='5'
+                  <div onClick={()=>this.getTab(5)} id='25'
                   style={{ textAlign:"center",float:"left",
                   backgroundColor:"#fff",width:"30%",height:25}}>宝宝教育</div>
+                  <div onClick={()=>this.getTab(6)} id='26'
+                  style={{ textAlign:"center",float:"left",
+                  backgroundColor:"#fff",width:"30%",height:25}}>小儿推拿</div>
               </List.Item>
           </Accordion.Panel>
           <Accordion.Panel header="关于妈妈">
@@ -121,7 +125,7 @@ class Editor extends Component {
     let tit= this.refs.titl
     console.log(tit);
     const editor = new E(elem)
-    editor.customConfig.uploadImgServer = "http://192.168.43.217:5001/chapimg";
+    editor.customConfig.uploadImgServer = "http://localhost:5001/chapimg";
     // 使用 onchange 函数监听内容的变化，并实时更新到 state 中
     editor.customConfig.onchange = html => {
       this.setState({
@@ -158,7 +162,7 @@ class Editor extends Component {
   }
   clickHandle() {
     console.log(this.state.tabs)
-   fetch('http://192.168.43.217:5001/addChapters',{
+   fetch('http://localhost:5001/addChapters',{
       method: 'POST',//post请求 
   headers: { 
   'Content-Type': 'application/json;charset=UTF-8' 

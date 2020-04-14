@@ -15,7 +15,7 @@ class Anxiety extends Component {
     }
     componentDidMount(){
         //初始加载
-        fetch("http://192.168.43.217:5001/jiaolv")
+        fetch("http://localhost:5001/jiaolv")
         .then(res=>res.json())
         .then((res)=>{
             this.setState({
@@ -24,7 +24,7 @@ class Anxiety extends Component {
         })
     }
     componentDidUpdate(){
-        fetch("http://192.168.43.217:5001/jiaolv")
+        fetch("http://localhost:5001/jiaolv")
         .then(res=>res.json())
         .then((res)=>{
             console.log(res)
@@ -42,7 +42,7 @@ class Anxiety extends Component {
         
         if(this.state.isKeep==true){
              e.target.src='https://s2.ax1x.com/2019/12/11/QrKe4s.png'
-                fetch('http://192.168.43.217:5001/cookie',{
+                fetch('http://localhost:5001/cookie',{
                         method: 'POST',//post请求 
                         headers: { 
                         'Content-Type': 'application/json;charset=UTF-8' 

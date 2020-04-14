@@ -33,11 +33,13 @@ class Parental extends Component {
                     </NavBar>
                     <div style={{ marginTop: 45 }}>
                         <Tabs tabs={tabs}
-                            initialPage={3}
+                            initialPage={0}
+                            style={{width:'100%'}}
                         >
                             <div style={{
                                 display: 'flex', alignItems: 'center',
                                 justifyContent: 'center', height: '150px',
+                                width:'100%',
                                 backgroundColor: '#fff'
                             }} onClick={() => { this.handle('nurse') }}>
                                 <img src='./images/baike/huli.png' />

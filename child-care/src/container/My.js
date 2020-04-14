@@ -13,7 +13,7 @@ class My extends Component {
     }
     componentDidMount() {
         setTimeout(()=>{
-            fetch('http://192.168.43.217:5001/my',{
+            fetch('http://localhost:5001/my',{
                 method: 'POST',//post请求 
             headers: { 
             'Content-Type': 'application/json;charset=UTF-8' 

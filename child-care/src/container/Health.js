@@ -21,14 +21,14 @@ class Dynamics extends Component {
             data: ['mom_health1', 'mom_health2', 'mom_health3'],
           });
         }, 100);
-        // fetch("http://192.168.43.217:5001/chapters")
+        // fetch("http://localhost:5001/chapters")
         // .then(res=>res.text())
         // .then((res)=>{
         //    console.log(res)
         // })
     }
     componentDidUpdate(){
-        // fetch("http://192.168.43.217:5001/chapters")
+        // fetch("http://localhost:5001/chapters")
         // .then(res=>res.text())
         // .then((res)=>{
         //     console.log(res)

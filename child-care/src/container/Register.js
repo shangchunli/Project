@@ -52,7 +52,7 @@ class Register extends Component {
             alert("请填写密码")
         }else{
             console.log(111111111111)
-            fetch('http://192.168.43.217:5001/register',{
+            fetch('http://localhost:5001/register',{
                 method: 'POST',//post请求 
             headers: { 
             'Content-Type': 'application/json;charset=UTF-8' 
@@ -102,7 +102,7 @@ class Register extends Component {
         }
         return (   
             <div  
-            action="http://192.168.43.217:5001/register" method="POST">
+            action="http://localhost:5001/register" method="POST">
                 <div style={{height:700,opacity:0.6,position:"fixed",
                 top:0,width:"100%",
                     background:"url('./images/beijing/login.jpg')"

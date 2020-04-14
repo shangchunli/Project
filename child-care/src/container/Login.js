@@ -26,7 +26,7 @@ class Login extends Component {
     }
     loginn=()=>{
         let i=0;
-        fetch("http://192.168.43.217:5001/yhlogin",{
+        fetch("http://localhost:5001/yhlogin",{
             method:'POST',
             headers: { 
                 'Content-Type': 'application/json;charset=UTF-8' 

@@ -15,7 +15,7 @@ class Detail extends Component {
     }
     componentDidMount(){
         console.log(this.props.match.params.id);
-        fetch('http://192.168.43.217:5001/xiangqing',{
+        fetch('http://localhost:5001/xiangqing',{
             method: 'POST',//post请求 
             headers: { 
             'Content-Type': 'application/json;charset=UTF-8' 
