@@ -260,11 +260,12 @@ router.post('/addchapters',function(req,res,next){
   var title = req.body.title;
   var content = req.body.content;
   var tab = req.body.tabs;
+  var owner=req.body.owner;
   var time = new Date().getFullYear()+'/'+(new Date().getMonth()+1)+'/'+new Date().getDate()+"  "
   +new Date().getHours()+":"+new Date().getMinutes();
   var con = mysql.createConnection(dbconfig);
   con.connect();
-  con.query("insert into chapters(title,content,tab,time) value(?,?,?,?)",[title,content,tab,time],function(err,result){
+  con.query("insert into chapters(title,content,tab,owner,time) value(?,?,?,?,?)",[title,content,tab,owner,time],function(err,result){
     if(err){
       console.log(err);
     }else{
@@ -383,6 +384,7 @@ router.post('/cdetail',function(req,res,next){
     }
   })
 })
+
 
 //加收藏 写mycollect表
 router.post('/cookie', function(req,res,next){
