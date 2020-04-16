@@ -385,6 +385,19 @@ router.post('/cdetail',function(req,res,next){
   })
 })
 
+//发布页面
+router.post('/publish',function (req,res,next) { 
+  var user = req.body.userId;
+  var con  = mysql.createConnection(dbconfig);
+  con.connect();
+  con.query('select chapterid,title,content,owner,time  from chapters where owner=?',[user],function(err,result){
+    if(err){
+      console.log(err)
+    }else{
+      res.send(result);
+    }
+  })
+})
 
 //加收藏 写mycollect表
 router.post('/cookie', function(req,res,next){
