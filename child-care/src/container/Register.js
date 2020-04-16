@@ -46,6 +46,7 @@ class Register extends Component {
         
     }
     register=()=>{
+        alert('填写完成')
         if(this.state.pwd1!==this.state.pwd2){
             alert("密码不一致");
         }else if(this.state.pwd1==''){
@@ -70,14 +71,14 @@ class Register extends Component {
                 console.log(res);
                 if(res=="success"){
                     alert("您已经注册成功，请登录");
-                    this.props.history.push("/login");
+                    // this.props.history.push("/login");
                 }else{
                     alert("请注册")
                 }
             })
 
         }
-        this.props.history.push('/login');
+        // this.props.history.push('/login');
     }
     render() {
         const { files } = this.state;

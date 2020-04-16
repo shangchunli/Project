@@ -66,17 +66,17 @@ class My extends Component {
                     }
                     
                 </div>
-                {/* <List style={{marginTop:"30px"}}>
+                <List style={{marginTop:"30px"}}>
                     <List.Item
                         arrow="horizontal"
                         thumb="./images/guanzhu.svg"
                         multipleLine
-                        onClick={()=>{this.handle('focus')}}
+                        onClick={()=>{this.handle('publish')}}
                         style={{padding:"10px 0 10px 20px"}}
                     >
-                    我的关注
+                    我的发布
                     </List.Item>
-                </List> */}
+                </List>
                 <List style={{marginTop:"30px"}}>
                     <List.Item
                         arrow="horizontal"

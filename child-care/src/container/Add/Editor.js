@@ -34,7 +34,8 @@ class Editor extends Component {
       console.log(this.state.temp);
       var ta=this.refs.tabss.props.children[this.state.temp-1].props.children
       this.setState({
-        tabs:ta
+        tabs:ta,
+        owner:this.state.userId
       })
     })
   }
@@ -49,7 +50,8 @@ class Editor extends Component {
       console.log(this.state.temp);
       var ta2=this.refs.tab2.props.children[this.state.temp-1].props.children
       this.setState({
-        tabs:ta2
+        tabs:ta2,
+        owner:this.state.userId
       })
     })
   }
@@ -162,6 +164,7 @@ class Editor extends Component {
   }
   clickHandle() {
     console.log(this.state.tabs)
+    console.log(this.state.owner)
    fetch('http://localhost:5001/addChapters',{
       method: 'POST',//post请求 
   headers: { 

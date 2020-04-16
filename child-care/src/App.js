@@ -59,6 +59,7 @@ import Youxi4 from './container/wiki/Youxi4'
 import Youxi5 from './container/wiki/Youxi5'
 import Youxi6 from './container/wiki/Youxi6'
 import TuiNa from './container/wiki/TuiNa'
+import Publish from './container/my/Publish'
 
 // // tab底部导航AppHome
 // import AppHome from './container/AppHome.js'
@@ -109,7 +110,7 @@ export default class App extends Component {
                         <Route  exact path='/health/reply' component={Reply}/>
                         <Route  exact path='/health/food' component={Food}/>
                         <Route  exact path='/health/anxiety' component={Anxiety}/>
-                        {/* <Route  exact path='/my/focus' component={Focus}/> */}
+                        <Route  exact path='/my/publish' component={Publish}/>
                         <Route  exact path='/my/collect' component={Collect}/>
                         <Route  exact path='/my/tongyong' component={Tongyong}/>
                         <Route  exact path='/my/unique' component={Unique}/>
