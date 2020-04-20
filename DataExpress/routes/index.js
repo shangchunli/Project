@@ -37,14 +37,11 @@ router.post('/yhlogin',function(req,res,next){
 // 头像：图片选择器得到的base64编码，去除头部信息，转存到本地服务器，
 router.post('/register',function(req,res,next){
   // res.send('register');
-  console.log('register')
    var name =req.body.names;
    var telphone = req.body.tel;
    var email = req.body.email;
    var pwd = req.body.pwd1;
-   console.log(name);
    var head = req.body.files[0].url;
-
   // var timer = Date.now() ;
   var imgpath = './server/head/'+ telphone+'.png'; 
   var base64 = head.replace(/^data:image\/\w+;base64,/, "");//去掉图片base64码前面部分data:image/png;base64
@@ -260,12 +257,11 @@ router.post('/addchapters',function(req,res,next){
   var title = req.body.title;
   var content = req.body.content;
   var tab = req.body.tabs;
-  var owner=req.body.owner;
   var time = new Date().getFullYear()+'/'+(new Date().getMonth()+1)+'/'+new Date().getDate()+"  "
   +new Date().getHours()+":"+new Date().getMinutes();
   var con = mysql.createConnection(dbconfig);
   con.connect();
-  con.query("insert into chapters(title,content,tab,owner,time) value(?,?,?,?,?)",[title,content,tab,owner,time],function(err,result){
+  con.query("insert into chapters(title,content,tab,time) value(?,?,?,?)",[title,content,tab,time],function(err,result){
     if(err){
       console.log(err);
     }else{
@@ -379,20 +375,6 @@ router.post('/cdetail',function(req,res,next){
   con.query('select ccontent,ctime,cimage from caprice where cid=? ',cid,function(err,result){
     if(err){
       console.log(err);
-    }else{
-      res.send(result);
-    }
-  })
-})
-
-//发布页面
-router.post('/publish',function (req,res,next) { 
-  var user = req.body.userId;
-  var con  = mysql.createConnection(dbconfig);
-  con.connect();
-  con.query('select chapterid,title,content,owner,time  from chapters where owner=?',[user],function(err,result){
-    if(err){
-      console.log(err)
     }else{
       res.send(result);
     }
