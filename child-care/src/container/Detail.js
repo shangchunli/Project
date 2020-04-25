@@ -12,8 +12,9 @@ class Detail extends Component {
             data:'',
             tips:'',
             isKeep:false,
-            chapterid:[],
+            chapterid:'',
             pingluns:'',
+            plcount:'',
             userId:cookie.load('userId')
         } 
     }
@@ -36,17 +37,53 @@ class Detail extends Component {
         .then((res)=>{
             console.log(res);
             this.setState({
-                data:res
+                data:res,
+                chapterid:this.props.match.params.id
             });
             
         })
+        fetch('http://localhost:5001/showcomment',{
+            method: 'POST',//post请求 
+            headers: { 
+            'Content-Type': 'application/json;charset=UTF-8' 
+            }, 
+            body: JSON.stringify({
+                chapterId:  this.props.match.params.id               
+            })                    
+        })
+        .then(res=>res.json())
+        .then((res)=>{
+            console.log(res);
+            this.setState({
+                tips:res,
+            });
+        })
+        fetch('http://localhost:5001/showplcount',{
+            method: 'POST',//post请求 
+            headers: { 
+            'Content-Type': 'application/json;charset=UTF-8' 
+            }, 
+            body: JSON.stringify({
+                chapterId:  this.props.match.params.id               
+            })                    
+        })
+        .then(res=>res.json())
+        .then((res)=>{
+            console.log(res);
+            this.setState({
+               plcount:res[0].plcount,
+            });
+        })
+
+        
     }
+    
     change1=(idx,e)=>{
         e.stopPropagation();
         let b=this.state.isKeep;
         this.setState({
             isKeep:!b,
-            chapterid:idx
+            
         })
         console.log(this.state.chapterid);
         if(this.state.isKeep==true){
@@ -72,15 +109,90 @@ class Detail extends Component {
             e.target.src='https://s2.ax1x.com/2019/12/04/Q1fu7T.png'
         }
     }
-    inputChange=()=>{
+    //获取评论内容
+    inputChange=(e)=>{
+        e.stopPropagation();
         let val1=this.refs.pinglun.value;
         this.setState({
-            pingluns:val1
+            pingluns:val1,
         })
     }
+    //添加评论以及更新评论内容
     crital=()=>{
         console.log(this.state.pingluns);
+        console.log(this.state.chapterid);
+        console.log(this.state.plcount);
+        fetch('http://localhost:5001/addcomment',{
+            method: 'POST',//post请求 
+            headers: { 
+            'Content-Type': 'application/json;charset=UTF-8' 
+            }, 
+            body: JSON.stringify({
+                userId:this.state.userId,  
+                chapterId:this.state.chapterid,
+                plcontent:this.state.pingluns                    
+            })                    
+        })
+        .then(res=>res.text())
+        .then((res)=>{
+            console.log(res);
+            if(res==' comment success'){
+                fetch('http://localhost:5001/showcomment',{
+                    method: 'POST',//post请求 
+                    headers: { 
+                    'Content-Type': 'application/json;charset=UTF-8' 
+                    }, 
+                    body: JSON.stringify({
+                        chapterId:  this.props.match.params.id               
+                    })                    
+                })
+                .then(res=>res.json())
+                .then((res)=>{
+                    console.log(res);
+                    this.setState({
+                        tips:res,
+                    });
+                })
+                fetch('http://localhost:5001/addplcount',{
+            method: 'POST',//post请求 
+            headers: { 
+            'Content-Type': 'application/json;charset=UTF-8' 
+            }, 
+            body: JSON.stringify({
+                chapterId:this.state.chapterid,
+                plcount:this.state.plcount                   
+            })                    
+        })
+        .then(res=>res.text())
+        .then((res)=>{
+            console.log(res)
+            if(res=='pl success'){
+                fetch('http://localhost:5001/showplcount',{
+                    method: 'POST',//post请求 
+                    headers: { 
+                    'Content-Type': 'application/json;charset=UTF-8' 
+                    }, 
+                    body: JSON.stringify({
+                        chapterId:  this.props.match.params.id               
+                    })                    
+                })
+                .then(res=>res.json())
+                .then((res)=>{
+                    console.log(res[0].plcount)
+                    this.setState({
+                        plcount:res[0].plcount
+                    })
+                })
+            }
+        })
+            }else{
+                alert('评论失败')
+            }
+        })
+        
     }
+    //点赞数
+
     render() {
         return (
             <div>
@@ -97,7 +209,6 @@ class Detail extends Component {
                     详情页
                 </NavBar>
                 <div className='detaill'>
-                
                     {
                         (this.state.data||[]).map(item=>
                             <div style={{marginTop:50}}>
@@ -107,11 +218,12 @@ class Detail extends Component {
                                     dangerouslySetInnerHTML={{ __html: this.state.data[0].content }}>
                                 </div>
                                 <List.Item.Brief >
-                                    <div style={{marginTop:20}}>
+                                    <div style={{marginTop:20,flexDirection:'row',
+                                    alignItems:'center',justifyContent:'center'}}>
                                         
-                                            <input style={{width:'30%',height:30,borderRadius:40}}
+                                            <input style={{width:'30%',height:40,borderRadius:40}}
                                                 type='text' ref='pinglun' placeholder='评论一下'
-                                                onChange={()=>this.inputChange()}
+                                                onChange={(e)=>this.inputChange(e)}
                                                 icon={
                                                     'url( https://i.loli.net/2020/04/17/G6xCR7StsTnPkBv.png)'
                                                     }
@@ -129,7 +241,7 @@ class Detail extends Component {
             
                                                 onClick={(e)=>this.change2(item.chapterid,e)} alt='点赞'/>
                                         </span>
-                                        <span  style={{marginLeft:20}} >
+                                        <span  style={{marginLeft:20,marginTop:100}} >
                                             <img 
                                                 ref='tab'
                                                 id={item.chapterid}
@@ -142,26 +254,39 @@ class Detail extends Component {
                                         <span  style={{marginLeft:20}} >
                                             <img 
                                                 ref='tab'
-                                                style={{width:'5%'}}
+                                                style={{width:'5%',}}
                                                 src=
                                                 "https://i.loli.net/2020/04/17/TRaZx2wyLhzEkOj.png"
                                                     
-                                                onClick={(e)=>this.change3(item.chapterid,e)} alt='评论'/>
+                                                 alt='评论'/>
+                                                <span style={{fontSize:20,marginLeft:10}}>
+                                                     {this.state.plcount}
+                                                </span>
                                         </span>
                                     </div>
                                 </List.Item.Brief>
-                                {/* <div>
-                                    {
-                                        (this.state.tips||[]).map(item=>
-                                            <List.Item.Brief >
-                                                <div>
-                                                   111 
-                                                </div>
-                                            </List.Item.Brief>
-                                        )
-                                    }
+                                <div style={{marginTop:20}}>
+                                        {
+                                            (this.state.tips||[]).map(item=>
+                                                <List.Item >
+                                                    
+                                                    
+                                                    <List.Item.Brief style={{marginLeft:20}}>
+                                                    
+                                                    {item.plcontent}
+                                                   
+                                                    </List.Item.Brief>
+                                                    <List.Item.Brief>
+                                                    {item.telphone}
+                                                    <span style={{marginLeft:20}}>{item.pltime}</span>
+                                                    </List.Item.Brief>
+                                                
+                                                </List.Item>
+                                            )
+                                        }
+                                   
                                 </div>
-                             */}
+                            
                             </div>
                         )
                     }
