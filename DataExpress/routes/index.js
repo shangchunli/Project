@@ -464,6 +464,67 @@ router.post('/keepid',function(req,res,next){
    
 })
 
+//增加评论
+router.post('/addcomment', function(req,res,next){
+  var user = req.body.userId;
+  var chapterId = req.body.chapterId;
+  var plcontent = req.body.plcontent;
+  var pltime = new Date().getFullYear()+'/'+(new Date().getMonth()+1)+'/'+new Date().getDate()+"  "
+  +new Date().getHours()+":"+new Date().getMinutes();
+  console.log("user:"+user,"chapterId:"+chapterId);
+  var con  = mysql.createConnection(dbconfig);
+  con.connect();
+  con.query("insert into comment(telphone,chapterid,plcontent,pltime) values(?,?,?,?)",[user,chapterId,plcontent,pltime],function(err,result){
+    if(err){
+      console.log(err);
+    }else{
+      res.send(' comment success')
+    }
+  })
+})
+//评论渲染
+router.post('/showcomment',function(req,res,next){
+  var chapterId = req.body.chapterId;
+  var con = mysql.createConnection(dbconfig);
+  con.connect();
+  con.query('select telphone,plcontent,plid,pltime from comment where chapterid=?',[chapterId],function(err,result){
+    if(err){
+      console.log(err);
+    }else{
+      res.send(result)
+    }
+  })
+})
+
+//增加评论数目
+router.post('/addplcount',function(req,res,next){
+  console.log(req.body)
+  var plcount = req.body.plcount+1;
+  var chapterId = req.body.chapterId;
+  console.log(chapterId,plcount);
+  var con = mysql.createConnection(dbconfig);
+  con.connect();
+  con.query('update chapters set plcount =? where chapterid=?',[plcount,chapterId],function(err,result){
+    if(err){
+      console.log(err);
+    }else{
+      res.send('pl success');
+    }
+  })
+})
+//评论数目渲染
+router.post('/showplcount',function(req,res,next){
+  var chapterId = req.body.chapterId;
+  var con = mysql.createConnection(dbconfig);
+  con.connect();
+  con.query('select plcount from chapters where chapterId=? ',[chapterId],function(err,result){
+    if(err){
+      console.log(err);
+    }else{
+      res.send(result);
+    }
+  })
+})
 
 
 //我的宝宝表添加
