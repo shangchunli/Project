@@ -526,6 +526,37 @@ router.post('/showplcount',function(req,res,next){
   })
 })
 
+//点赞数目：
+router.post('/dzcounnt', function(req,res,next){
+  var chapterId = req.body.chapterId;
+  var dzcount = req.body.dzcount+1;
+  // console.log("user:"+user,"chapterId:"+chapterId,'dzcount'+dzcount);
+  var con  = mysql.createConnection(dbconfig);
+  con.connect();
+  con.query("update chapters set dzcount=? where chapterid=? ",[dzcount,chapterId],function(err,result){
+    if(err){
+      console.log(err);
+    }else{
+      res.send(' dz success')
+    }
+  })
+})
+
+//渲染点赞数目
+router.post('/showdzcount',function(req,res,next){
+  var chapterId = req.body.chapterId;
+  console.log(chapterId)
+  var con = mysql.createConnection(dbconfig);
+  con.connect();
+  con.query('select dzcount from chapters where chapterId=? ',[chapterId],function(err,result){
+    if(err){
+      console.log(err);
+    }else{
+      res.send(result);
+    }
+  })
+})
+
 
 //我的宝宝表添加
 router.post('/addbaby',function(req,res,next){

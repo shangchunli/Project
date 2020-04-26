@@ -12,9 +12,11 @@ class Detail extends Component {
             data:'',
             tips:'',
             isKeep:false,
+            isGive:false,
             chapterid:'',
             pingluns:'',
             plcount:'',
+            dzcount:'',
             userId:cookie.load('userId')
         } 
     }
@@ -73,6 +75,24 @@ class Detail extends Component {
             this.setState({
                plcount:res[0].plcount,
             });
+        })
+        fetch('http://localhost:5001/showdzcount',{
+            method: 'POST',//post请求 
+            headers: { 
+            'Content-Type': 'application/json;charset=UTF-8' 
+            }, 
+            body: JSON.stringify({
+                // userId:this.state.userId,  
+                chapterId:this.props.match.params.id               
+            })                    
+        })
+        .then(res=>res.json())
+        .then((res)=>{
+            console.log(res);
+            this.setState({
+                dzcount:res[0].dzcount
+            });
+            
         })
 
         
@@ -192,6 +212,57 @@ class Detail extends Component {
         
     }
     //点赞数
+    change2=(idx,e)=>{
+        
+        e.stopPropagation();
+        let c=this.state.isGive;
+        this.setState({
+            isGive:!c,
+            chapterid:this.props.match.params.id  
+        })
+        console.log(this.state.chapterid);
+        if(this.state.isGive==false){
+            
+            e.target.src='https://s1.ax1x.com/2020/04/21/JGLB8I.png '
+           
+                fetch('http://localhost:5001/dzcounnt',{
+                        method: 'POST',//post请求 
+                        headers: { 
+                        'Content-Type': 'application/json;charset=UTF-8' 
+                        }, 
+                        body: JSON.stringify({
+                            chapterId:this.state.chapterid,
+                            dzcount:this.state.dzcount                    
+                        })                    
+                })
+                .then(res=>res.text())
+                .then((res)=>{
+                    console.log(res);
+                    fetch('http://localhost:5001/showdzcount',{
+                        method: 'POST',//post请求 
+                        headers: { 
+                        'Content-Type': 'application/json;charset=UTF-8' 
+                        }, 
+                        body: JSON.stringify({
+                            // userId:this.state.userId,  
+                            chapterId:  this.props.match.params.id               
+                        })                    
+                    })
+                    .then(res=>res.json())
+                    .then((res)=>{
+                        console.log(res);
+                        this.setState({
+                            dzcount:res[0].dzcount
+                        });
+                        
+                    })
+                });
+               
+
+        }else{
+            e.target.src='https://s1.ax1x.com/2020/04/21/JGLIx0.png'
+        }
+    }
 
     render() {
         return (
@@ -237,9 +308,12 @@ class Detail extends Component {
                                             <img 
                                                 ref='tab'
                                                 style={{width:'5%'}}
-                                                src="https://i.loli.net/2020/04/17/G6xCR7StsTnPkBv.png"
+                                                src={(this.state.isGive)
+                                                    ?'https://s1.ax1x.com/2020/04/21/JGLB8I.png'
+                                                    :"https://s1.ax1x.com/2020/04/21/JGLIx0.png"}
             
                                                 onClick={(e)=>this.change2(item.chapterid,e)} alt='点赞'/>
+                                                <span>{this.state.dzcount}</span>
                                         </span>
                                         <span  style={{marginLeft:20,marginTop:100}} >
                                             <img 
