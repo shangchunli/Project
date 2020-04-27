@@ -3,6 +3,7 @@ import { NavBar,Icon,List } from 'antd-mobile';
 import './detail.css'
 import {withRouter} from 'react-router-dom'
 import cookie from 'react-cookies'
+import ShowBottom from './ShowBottom';
 
 
 class Detail extends Component {
@@ -17,6 +18,7 @@ class Detail extends Component {
             pingluns:'',
             plcount:'',
             dzcount:'',
+            sccount:'',
             userId:cookie.load('userId')
         } 
     }
@@ -94,19 +96,38 @@ class Detail extends Component {
             });
             
         })
+        fetch('http://localhost:5001/showsccount',{
+            method: 'POST',//post请求 
+            headers: { 
+            'Content-Type': 'application/json;charset=UTF-8' 
+            }, 
+            body: JSON.stringify({
+                // userId:this.state.userId,  
+                chapterId:this.props.match.params.id               
+            })                    
+        })
+        .then(res=>res.json())
+        .then((res)=>{
+            console.log(res);
+            this.setState({
+                sccount:res[0].sccount
+            });
+            
+        })
 
         
     }
     
     change1=(idx,e)=>{
         e.stopPropagation();
-        let b=this.state.isKeep;
+        let b=!this.state.isKeep;
         this.setState({
-            isKeep:!b,
+            isKeep:b,
             
-        })
-        console.log(this.state.chapterid);
-        if(this.state.isKeep==true){
+        },function () { 
+            console.log(this.state.isKeep);
+         })
+        if(this.state.isKeep==false){
             
             e.target.src='https://s2.ax1x.com/2019/12/11/QrKe4s.png '
            
@@ -120,10 +141,42 @@ class Detail extends Component {
                             chapterId:this.state.chapterid                    
                         })                    
                 })
-                .then(res=>res.json())
+                .then(res=>res.text())
                 .then((res)=>{
                     console.log(res);
-                   
+                })
+                fetch('http://localhost:5001/addsccount',{
+                        method: 'POST',//post请求 
+                        headers: { 
+                        'Content-Type': 'application/json;charset=UTF-8' 
+                        }, 
+                        body: JSON.stringify({
+                            chapterId:this.state.chapterid,
+                            sccount:this.state.sccount                    
+                        })                    
+                })
+                .then(res=>res.text())
+                .then((res)=>{
+                    if(res=='sc success'){
+                        fetch('http://localhost:5001/showsccount',{
+                            method: 'POST',//post请求 
+                            headers: { 
+                            'Content-Type': 'application/json;charset=UTF-8' 
+                            }, 
+                            body: JSON.stringify({
+                                // userId:this.state.userId,  
+                                chapterId:this.props.match.params.id               
+                            })                    
+                        })
+                        .then(res=>res.json())
+                        .then((res)=>{
+                            console.log(res);
+                            this.setState({
+                                sccount:res[0].sccount
+                            })
+                        })
+                    
+                    }
                 })
         }else{
             e.target.src='https://s2.ax1x.com/2019/12/04/Q1fu7T.png'
@@ -279,6 +332,7 @@ class Detail extends Component {
                 >
                     详情页
                 </NavBar>
+                {/* <ShowBottom style={{display:'none'}}/> */}
                 <div className='detaill'>
                     {
                         (this.state.data||[]).map(item=>
@@ -324,6 +378,7 @@ class Detail extends Component {
                                                     ?'https://s2.ax1x.com/2019/12/11/QrKe4s.png'
                                                     :"https://s2.ax1x.com/2019/12/04/Q1fu7T.png"}
                                                 onClick={(e)=>this.change1(item.chapterid,e)} alt='收藏'/>
+                                                <span>{this.state.sccount}</span>
                                         </span>
                                         <span  style={{marginLeft:20}} >
                                             <img 

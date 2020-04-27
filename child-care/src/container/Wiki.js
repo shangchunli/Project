@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { NavBar, Icon, Flex, Tabs, WhiteSpace, Badge } from 'antd-mobile';
 import './Wiki.css'
 import {withRouter} from 'react-router-dom'
-
+import ShowBottom from './ShowBottom'
 const tabs = [
     { title: <Badge >宝宝护理</Badge> },
     { title: <Badge >亲子教育</Badge> },
@@ -19,6 +19,7 @@ class Parental extends Component {
         return (
             <div>
                 <div>
+                    <ShowBottom/>
                     <NavBar
                         style={{
                             backgroundColor: '#fff', color: '#000',

@@ -3,7 +3,7 @@ import { NavBar, Icon, Tabs,WingBlank, WhiteSpace,
     Flex,List} from 'antd-mobile';
 import cookie from 'react-cookies'
 import {withRouter} from 'react-router-dom'
-
+import ShowBottom from './ShowBottom'
 class My extends Component {
     constructor(){
         super();
@@ -39,6 +39,7 @@ class My extends Component {
         console.log(this.state.data)
         return (
             <div>
+                <ShowBottom />
                 <NavBar
                     style={{backgroundColor:'#fff',color:'#000',
                     position:"fixed",top:0,zIndex:100,width:"100%",

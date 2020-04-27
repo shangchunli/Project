@@ -464,6 +464,37 @@ router.post('/keepid',function(req,res,next){
    
 })
 
+//增加收藏
+router.post('/addsccount',function(req,res,next){
+  console.log(req.body)
+  var sccount = req.body.sccount+1;
+  var chapterId = req.body.chapterId;
+  var con = mysql.createConnection(dbconfig);
+  con.connect();
+  con.query('update chapters set sccount =? where chapterid=?',[sccount,chapterId],function(err,result){
+    if(err){
+      console.log(err);
+    }else{
+      res.send('sc success');
+    }
+  })
+})
+
+
+//收藏数渲染
+router.post('/showsccount',function(req,res,next){
+  var chapterId = req.body.chapterId;
+  var con = mysql.createConnection(dbconfig);
+  con.connect();
+  con.query('select sccount from chapters where chapterId=? ',[chapterId],function(err,result){
+    if(err){
+      console.log(err);
+    }else{
+      res.send(result);
+    }
+  })
+})
+
 //增加评论
 router.post('/addcomment', function(req,res,next){
   var user = req.body.userId;

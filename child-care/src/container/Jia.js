@@ -3,7 +3,7 @@ import Tie from './Tie';
 import React, { Component } from 'react'
 import './sui.css';
 import {NavBar,Tabs} from "antd-mobile"
-
+import ShowBottom from './ShowBottom'
 const tabs = [
     { title: '帖子' },
     { title: '随想' },
@@ -16,6 +16,7 @@ export default class Jia extends Component {
     render() {
         return (
             <div>
+                <ShowBottom/>
                 <NavBar
                     style={{backgroundColor:'#fff',color:'#000',
                     height:60,fontWeight:"bolder",

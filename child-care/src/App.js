@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import AppTab from './container/AppTab'
+// import AppTab from './container/AppTab'
 import {BrowserRouter as Router,Route,Link} from "react-router-dom"
 
 // import Login from './container/Login'
@@ -70,71 +70,13 @@ import Publish from './container/my/Publish'
 // // tab底部导航Health
 // import Health from './container/Health.js'
 
-
+import AppTab from './container/AppTab.js'
 
 export default class App extends Component {
     render() {
         return (
             <div>
-                 <div>
-                 </div>
-                <Router>
-                    <div>
-                        <Route exact path='/' component={Login}/>
-                        <Route exact path='/login' component={Login}/>
-                        <Route exact path='/reg' component={Register}/>
-
-                        <Route exact path='/home' component={AppTab}/>
-                        <Route exact path='/wiki' component={AppTab}/>
-                        <Route exact path='/add' component={AppTab}/>
-                        <Route exact path='/health' component={AppTab}/>
-                        <Route exact path='/my' component={AppTab}/>
-
-                        {/* <Route exact path='/home' component={AppHome}/>
-                        <Route exact path='/wiki' component={Wiki}/>
-                        <Route exact path='/add' component={Add}/>
-                        <Route exact path='/health' component={Health}/>
-                        <Route exact path='/my' component={My}/> */}
-
-                        <Route  path='/home/picture' component={Picture}/>
-                        <Route  path='/home/chinese' component={Chinese}/>
-                        <Route  path='/home/song' component={Song}/>
-                        <Route  path='/home/story' component={Story}/>
-                        <Route  path='/home/youxi' component={Youxi}/>
-                        <Route  exact path='/wiki/nurse' component={Nurse}/>
-                        <Route  exact path='/wiki/edu' component={Edu}/>
-                        <Route  exact path='/wiki/chaowa' component={Chaowa}/>
-                        <Route  exact path='/wiki/tuina' component={TuiNa}/>
-                        <Route  exact path='/wiki/babyfood' component={BabyFood}/>
-                        <Route  exact path='/health/yiyu' component={Yiyu}/>
-                        <Route  exact path='/health/reply' component={Reply}/>
-                        <Route  exact path='/health/food' component={Food}/>
-                        <Route  exact path='/health/anxiety' component={Anxiety}/>
-                        <Route  exact path='/my/publish' component={Publish}/>
-                        <Route  exact path='/my/collect' component={Collect}/>
-                        <Route  exact path='/my/tongyong' component={Tongyong}/>
-                        <Route  exact path='/my/unique' component={Unique}/>
-                        {/* <Route  exact path='/my' component={My}/> */}
-                        <Route path='/wiki/detail/:id' component={Detail}/>
-                        <Route path='/health/detail/:id' component={Detail}/>
-                        <Route path='/home/detail/:id' component={Dairty}/>
-                        <Route path='/home/message' component={Message}/>
-                        <Route exact path='/wiki/baike1'component={Baike1}/>
-                        <Route exact path='/wiki/baike2'component={Baike2}/>
-                        <Route exact path='/wiki/baike3'component={Baike3}/>
-                        <Route exact path='/wiki/youxi1'component={Youxi1}/>
-                        <Route exact path='/wiki/youxi2'component={Youxi2}/>
-                        <Route exact path='/wiki/youxi3'component={Youxi3}/>
-                        <Route exact path='/wiki/youxi4'component={Youxi4}/>
-                        <Route exact path='/wiki/youxi5'component={Youxi5}/>
-                        <Route exact path='/wiki/youxi6'component={Youxi6}/>
-                        {/* <Route path='/wiki/nurse1/detail/:id' component={Detail}/>
-                        <Route path='/wiki/babyfood/detail/:id' component={Detail}/>
-                        <Route path='/wiki/chaowa/detail/:id' component={Detail}/>
-                        <Route path='/wiki/edu/detail/:id' component={Detail}/>
- */}
-                    </div>
-                 </Router>
+                 <AppTab/>
             </div>
         )
     }

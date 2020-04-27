@@ -3,6 +3,7 @@ import "./apphome.css"
 import cookie from 'react-cookies'
 import {NavBar,Icon, List} from "antd-mobile"
 import {withRouter} from 'react-router-dom'
+import ShowBottom from './ShowBottom'
 class AppHome extends Component {
     constructor(props){
         super(props);
@@ -72,6 +73,7 @@ class AppHome extends Component {
        console.log(this.state.baby)
         return (
             <div>
+                <ShowBottom/>
                 <NavBar
                         style={{backgroundColor:'#fff',color:'#000',
                         fontWeight:"bolder",

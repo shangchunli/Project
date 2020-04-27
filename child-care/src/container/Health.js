@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 // import Health from './Health.css'
 import { Carousel, WingBlank ,Flex,WhiteSpace,List,NavBar,Icon} from 'antd-mobile';
 import {withRouter} from 'react-router-dom'
+import ShowBottom from './ShowBottom'
 
 const Item = List.Item;
 const Brief = Item.Brief;
@@ -40,6 +41,7 @@ class Dynamics extends Component {
     render() {
         return (
             <div>
+                <ShowBottom/>
                 <NavBar
                         style={{backgroundColor:'#fff',color:'#000',
                         fontWeight:"bolder",
