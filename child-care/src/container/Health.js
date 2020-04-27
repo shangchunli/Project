@@ -161,7 +161,9 @@ class Dynamics extends Component {
                     
                 </Flex>
 
-               
+                <div style={{height:50,width:'100%',backgroundColor:'red'}}>
+                     111
+                </div>
             </div>
         )
     }

@@ -245,7 +245,7 @@ router.post('/xiangqing',function(req,res,next){
   var chapterid = req.body.chapterId;
   var con = mysql.createConnection(dbconfig);
   con.connect();
-  con.query('select title,content from chapters where chapterid=?',chapterid,function(err,result){
+  con.query('select title,content,dzcount,sccount,plcount from chapters where chapterid=?',chapterid,function(err,result){
     if(err){
       console.log(err);
     }else{

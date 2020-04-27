@@ -72,7 +72,7 @@ class AppHome extends Component {
     //    console.log(str);
        console.log(this.state.baby)
         return (
-            <div>
+            <div style={{}}>
                 <ShowBottom/>
                 <NavBar
                         style={{backgroundColor:'#fff',color:'#000',
@@ -125,8 +125,9 @@ class AppHome extends Component {
                     />
                     </List.Item>
                 </div>
+                <div style={{width:'100%',backgroundColor:'white',height:60}}>
                     <div onClick={()=>{this.handle('picture')}}
-                    style={{float:'left',paddingLeft:'8%',backgroundColor:'white'}}>
+                    style={{float:'left',paddingLeft:'16%',backgroundColor:'white'}}>
                         <img 
                             width='40'height='40'
                         
@@ -171,11 +172,7 @@ class AppHome extends Component {
                             />
                         <p>亲子游戏</p>
                     </div>
-                {/* <div>
-                    {
-                        
-                    }
-                </div> */}
+                </div>
                 <div>
                 {
                     ((this.state.data||[]).map(item=>{
@@ -200,8 +197,11 @@ class AppHome extends Component {
                     )
                 }                      
                 <div style={str2}>快来添加成长日志吧</div>
-
+                    
                 </div>
+                
+
+               
             </div>
         )
     }

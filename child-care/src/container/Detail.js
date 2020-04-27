@@ -42,6 +42,9 @@ class Detail extends Component {
             console.log(res);
             this.setState({
                 data:res,
+                dzcount:res[0].dzcount,
+                sccount:res[0].sccount,
+                plcount:res[0].plcount,
                 chapterid:this.props.match.params.id
             });
             
@@ -62,58 +65,58 @@ class Detail extends Component {
                 tips:res,
             });
         })
-        fetch('http://localhost:5001/showplcount',{
-            method: 'POST',//post请求 
-            headers: { 
-            'Content-Type': 'application/json;charset=UTF-8' 
-            }, 
-            body: JSON.stringify({
-                chapterId:  this.props.match.params.id               
-            })                    
-        })
-        .then(res=>res.json())
-        .then((res)=>{
-            console.log(res);
-            this.setState({
-               plcount:res[0].plcount,
-            });
-        })
-        fetch('http://localhost:5001/showdzcount',{
-            method: 'POST',//post请求 
-            headers: { 
-            'Content-Type': 'application/json;charset=UTF-8' 
-            }, 
-            body: JSON.stringify({
-                // userId:this.state.userId,  
-                chapterId:this.props.match.params.id               
-            })                    
-        })
-        .then(res=>res.json())
-        .then((res)=>{
-            console.log(res);
-            this.setState({
-                dzcount:res[0].dzcount
-            });
+        // fetch('http://localhost:5001/showplcount',{
+        //     method: 'POST',//post请求 
+        //     headers: { 
+        //     'Content-Type': 'application/json;charset=UTF-8' 
+        //     }, 
+        //     body: JSON.stringify({
+        //         chapterId:  this.props.match.params.id               
+        //     })                    
+        // })
+        // .then(res=>res.json())
+        // .then((res)=>{
+        //     console.log(res);
+        //     this.setState({
+        //        plcount:res[0].plcount,
+        //     });
+        // })
+        // fetch('http://localhost:5001/showdzcount',{
+        //     method: 'POST',//post请求 
+        //     headers: { 
+        //     'Content-Type': 'application/json;charset=UTF-8' 
+        //     }, 
+        //     body: JSON.stringify({
+        //         // userId:this.state.userId,  
+        //         chapterId:this.props.match.params.id               
+        //     })                    
+        // })
+        // .then(res=>res.json())
+        // .then((res)=>{
+        //     console.log(res);
+        //     this.setState({
+        //         dzcount:res[0].dzcount
+        //     });
             
-        })
-        fetch('http://localhost:5001/showsccount',{
-            method: 'POST',//post请求 
-            headers: { 
-            'Content-Type': 'application/json;charset=UTF-8' 
-            }, 
-            body: JSON.stringify({
-                // userId:this.state.userId,  
-                chapterId:this.props.match.params.id               
-            })                    
-        })
-        .then(res=>res.json())
-        .then((res)=>{
-            console.log(res);
-            this.setState({
-                sccount:res[0].sccount
-            });
+        // })
+        // fetch('http://localhost:5001/showsccount',{
+        //     method: 'POST',//post请求 
+        //     headers: { 
+        //     'Content-Type': 'application/json;charset=UTF-8' 
+        //     }, 
+        //     body: JSON.stringify({
+        //         // userId:this.state.userId,  
+        //         chapterId:this.props.match.params.id               
+        //     })                    
+        // })
+        // .then(res=>res.json())
+        // .then((res)=>{
+        //     console.log(res);
+        //     this.setState({
+        //         sccount:res[0].sccount
+        //     });
             
-        })
+        // })
 
         
     }
@@ -354,7 +357,10 @@ class Detail extends Component {
                                                     }
                                             />
                                         <span style={{marginLeft:10}}>
-                                            <button onClick={this.crital}>发送</button>
+                                            <button onClick={this.crital} 
+                                            style={{borderRadius:20,width:'10%',height:30}}>
+                                                发送
+                                            </button>
                                         </span>
                                         
                                         
@@ -385,7 +391,7 @@ class Detail extends Component {
                                                 ref='tab'
                                                 style={{width:'5%',}}
                                                 src=
-                                                "https://i.loli.net/2020/04/17/TRaZx2wyLhzEkOj.png"
+                                                "https://s1.ax1x.com/2020/04/27/Jf4g8s.png"
                                                     
                                                  alt='评论'/>
                                                 <span style={{fontSize:20,marginLeft:10}}>

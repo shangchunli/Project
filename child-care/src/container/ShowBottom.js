@@ -9,7 +9,7 @@ export default class ShowBottom extends Component {
             <div 
             style={{ 
               position: "fixed", zIndex: '999', 
-              background: 'white', paddingTop: '15px', 
+              background: 'white', paddingTop: '15px',top:'92%',
               bottom: "0", width: "100%", height: "50px", color: "#2278c9" 
               }}
           >

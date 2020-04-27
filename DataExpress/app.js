@@ -24,19 +24,14 @@ app.use(bodyParser.json());
 app.all('*', function (req, res, next) {
   res.header('Access-Control-Allow-Origin', '*');
   //Access-Control-Allow-Headers ,可根据浏览器的F12查看,把对应的粘贴在这里就行
-  res.header('Access-Control-Allow-Credentials', true) // 是否允许发送Cookie，ture为运行 
-    res.header('Access-Control-Allow-Methods', 'OPTIONS, GET, PUT, POST, DELETE')
-    res.header(
-        "Access-Control-Allow-Headers",
-        "Content-Type, Access-Control-Allow-Headers, Access-Control-Request-Headers, Access-Control-Request-Method, Authorization, X-Requested-With, User-Agent, Referer, Origin"
-        )
-    res.header("Access-Control-Max-Age", 1728000)
+  res.header('Access-Control-Allow-Headers', 'Content-Type');
+  res.header('Access-Control-Allow-Methods', '*');
+  res.header('Cache-Control', 'no-cache');
 
   
-  res.header('Content-Type', 'application/json;charset=utf-8');
+  // res.header('Content-Type', 'application/json;charset=utf-8');
   next();
 });
-
 //2前判断，路径包含/而不包含/users,所以进indexRouter
 app.use('/', indexRouter);
 app.use('/users', usersRouter);

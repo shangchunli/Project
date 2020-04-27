@@ -57,7 +57,7 @@ export default class Publish extends Component {
                     我的发布
                 </NavBar>
                 <WhiteSpace />
-                <List>
+                <List style={{marginTop:30}}>
                     {
                         (this.state.data||[]).map((item,idx)=>{
                             return(
