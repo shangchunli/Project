@@ -505,20 +505,28 @@ router.post('/addcomment', function(req,res,next){
   console.log("user:"+user,"chapterId:"+chapterId);
   var con  = mysql.createConnection(dbconfig);
   con.connect();
-  con.query("insert into comment(telphone,chapterid,plcontent,pltime) values(?,?,?,?)",[user,chapterId,plcontent,pltime],function(err,result){
+  con.query('select head from register where telphone=?',[user],function(err,result){
     if(err){
-      console.log(err);
+      console.log(err)
     }else{
-      res.send(' comment success')
+      console.log(result[0].head)
+      con.query("insert into comment(telphone,chapterid,plcontent,pltime,head) values(?,?,?,?,?)",[user,chapterId,plcontent,pltime,result[0].head],function(err,result){
+        if(err){
+          console.log(err);
+        }else{
+          res.send(' comment success')
+        }
+      })
     }
   })
+  
 })
 //评论渲染
 router.post('/showcomment',function(req,res,next){
   var chapterId = req.body.chapterId;
   var con = mysql.createConnection(dbconfig);
   con.connect();
-  con.query('select telphone,plcontent,plid,pltime from comment where chapterid=?',[chapterId],function(err,result){
+  con.query('select telphone,plcontent,plid,pltime,head from comment where chapterid=?',[chapterId],function(err,result){
     if(err){
       console.log(err);
     }else{
@@ -528,21 +536,49 @@ router.post('/showcomment',function(req,res,next){
 })
 
 //增加评论数目
-router.post('/addplcount',function(req,res,next){
-  console.log(req.body)
-  var plcount = req.body.plcount+1;
+router.post('/plcount',function(req,res,next){
   var chapterId = req.body.chapterId;
-  console.log(chapterId,plcount);
+  console.log(chapterId);
   var con = mysql.createConnection(dbconfig);
   con.connect();
-  con.query('update chapters set plcount =? where chapterid=?',[plcount,chapterId],function(err,result){
+  con.query('select chapterid from comment where chapterId=?',chapterId,function (err,result) { 
     if(err){
       console.log(err);
     }else{
-      res.send('pl success');
+      res.send(result)
     }
   })
 })
+
+// router.post('/addplcount',function(req,res,next){
+//   console.log(req.body)
+//   var plcount = req.body.plcount+1;
+//   var chapterId = req.body.chapterId;
+//   console.log(chapterId,plcount);
+//   var con = mysql.createConnection(dbconfig);
+//   con.connect();
+//   con.query('update chapters set plcount =? where chapterid=?',[plcount,chapterId],function(err,result){
+//     if(err){
+//       console.log(err);
+//     }else{
+//       res.send('pl success');
+//     }
+//   })
+// })
+//删除评论
+router.post('/delcom',function (req,res,next) { 
+  var chapterId = req.body.chapterId;
+  var userId=req.body.userId
+  var con = mysql.createConnection(dbconfig);
+  con.connect();
+  con.query('delete from comment where chapterid=? AND telphone=?',[chapterId,userId],function(err,result){
+    if(err){
+      console.log(err);
+    }else{
+      res.send('del success')
+    }
+  })
+ })
 //评论数目渲染
 router.post('/showplcount',function(req,res,next){
   var chapterId = req.body.chapterId;

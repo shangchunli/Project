@@ -3,7 +3,10 @@ import { NavBar,Icon,List } from 'antd-mobile';
 import './detail.css'
 import {withRouter} from 'react-router-dom'
 import cookie from 'react-cookies'
-import ShowBottom from './ShowBottom';
+
+{/* <div>
+     hsbo
+</div> */}
 
 
 class Detail extends Component {
@@ -19,6 +22,7 @@ class Detail extends Component {
             plcount:'',
             dzcount:'',
             sccount:'',
+            plstate:false,
             userId:cookie.load('userId')
         } 
     }
@@ -44,7 +48,6 @@ class Detail extends Component {
                 data:res,
                 dzcount:res[0].dzcount,
                 sccount:res[0].sccount,
-                plcount:res[0].plcount,
                 chapterid:this.props.match.params.id
             });
             
@@ -65,6 +68,25 @@ class Detail extends Component {
                 tips:res,
             });
         })
+        
+        fetch('http://localhost:5001/plcount',{
+            method: 'POST',//post请求 
+            headers: { 
+            'Content-Type': 'application/json;charset=UTF-8' 
+            }, 
+            body: JSON.stringify({
+                chapterId:this.props.match.params.id
+            })                    
+        })
+        .then(res=>res.json())
+        .then((res)=>{
+            console.log('comdid'+res)
+            this.setState({
+                plcount:res.length
+            })
+        })
+            
+
         // fetch('http://localhost:5001/showplcount',{
         //     method: 'POST',//post请求 
         //     headers: { 
@@ -229,43 +251,70 @@ class Detail extends Component {
                         tips:res,
                     });
                 })
-                fetch('http://localhost:5001/addplcount',{
-            method: 'POST',//post请求 
-            headers: { 
-            'Content-Type': 'application/json;charset=UTF-8' 
-            }, 
-            body: JSON.stringify({
-                chapterId:this.state.chapterid,
-                plcount:this.state.plcount                   
-            })                    
-        })
-        .then(res=>res.text())
-        .then((res)=>{
-            console.log(res)
-            if(res=='pl success'){
-                fetch('http://localhost:5001/showplcount',{
-                    method: 'POST',//post请求 
-                    headers: { 
-                    'Content-Type': 'application/json;charset=UTF-8' 
-                    }, 
-                    body: JSON.stringify({
-                        chapterId:  this.props.match.params.id               
-                    })                    
-                })
-                .then(res=>res.json())
-                .then((res)=>{
-                    console.log(res[0].plcount)
+                // fetch('http://localhost:5001/addplcount',{
                     this.setState({
-                        plcount:res[0].plcount
+                        plstate:true
+                    },function () { 
+                        console.log(this.state.plstate);
+                        if(this.state.plstate){
+                            console.log('333')
+                            fetch('http://localhost:5001/plcount',{
+                                method: 'POST',//post请求 
+                                headers: { 
+                                'Content-Type': 'application/json;charset=UTF-8' 
+                                }, 
+                                body: JSON.stringify({
+                                    chapterId:this.state.chapterid,
+                                    plstate:this.state.plstate
+                                })                    
+                            })
+                            .then(res=>res.json())
+                            .then((res)=>{
+                                console.log('1111')
+                                console.log(res);
+                                console.log(res.length);
+                                this.setState({
+                                    plcount:res.length
+                                })
+                            })
+                        }
+                    
+                    // fetch('http://localhost:5001/plcount',{
+                    //     method: 'POST',//post请求 
+                    //     headers: { 
+                    //     'Content-Type': 'application/json;charset=UTF-8' 
+                    //     }, 
+                    //     body: JSON.stringify({
+                    //         chapterId:this.state.chapterid,
+                    //     })                    
+                    // })
+                    // .then(res=>res.text())
+                    // .then((res)=>{
+                    //     console.log(res)
+                        // if(res=='pl success'){
+                        //     fetch('http://localhost:5001/showplcount',{
+                        //         method: 'POST',//post请求 
+                        //         headers: { 
+                        //         'Content-Type': 'application/json;charset=UTF-8' 
+                        //         }, 
+                        //         body: JSON.stringify({
+                        //             chapterId:  this.props.match.params.id               
+                        //         })                    
+                        //     })
+                        //     .then(res=>res.json())
+                        //     .then((res)=>{
+                        //         console.log(res[0].plcount)
+                        //         this.setState({
+                        //             plcount:res[0].plcount
+                        //         })
+                        //     })
+                        // }
                     })
-                })
-            }
-        })
-            }else{
-                alert('评论失败')
-            }
-        })
-        
+                }else{
+                    alert('评论失败')
+                }
+            })
+
     }
     //点赞数
     change2=(idx,e)=>{
@@ -319,7 +368,63 @@ class Detail extends Component {
             e.target.src='https://s1.ax1x.com/2020/04/21/JGLIx0.png'
         }
     }
+    del=()=>{
+        alert('del')
+        fetch('http://localhost:5001/delcom',{
+            method: 'POST',//post请求 
+            headers: { 
+            'Content-Type': 'application/json;charset=UTF-8' 
+            }, 
+            body: JSON.stringify({
+                chapterId:this.props.match.params.id,
+                userId:this.state.userId       
+            })                    
+        })
+        .then(res=>res.text())
+        .then((res)=>{
+            if(res=='del success'){
+                fetch('http://localhost:5001/showcomment',{
+                    method: 'POST',//post请求 
+                    headers: { 
+                    'Content-Type': 'application/json;charset=UTF-8' 
+                    }, 
+                    body: JSON.stringify({
+                        chapterId:  this.props.match.params.id               
+                    })                    
+                })
+                .then(res=>res.json())
+                .then((res)=>{
+                    console.log(res);
+                    this.setState({
+                        tips:res,
+                    });
+                })
+                fetch('http://localhost:5001/plcount',{
+                    method: 'POST',//post请求 
+                    headers: { 
+                    'Content-Type': 'application/json;charset=UTF-8' 
+                    }, 
+                    body: JSON.stringify({
+                        chapterId:this.state.chapterid,
+                        plstate:this.state.plstate
+                    })                    
+                })
+                .then(res=>res.json())
+                .then((res)=>{
+                    console.log('1111')
+                    console.log(res);
+                    console.log(res.length);
+                    this.setState({
+                        plcount:res.length
+                    })
+                })
+            
+            }
+            
+            
+        })
 
+    }
     render() {
         return (
             <div>
@@ -403,20 +508,38 @@ class Detail extends Component {
                                 <div style={{marginTop:20}}>
                                         {
                                             (this.state.tips||[]).map(item=>
-                                                <List.Item >
+                                                <div 
+                                                    style={{
+                                                        backgroundColor:'green',
+                                                        padding:10,
+                                                        marginTop:10
+                                                    }}
+                                                >
+                                                    <List.Item
+                                                       
+                                                    >
+                                                        <img src={item.head} 
+                                                            style={{height:50,width:50,marginRight:25,borderRadius:50}}/>
+                                                        {item.telphone}<span style={{marginLeft:20}}>
+                                                            {item.pltime} </span>
+                                                            <span style={{marginLeft:'30%'}} onClick={this.del}>
+                                                                <img src='https://i.loli.net/2020/05/11/sWpCgexZzHkGVQF.png'/>    
+                                                            </span>
+                                                            <List.Item.Brief style={{marginLeft:30,marginTop:10}}>
+                                                            {item.plcontent}</List.Item.Brief>
+                                                    </List.Item>
+                                                    {/* <List.Item >
+                                                        <List.Item.Brief style={{marginLeft:20}}>
+                                                        
+                                                        {item.plcontent}
                                                     
-                                                    
-                                                    <List.Item.Brief style={{marginLeft:20}}>
-                                                    
-                                                    {item.plcontent}
-                                                   
-                                                    </List.Item.Brief>
-                                                    <List.Item.Brief>
-                                                    {item.telphone}
-                                                    <span style={{marginLeft:20}}>{item.pltime}</span>
-                                                    </List.Item.Brief>
-                                                
-                                                </List.Item>
+                                                        </List.Item.Brief>
+                                                        <List.Item.Brief>
+                                                        {item.telphone}
+                                                        <span style={{marginLeft:20}}>{item.pltime}</span>
+                                                        </List.Item.Brief>
+                                                    </List.Item> */}
+                                                </div>
                                             )
                                         }
                                    
