@@ -4,10 +4,6 @@ import './detail.css'
 import {withRouter} from 'react-router-dom'
 import cookie from 'react-cookies'
 
-{/* <div>
-     hsbo
-</div> */}
-
 
 class Detail extends Component {
    constructor(){
@@ -37,20 +33,17 @@ class Detail extends Component {
             'Content-Type': 'application/json;charset=UTF-8' 
             }, 
             body: JSON.stringify({
-                // userId:this.state.userId,  
                 chapterId:  this.props.match.params.id               
             })                    
         })
         .then(res=>res.json())
         .then((res)=>{
-            console.log(res);
             this.setState({
                 data:res,
                 dzcount:res[0].dzcount,
                 sccount:res[0].sccount,
                 chapterid:this.props.match.params.id
             });
-            
         })
         fetch('http://localhost:5001/showcomment',{
             method: 'POST',//post请求 
@@ -63,7 +56,6 @@ class Detail extends Component {
         })
         .then(res=>res.json())
         .then((res)=>{
-            console.log(res);
             this.setState({
                 tips:res,
             });
@@ -80,67 +72,10 @@ class Detail extends Component {
         })
         .then(res=>res.json())
         .then((res)=>{
-            console.log('comdid'+res)
             this.setState({
                 plcount:res.length
             })
         })
-            
-
-        // fetch('http://localhost:5001/showplcount',{
-        //     method: 'POST',//post请求 
-        //     headers: { 
-        //     'Content-Type': 'application/json;charset=UTF-8' 
-        //     }, 
-        //     body: JSON.stringify({
-        //         chapterId:  this.props.match.params.id               
-        //     })                    
-        // })
-        // .then(res=>res.json())
-        // .then((res)=>{
-        //     console.log(res);
-        //     this.setState({
-        //        plcount:res[0].plcount,
-        //     });
-        // })
-        // fetch('http://localhost:5001/showdzcount',{
-        //     method: 'POST',//post请求 
-        //     headers: { 
-        //     'Content-Type': 'application/json;charset=UTF-8' 
-        //     }, 
-        //     body: JSON.stringify({
-        //         // userId:this.state.userId,  
-        //         chapterId:this.props.match.params.id               
-        //     })                    
-        // })
-        // .then(res=>res.json())
-        // .then((res)=>{
-        //     console.log(res);
-        //     this.setState({
-        //         dzcount:res[0].dzcount
-        //     });
-            
-        // })
-        // fetch('http://localhost:5001/showsccount',{
-        //     method: 'POST',//post请求 
-        //     headers: { 
-        //     'Content-Type': 'application/json;charset=UTF-8' 
-        //     }, 
-        //     body: JSON.stringify({
-        //         // userId:this.state.userId,  
-        //         chapterId:this.props.match.params.id               
-        //     })                    
-        // })
-        // .then(res=>res.json())
-        // .then((res)=>{
-        //     console.log(res);
-        //     this.setState({
-        //         sccount:res[0].sccount
-        //     });
-            
-        // })
-
-        
     }
     
     change1=(idx,e)=>{
@@ -150,59 +85,57 @@ class Detail extends Component {
             isKeep:b,
             
         },function () { 
-            console.log(this.state.isKeep);
+            
          })
         if(this.state.isKeep==false){
-            
             e.target.src='https://s2.ax1x.com/2019/12/11/QrKe4s.png '
-           
-                fetch('http://localhost:5001/cookie',{
+            fetch('http://localhost:5001/cookie',{
+                    method: 'POST',//post请求 
+                    headers: { 
+                    'Content-Type': 'application/json;charset=UTF-8' 
+                    }, 
+                    body: JSON.stringify({
+                        userId:this.state.userId,  
+                        chapterId:this.state.chapterid                    
+                    })                    
+            })
+            .then(res=>res.text())
+            .then((res)=>{
+                console.log(res);
+            })
+            fetch('http://localhost:5001/addsccount',{
+                    method: 'POST',//post请求 
+                    headers: { 
+                    'Content-Type': 'application/json;charset=UTF-8' 
+                    }, 
+                    body: JSON.stringify({
+                        chapterId:this.state.chapterid,
+                        sccount:this.state.sccount                    
+                    })                    
+            })
+            .then(res=>res.text())
+            .then((res)=>{
+                if(res=='sc success'){
+                    fetch('http://localhost:5001/showsccount',{
                         method: 'POST',//post请求 
                         headers: { 
                         'Content-Type': 'application/json;charset=UTF-8' 
                         }, 
                         body: JSON.stringify({
-                            userId:this.state.userId,  
-                            chapterId:this.state.chapterid                    
+                            // userId:this.state.userId,  
+                            chapterId:this.props.match.params.id               
                         })                    
-                })
-                .then(res=>res.text())
-                .then((res)=>{
-                    console.log(res);
-                })
-                fetch('http://localhost:5001/addsccount',{
-                        method: 'POST',//post请求 
-                        headers: { 
-                        'Content-Type': 'application/json;charset=UTF-8' 
-                        }, 
-                        body: JSON.stringify({
-                            chapterId:this.state.chapterid,
-                            sccount:this.state.sccount                    
-                        })                    
-                })
-                .then(res=>res.text())
-                .then((res)=>{
-                    if(res=='sc success'){
-                        fetch('http://localhost:5001/showsccount',{
-                            method: 'POST',//post请求 
-                            headers: { 
-                            'Content-Type': 'application/json;charset=UTF-8' 
-                            }, 
-                            body: JSON.stringify({
-                                // userId:this.state.userId,  
-                                chapterId:this.props.match.params.id               
-                            })                    
+                    })
+                    .then(res=>res.json())
+                    .then((res)=>{
+                        console.log(res);
+                        this.setState({
+                            sccount:res[0].sccount
                         })
-                        .then(res=>res.json())
-                        .then((res)=>{
-                            console.log(res);
-                            this.setState({
-                                sccount:res[0].sccount
-                            })
-                        })
-                    
-                    }
-                })
+                    })
+                
+                }
+            })
         }else{
             e.target.src='https://s2.ax1x.com/2019/12/04/Q1fu7T.png'
         }
@@ -217,9 +150,6 @@ class Detail extends Component {
     }
     //添加评论以及更新评论内容
     crital=()=>{
-        console.log(this.state.pingluns);
-        console.log(this.state.chapterid);
-        console.log(this.state.plcount);
         fetch('http://localhost:5001/addcomment',{
             method: 'POST',//post请求 
             headers: { 
@@ -251,74 +181,40 @@ class Detail extends Component {
                         tips:res,
                     });
                 })
-                // fetch('http://localhost:5001/addplcount',{
-                    this.setState({
-                        plstate:true
-                    },function () { 
-                        console.log(this.state.plstate);
-                        if(this.state.plstate){
-                            console.log('333')
-                            fetch('http://localhost:5001/plcount',{
-                                method: 'POST',//post请求 
-                                headers: { 
-                                'Content-Type': 'application/json;charset=UTF-8' 
-                                }, 
-                                body: JSON.stringify({
-                                    chapterId:this.state.chapterid,
-                                    plstate:this.state.plstate
-                                })                    
+                this.setState({
+                    plstate:true
+                },function () { 
+                    console.log(this.state.plstate);
+                    if(this.state.plstate){
+                        console.log('333')
+                        fetch('http://localhost:5001/plcount',{
+                            method: 'POST',//post请求 
+                            headers: { 
+                            'Content-Type': 'application/json;charset=UTF-8' 
+                            }, 
+                            body: JSON.stringify({
+                                chapterId:this.state.chapterid,
+                                plstate:this.state.plstate
+                            })                    
+                        })
+                        .then(res=>res.json())
+                        .then((res)=>{
+                            console.log('1111')
+                            console.log(res);
+                            console.log(res.length);
+                            this.setState({
+                                plcount:res.length
                             })
-                            .then(res=>res.json())
-                            .then((res)=>{
-                                console.log('1111')
-                                console.log(res);
-                                console.log(res.length);
-                                this.setState({
-                                    plcount:res.length
-                                })
-                            })
-                        }
-                    
-                    // fetch('http://localhost:5001/plcount',{
-                    //     method: 'POST',//post请求 
-                    //     headers: { 
-                    //     'Content-Type': 'application/json;charset=UTF-8' 
-                    //     }, 
-                    //     body: JSON.stringify({
-                    //         chapterId:this.state.chapterid,
-                    //     })                    
-                    // })
-                    // .then(res=>res.text())
-                    // .then((res)=>{
-                    //     console.log(res)
-                        // if(res=='pl success'){
-                        //     fetch('http://localhost:5001/showplcount',{
-                        //         method: 'POST',//post请求 
-                        //         headers: { 
-                        //         'Content-Type': 'application/json;charset=UTF-8' 
-                        //         }, 
-                        //         body: JSON.stringify({
-                        //             chapterId:  this.props.match.params.id               
-                        //         })                    
-                        //     })
-                        //     .then(res=>res.json())
-                        //     .then((res)=>{
-                        //         console.log(res[0].plcount)
-                        //         this.setState({
-                        //             plcount:res[0].plcount
-                        //         })
-                        //     })
-                        // }
-                    })
-                }else{
-                    alert('评论失败')
-                }
-            })
-
+                        })
+                    }
+                })
+            }else{
+                alert('评论失败')
+            }
+        })
     }
     //点赞数
     change2=(idx,e)=>{
-        
         e.stopPropagation();
         let c=this.state.isGive;
         this.setState({
@@ -362,22 +258,18 @@ class Detail extends Component {
                         
                     })
                 });
-               
-
         }else{
             e.target.src='https://s1.ax1x.com/2020/04/21/JGLIx0.png'
         }
     }
-    del=()=>{
-        alert('del')
+    del=(idx)=>{
         fetch('http://localhost:5001/delcom',{
             method: 'POST',//post请求 
             headers: { 
             'Content-Type': 'application/json;charset=UTF-8' 
             }, 
             body: JSON.stringify({
-                chapterId:this.props.match.params.id,
-                userId:this.state.userId       
+                plid:idx       
             })                    
         })
         .then(res=>res.text())
@@ -418,12 +310,8 @@ class Detail extends Component {
                         plcount:res.length
                     })
                 })
-            
             }
-            
-            
         })
-
     }
     render() {
         return (
@@ -440,7 +328,6 @@ class Detail extends Component {
                 >
                     详情页
                 </NavBar>
-                {/* <ShowBottom style={{display:'none'}}/> */}
                 <div className='detaill'>
                     {
                         (this.state.data||[]).map(item=>
@@ -506,45 +393,30 @@ class Detail extends Component {
                                     </div>
                                 </List.Item.Brief>
                                 <div style={{marginTop:20}}>
-                                        {
-                                            (this.state.tips||[]).map(item=>
-                                                <div 
-                                                    style={{
-                                                        backgroundColor:'green',
-                                                        padding:10,
-                                                        marginTop:10
-                                                    }}
-                                                >
-                                                    <List.Item
-                                                       
-                                                    >
-                                                        <img src={item.head} 
-                                                            style={{height:50,width:50,marginRight:25,borderRadius:50}}/>
-                                                        {item.telphone}<span style={{marginLeft:20}}>
-                                                            {item.pltime} </span>
-                                                            <span style={{marginLeft:'30%'}} onClick={this.del}>
-                                                                <img src='https://i.loli.net/2020/05/11/sWpCgexZzHkGVQF.png'/>    
-                                                            </span>
-                                                            <List.Item.Brief style={{marginLeft:30,marginTop:10}}>
-                                                            {item.plcontent}</List.Item.Brief>
-                                                    </List.Item>
-                                                    {/* <List.Item >
-                                                        <List.Item.Brief style={{marginLeft:20}}>
-                                                        
-                                                        {item.plcontent}
-                                                    
-                                                        </List.Item.Brief>
-                                                        <List.Item.Brief>
-                                                        {item.telphone}
-                                                        <span style={{marginLeft:20}}>{item.pltime}</span>
-                                                        </List.Item.Brief>
-                                                    </List.Item> */}
-                                                </div>
-                                            )
-                                        }
-                                   
+                                    {
+                                        (this.state.tips||[]).map(item=>
+                                            <div id={item.plid}
+                                                style={{
+                                                    backgroundColor:'green',
+                                                    padding:10,
+                                                    marginTop:10
+                                                }}
+                                            >
+                                                <List.Item>
+                                                    <img src={item.head} 
+                                                        style={{height:50,width:50,marginRight:25,borderRadius:50}}/>
+                                                    {item.telphone}<span style={{marginLeft:20}}>
+                                                        {item.pltime} </span>
+                                                        <span style={{marginLeft:'30%'}} onClick={()=>{this.del(item.plid)}}>
+                                                            <img src='https://i.loli.net/2020/05/11/sWpCgexZzHkGVQF.png'/>    
+                                                        </span>
+                                                        <List.Item.Brief style={{marginLeft:30,marginTop:10}}>
+                                                        {item.plcontent}</List.Item.Brief>
+                                                </List.Item>
+                                            </div>
+                                        )
+                                    }
                                 </div>
-                            
                             </div>
                         )
                     }

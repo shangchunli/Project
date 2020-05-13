@@ -64,6 +64,12 @@ import Youxi5 from './wiki/Youxi5'
 import Youxi6 from './wiki/Youxi6'
 import TuiNa from './wiki/TuiNa'
 import Publish from './my/Publish'
+// 话题圈
+import Topic from './wiki/Topic';
+import Addtopic from './wiki/Addtopic';
+import Photo from './home/Photo';
+
+
 export default class Bottom extends Component {
   constructor(props){
     super(props);
@@ -93,15 +99,19 @@ export default class Bottom extends Component {
         <Route exact path='/home/song' component={Song} />
         <Route exact path='/home/story' component={Story} />
         <Route exact path='/home/youxi' component={Youxi} />
+        <Route exact path='/home/photo' component={Photo} />
+
         <Route exact path='/wiki/nurse' component={Nurse} />
         <Route exact path='/wiki/edu' component={Edu} />
         <Route exact path='/wiki/chaowa' component={Chaowa} />
         <Route exact path='/wiki/tuina' component={TuiNa} />
         <Route exact path='/wiki/babyfood' component={BabyFood} />
+
         <Route exact path='/health/yiyu' component={Yiyu} />
         <Route exact path='/health/reply' component={Reply} />
         <Route exact path='/health/food' component={Food} />
         <Route exact path='/health/anxiety' component={Anxiety} />
+
         {/* <Route  exact path='/my/publish' component={Publish}/> */}
         <Route exact path='/my/collect' component={Collect} />
         <Route exact path='/my/tongyong' component={Tongyong} />
@@ -121,6 +131,11 @@ export default class Bottom extends Component {
         <Route exact path='/wiki/youxi4' component={Youxi4} />
         <Route exact path='/wiki/youxi5' component={Youxi5} />
         <Route exact path='/wiki/youxi6' component={Youxi6} />
+
+        {/* 话题圈 */}
+        <Route exact path='/wiki/topic' component={Topic}/>
+        <Route exact path='/wiki/topic/add' component={Addtopic}/>
+
 
       </Router>
     )

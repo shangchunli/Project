@@ -25,6 +25,7 @@ export default class Sui extends Component {
         });
     }
    dairty=()=>{
+     console.log(this.refs.cont.innerHTML)
     fetch('http://localhost:5001/addcaprice',{
       method: 'POST',//post请求 
       headers: { 
@@ -35,12 +36,11 @@ export default class Sui extends Component {
         content:this.refs.cont.innerHTML,
         files:this.state        
       })                    
-})
-.then(res=>res.text())
-.then((res)=>{
-  console.log(res);
-  alert("发表成功")
-})
+    })
+    .then(res=>res.text())
+    .then((res)=>{
+      console.log(res);
+    })
 
    }
     render() {

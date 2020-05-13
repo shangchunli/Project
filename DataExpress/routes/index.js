@@ -567,11 +567,10 @@ router.post('/plcount',function(req,res,next){
 // })
 //删除评论
 router.post('/delcom',function (req,res,next) { 
-  var chapterId = req.body.chapterId;
-  var userId=req.body.userId
+  var plid=req.body.plid;
   var con = mysql.createConnection(dbconfig);
   con.connect();
-  con.query('delete from comment where chapterid=? AND telphone=?',[chapterId,userId],function(err,result){
+  con.query('delete from comment where plid=?',plid,function(err,result){
     if(err){
       console.log(err);
     }else{
@@ -708,9 +707,42 @@ router.post('/meupdate',function(req,res,next){
       res.send('SUCCESS');
     }
   })
- 
- 
 })
+
+//话题圈=========================
+//增加话题
+router.post('/addtopic',function(req,res,next){
+  console.log(req);
+  var userId = req.body.userId;
+  var tcontent = req.body.tcontent;
+  var ttime = req.body.ttime;
+  console.log(userId,tcontent,ttime);
+  var con = mysql.createConnection(dbconfig);
+  con.connect();
+  con.query('insert into topic(userid,tcontent,ttime) values(?,?,?)',[userId,tcontent,ttime],function(err,result){
+    if(err){
+      console.log(err);
+    }else{
+      console.log(result);
+      res.send('话题添加成功')
+    }
+  })
+})
+
+//话题渲染
+router.post('/topic',function(req,res,next){
+  var userId = req.body.userId;
+  var con = mysql.createConnection(dbconfig);
+  con.connect();
+  con.query('select topicid,userid,tcontent,ttime from  topic ',function(err,result){
+    if(err){
+      console.log(err);
+    }else{
+      res.send(result);
+    }
+  })
+})
+
 
 
 //后台接口------------------------------------------------------------------

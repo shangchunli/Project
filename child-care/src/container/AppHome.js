@@ -48,13 +48,13 @@ class AppHome extends Component {
         })
     })
     }
-    handle=(pathname)=>{
+    photo=(pathname)=>{
         this.props.history.push("/home/"+pathname);
     }
     toDetail=(id)=>{
         this.props.history.push('/home/detail/'+id);
-
     }
+    
     render() {
         let str;
         let str2;
@@ -173,33 +173,49 @@ class AppHome extends Component {
                         <p>亲子游戏</p>
                     </div>
                 </div>
-                <div>
-                {
-                    ((this.state.data||[]).map(item=>{
-                       if(item.ccontent.length>7){
-                           item.ccontent=item.ccontent.slice(0,9)+'……'
-                       }
-                    return(
-                        <button className="shouye1" id={item.cid}
-                        onClick={()=>this.toDetail(item.cid)}>
-                            <img style={{marginLeft:'10%',
-                            float:'left'}}
-                                src='images/home/7.png'
-                                width='30' height='30'
-                                />
-                            <h3 style={{fontSize:'150%',float:'left',
-                            paddingLeft:'10%'}}>{item.ccontent}</h3>
-                            <p style={{fontSize:'10',paddingTop:"10%"}}>{item.ctime}</p>
+                <div style={{marginTop:10,
+                    backgroundColor:'pink',width:'100%',height:600,
+                    paddingTop:10
+                    }}
+                >
+                    <div>
+                        <h2 style={{float:'left',textAlign:'center',marginLeft:'40%'}}>
+                            珍贵的瞬间
+                        </h2>
+                        <button onClick={()=>this.photo('photo')}
+                        style={{float:'right',borderRadius:20,
+                        backgroundColor:'pink',height:30}}>
+                            一键做成相册
                         </button>
-                )    
-                })
+                    </div>
+                    <div style={{marginTop:10}}>
+                    {
+                        ((this.state.data||[]).map(item=>{
+                        if(item.ccontent.length>7){
+                            item.ccontent=item.ccontent.slice(0,9)+'……'
+                        }
+                        return(
+                            <button className="shouye1" id={item.cid}
+                            onClick={()=>this.toDetail(item.cid)}>
+                                <img style={{marginLeft:'10%',
+                                float:'left'}}
+                                    src='images/home/7.png'
+                                    width='30' height='30'
+                                    />
+                                <h3 style={{fontSize:'150%',float:'left',
+                                paddingLeft:'10%'}}>{item.ccontent}</h3>
+                                <p style={{fontSize:'10',paddingTop:"10%"}}>{item.ctime}</p>
+                            </button>
+                    )    
+                    })
 
-                    )
-                }                      
-                <div style={str2}>快来添加成长日志吧</div>
+                        )
+                    }                      
+                    <div style={str2}>快来添加成长日志吧</div>
+                        
+                    </div>
                     
                 </div>
-                
 
                
             </div>

@@ -74,7 +74,12 @@ class Parental extends Component {
                 <WhiteSpace />
                 <div style={{ height: 120, border: 'solid 0.1px ', borderRadius: 20, background: 'white', padding: 10 }}>
                     <h2 style={{ marginTop: 0 }}>热门话题</h2>
-                    <span style={{ float: 'right', marginTop:-20 }}>-->更多</span>
+                    <span 
+                        style={{ float: 'right', marginTop:-20 }}
+                        onClick={() => { this.handle('topic') }}
+                    >
+                        -->更多
+                    </span>
                     <Flex style={{marginTop:15}}>
                         <Flex.Item className='placeholder' style={{ background: 'url(./images/baike/back.png)' }}>宝宝辅食</Flex.Item>
                         <Flex.Item className='placeholder' style={{ background: 'url(./images/baike/back.png)' }}>瘦身大作战</Flex.Item>
