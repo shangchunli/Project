@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {NavBar,Carousel, WingBlank } from "antd-mobile"
+import {NavBar,Carousel, WingBlank,Icon } from "antd-mobile"
 import cookie from 'react-cookies'
 
 export default class Photo extends Component {
@@ -41,11 +41,15 @@ export default class Photo extends Component {
             showElem:!this.state.showElem
         })
     }
+    goBack=()=>{
+        window.history.go(-1);
+    }
     render() {
         console.log(this.state.data);
         return (
             <div>
                 <NavBar
+                icon={<Icon type="left" onClick={this.goBack}/>}
                     style={{backgroundColor:'#fff',color:'#000',
                     fontWeight:"bolder",
                     position:"fixed",zIndex:100,width:"100%",top:0

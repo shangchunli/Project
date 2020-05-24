@@ -1,171 +1,142 @@
 import React, { Component } from 'react'
-// import Health from './Health.css'
-import { Carousel, WingBlank ,Flex,WhiteSpace,List,NavBar,Icon} from 'antd-mobile';
+import {WingBlank ,Grid,Flex,List,NavBar,Icon} from 'antd-mobile';
 import {withRouter} from 'react-router-dom'
 import ShowBottom from './ShowBottom'
-
-const Item = List.Item;
-const Brief = Item.Brief;
-
-class Dynamics extends Component {
-    constructor(){    
-        super();
-        this.state = {
-            data: ['1', '2', '3'],
-            disabled: false
+const chanqian=['产前锻炼','产前抑郁','产前焦虑','产前饮食'];
+const chanhou=['产后锻炼','产后抑郁','产后焦虑','产后饮食'];
+const data1=Array.from(chanqian.map((_val,i)=>({
+    text: chanqian[i],
+    id:`chanqian${i}`
+})));
+const data2=Array.from(chanhou.map((_val,i)=>({
+    text: chanhou[i],
+})));
+class Health extends Component {
+    before=(id)=>{
+        var paths="/health/before/";
+        if(id==0){
+            this.props.history.push(paths+"exerise")
+        }else if(id==1){
+            this.props.history.push(paths+"yiyu")
+        }else if(id==2){
+            this.props.history.push(paths+"jiaolv")
+        }else{
+            this.props.history.push(paths+"food")
         }
     }
-    componentDidMount() {
-        // simulate img loading
-        setTimeout(() => {
-          this.setState({
-            data: ['mom_health1', 'mom_health2', 'mom_health3'],
-          });
-        }, 100);
-        // fetch("http://localhost:5001/chapters")
-        // .then(res=>res.text())
-        // .then((res)=>{
-        //    console.log(res)
-        // })
+    after=(id)=>{
+        var paths="/health/after/";
+        if(id==0){
+            this.props.history.push(paths+"exerise")
+        }else if(id==1){
+            this.props.history.push(paths+"yiyu")
+        }else if(id==2){
+            this.props.history.push(paths+"jiaolv")
+        }else{
+            this.props.history.push(paths+"food")
+        }
     }
-    componentDidUpdate(){
-        // fetch("http://localhost:5001/chapters")
-        // .then(res=>res.text())
-        // .then((res)=>{
-        //     console.log(res)
-        // })
-    }
-    handle=(pathname)=>{
-        this.props.history.push("/health/"+pathname);
+    jump=()=>{
+        this.props.history.push('/health/test')
     }
     render() {
         return (
             <div>
-                <ShowBottom/>
+               <ShowBottom/>
                 <NavBar
                         style={{backgroundColor:'#fff',color:'#000',
                         fontWeight:"bolder",
                         position:"fixed",zIndex:100,width:"100%",top:0
                     }}
-                        rightContent={[
-                            <Icon key="0" type="search" style={{ marginRight: '16px' }} />,
-                        ]}
                     >
                         宝妈健康
-                </NavBar>
-                <Carousel
-                autoplay={true}
-                infinite
-                >
-                    {this.state.data.map(val => (
-                        <img
-                            src={`/images/${val}.jpg`}
-                            alt={val}
-                            style={{ width: '100%',verticalAlign: 'top' ,height:'270px'}}
-                        />
-                    ))}
-                </Carousel>
-                <List>
-                    <Item extra={'更多>>'} onClick={()=>{this.handle('yiyu')}}>产后抑郁</Item>
-                </List>
-                <Flex style={{backgroundColor:"#fff",borderTop:'1px rgb(255,235,235) solid',borderBottom:'1px rgb(255,235,235) solid'}}>
-                    <img src="/images/depression.jpg" alt="抑郁症" style={{width:'25%',marginLeft:'2%',marginRight:'3%',float:'left'}}/>
-                    <div>
-                    <h3 style={{lineHeight:'1.3em'}}>
-                        产后抑郁是女性在生产之后很容易出现的一种精神疾病，
-                        发病率在 15%～30%。典型的产后抑郁症于产后6周内发生。
-                        常见症状：表情阴郁，无精打采，困倦，易流泪、哭泣
-                        </h3>
-                    </div>
-                    {/* <p style={{width:'65%',marginRight:'5%',float:'left'}}>
-                        产后抑郁形成的原因是多方面的，和产妇生产后的生...<br/> */}
-                        {/* <span style={{fontSize:'10px',float:'left',marginLeft:'2%',marginTop:'2%'}}>丫丫妈妈</span>
-                            <span>
-                                <img 
-                                style={{float:'right',marginRight:'2%',height:20,width:20}}
-                                src='https://s2.ax1x.com/2019/12/04/Q1fu7T.png' alt='收藏'/>
-                            </span> */}
-                    {/* </p> */}
-                </Flex>
-                
-                <List>
-                    <Item extra={'更多>>'} onClick={()=>{this.handle('anxiety')}}>焦虑</Item>
-                </List>
-                <Flex style={{backgroundColor:"#fff",border:'1px rgb(255,235,235) solid',borderLeft:'none',borderRight:'none'}}>
-                    <img src="/images/body_recovery.jpg" alt="身材恢复" style={{width:'25%',marginLeft:'2%',marginRight:'3%',float:'left'}}/>
-                    <div>
-                        <h3 style={{lineHeight:'1.3em'}}>有98%的孕妇在妊娠晚期会产生焦虑心理。焦虑还可引起植物神经紊乱，导致产时宫缩无力造成难产。
-                            由于焦虑，得不到充分的休息和营养，生产时会造成滞产。</h3>
-                    </div>
-                    {/* <p style={{width:'65%',marginRight:'5%',float:'left'}}>
-                        研究表明，产后6个月是宝妈身材恢复的黄金时期...<br/>
-                        <span style={{fontSize:'10px',float:'left',marginLeft:'2%',marginTop:'2%'}}>丫丫妈妈</span>
-                            <span>
-                                <img 
-                                 style={{float:'right',marginRight:'2%',height:20,width:20}}
-                                 src='https://s2.ax1x.com/2019/12/04/Q1fu7T.png' alt='收藏'/>
-                            </span>
-                    </p> */}
-                </Flex>
-                
-                <List>
-                    <Item extra={'更多>>'} onClick={()=>{this.handle('food')}}>孕期护理</Item>
-                </List>
-                <Flex style={{backgroundColor:"#fff",border:'1px rgb(255,235,235) solid',borderLeft:'none',borderRight:'none'}}>
-                    <img src="/images/care.jpg" alt="产前护理" style={{width:'25%',marginLeft:'2%',marginRight:'3%',float:'left'}}/>
-                    <div>
-                        <h3 style={{lineHeight:'1.3em'}}>
-                            孕妇容易出现恶心呕吐，头晕等早孕反应，在怀孕后期，
-                            随着子宫的逐渐增大，孕妇容易出现腰疼，下肢水肿等症状。            
-                        </h3>
-                    </div>    
-                </Flex>
-                <List>
-                    <Item extra={'更多>>'} onClick={()=>{this.handle('reply')}}>身材恢复</Item>
-                </List>
-                <Flex style={{backgroundColor:"#fff",border:'1px rgb(255,235,235) solid',borderLeft:'none',borderRight:'none'}}>
-                    <img src="/images/body_recovery.jpg" alt="身材恢复" style={{width:'25%',marginLeft:'2%',marginRight:'3%',float:'left'}}/>
-                    <div>
-                    <h3>女性在生产完毕之后，常常会因为身体过于虚弱而需要一定的恢复和保养                        </h3>
-
-                    </div>
-                    {/* <p style={{width:'65%',marginRight:'5%',float:'left'}}>
-                        研究表明，产后6个月是宝妈身材恢复的黄金时...<br/>
-                        <span style={{fontSize:'10px',float:'left',marginLeft:'2%',marginTop:'2%'}}>丫丫妈妈</span>
-                            <span>
-                                <img 
-                               style={{float:'right',marginRight:'2%',height:20,width:20}}
-                               src='https://s2.ax1x.com/2019/12/04/Q1fu7T.png' alt='收藏'/>
-                            </span>
-                    </p> */}
+                </NavBar> 
+                <div style={{marginTop:40}}>
+                    <div >
+                        <div>
+                            <List style={{marginTop:"40px"}}>
+                                <List.Item
+                                    arrow="horizontal"
+                                    multipleLine
+                                    wrap={true}
+                                    onClick={()=>this.jump()}
+                                >
+                                    <img src='/images/body_recovery.jpg'
+                                    style={{width:'70%',height:'50%',float:'left',paddingLeft:'15%'}}/>
+                                    <span style={{float:'left'}}>
+                                        爱丁堡产后抑郁量表( EPDS)是应用广泛的自评量表，包括10项内容，根据症状的严重度， 每项内容分4级评分(0 ，1 ，2 ，3分)，于产后6 周进行，完成量表评定约需5分钟。</span>
+                                </List.Item>
+                            </List>
+                        </div>
+                        <div className="sub-title">产前事项</div>
+                        <div style={{backgroundColor:'#fff',width:'100%',height:180}}>
+                        {
+                            chanqian.map((item,idx)=>
+                                <div 
+                                onClick={()=>this.before(idx)}
+                                style={{
+                                    backgroundColor:'pink',
+                                    margin:10,
+                                    float:'left',
+                                    height:70,
+                                    width:'46.5%',
+                                    textAlign:'center',
+                                    fontSize:18,
+                                    lineHeight:'4em'
+                                    }}>
+                                    {item}
+                                </div>
+                            )
+                        }
+                        </div>
                     
-                </Flex>
-                        
-                <List>
-                    <Item extra={'更多>>'} onClick={()=>{this.handle('food')}}>饮食</Item>
-                </List>
-                <Flex style={{backgroundColor:"#fff",border:'1px rgb(255,235,235) solid',borderLeft:'none',borderRight:'none'}}>
-                    <img src="/images/body_recovery.jpg" alt="身材恢复" style={{width:'25%',marginLeft:'2%',marginRight:'3%',float:'left'}}/>
-                    <div>
-                        <h3 style={{lineHeight:'1.3em'}}>合理搭配饮食，帮助宝妈度过健康、相对舒服的孕期生活</h3>
                     </div>
-                    {/* <p style={{width:'65%',marginRight:'5%',float:'left'}}>
-                        研究表明，产后6个月是宝妈身材恢复的黄金时期...<br/>
-                        <span style={{fontSize:'10px',float:'left',marginLeft:'2%',marginTop:'2%'}}>丫丫妈妈</span>
-                            <span>
-                                <img 
-                                 style={{float:'right',marginRight:'2%',height:20,width:20}}
-                                 src='https://s2.ax1x.com/2019/12/04/Q1fu7T.png' alt='收藏'/>
-                            </span>
-                    </p> */}
+                    <div>
+                        <div className="sub-title">产后事项</div>
+                            <div style={{backgroundColor:'#fff',width:'100%',height:180}}>
+                            {
+                                chanhou.map((item,idx)=>
+                                    <div 
+                                    onClick={()=>this.after(idx)}
+                                    style={{
+                                        backgroundColor:'pink',
+                                        margin:10,
+                                        float:'left',
+                                        height:70,
+                                        width:'46.5%',
+                                        textAlign:'center',
+                                        fontSize:18,
+                                        lineHeight:'4em'
+                                        }}>
+                                        {item}
+                                    </div>
+                                )
+                            }
+                            </div>
                     
-                </Flex>
 
-                <div style={{height:50,width:'100%',backgroundColor:'red'}}>
-                     111
+                        {/* <Grid data={data2}  square={false} hasLine={false} 
+                        columnNum={2}  itemStyle={{backgroundColor:'pink',margin:10}}/> */}
+                    </div>
+                </div>
+                
+                <div>
+                    <div className="sub-title">小事不小看</div>
+                    <div>
+                        <Flex style={{backgroundColor:"#fff",border:'1px rgb(255,235,235) solid',borderLeft:'none',borderRight:'none'}}>
+                            <img src="/images/body_recovery.jpg" alt="身材恢复" style={{width:'25%',marginLeft:'2%',marginRight:'3%',float:'left'}}/>
+                            <div>
+                                <h3 style={{lineHeight:'1.3em'}}>有98%的孕妇在妊娠晚期会产生焦虑心理。焦虑还可引起植物神经紊乱，导致产时宫缩无力造成难产。
+                                    由于焦虑，得不到充分的休息和营养，生产时会造成滞产。</h3>
+                            </div>
+                        </Flex>
+                    </div>                  
+                </div>
+                <div style={{marginTop:40}}>
+
                 </div>
             </div>
         )
     }
 }
-export default withRouter(Dynamics);
+export default withRouter(Health);
