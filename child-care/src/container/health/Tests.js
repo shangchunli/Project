@@ -1,20 +1,36 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
 let str;
+let count=0;
 class Tests extends Component {
     constructor(){
         super();
         this.state={
             // elem_bac:'#fff',
-            sum:0
+            sum:'',
+            showResult:''
         }
     }
     chooses=(index)=>{
+        count+=index;
+    }
+    lastJump=()=>{
         this.setState({
-            // elem_bac:'pink',
-            sum:this.state.sum+index
+            showResult:true,
+            sum:count
+        },function(){
+            alert(this.state.sum)
+            if(this.state.sum<12){
+                str='测试总分为'+this.state.sum+'，根据您的测试结果判断：'+'您的状态良好，请继续保持'
+            }else if(this.state.sum<=13){
+                str='您需要注意调节自己的情绪，避免带来更大影响'
+            }else{
+                str='您的心情可能波动较大，注意调节，建议在家人陪同下去医院做个检查'
+            }
+            this.setState({
+                showResult:str
+            })
         })
-        
     }
     render() {
         return (
@@ -129,7 +145,7 @@ class Tests extends Component {
                         style={{float:'left',marginLeft:'5%',marginTop:10,backgroundColor:this.state.elem_bac}}>3分</li>
                     </ul>
                     <li style={{marginTop:10 }}>我想过要伤害自己：</li>
-                    <ul style={{listStyle:'none',marginTop:10,height:30}}>
+                    <ul style={{listStyle:'none',marginTop:10,height:30}} onClick={()=>this.lastJump()}>
                         <li onClick={()=>this.chooses(0)}
                             style={{float:'left',marginLeft:'5%',marginTop:10,backgroundColor:this.state.elem_bac}}>0分</li>
                         <li onClick={()=>this.chooses(1)}
@@ -140,8 +156,9 @@ class Tests extends Component {
                         style={{float:'left',marginLeft:'5%',marginTop:10,backgroundColor:this.state.elem_bac}}>3分</li>
                     </ul>
                 </ol>
-                <div style={{marginTop:10,width:'70%',margin:'auto'}}>
-                    测试总分为：{this.state.sum}
+                <div style={{marginTop:10,width:'70%',margin:'auto',backgroundColor:'pink',fontSize:16}}>
+                    {this.state.showResult}
+                    {/* 测试总分为：{this.state.sum},根据测试结果判断，{str} */}
                 </div>
                 
             </div>

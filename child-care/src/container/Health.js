@@ -15,11 +15,11 @@ class Health extends Component {
     before=(id)=>{
         var paths="/health/before/";
         if(id==0){
-            this.props.history.push(paths+"exerise")
+            this.props.history.push(paths+"exercise")
         }else if(id==1){
             this.props.history.push(paths+"yiyu")
         }else if(id==2){
-            this.props.history.push(paths+"jiaolv")
+            this.props.history.push(paths+"anxiety")
         }else{
             this.props.history.push(paths+"food")
         }
@@ -27,11 +27,11 @@ class Health extends Component {
     after=(id)=>{
         var paths="/health/after/";
         if(id==0){
-            this.props.history.push(paths+"exerise")
+            this.props.history.push(paths+"exercise")
         }else if(id==1){
             this.props.history.push(paths+"yiyu")
         }else if(id==2){
-            this.props.history.push(paths+"jiaolv")
+            this.props.history.push(paths+"anxiety")
         }else{
             this.props.history.push(paths+"food")
         }

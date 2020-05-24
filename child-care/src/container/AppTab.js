@@ -26,12 +26,12 @@ import Edu from './wiki/Edu'
 // wiki宝宝护理
 import Nurse from './wiki/Nurse'
 // health抑郁症
-import Yiyu from './health/Before/Yiyu'
-// import Yiyu from './health/Yiyu'
+import BYiyu from './health/Before/BYiyu'
+import Yiyu from './health/Yiyu'
 // health身材恢复
 import Reply from './health/Reply'
 // health饮食
-import Food from './health/Before/Food'
+import BFood from './health/Before/BFood'
 // import Food from './health/Food'
 // health焦虑
 import Anxiety from './health/Anxiety'
@@ -72,6 +72,12 @@ import Addtopic from './wiki/Addtopic';
 import Photo from './home/Photo';
 import Tests from './health/Tests';
 import AFood from './health/After/AFood';
+import AAnxiety from './health/After/AAnxiety';
+import AYiyu from './health/After/AYiyu';
+import AExercise from './health/After/AExercise';
+
+import BAnxiety from './health/Before/BAnxiety';
+import BExecirse from './health/Before/BExecirse';
 
 
 export default class Bottom extends Component {
@@ -115,9 +121,15 @@ export default class Bottom extends Component {
         <Route exact path='/health/reply' component={Reply} />
         {/* <Route exact path='/health/food' component={Food} /> */}
         <Route exact path='/health/anxiety' component={Anxiety} />
-        <Route exact path='/health/before/yiyu' component={Yiyu} />
-        <Route exact path='/health/before/food' component={Food} />
+        <Route exact path='/health/before/yiyu' component={BYiyu} />
+        <Route exact path='/health/before/food' component={BFood} />
+        <Route exact path='/health/before/anxiety' component={BAnxiety} />
+        <Route exact path='/health/before/exercise' component={BExecirse} />
+
         <Route exact path='/health/after/food' component={AFood} />
+        <Route exact path='/health/after/anxiety' component={AAnxiety} />
+        <Route exact path='/health/after/yiyu' component={AYiyu} />
+        <Route exact path='/health/after/exercise' component={AExercise} />
 
         
         <Route exact path='/health/test' component={Tests} />

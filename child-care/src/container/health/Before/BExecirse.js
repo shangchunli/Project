@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
 
-class AExercise extends Component {
+class BExecirse extends Component {
     render() {
         return (
             <div>
-                exercise
+                chanqianduanlian
             </div>
         )
     }
 }
-export default withRouter(AExercise)
+export default withRouter(BExecirse)
