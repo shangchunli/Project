@@ -543,10 +543,6 @@ router.post('/plcount',function(req,res,next){
   })
 })
 
-//   var chapterId = req.body.chapterId;
-//   console.log(chapterId,plcount);
-//   var con = mysql.createConnection(dbconfig);
-//   con.connect();
 //   con.query('update chapters set plcount =? where chapterid=?',[plcount,chapterId],function(err,result){
 //     if(err){
 //       console.log(err);
