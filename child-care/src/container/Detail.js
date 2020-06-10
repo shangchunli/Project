@@ -82,7 +82,7 @@ class Detail extends Component {
             })
         })
     }
-    
+// 点击收藏图标时变化    
     change1=(idx,e)=>{
         e.stopPropagation();
         let b=!this.state.isKeep;
