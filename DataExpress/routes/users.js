@@ -30,7 +30,6 @@ router.post('/yhlogin',function(req,res,next){
     }
     else{
       result.map((item)=>{
-        if(item.telphone==tel&&item.pwd==pwd){
           res.send('success');
         }
       })
