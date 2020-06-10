@@ -5,8 +5,7 @@ var path = require('path
 /* GET home page. */
   res.render('index', { title: 'Express' });
 });
-//前端接口----------------------------------------------------------------
-//用户登录得到数据库内用户信息
+//前端接口-------------------------------------
 router.post('/yhlogin',function(req,res,next){
   var tel = req.body.telphone;bconfig);
   con.connect();
