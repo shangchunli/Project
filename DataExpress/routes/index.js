@@ -543,9 +543,6 @@ router.post('/plcount',function(req,res,next){
   })
 })
 
-//       res.send('pl success');
-//     }
-//   })
 // })
 //删除评论
 router.post('/delcom',function (req,res,next) { 
