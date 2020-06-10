@@ -543,10 +543,6 @@ router.post('/plcount',function(req,res,next){
   })
 })
 
-//   con.query('update chapters set plcount =? where chapterid=?',[plcount,chapterId],function(err,result){
-//     if(err){
-//       console.log(err);
-//     }else{
 //       res.send('pl success');
 //     }
 //   })
