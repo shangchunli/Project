@@ -19,9 +19,7 @@ import Song from './home/Song'
 export default class Add extends Component {
     render() {
         return (
-            <div>
-                
-               
+            <div>         
                 
                 {/* <Youxi/> */}
                 {/* <Yiyu/> */}
