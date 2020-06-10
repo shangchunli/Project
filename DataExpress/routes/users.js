@@ -42,8 +42,7 @@ router.post('/yhlogin',function(req,res,next){
 router.post('/register',function(req,res,next){
   // res.send('register');
   console.log('register')
-   var name =req.body.names;
-   var telphone = req.body.tel;
+
    var email = req.body.email;
    var pwd = req.body.pwd1;
    console.log(name);
