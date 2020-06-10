@@ -39,7 +39,6 @@ import BYiyu from './health/Before/BYiyu';
 import BFood from './health/Before/BFood';
 
 //my
-// import Focus from './container/my/Focus'
 import Collect from './my/Collect'
 import Tongyong from './my/Tongyong'
 import Unique from './my/Unique'
