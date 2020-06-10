@@ -60,7 +60,6 @@ router.post('/register',function(req,res,next){
   //   fs.writeFileSync(imgpath, dataBuffer, {'encoding':'binary'});
   // }else{
     fs.writeFileSync(imgpath, dataBuffer, {'encoding':'binary'});
-  // }
   var imagepath = 'http://localhost:5001/getheadImg/?imgId='+telphone;
   var con = mysql.createConnection(dbconfig);
   con.connect();
