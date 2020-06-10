@@ -73,6 +73,13 @@ router.post('/register',function(req,res,next){
       console.log(imagepath);
       res.send('success');
     }
+  })
+  
+})
+router.get('/getheadImg/',function(req,res,next){
+  var filePath =('./server/head/'+req.query.imgId+'.png');
+  // console.log(filePath);
+  var imgContent = fs.readFileSync(filePath);
   res.writeHead(200,{'Content-Type':'image/png'});
   res.end(imgContent);
 })
@@ -567,7 +574,6 @@ router.post('/showplcount',function(req,res,next){
 router.post('/dzcounnt', function(req,res,next){
   var chapterId = req.body.chapterId;
   var dzcount = req.body.dzcount+1;
-  // console.log("user:"+user,"chapterId:"+chapterId,'dzcount'+dzcount);
   var con  = mysql.createConnection(dbconfig);
   con.connect();
   con.query("update chapters set dzcount=? where chapterid=? ",[dzcount,chapterId],function(err,result){
