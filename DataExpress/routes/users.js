@@ -7,8 +7,6 @@ var path = require('path
 });
 //前端接口-------------------------------------
 router.post('/yhlogin',function(req,res,next){
-  var tel = req.body.telphone;bconfig);
-  con.connect();
   con.query("select telphone,pwd from register",function(err,result){
     if(err){
       consol
