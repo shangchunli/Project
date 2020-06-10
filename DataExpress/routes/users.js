@@ -2,7 +2,6 @@ var express = require('express');
 var router = express.Router();
 
 /* GET users listing. */
-var express = require('express');
 var fs = require("fs");
 var path = require('path');
 const formidable = require('formidable');
