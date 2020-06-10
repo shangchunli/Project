@@ -46,7 +46,6 @@ router.post('/register',function(req,res,next){
    console.log(name);
    var head = req.body.files[0].url;
 
-  // var timer = Date.now() ;
   var imgpath = './server/head/'+ telphone+'.png'; 
   var base64 = head.replace(/^data:image\/\w+;base64,/, "");//去掉图片base64码前面部分data:image/png;base64
   var dataBuffer = new Buffer(base64, 'base64'); //把base64码转成buffer对象，
