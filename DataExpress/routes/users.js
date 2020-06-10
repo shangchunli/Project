@@ -18,7 +18,7 @@ router.post('/yhlogin',function(req,res,next){
   con.connect();
   con.query("select telphone,pwd from register",function(err,result){
     if(err){
-      console.log(err);
+      consol
     }
     else{
       result.map((item)=>{
