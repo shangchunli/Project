@@ -2,7 +2,6 @@ var express = require('express');
 var router = express.Router();
 
 /* GET users listing. */
-var fs = require("fs");
 var path = require('path');
 const formidable = require('formidable');
 //引入数据库配置文件，这个文件是自己建的
