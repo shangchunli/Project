@@ -109,6 +109,7 @@ class Detail extends Component {
             .then((res)=>{
                 console.log(res);
             })
+//            添加收藏数
             fetch('http://localhost:5001/addsccount',{
                     method: 'POST',//post请求 
                     headers: { 
