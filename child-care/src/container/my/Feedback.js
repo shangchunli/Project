@@ -44,6 +44,7 @@ import cookie from 'react-cookies'
             contactDetails:e.target.value
         },()=>{console.log(this.state.contactDetails)})
     }
+//     添加返回
     goBack=()=>{
         this.props.history.go(-1);
     }
