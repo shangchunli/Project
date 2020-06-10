@@ -20,8 +20,7 @@ export default class Add extends Component {
     render() {
         return (
             <div>
-                {/* <Reply/> */}
-                {/* <Chinese/> */}
+                
                 {/* <Picture/> */}
                 {/* <Nurse/> */}
                 {/* <Chaowa/> */}
