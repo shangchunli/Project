@@ -904,6 +904,7 @@ router.get('/delchap',function(req,res,next){
     }
   })
 })
+
 //系统管理
 router.get('/system',function(req,res,next){
   var con = mysql.createConnection(dbconfig);
