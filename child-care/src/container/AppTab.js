@@ -6,7 +6,7 @@ import Wiki from './Wiki';
 import My from './My';
 import Health from './Health'
 import Jia from './Jia'
-// import Login from './container/Login'
+
 // home
 import Picture from './home/Picture'
 import Chinese from './home/Chinese'
