@@ -474,7 +474,6 @@ router.post('/addsccount',function(req,res,next){
   })
 })
 
-
 //收藏数渲染
 router.post('/showsccount',function(req,res,next){
   var chapterId = req.body.chapterId;
