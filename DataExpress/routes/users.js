@@ -8,7 +8,6 @@ const formidable = require('formidable');
 // var child-care = require('../config/child-care.json');
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 //前端接口----------------------------------------------------------------
