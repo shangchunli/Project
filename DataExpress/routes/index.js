@@ -945,6 +945,7 @@ router.get('/delbaby',function(req,res,next){
     }
   })
 })
+
 //随想管理-------------------------------------------------------------------
 router.get('/capricem',function(req,res,next){
   var con = mysql.createConnection(dbconfig);
