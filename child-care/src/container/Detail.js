@@ -65,7 +65,7 @@ class Detail extends Component {
                 tips:reStr,
             });
         })
-        
+//         获取当前帖子评论数
         fetch('http://localhost:5001/plcount',{
             method: 'POST',//post请求 
             headers: { 
