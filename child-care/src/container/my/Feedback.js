@@ -32,6 +32,7 @@ import cookie from 'react-cookies'
         this.refs.feedback.value = '';
         this.refs.contact.value = '';
     }
+//      获取当前用户所填写的意见
     handleInput1 = (e) => {
         this.setState({
             feedback:e.target.value
