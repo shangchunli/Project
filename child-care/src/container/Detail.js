@@ -27,6 +27,7 @@ class Detail extends Component {
         this.props.history.go(-1);
     }
     componentDidMount(){
+//          确定可以获取到当前帖子的id
         console.log(this.props.match.params.id);
         fetch('http://localhost:5001/xiangqing',{
             method: 'POST',//post请求 
