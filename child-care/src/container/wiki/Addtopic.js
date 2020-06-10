@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
 import { NavBar, Icon, Flex, Tabs, WhiteSpace, Badge, List, InputItem } from 'antd-mobile';
-// import Addtopic1 from './Addtopic.css'
+
 import cookie from 'react-cookies'
 
 class Addtopic extends Component {
