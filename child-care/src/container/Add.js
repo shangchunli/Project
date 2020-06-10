@@ -22,7 +22,7 @@ export default class Add extends Component {
             <div>         
                 
                
-                {/* <Yiyu/> */}
+                
                 {/* <Anxiety/> */}
                 {/* <Unique/> */}
                 {/* <BabyFood/> */}
