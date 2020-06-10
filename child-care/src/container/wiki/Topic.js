@@ -5,7 +5,7 @@ import cookie from 'react-cookies'
 
 class Topic extends Component {
     handle = ()=>{
-        // console.log('aa');
+        
         this.props.history.push('/wiki/topic/add');
     }
     componentDidMount(){
@@ -27,6 +27,7 @@ class Topic extends Component {
     }
     render() {
         return (
+// 当前为话题页面，可以跳转到创建话题页+话题详情页
             <div>
                 <NavBar
                     style={{
