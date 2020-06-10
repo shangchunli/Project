@@ -14,6 +14,7 @@ class AppHome extends Component {
     }
     componentDidMount(){
         // console.log(this.props.match.params.id);
+//         在首页获取随想
         fetch('http://localhost:5001/caprice',{
             method: 'POST',//post请求 
             headers: { 
@@ -31,6 +32,7 @@ class AppHome extends Component {
            data:str
        })
     })
+//         获取宝宝相关信息
     fetch('http://localhost:5001/mybaby',{
             method: 'POST',//post请求 
             headers: { 
@@ -51,6 +53,7 @@ class AppHome extends Component {
     photo=(pathname)=>{
         this.props.history.push("/home/"+pathname);
     }
+//     跳转到随想详情页
     toDetail=(id)=>{
         this.props.history.push('/home/detail/'+id);
     }
