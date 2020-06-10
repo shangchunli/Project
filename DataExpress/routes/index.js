@@ -310,7 +310,7 @@ router.get('/getImg/',function(req,res,next){
   res.end(imgContent);
 })
 //用户发随想
-    // router
+    // router   
 router.post('/addcaprice',function(req,res,next){
   var cowner = req.body.userId;
   var ccontent = req.body.content;
