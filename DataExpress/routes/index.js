@@ -1016,7 +1016,6 @@ router.get('/delcol',function(req,res,next){
     if(err){
       console.log(err)
     }else{
-      // res.end("delete success");
       res.redirect('/collectm');
     }
   })
