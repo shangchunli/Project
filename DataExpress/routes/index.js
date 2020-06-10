@@ -887,7 +887,6 @@ router.get('/fenye6',function(req,res,next){
     }
   })
 })
-// router.post('/chapterm',function(req,res,next){
 //   var data = req.body.message;
   
 //   res.render(sss,{a:data});
