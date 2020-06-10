@@ -21,9 +21,7 @@ class Addtopic extends Component {
         })
     }
     handle = () => {
-        // console.log('aa');
-        // console.log(cookie.load('userId'));
-        // console.log(this.state.inputInner);
+        
 //         路由跳转到topic页面
         this.props.history.push('/wiki/topic');
         var today = new Date(),
