@@ -898,7 +898,6 @@ router.get('/delchap',function(req,res,next){
     if(err){
       console.log(err)
     }else{
-      // res.end("delete success");
       res.redirect('/fenye5');
 
 
