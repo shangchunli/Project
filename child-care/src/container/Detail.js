@@ -196,7 +196,8 @@ class Detail extends Component {
                 },function () { 
                     console.log(this.state.plstate);
                     if(this.state.plstate){
-                        console.log('333')
+                        console.log('333');
+//                        添加评论数
                         fetch('http://localhost:5001/plcount',{
                             method: 'POST',//post请求 
                             headers: { 
