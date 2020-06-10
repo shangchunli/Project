@@ -350,7 +350,6 @@ router.post('/addcaprice',function(req,res,next){
 })
 router.get('/getcapImg/',function(req,res,next){
   var filePath =('./server/caprice/'+req.query.cowner+'/'+req.query.imgId+'.png');
-  // console.log(filePath);
   var imgContent = fs.readFileSync(filePath);
   res.writeHead(200,{'Content-Type':'image/png'});
   res.end(imgContent);
