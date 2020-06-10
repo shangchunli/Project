@@ -3,7 +3,6 @@ var router = express.Router();
 
 var path = require('path
 //引入数据库配置文件，这个文件是自己建的
-// var child-care = require('../config/child-care.json');
 
 /* GET home page. */
   res.render('index', { title: 'Express' });
