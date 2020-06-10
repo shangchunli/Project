@@ -14,6 +14,7 @@ class Addtopic extends Component {
     
     inputChange = (e) => {
         console.log("change");
+//         获取主题内容
         // console.log(e.target.value);
         this.setState({
             inputInner:e.target.value
@@ -23,6 +24,7 @@ class Addtopic extends Component {
         // console.log('aa');
         // console.log(cookie.load('userId'));
         // console.log(this.state.inputInner);
+//         路由跳转到topic页面
         this.props.history.push('/wiki/topic');
         var today = new Date(),
             date = today.getFullYear() + '/' + (today.getMonth() + 1) + '/' + today.getDate();
@@ -68,6 +70,7 @@ class Addtopic extends Component {
                     <input 
                         style={{marginTop:'15%',width:"100%",height:"500px",}} 
                         onChange = {(e) => this.inputChange(e)}
+                        placeholder = '请输入您的话题内容吧~'
                     />
                 </div>
             </div>
