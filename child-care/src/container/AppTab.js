@@ -71,11 +71,11 @@ import Topic from './wiki/Topic';
 import Addtopic from './wiki/Addtopic';
 import TopicDetail from './wiki/TopicDetail';
 
-<<<<<<< HEAD
+
 import BAnxiety from './health/Before/BAnxiety';
 import BExecirse from './health/Before/BExecirse';
 import Serve from './my/Serve';
-=======
+
 // 电子相册
 import Pictures from './my/Pictures'
 import Pictures1 from './my/Pictures1'
