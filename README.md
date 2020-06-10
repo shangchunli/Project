@@ -23,7 +23,7 @@ https://github.com/shangchunli/Project
 
     。Email:2873005857@qq.com
     。GitHub:https://github.com/changyanxin 
-· 张洁（UI设计师，开发工程师，测试）  
+· 张洁（数据库管理员，后端开发工程师，测试）  
 
     。Email:896180036@qq.com 
     。GitHub:https://github.com/zhangjie8961 
