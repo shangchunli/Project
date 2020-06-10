@@ -813,7 +813,6 @@ router.get('/chapterm',function(req,res,next){
       res.render('chapter',{usersList:result})
     }
   })
-  // res.render(message);
 })
 
 router.get('/fenye1',function(req,res,next){
