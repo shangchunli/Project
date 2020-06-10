@@ -158,6 +158,7 @@ class Detail extends Component {
     }
     //添加评论以及更新评论内容
     crital=()=>{
+//        添加评论内容
         fetch('http://localhost:5001/addcomment',{
             method: 'POST',//post请求 
             headers: { 
