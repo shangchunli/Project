@@ -767,7 +767,8 @@ router.get('/usersList',function(req,res,next){
       res.render('userslist',{usersList:result})
     }
   })
-})
+}) 
+
 //删除已注册用户信息，同时删除数据库内信息
 router.get('/deluser',function(req,res,next){
   var id = req.query.id;
