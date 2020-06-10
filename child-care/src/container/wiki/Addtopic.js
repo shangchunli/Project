@@ -68,6 +68,7 @@ class Addtopic extends Component {
                     <input 
                         style={{marginTop:'15%',width:"100%",height:"500px",}} 
                         onChange = {(e) => this.inputChange(e)}
+                        placeholder = '请输入您的话题内容吧~'
                     />
                 </div>
             </div>
