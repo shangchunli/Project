@@ -29,6 +29,7 @@ class Detail extends Component {
     componentDidMount(){
 //          确定可以获取到当前帖子的id
         console.log(this.props.match.params.id);
+//        获取当前帖子的所有信息
         fetch('http://localhost:5001/xiangqing',{
             method: 'POST',//post请求 
             headers: { 
