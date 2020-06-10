@@ -835,7 +835,6 @@ router.get('/fenye2',function(req,res,next){
       console.log(err);
     }
     else{
-      console.log(result.length);
       res.render('chapter',{usersList:result})
     }
   })
