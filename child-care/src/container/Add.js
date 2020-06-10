@@ -21,7 +21,7 @@ export default class Add extends Component {
         return (
             <div>
                 
-                {/* <Chaowa/> */}
+               
                 {/* <Tongyong/> */}
                 {/* <Youxi/> */}
                 {/* <Yiyu/> */}
