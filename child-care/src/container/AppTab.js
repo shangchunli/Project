@@ -7,42 +7,43 @@ import My from './My';
 import Health from './Health'
 import Jia from './Jia'
 // import Login from './container/Login'
-// home识图
+// home
 import Picture from './home/Picture'
-// home识字
 import Chinese from './home/Chinese'
-// home催眠曲
 import Song from './home/Song'
-// home睡前故事
 import Story from './home/Story'
-// home小游戏
 import Youxi from './home/Youxi'
+import Photo from './home/Photo';
+
 // wiki宝宝饮食
 import BabyFood from './wiki/BabyFood'
-// wiki潮娃穿搭
 import Chaowa from './wiki/Chaowa'
-// wiki亲子教育
 import Edu from './wiki/Edu'
-// wiki宝宝护理
 import Nurse from './wiki/Nurse'
-// health抑郁症
-import BYiyu from './health/Before/BYiyu'
-import Yiyu from './health/Yiyu'
-// health身材恢复
-import Reply from './health/Reply'
-// health饮食
-import BFood from './health/Before/BFood'
+// wiki搜索页
+import Search from './Search'
+
+// health
+// import Yiyu from './health/Yiyu'
+// import Reply from './health/Reply'
 // import Food from './health/Food'
-// health焦虑
-import Anxiety from './health/Anxiety'
-//my关注
+// import Anxiety from './health/Anxiety'
+import Tests from './health/Tests';
+import AFood from './health/After/AFood';
+import AAnxiety from './health/After/AAnxiety';
+import AYiyu from './health/After/AYiyu';
+import AExercise from './health/After/AExercise';
+import BAnxiety from './health/Before/BAnxiety';
+import BExecirse from './health/Before/BExecirse';
+import BYiyu from './health/Before/BYiyu';
+import BFood from './health/Before/BFood';
+
+//my
 // import Focus from './container/my/Focus'
-// my收藏
 import Collect from './my/Collect'
-// my 通用设置
 import Tongyong from './my/Tongyong'
-// my 个人页面
 import Unique from './my/Unique'
+import Feedback from './my/Feedback'
 
 
 // 登录
@@ -50,7 +51,7 @@ import Login from './Login'
 // 注册
 import Register from './Register'
 // wiki宝宝饮食详情页
-import Detail from './Detail'
+import Detail from './Detail1'
 import Dairty from './home/Dairty'
 import Message from './home/Message'
 //wiki百科详情页
@@ -69,15 +70,12 @@ import Publish from './my/Publish'
 // 话题圈
 import Topic from './wiki/Topic';
 import Addtopic from './wiki/Addtopic';
-import Photo from './home/Photo';
-import Tests from './health/Tests';
-import AFood from './health/After/AFood';
-import AAnxiety from './health/After/AAnxiety';
-import AYiyu from './health/After/AYiyu';
-import AExercise from './health/After/AExercise';
+import TopicDetail from './wiki/TopicDetail';
 
-import BAnxiety from './health/Before/BAnxiety';
-import BExecirse from './health/Before/BExecirse';
+// 电子相册
+import Pictures from './my/Pictures'
+import Pictures1 from './my/Pictures1'
+import Pictures2 from './my/Pictures2'
 
 
 export default class Bottom extends Component {
@@ -116,29 +114,31 @@ export default class Bottom extends Component {
         <Route exact path='/wiki/chaowa' component={Chaowa} />
         <Route exact path='/wiki/tuina' component={TuiNa} />
         <Route exact path='/wiki/babyfood' component={BabyFood} />
+        <Route exact path='/search' component={Search} />
 
-        <Route exact path='/health/yiyu' component={Yiyu} />
+
+        {/* <Route exact path='/health/yiyu' component={Yiyu} />
         <Route exact path='/health/reply' component={Reply} />
-        {/* <Route exact path='/health/food' component={Food} /> */}
-        <Route exact path='/health/anxiety' component={Anxiety} />
+        <Route exact path='/health/food' component={Food} />
+        <Route exact path='/health/anxiety' component={Anxiety} /> */}
+
         <Route exact path='/health/before/yiyu' component={BYiyu} />
         <Route exact path='/health/before/food' component={BFood} />
         <Route exact path='/health/before/anxiety' component={BAnxiety} />
         <Route exact path='/health/before/exercise' component={BExecirse} />
-
         <Route exact path='/health/after/food' component={AFood} />
         <Route exact path='/health/after/anxiety' component={AAnxiety} />
         <Route exact path='/health/after/yiyu' component={AYiyu} />
-        <Route exact path='/health/after/exercise' component={AExercise} />
-
-        
+        <Route exact path='/health/after/exercise' component={AExercise} />       
         <Route exact path='/health/test' component={Tests} />
-
+        
         {/* <Route  exact path='/my/publish' component={Publish}/> */}
         <Route exact path='/my/collect' component={Collect} />
         <Route exact path='/my/tongyong' component={Tongyong} />
         <Route exact path='/my/unique' component={Unique} />
         <Route exact path='/my/publish' component={Publish}/>
+        <Route exact path='/my/feedback' component={Feedback}/>
+
         {/* <Route  exact path='/my' component={My}/> */}
         <Route path='/wiki/detail/:id' component={Detail} />
         <Route path='/health/detail/:id' component={Detail} />
@@ -157,8 +157,12 @@ export default class Bottom extends Component {
         {/* 话题圈 */}
         <Route exact path='/wiki/topic' component={Topic}/>
         <Route exact path='/wiki/topic/add' component={Addtopic}/>
+        <Route path='/wiki/topic/detail/:id' component={TopicDetail} />
 
-
+        {/* 电子相册 */}
+        <Route exact path='/my/pictures'component={Pictures}/>
+        <Route exact path='/my/pictures1'component={Pictures1}/>
+        <Route exact path='/my/pictures2'component={Pictures2}/>
       </Router>
     )
   }
