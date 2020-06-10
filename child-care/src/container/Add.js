@@ -24,7 +24,7 @@ export default class Add extends Component {
                
                 
               
-                {/* <Unique/> */}
+               
                 {/* <BabyFood/> */}
                 {/* <Edu/> */}
                 {/* <Food/> */}
