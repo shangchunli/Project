@@ -988,7 +988,6 @@ router.get('/delcap',function(req,res,next){
     if(err){
       console.log(err)
     }else{
-      // res.end("delete success");
       res.redirect('/capricem');
     }
   })
