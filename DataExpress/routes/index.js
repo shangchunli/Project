@@ -66,7 +66,6 @@ router.post('/register',function(req,res,next){
 })
 router.get('/getheadImg/',function(req,res,next){
   var filePath =('./server/head/'+req.query.imgId+'.png');
-  // console.log(filePath);
   var imgContent = fs.readFileSync(filePath);
   res.writeHead(200,{'Content-Type':'image/png'});
   res.end(imgContent);
