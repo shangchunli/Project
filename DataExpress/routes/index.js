@@ -50,15 +50,6 @@ router.post('/register',function(req,res,next){
   var base64 = head.replace(/^data:image\/\w+;base64,/, "");//去掉图片base64码前面部分data:image/png;base64
   var dataBuffer = new Buffer(base64, 'base64'); //把base64码转成buffer对象，
   console.log('dataBuffer是否是Buffer对象：'+Buffer.isBuffer(dataBuffer));
-  // if(!fs.existsSync('./server/head/')){
-  //   fs.mkdir('./server/head/'+cowner+'',function(error){
-  //     if(error){
-  //         console.log(error);
-  //     }
-  //     console.log('创建目录成功');
-  //   })
-  //   fs.writeFileSync(imgpath, dataBuffer, {'encoding':'binary'});
-  // }else{
     fs.writeFileSync(imgpath, dataBuffer, {'encoding':'binary'});
   var imagepath = 'http://localhost:5001/getheadImg/?imgId='+telphone;
   var con = mysql.createConnection(dbconfig);
