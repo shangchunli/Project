@@ -12,6 +12,7 @@ const data2=Array.from(chanhou.map((_val,i)=>({
     text: chanhou[i],
 })));
 class Health extends Component {
+//     路由跳转产前相关页面
     before=(id)=>{
         var paths="/health/before/";
         if(id==0){
@@ -24,6 +25,7 @@ class Health extends Component {
             this.props.history.push(paths+"food")
         }
     }
+//     路由跳转产后相关页面
     after=(id)=>{
         var paths="/health/after/";
         if(id==0){
@@ -36,6 +38,7 @@ class Health extends Component {
             this.props.history.push(paths+"food")
         }
     }
+//     跳转至爱丁堡相关测试页
     jump=()=>{
         this.props.history.push('/health/test')
     }
