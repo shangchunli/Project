@@ -959,6 +959,7 @@ router.get('/capricem',function(req,res,next){
     }
   })
 })
+
 //查询
 router.post("/capsearch",function(req,res,next){
   var username = req.body.username;
