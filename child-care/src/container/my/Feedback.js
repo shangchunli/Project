@@ -11,6 +11,7 @@ import cookie from 'react-cookies'
              contactDetails:''
          }
      }
+//   点击提交按钮时向后台传递当前用户、联系方式、所反馈的意见
      handle = () =>{
         fetch('http://localhost:5001/addfeedback', {
             method: 'POST',//post请求 
