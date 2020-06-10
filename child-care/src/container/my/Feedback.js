@@ -38,6 +38,7 @@ import cookie from 'react-cookies'
             feedback:e.target.value
         },()=>{console.log(this.state.feedback)})
     }
+//     获取当前用户的联系方式
     handleInput2 = (e) => {
         this.setState({
             contactDetails:e.target.value
