@@ -34,6 +34,7 @@ router.post('/yhlogin',function(req,res,next){
     }
   })
 })
+
 //用户注册提交上的信息
 // 头像：图片选择器得到的base64编码，去除头部信息，转存到本地服务器，
 router.post('/register',function(req,res,next){
