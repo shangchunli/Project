@@ -12,6 +12,7 @@ class Unique extends Component {
     }
   }
   componentDidMount(){
+//     向后台发送当前用户以获取数据
     setTimeout(()=>{ fetch("http://localhost:5001/me",{
             method:'POST',
             headers: { 
