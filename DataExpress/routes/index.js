@@ -888,7 +888,6 @@ router.get('/fenye6',function(req,res,next){
   })
 })
   
-// })
 //删除已发表帖子信息，同时删除数据库内信息
 router.get('/delchap',function(req,res,next){
   var id = req.query.id;
