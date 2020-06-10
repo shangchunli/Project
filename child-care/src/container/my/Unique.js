@@ -59,6 +59,7 @@ class Unique extends Component {
         })
   
 }
+//   获取当前页面中表单所填写的信息
 content=()=>{
   console.log(this.refs.usename.state.value)
   this.setState({
