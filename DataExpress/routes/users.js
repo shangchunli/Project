@@ -4,8 +4,6 @@ var router = express.Router();
 /* GET users listing. */
 var express = require('express');
 var router = express.Router();
-//引入数据库模块
-var mysql = require('mysql');
 var fs = require("fs");
 var path = require('path');
 const formidable = require('formidable');
