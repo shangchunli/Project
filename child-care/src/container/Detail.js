@@ -123,6 +123,7 @@ class Detail extends Component {
             .then(res=>res.text())
             .then((res)=>{
                 if(res=='sc success'){
+//                    渲染收藏数
                     fetch('http://localhost:5001/showsccount',{
                         method: 'POST',//post请求 
                         headers: { 
