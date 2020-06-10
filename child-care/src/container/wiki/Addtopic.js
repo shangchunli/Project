@@ -24,6 +24,7 @@ class Addtopic extends Component {
         
 //         路由跳转到topic页面
         this.props.history.push('/wiki/topic');
+//         获取当前年月日
         var today = new Date(),
             date = today.getFullYear() + '/' + (today.getMonth() + 1) + '/' + today.getDate();
         console.log(date);
