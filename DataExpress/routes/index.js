@@ -941,7 +941,6 @@ router.get('/delbaby',function(req,res,next){
     if(err){
       console.log(err)
     }else{
-      // res.end("delete success");
       res.redirect('/babym');
     }
   })
