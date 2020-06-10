@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { NavBar,Icon,List } from 'antd-mobile';
+import { NavBar,Icon,List,Toast ,Badge} from 'antd-mobile';
 import './detail.css'
 import {withRouter} from 'react-router-dom'
 import cookie from 'react-cookies'
@@ -19,6 +19,7 @@ class Detail extends Component {
             dzcount:'',
             sccount:'',
             plstate:false,
+            // showElem:'none',
             userId:cookie.load('userId')
         } 
     }
@@ -56,8 +57,9 @@ class Detail extends Component {
         })
         .then(res=>res.json())
         .then((res)=>{
+            let reStr=res.reverse();
             this.setState({
-                tips:res,
+                tips:reStr,
             });
         })
         
@@ -168,7 +170,7 @@ class Detail extends Component {
                 fetch('http://localhost:5001/showcomment',{
                     method: 'POST',//post请求 
                     headers: { 
-                    'Content-Type': 'application/json;charset=UTF-8' 
+                    'Content-Type'  : 'application/json;charset=UTF-8' 
                     }, 
                     body: JSON.stringify({
                         chapterId:  this.props.match.params.id               
@@ -176,9 +178,9 @@ class Detail extends Component {
                 })
                 .then(res=>res.json())
                 .then((res)=>{
-                    console.log(res);
+                    let reStr=res.reverse();
                     this.setState({
-                        tips:res,
+                        tips:reStr,
                     });
                 })
                 this.setState({
@@ -286,9 +288,9 @@ class Detail extends Component {
                 })
                 .then(res=>res.json())
                 .then((res)=>{
-                    console.log(res);
+                    let reStr=res.reverse();
                     this.setState({
-                        tips:res,
+                        tips:reStr,
                     });
                 })
                 fetch('http://localhost:5001/plcount',{
@@ -312,6 +314,9 @@ class Detail extends Component {
                 })
             }
         })
+    }
+    comment=()=>{
+        
     }
     render() {
         return (
@@ -339,27 +344,11 @@ class Detail extends Component {
                                 </div>
                                 <List.Item.Brief >
                                     <div style={{marginTop:20,flexDirection:'row',
-                                    alignItems:'center',justifyContent:'center'}}>
-                                        
-                                            <input style={{width:'30%',height:40,borderRadius:40}}
-                                                type='text' ref='pinglun' placeholder='评论一下'
-                                                onChange={(e)=>this.inputChange(e)}
-                                                icon={
-                                                    'url( https://i.loli.net/2020/04/17/G6xCR7StsTnPkBv.png)'
-                                                    }
-                                            />
-                                        <span style={{marginLeft:10}}>
-                                            <button onClick={this.crital} 
-                                            style={{borderRadius:20,width:'10%',height:30}}>
-                                                发送
-                                            </button>
-                                        </span>
-                                        
-                                        
-                                        <span  style={{marginLeft:20}} >
+                                    marginLeft:'40%'}}>
+                                        <span  style={{marginLeft:'3%'}} >
                                             <img 
                                                 ref='tab'
-                                                style={{width:'5%'}}
+                                                style={{width:'10%'}}
                                                 src={(this.state.isGive)
                                                     ?'https://s1.ax1x.com/2020/04/21/JGLB8I.png'
                                                     :"https://s1.ax1x.com/2020/04/21/JGLIx0.png"}
@@ -367,28 +356,30 @@ class Detail extends Component {
                                                 onClick={(e)=>this.change2(item.chapterid,e)} alt='点赞'/>
                                                 <span>{this.state.dzcount}</span>
                                         </span>
-                                        <span  style={{marginLeft:20,marginTop:100}} >
+                                        <span  style={{marginLeft:'15%',marginTop:100}} >
                                             <img 
                                                 ref='tab'
                                                 id={item.chapterid}
-                                                style={{width:'5%'}}
+                                                style={{width:'10%'}}
                                                 src={(cookie.load('chapterId'))
                                                     ?'https://s2.ax1x.com/2019/12/11/QrKe4s.png'
                                                     :"https://s2.ax1x.com/2019/12/04/Q1fu7T.png"}
                                                 onClick={(e)=>this.change1(item.chapterid,e)} alt='收藏'/>
                                                 <span>{this.state.sccount}</span>
                                         </span>
-                                        <span  style={{marginLeft:20}} >
-                                            <img 
-                                                ref='tab'
-                                                style={{width:'5%',}}
-                                                src=
-                                                "https://s1.ax1x.com/2020/04/27/Jf4g8s.png"
+                                        <span  style={{marginLeft:'15%'}} >
+                                            <Badge text={this.state.plcount} style={{backgroundColor:'gray',marginLeft:-20, borderRadius: 1,fontSize:16 }}>
+                                                <img onClick={this.comment}
+                                                    ref='tab'
+                                                    style={{width:50,}}
+                                                    src=
+                                                    "https://s1.ax1x.com/2020/04/27/Jf4g8s.png"
+                                                        
+                                                    alt='评论'/>
+                                                
                                                     
-                                                 alt='评论'/>
-                                                <span style={{fontSize:20,marginLeft:10}}>
-                                                     {this.state.plcount}
-                                                </span>
+                                            </Badge>
+                                                
                                         </span>
                                     </div>
                                 </List.Item.Brief>
@@ -397,9 +388,10 @@ class Detail extends Component {
                                         (this.state.tips||[]).map(item=>
                                             <div id={item.plid}
                                                 style={{
-                                                    backgroundColor:'green',
-                                                    padding:10,
-                                                    marginTop:10
+                                                    backgroundColor:'skyblue',
+                                                    padding:3,
+                                                    marginTop:10,
+                                                    borderRadius:'1em'
                                                 }}
                                             >
                                                 <List.Item>
@@ -417,10 +409,45 @@ class Detail extends Component {
                                         )
                                     }
                                 </div>
+                                <div style={{marginTop:70}}>
+                                
+                                </div>
                             </div>
                         )
                     }
                 </div>
+                {/* 发表话题评论 */}
+                <List.Item.Brief style={{ position: 'fixed', zIndex: 100, bottom: 10, width: '100%' }}>
+                    <div style={{
+                        marginTop: 20, flexDirection: 'row',
+                        alignItems: 'center', justifyContent: 'center', width: '100%'
+                    }}>
+                        <span>
+                            <input
+                                style={{
+                                    marginLeft: "2%", marginRight: "2%",
+                                    width: '80%', height: 40, borderRadius: 10,
+                                    borderColor: '#00ccff'
+                                }}
+                                type='text' ref='pinglun' placeholder='发表一下你的看法吧~'
+                                onChange={(e) => this.inputChange(e)}
+
+                            />
+                        </span>
+                        <span style={{ marginLeft: 10 }}>
+                            <button onClick={this.crital}
+                                style={{
+                                    borderRadius: 5, width: '11%',
+                                    height: 40, backgroundColor: '#00ccff',
+                                    borderColor: '#00ccff', color: 'white'
+                                }}>
+                                发送
+                            </button>
+                        </span>
+                    </div>
+                </List.Item.Brief>
+
+
             </div>
         )
     }

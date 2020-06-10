@@ -15,6 +15,7 @@ export default class AppTab extends React.Component {
     };
   }
   render() {
+    console.log('bottom')
     return (
       <div style={{ position: 'fixed', height: '100%', width: '100%', top: 0 }}>
         <TabBar
@@ -54,14 +55,14 @@ export default class AppTab extends React.Component {
               <div style={{
                 width: '22px',
                 height: '22px',
-                background: 'url(./images/baike.svg) center center /  21px 21px no-repeat' }}
+                background: 'url(https://i.loli.net/2020/06/08/cGxTYAp1ZB69nPo.png ) center center /  21px 21px no-repeat' }}
               />
             }
             selectedIcon={
               <div style={{
                 width: '22px',
                 height: '22px',
-                background: 'url(./images/baike1.svg) center center /  21px 21px no-repeat' }}
+                background: 'url(https://i.loli.net/2020/06/08/cGxTYAp1ZB69nPo.png ) center center /  21px 21px no-repeat' }}
               />
             }
             title="百科"

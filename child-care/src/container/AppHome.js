@@ -179,12 +179,13 @@ class AppHome extends Component {
                     }}
                 >
                     <div>
-                        <h2 style={{float:'left',textAlign:'center',marginLeft:'40%'}}>
+                        <h2 style={{float:'left',textAlign:'center',lineHeight:50,
+                        marginLeft:'40%'}}>
                             珍贵的瞬间
                         </h2>
                         <button onClick={()=>this.photo('photo')}
-                        style={{float:'right',borderRadius:20,
-                        backgroundColor:'pink',height:30}}>
+                        style={{float:'right',borderRadius:25,
+                        height:50,width:'20%',marginRight:20}}>
                             一键做成相册
                         </button>
                     </div>

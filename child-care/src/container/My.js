@@ -67,7 +67,7 @@ class My extends Component {
                     }
                     
                 </div>
-                <List style={{marginTop:"30px"}}>
+                <List style={{marginTop:"20px"}}>
                     <List.Item
                         arrow="horizontal"
                         thumb="./images/guanzhu.svg"
@@ -78,7 +78,7 @@ class My extends Component {
                     我的发布
                     </List.Item>
                 </List>
-                <List style={{marginTop:"30px"}}>
+                <List style={{marginTop:"20px"}}>
                     <List.Item
                         arrow="horizontal"
                         thumb="./images/collect-active.svg"
@@ -90,7 +90,7 @@ class My extends Component {
                     我的收藏
                     </List.Item>
                 </List>
-                <List style={{marginTop:"30px"}}>
+                <List style={{marginTop:"20px"}}>
                     <List.Item
                         arrow="horizontal"
                         thumb="./images/yijianfankui.svg"
@@ -101,7 +101,18 @@ class My extends Component {
                     意见反馈
                     </List.Item>
                 </List>
-                <List style={{marginTop:"30px"}}>
+                <List style={{marginTop:"20px"}}>
+                    <List.Item
+                        arrow="horizontal"
+                        thumb="./images/ruanjianshezhi.svg"
+                        multipleLine
+                        onClick={()=>{this.handle('serve')}}
+                        style={{padding:"10px 0 10px 20px"}}
+                    >
+                    联系客服
+                    </List.Item>
+                </List>
+                <List style={{marginTop:"20px"}}>
                     <List.Item
                         arrow="horizontal"
                         thumb="./images/ruanjianshezhi.svg"
@@ -112,6 +123,10 @@ class My extends Component {
                     软件设置
                     </List.Item>
                 </List>
+                <div style={{marginTop:40}}>
+
+                </div>
+            
             </div>
         )
     }

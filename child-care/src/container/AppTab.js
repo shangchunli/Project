@@ -78,6 +78,7 @@ import AExercise from './health/After/AExercise';
 
 import BAnxiety from './health/Before/BAnxiety';
 import BExecirse from './health/Before/BExecirse';
+import Serve from './my/Serve';
 
 
 export default class Bottom extends Component {
@@ -139,6 +140,8 @@ export default class Bottom extends Component {
         <Route exact path='/my/tongyong' component={Tongyong} />
         <Route exact path='/my/unique' component={Unique} />
         <Route exact path='/my/publish' component={Publish}/>
+        <Route exact path='/my/serve' component={Serve}/>
+
         {/* <Route  exact path='/my' component={My}/> */}
         <Route path='/wiki/detail/:id' component={Detail} />
         <Route path='/health/detail/:id' component={Detail} />
