@@ -93,7 +93,8 @@ class Detail extends Component {
             
          })
         if(this.state.isKeep==false){
-            e.target.src='https://s2.ax1x.com/2019/12/11/QrKe4s.png '
+            e.target.src='https://s2.ax1x.com/2019/12/11/QrKe4s.png ';
+//            向数据库添加当前点赞的用户和帖子
             fetch('http://localhost:5001/cookie',{
                     method: 'POST',//post请求 
                     headers: { 
