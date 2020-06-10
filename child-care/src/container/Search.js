@@ -109,6 +109,7 @@ class Search extends Component {
        
     }
     cancel = () => {
+//         点击x重新设置state以改变样式
         this.setState({
             value: '',
             showResult: 'disresult'
