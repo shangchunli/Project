@@ -174,6 +174,7 @@ class Detail extends Component {
         .then((res)=>{
             console.log(res);
             if(res==' comment success'){
+//                展示评论
                 fetch('http://localhost:5001/showcomment',{
                     method: 'POST',//post请求 
                     headers: { 
