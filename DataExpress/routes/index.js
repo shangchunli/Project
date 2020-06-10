@@ -739,6 +739,7 @@ router.post('/login',function(req,res,next){
     }
   })
 })
+
 //首页
 router.get('/home',function(req,res,next){
   var con = mysql.createConnection(dbconfig);
