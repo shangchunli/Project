@@ -13,6 +13,7 @@ var dbconfig = require('../config/dbconfig.json');
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
+
 //前端接口----------------------------------------------------------------
 //用户登录得到数据库内用户信息
 router.post('/yhlogin',function(req,res,next){
