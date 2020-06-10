@@ -48,6 +48,7 @@ class Detail extends Component {
                 chapterid:this.props.match.params.id
             });
         })
+//        获取当前帖子的评论
         fetch('http://localhost:5001/showcomment',{
             method: 'POST',//post请求 
             headers: { 
