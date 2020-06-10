@@ -645,7 +645,6 @@ router.post('/my',function(req,res,next){
     if(err){
       console.log(err);
     }else{
-      console.log(result);
       res.send(result);
     }
   })
