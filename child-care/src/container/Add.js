@@ -21,8 +21,6 @@ export default class Add extends Component {
         return (
             <div>
                 
-                {/* <Picture/> */}
-                {/* <Nurse/> */}
                 {/* <Chaowa/> */}
                 {/* <Tongyong/> */}
                 {/* <Youxi/> */}
