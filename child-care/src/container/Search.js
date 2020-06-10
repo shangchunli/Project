@@ -55,6 +55,7 @@ class Search extends Component {
         console.log('search');
         console.log(this.state.value);
         if (this.state.value) {
+//             当输入内容不为空时向后台添加历史
             fetch('http://localhost:5001/addhistory', {
                 method: 'POST',//post请求 
                 headers: {
@@ -69,6 +70,7 @@ class Search extends Component {
                 .then((res) => {
                     console.log(res);
                 })
+//             根据帖子的title寻找搜索结果
             fetch('http://localhost:5001/findhistoryresult', {
                 method: 'POST',//post请求 
                 headers: {
@@ -101,11 +103,10 @@ class Search extends Component {
                 showResult: 'showresult'
             })
         } else {
+//             搜索内容为空时显示提示信息
             Toast.info('搜索内容不能为空', 2);
         }
-        // this.setState({
-        //     showResult: 'showresult'
-        // })
+       
     }
     cancel = () => {
         this.setState({
