@@ -22,7 +22,6 @@ router.post('/yhlogin',function(req,res,next){
     }
     else{
       result.map((item)=>{
-          res.send('success');
         }
       })
     }
