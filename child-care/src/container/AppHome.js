@@ -14,7 +14,7 @@ class AppHome extends Component {
     }
     componentDidMount(){
         // console.log(this.props.match.params.id);
-//         在首页获取随想61
+//         在首页获取随想62
         fetch('http://localhost:5001/caprice',{
             method: 'POST',//post请求 
             headers: { 
