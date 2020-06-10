@@ -14,9 +14,7 @@ router.get('/', function(req, res, next) {
 //前端接口----------------------------------------------------------------
 //用户登录得到数据库内用户信息
 router.post('/yhlogin',function(req,res,next){
-  var tel = req.body.telphone;
-  var pwd = req.body.pwd;
-  var con = mysql.createConnection(dbconfig);
+  var tel = req.body.telphone;bconfig);
   con.connect();
   con.query("select telphone,pwd from register",function(err,result){
     if(err){
