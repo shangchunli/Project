@@ -6,10 +6,7 @@ var path = require('path
   res.render('index', { title: 'Express' });
 });
 //前端接口-------------------------------------
-router.post('/yhlogin',function(req,res,next){
-  con.query("select telphone,pwd from register",function(err,result){
-    if(err){
-      consol
+router.post('/yhlogin',function(req,res,next){、
     }
     else{
       result.map((item)=>{
@@ -34,4 +31,4 @@ router.post('/register',function(req,res,next){
   console.log('dataBuffer是否是Buffer对象：'+Buffer.isBuffer(dataBuffer));
   // if(!fs.existsSync('./server/head/')){
   //   fs.mkdir('./server/head/'+cowner+'',function(error){
-  //     if(error){
+ 
