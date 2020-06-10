@@ -80,7 +80,7 @@ import Serve from './my/Serve';
 import Pictures from './my/Pictures'
 import Pictures1 from './my/Pictures1'
 import Pictures2 from './my/Pictures2'
->>>>>>> ddb6080dec6962901aa635ecfd022af418f6c006
+
 
 
 export default class Bottom extends Component {
@@ -142,9 +142,9 @@ export default class Bottom extends Component {
         <Route exact path='/my/tongyong' component={Tongyong} />
         <Route exact path='/my/unique' component={Unique} />
         <Route exact path='/my/publish' component={Publish}/>
-<<<<<<< HEAD
+
         <Route exact path='/my/serve' component={Serve}/>
-=======
+
         <Route exact path='/my/feedback' component={Feedback}/>
 >>>>>>> ddb6080dec6962901aa635ecfd022af418f6c006
 
