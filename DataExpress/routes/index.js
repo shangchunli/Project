@@ -502,7 +502,7 @@ router.post('/addcomment', function(req,res,next){
     if(err){
       console.log(err)
     }else{
-      console.log(result[0].head)
+      // console.log(result[0].head)
       con.query("insert into comment(telphone,chapterid,plcontent,pltime,head) values(?,?,?,?,?)",[user,chapterId,plcontent,pltime,result[0].head],function(err,result){
         if(err){
           console.log(err);
