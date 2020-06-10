@@ -543,9 +543,6 @@ router.post('/plcount',function(req,res,next){
   })
 })
 
-// router.post('/addplcount',function(req,res,next){
-//   console.log(req.body)
-//   var plcount = req.body.plcount+1;
 //   var chapterId = req.body.chapterId;
 //   console.log(chapterId,plcount);
 //   var con = mysql.createConnection(dbconfig);
