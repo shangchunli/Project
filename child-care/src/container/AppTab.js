@@ -146,7 +146,7 @@ export default class Bottom extends Component {
         <Route exact path='/my/serve' component={Serve}/>
 
         <Route exact path='/my/feedback' component={Feedback}/>
->>>>>>> ddb6080dec6962901aa635ecfd022af418f6c006
+
 
         {/* <Route  exact path='/my' component={My}/> */}
         <Route path='/wiki/detail/:id' component={Detail} />
