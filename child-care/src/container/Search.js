@@ -22,6 +22,7 @@ class Search extends Component {
         })
     }
     componentDidMount() {
+//         获取历史一渲染往期搜索历史
         fetch('http://localhost:5001/findhistory', {
             method: 'POST',//post请求 
             headers: {
@@ -43,6 +44,7 @@ class Search extends Component {
     }
     onChange = (e) => {
         // console.log(e.target.value);
+//         获取搜索内容
         str = e.target.value;
         console.log(str);
         this.setState({
