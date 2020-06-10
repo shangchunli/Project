@@ -543,7 +543,6 @@ router.post('/plcount',function(req,res,next){
   })
 })
 
-// })
 //删除评论
 router.post('/delcom',function (req,res,next) { 
   var plid=req.body.plid;
