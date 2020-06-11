@@ -1,0 +1,141 @@
+/* *{
+    margin:0;
+    padding:0;
+}
+body{
+    background-color: #fff;
+}
+
+.flex-container {
+    margin: 0 15px;
+    background-color: white;
+}
+.placeholder1 {
+    background-color:#fff;
+    color: rgb(19, 18, 18);
+    height: 70px;
+    line-height: 30px;
+    width: 100%;
+  } */
+
+/* .placeholder img{
+    background-color: #ebebef;
+    color: #bbb;
+    text-align: center;
+    width: 80%;
+    margin-bottom: 20px;
+  }
+*/
+.bottom{
+  width: 20%;
+  float: left;
+  color:#2278c9;
+}
+.bottom_a1{
+  text-align: center;
+  color:black;
+}
+.bottom_a2{
+  text-align: center;
+  color:red;
+}
+
+.bgimg{
+  /* background-image: url('https://s1.ax1x.com/2020/05/25/tCtZXn.jpg'); */
+  background-color: white;
+  /* opacity:0.4; */
+}
+.showpl{
+  display: block;
+  position: absolute;
+  top: 20%;
+  Z-index: 100;
+}
+.discoverpl{
+  display:none;
+}
+::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+  /* color:    #909; */
+ color:    rgb(209, 209, 209);
+  position: relative;
+  
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+ /* color:    #909; */
+ color:    rgb(209, 209, 209);
+ position: relative;
+  
+
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+ color:    rgb(209, 209, 209);
+ /* color:    #909; */
+ position: relative;
+ 
+
+}
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+ color:    rgb(209, 209, 209);
+ position: relative;
+}
+
+.siderbar{
+  width:'100%';
+  color:black;
+  height:200px;
+  font-size: 12px;
+  background-color: #fff;
+  text-align: center;
+  line-height: 200px;
+  
+  /* margin-bottom: 2px; */
+}
+/* 选中 */
+.siderbar1{
+  width:'100%';
+  color:rgb(83,173,239);
+  font-size: 12px;
+  height:200px;
+  background-color: #fff;
+  text-align: center;
+  line-height: 200px;
+  border-right: 1px rgb(83,173,239) solid;
+  /* margin-bottom: 2px; */
+}
+.underline{
+  color:black;
+  text-decoration: underline;
+  text-decoration-color: black;
+}
+.underline1{
+  color:rgb(25, 105, 209);
+  text-decoration: underline;
+  text-decoration-color: rgb(25, 105, 209);
+}
+.showresult{
+  width:100%;
+  /* top:3; */
+  height:630px;
+  /* bottom: 5px; */
+  display:block;
+  background-color: #fff;
+  position:fixed;
+  z-index: 99;
+  border-radius: 9px;
+}
+.disresult{
+  width:100%;
+  height:630px;
+  /* top:3; */
+
+  /* bottom: 5px; */
+  display:none;
+  background-color: #fff;
+  position:fixed;
+  z-index: 99;
+  border-radius: 9px;
+
+}
+/* .am-tabs-tab-bar-wrap{
+  width:18%;
+} */
